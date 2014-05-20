@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Máquina: localhost
--- Data de Criação: 30-Abr-2014 às 23:14
--- Versão do servidor: 5.6.12-log
--- versão do PHP: 5.4.16
+-- Servidor: localhost
+-- Tempo de Geração: 12/05/2014 às 19h05min
+-- Versão do Servidor: 5.5.16
+-- Versão do PHP: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,10 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de Dados: `avaliacaoccr`
+-- Banco de Dados: `avaliacaoccr`
 --
-CREATE DATABASE IF NOT EXISTS `avaliacaoccr` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `avaliacaoccr`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +28,8 @@ USE `avaliacaoccr`;
 
 CREATE TABLE IF NOT EXISTS `aluno` (
   `alu_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `alu_login` varchar(128) NOT NULL,
+  `alu_senha` char(128) NOT NULL,
+  `alu_cpf` char(14) NOT NULL,
   PRIMARY KEY (`alu_cod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -42,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 
 CREATE TABLE IF NOT EXISTS `disciplina` (
   `dis_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `dis_nome` varchar(80) DEFAULT NULL,
-  `dis_dominio` varchar(15) DEFAULT NULL,
+  `dis_nome` char(80) DEFAULT NULL,
+  `dis_dominio` char(15) DEFAULT NULL,
   PRIMARY KEY (`dis_cod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -55,19 +54,68 @@ CREATE TABLE IF NOT EXISTS `disciplina` (
 
 CREATE TABLE IF NOT EXISTS `enquete` (
   `enq_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `Perguntas_per_cod` int(10) unsigned NOT NULL,
-  `Disciplina_dis_cod` int(10) unsigned NOT NULL,
-  `Professor_pro_cod` int(10) unsigned NOT NULL,
+  `enq_nome` char(40) NOT NULL,
   `enq_num_perg` int(10) unsigned DEFAULT NULL,
+  `enq_num_resp_esp` int(11) NOT NULL,
   `enq_num_resp` int(10) unsigned DEFAULT NULL,
-  `enq_semestre` varchar(6) DEFAULT NULL,
+  `enq_semestre` char(6) DEFAULT NULL,
   `enq_data` date DEFAULT NULL,
   `enq_status` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`enq_cod`),
-  KEY `Enquete_FKIndex1` (`Disciplina_dis_cod`),
-  KEY `Enquete_FKIndex2` (`Professor_pro_cod`),
-  KEY `Enquete_FKIndex3` (`Perguntas_per_cod`),
-  KEY `Perguntas_per_cod` (`Perguntas_per_cod`)
+  PRIMARY KEY (`enq_cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `enquete_disciplina`
+--
+
+CREATE TABLE IF NOT EXISTS `enquete_disciplina` (
+  `edi_cod` int(11) NOT NULL AUTO_INCREMENT,
+  `enq_cod` int(11) NOT NULL,
+  `dis_cod` int(11) NOT NULL,
+  PRIMARY KEY (`edi_cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `enquete_perguntas`
+--
+
+CREATE TABLE IF NOT EXISTS `enquete_perguntas` (
+  `epe_cod` int(11) NOT NULL AUTO_INCREMENT,
+  `enq_cod` int(11) NOT NULL,
+  `per_cod` int(11) NOT NULL,
+  PRIMARY KEY (`epe_cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `enquete_professor`
+--
+
+CREATE TABLE IF NOT EXISTS `enquete_professor` (
+  `epr_cod` int(11) NOT NULL AUTO_INCREMENT,
+  `enq_cod` int(11) NOT NULL,
+  `pro_cod` int(11) NOT NULL,
+  PRIMARY KEY (`epr_cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `links`
+--
+
+CREATE TABLE IF NOT EXISTS `links` (
+  `lin_cod` int(11) NOT NULL AUTO_INCREMENT,
+  `enq_cod` int(11) NOT NULL,
+  `dis_cod` int(11) NOT NULL,
+  `pro_cod` int(11) NOT NULL,
+  `lin_desc` int(11) NOT NULL,
+  PRIMARY KEY (`lin_cod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -81,6 +129,8 @@ CREATE TABLE IF NOT EXISTS `perguntas` (
   `Respostas_res_cod` int(10) unsigned DEFAULT NULL,
   `Respostas_Aluno_alu_cod` int(10) unsigned DEFAULT NULL,
   `per_desc` text NOT NULL,
+  `Enquete_enq_cod` int(11) NOT NULL,
+  `per_tipo` int(11) NOT NULL,
   PRIMARY KEY (`per_cod`),
   KEY `Perguntas_FKIndex1` (`Respostas_res_cod`,`Respostas_Aluno_alu_cod`),
   KEY `Respostas_Aluno_alu_cod` (`Respostas_Aluno_alu_cod`)
@@ -94,10 +144,21 @@ CREATE TABLE IF NOT EXISTS `perguntas` (
 
 CREATE TABLE IF NOT EXISTS `professor` (
   `pro_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pro_nome` varchar(40) DEFAULT NULL,
-  `pro_siape` varchar(10) NOT NULL,
+  `pro_nome` char(40) DEFAULT NULL,
+  `pro_siape` char(10) NOT NULL,
+  `pro_senha` char(20) DEFAULT NULL,
+  `pro_permissao` int(11) NOT NULL,
   PRIMARY KEY (`pro_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `professor`
+--
+
+INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_senha`, `pro_permissao`) VALUES
+(1, 'Denio Duarte', '123', '', 1),
+(2, 'Fernando Bevilacqua', '321', NULL, 2),
+(3, 'Aluno Fulano', '456', '456', 3);
 
 -- --------------------------------------------------------
 
@@ -114,26 +175,18 @@ CREATE TABLE IF NOT EXISTS `respostas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Constraints for dumped tables
+-- Restrições para as tabelas dumpadas
 --
 
 --
--- Limitadores para a tabela `enquete`
---
-ALTER TABLE `enquete`
-  ADD CONSTRAINT `enquete_ibfk_1` FOREIGN KEY (`Perguntas_per_cod`) REFERENCES `perguntas` (`per_cod`),
-  ADD CONSTRAINT `enquete_ibfk_2` FOREIGN KEY (`Disciplina_dis_cod`) REFERENCES `disciplina` (`dis_cod`),
-  ADD CONSTRAINT `enquete_ibfk_3` FOREIGN KEY (`Professor_pro_cod`) REFERENCES `professor` (`pro_cod`);
-
---
--- Limitadores para a tabela `perguntas`
+-- Restrições para a tabela `perguntas`
 --
 ALTER TABLE `perguntas`
-  ADD CONSTRAINT `perguntas_ibfk_1` FOREIGN KEY (`Respostas_res_cod`) REFERENCES `respostas` (`res_cod`),
-  ADD CONSTRAINT `perguntas_ibfk_2` FOREIGN KEY (`Respostas_Aluno_alu_cod`) REFERENCES `respostas` (`Aluno_alu_cod`);
+  ADD CONSTRAINT `perguntas_ibfk_3` FOREIGN KEY (`Respostas_res_cod`) REFERENCES `respostas` (`res_cod`),
+  ADD CONSTRAINT `perguntas_ibfk_4` FOREIGN KEY (`Respostas_Aluno_alu_cod`) REFERENCES `respostas` (`Aluno_alu_cod`);
 
 --
--- Limitadores para a tabela `respostas`
+-- Restrições para a tabela `respostas`
 --
 ALTER TABLE `respostas`
   ADD CONSTRAINT `respostas_ibfk_1` FOREIGN KEY (`Aluno_alu_cod`) REFERENCES `aluno` (`alu_cod`);
