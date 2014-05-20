@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="avaliacaoccr.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="784.03871"
+     inkscape:cy="222.55795"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#44aa00;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect2996"
+       width="198"
+       height="29.700001"
+       x="597.14288"
+       y="736.94788"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\atualizar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3019"
+       transform="matrix(0.99,0,0,0.99,-2.1465769,7.6664789)"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\atualizar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         transform="matrix(1.034688,0,0,1.034688,97.821502,-16.142691)"
+         style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         id="flowRoot2998"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3000"><rect
+             y="732.36218"
+             x="515"
+             height="49.285713"
+             width="278.57144"
+             id="rect3002" /></flowRegion><flowPara
+           style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
+           id="flowPara3004">ATUALIZAR</flowPara></flowRoot>      <g
+         id="g3015">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           id="rect3013"
+           width="22.321428"
+           height="21.785715"
+           x="757.67853"
+           y="740.21918"
+           ry="1.6071428" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 774.57911,744.73626 2.55185,2.55185 -7.65556,7.64784 -2.55185,2.55185 -2.54387,-2.55185 -3.83216,-3.82392 2.55185,-2.55185 3.82392,3.82391 7.65582,-7.64783 z"
+           id="path3"
+           style="fill:#44aa00;fill-opacity:1" />
+      </g>
+    </g>
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\b_editar.png"
+       y="796.94788"
+       x="597.14288"
+       height="29.700001"
+       width="198"
+       id="rect3028"
+       style="fill:#008080;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    <flowRoot
+       transform="matrix(1.0243411,0,0,1.0243411,113.46775,51.810257)"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3032"
+       xml:space="preserve"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\b_editar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3034"><rect
+           y="732.36218"
+           x="515"
+           height="49.285713"
+           width="278.57144"
+           id="rect3036" /></flowRegion><flowPara
+         style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
+         id="flowPara3038">EDITAR</flowPara></flowRoot>    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\b_editar.png"
+       ry="1.2500638"
+       y="800.48346"
+       x="727.69366"
+       height="21.567858"
+       width="22.098213"
+       id="rect3042"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\b_editar.png"
+       style="fill:#008080;fill-opacity:1"
+       inkscape:connector-curvature="0"
+       d="m 733.48236,813.02694 3.50071,3.50169 8.40037,-8.40085 -3.50071,-3.50025 -8.40037,8.39941 z m 9.10032,-6.29906 -6.99951,6.99901 -0.69995,-0.69995 6.99951,-6.99902 0.69995,0.69996 z m 2.80076,-2.8003 0.69995,0.69995 c 0.77247,0.77293 0.77247,2.02687 0,2.80029 l -3.50071,-3.50024 c 0.77342,-0.77343 2.02733,-0.77343 2.80076,0 z m -9.37874,13.02257 -5.18196,2.23712 2.23715,-5.18196 2.94481,2.94484 z"
+       id="path3-9" />
+    <rect
+       style="fill:#deb200;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3009"
+       width="198"
+       height="29.700001"
+       x="597.14288"
+       y="936.94788"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\voltar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3220"
+       transform="translate(-6.4838353,4.955074e-6)"
+       inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\voltar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         transform="matrix(1.0243411,0,0,1.0243411,117.39537,191.81026)"
+         style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         id="flowRoot3011"
+         xml:space="preserve"
+         inkscape:export-filename="C:\xampp\htdocs\baserh\application\images\b_editar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><flowRegion
+           id="flowRegion3013"><rect
+             y="732.36218"
+             x="515"
+             height="49.285713"
+             width="278.57144"
+             id="rect3015" /></flowRegion><flowPara
+           style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
+           id="flowPara3017">VOLTAR</flowPara></flowRoot>      <g
+         style="fill:#ffffff"
+         transform="matrix(0.73208878,0,0,0.73208878,137.93313,297.66506)"
+         id="g3216">
+        <path
+           style="fill:#ffffff"
+           inkscape:connector-curvature="0"
+           d="m 835.14412,878.49069 c -8.3,0 -15.026,6.729 -15.026,15.027 0,8.3 6.726,15.023 15.026,15.023 8.298,0 15.025,-6.724 15.025,-15.023 10e-4,-8.298 -6.727,-15.027 -15.025,-15.027 z m 0,27.542 c -6.912,0 -12.516,-5.602 -12.516,-12.515 0,-6.91 5.604,-12.517 12.516,-12.517 6.911,0 12.514,5.606 12.514,12.517 10e-4,6.913 -5.603,12.515 -12.514,12.515 z"
+           id="path3131" />
+        <path
+           style="fill:#ffffff"
+           inkscape:connector-curvature="0"
+           d="m 828.10812,893.43369 5.428,-4.484 c 0,0 0.641,-0.681 0.641,0.056 0,0.741 0,2.526 0,2.526 0,0 0.435,0 1.1,0 1.91,0 5.383,0 6.795,0 0,0 0.382,-0.101 0.382,0.482 0,0.586 0,3.146 0,3.559 0,0.422 -0.319,0.412 -0.319,0.412 -1.374,0 -4.964,0 -6.807,0 -0.6,0 -1.155,0 -1.155,0 0,0 0,1.433 0,2.331 0,0.9 -0.64,0.12 -0.64,0.12 0,0 -4.937,-3.714 -5.469,-4.245 -0.386,-0.388 0.044,-0.757 0.044,-0.757 z"
+           id="path3133" />
+      </g>
+    </g>
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
+       y="736.44281"
+       x="837.14288"
+       height="20.103552"
+       width="95.974594"
+       id="rect3007"
+       style="fill:#448f00;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    <flowRoot
+       transform="matrix(0.5608531,0,0,0.5608531,556.45602,329.20151)"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3012"
+       xml:space="preserve"
+       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3014"><rect
+           y="732.36218"
+           x="515"
+           height="49.285713"
+           width="278.57144"
+           id="rect3016" /></flowRegion><flowPara
+         style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
+         id="flowPara3018">Nova Pergunta</flowPara></flowRoot>    <g
+       id="g3020"
+       transform="matrix(0.99,0,0,0.99,165.12243,46.557352)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         id="rect3022"
+         width="22.321428"
+         height="21.785715"
+         x="757.67853"
+         y="740.21918"
+         ry="1.6071428" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 774.57911,744.73626 2.55185,2.55185 -7.65556,7.64784 -2.55185,2.55185 -2.54387,-2.55185 -3.83216,-3.82392 2.55185,-2.55185 3.82392,3.82391 7.65582,-7.64783 z"
+         id="path3024"
+         style="fill:#44aa00;fill-opacity:1" />
+    </g>
+    <rect
+       style="opacity:0;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3017"
+       width="6.060915"
+       height="27.274118"
+       x="916.71344"
+       y="812.45093" />
+    <g
+       id="g3791"
+       transform="matrix(0.77538237,0,0,0.77538237,290.98623,128.62361)"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"
+       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\mais.png">
+      <rect
+         y="869.01947"
+         x="815.69818"
+         height="15.033589"
+         width="1.9450017"
+         id="rect3787"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.44264588;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.44264588;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect3789"
+         width="1.9450017"
+         height="15.033589"
+         x="875.56378"
+         y="-824.1875" />
+    </g>
+  </g>
+</svg>
