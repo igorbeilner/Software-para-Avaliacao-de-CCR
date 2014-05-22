@@ -2,9 +2,9 @@
 	<h2>Relatórios de enquetes</h2>
     
     <div>
-        <form action="?module=relatorios&acao=relatorios" id="frmBusca" method="get">
+        <form action="?module=relatorios&acao=professor" method="get">
             <input type="hidden" name="module" value="relatorios" />
-            <input type="hidden" name="acao" value="relatorios" />
+            <input type="hidden" name="acao" value="professor" />
             <a style="position:relative; top:7px; left:2px;">Selecione o semestre:</a> <br />
             <select name="semestre" style="margin-top:10px;width:200px;">
             <?php
@@ -53,7 +53,7 @@
 				<div id="cab_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;">
 					<div class="linha" style="width: 100%;">	
 						<div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Disciplina</div>
-						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 415px;">Estado</div>
+						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 410px;">Estado</div>
 						<div style="clear: both;"></div>
 					</div>
 				</div>	
@@ -73,25 +73,19 @@
 	?>
 				<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
 					<div class="linha_sol" style="width: 100%;">
-							<div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=professor_perguntas&enq=<?php echo $res[$i]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($res[$i]['dis_nome']);?></a></div>
+							<div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=professor_perguntas&enq=<?php echo $res[$i]['enq_cod']?>" ><?php echo utf8_encode($res[$i]['dis_nome']);?></a></div>
 							<?php if ($res[$i]['enq_status'] == 0){?>
-								<div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Desativa</div>
+								<div class="coluna" style="float: left; width: 50px; margin-left: 420px;">Desativa</div>
 							<?php }else if($res[$i]['enq_status'] == 1){?>
-								<div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Ativa</div>
+								<div class="coluna" style="float: left; width: 50px; margin-left: 420px;">Ativa</div>
 							<?php } ?>
 							<div style="clear: both;"></div>
 					</div>
 					<div style="clear:both;"></div>
 				</div>
-				
 	<?php
 			}
-	?>
-		<a href="?module=relatorios&acao=professor" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
-	<?php	
 		}
 	?>
-	
-	
 
 </div>

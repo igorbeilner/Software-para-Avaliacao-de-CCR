@@ -16,7 +16,7 @@
 					echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=lista_professor'>";	
 				}else
 				if($_SESSION['userPermissao'] == 2){ // PROFESSOR
-					echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=lista_professor'>";	
+					echo "<meta http-equiv='refresh' content='0;URL=?module=relatorios&acao=professor'>";	
 				}
 				else{ // ALUNO
 					echo "<meta http-equiv='refresh' content='0;URL=?module=respostas&acao=respostas'>";	

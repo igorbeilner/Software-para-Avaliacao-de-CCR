@@ -7,5 +7,4 @@ class IndexCommand implements Command {
 	}
 
 }
-
 ?>
