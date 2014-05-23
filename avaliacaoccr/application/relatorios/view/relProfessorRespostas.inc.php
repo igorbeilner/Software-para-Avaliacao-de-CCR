@@ -1,4 +1,5 @@
 ﻿<?php
+	include ('phpHtmlChart.php');
 		
 	if (isset($_GET['per']))
 		$per = $_GET['per'];
@@ -13,7 +14,7 @@
 	<?php
 		
 		//pega as perguntas da enquete selecionada		
-		$sql = "select p.per_desc 
+		$sql = "select p.per_desc, p.per_tipo 
 				from perguntas as p
 				where p.per_cod =".$per."";
 						
@@ -55,7 +56,35 @@
 			</div>
 	<?php
 			}
+			if ($perg[0]['per_tipo'] == 1){
+				$sql = "select o.op_desc, o.op_cod from
+						(select po.op_cod 
+						from perguntas_opcoes as po 
+						where po.per_cod =".$per.") as t join opcoes as o
+						where t.op_cod = o.op_cod";
+				
+				$res = $data->find('dynamic', $sql);
+				
+				$grafico = Array();
+					
+				for ($i = 0; $i < count($res); $i++){
+					$sql = "select r.res_cod from
+							respostas as r
+							where r.res_desc = '".$res[$i]['op_desc']."'";
+							
+					$result = $data->find('dynamic', $sql);
+					
+					array_push($grafico, array(utf8_encode($res[$i]['op_desc']), count($result)));
+					
+				}
+				
+				echo phpHtmlChart($grafico, 'H', 'Gráfico de Respostas', 'Número de respostas', '8pt', 400, 'px', 15, 'px');
+			}
 	?>
+    
+    
+    
+    <!--botão voltar-->
 	<a href="?module=relatorios&acao=professor_perguntas&enq=<?php echo $enq?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
 
 </div>
