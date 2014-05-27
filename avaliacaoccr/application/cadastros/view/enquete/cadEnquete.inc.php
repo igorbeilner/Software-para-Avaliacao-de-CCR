@@ -33,47 +33,49 @@
             <div style="clear: both;"></div>           
 		</div>        
 <?php
-		for($j=1; $j<= 40; $j++){
-			
+		
+		$vector_options = array();
+		for($j=1; $j<= 15; $j++){
+
 			// PERGUNTA TEXTO
 			echo "<div class='linha' id='tipo_texto_".$j."' style='display:none;'>";
-				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna'>Descrição da pergunta ".$j.":</div>";
+				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna' >Descrição da pergunta ".$j.":</div>";
 				echo "<div style='clear: both;'></div>";
-				
+					
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input name='per_desc' id='per_desc_texto' type='text' size='61' style='text-transform: uppercase;' />";
-					echo "<a onclick='mostra_alter();'><img src=\"application/images/confirmarpequeno.png\" /></a>&nbsp;&nbsp;";
-					echo "<input type=\"image\" name=\"btn_opentextbox\" src=\"application/images/delete.png\" value=\"Delete\" />&nbsp;&nbsp;&nbsp;";
-					echo "<input type=\"image\" name=\"btn_opentextbox\" src=\"application/images/copy.png\" value=\"Clonar\" />";
+					echo "<input name='per_desc' id='desc_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<a onclick='delete_pergunta_texto(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
+					echo "<a onclick='clone(".$j.", 3)';><img src='application/images/copy.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
-			echo "</div>";			
+			echo "</div>";	
 		
 			// PERGUNTA ESCALA
 			echo "<div class='linha' id='tipo_unica_escolha_".$j."' style='display:none;'>";
 				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna'>Descrição da pergunta ".$j.":</div>";
 				echo "<div style='clear: both;'></div>";
-				
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 
-					echo "<input name='per_desc_uma_resposta_".$j."' id='per_desc_uma_resposta_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;&nbsp;";
-					
-					echo "<a onclick='mostra_alter(".$j.");'><img src='application/images/mais.png' title='Inserir alternativa' /></a>&nbsp;&nbsp;";
-					
-					echo "<a onclick='delete_pergunta(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;' ></a>";
+					echo "<input name='per_desc_uma_resposta_".$j."' id='desc_escolha_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<a onclick='delete_pergunta(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
+					echo "<a onclick='clone(".$j.", 1)';><img src='application/images/copy.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
+					echo "<a onclick='mostra_alter(".$j.");'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>&nbsp;&nbsp;";
 
 				echo "</div>";
+				
 					echo "<div class='linha'   >";
 					echo "<div style='clear: both;'></div>";
 					//ALTERNATIVAS
-					for ($i = 1; $i <= 50; $i++) {
+					for ($i = 1; $i <= 10; $i++) {
+						echo "<div id='alter_".$j."_".$i."' style='display:none;'>";
 							echo "<div style='clear: both;'></div>";
-							echo "<div class='coluna' id='cab_alter_".$j."_".$i."' style='display: none;' > Alternativa ".$i."</div>";
+							echo "<div class='coluna' > Alternativa ".$i."</div>";
 							echo "<div style='clear: both;'></div>";
 							echo "<div class='coluna' > 
-									<input type='text' name='alter_".$j."_".$i."' id='alter_".$j."_".$i."' style='display: none;'> 
+									<input type='text' name='alter_".$j."_".$i."' id='desc_alter_".$j."_".$i."'> 
 								 </div>";
-							echo "<a onclick='mostra_alter(".$j.");'><img src='application/images/mais.png' id='btn_mais_".$j."_".$i."'  style='display: none;' /></a>";
+							echo "<a onclick='delete_alternativa(".$j.", ".$i.");' ><img src='application/images/delete.png' style='cursor:pointer;' /></a>";
+						echo "</div>";
 					}
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
@@ -116,28 +118,35 @@
 </div>
 
 <script>
-	var indice_texto = 0;
-	var indice_alter = 1;
+	var num_perg = 0;
+	var perguntas = []; //guarda o número de alternativas em cada pergunta
+	var i;
+	for (i = 1; i <= 15; i++){
+		perguntas.push(1);	
+	}
 	
 	function mostra_alter(indice_pergunta) {		
-		document.getElementById("cab_alter_"+indice_pergunta+"_"+indice_alter).style.display = "block";	
-		document.getElementById("alter_"+indice_pergunta+"_"+indice_alter).style.display = "block";
-		document.getElementById("btn_mais_"+indice_pergunta+"_"+indice_alter).style.display  = "block";	
-		indice_alter++;
+		document.getElementById("alter_"+indice_pergunta+"_"+perguntas[indice_pergunta]).style.display = "block";
+		perguntas[indice_pergunta]++;
+	}
+	
+	function delete_pergunta_texto(indice_pergunta){
+		document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
 	}
 	
 	function delete_pergunta(indice_pergunta){
 		var i;
-		document.getElementById("per_desc_uma_resposta_"+indice_pergunta).style.display = "none";						
 		// excluir cabeçalho e botões....
+		document.getElementById("tipo_unica_escolha_"+indice_pergunta).style.display = "none";
+		
 		// excluindo alternativas da pergunta
-		for(i = 1; i<= 20; i++){
-			document.getElementById("cab_alter_"+indice_pergunta+"_"+i).style.display = "none";				
-			document.getElementById("alter_"+indice_pergunta+"_"+i).value = "";	
+		for(i = 1; i <= perguntas[indice_pergunta]; i++){		
 			document.getElementById("alter_"+indice_pergunta+"_"+i).style.display = "none";	
-			document.getElementById("btn_mais_"+indice_pergunta+"_"+i).style.display = "none";	
-			indice_alter--;
 		}
+	}
+	
+	function delete_alternativa(indice_perg, indice_alter){
+		document.getElementById("alter_"+indice_perg+"_"+indice_alter).style.display = "none";
 	}
 	
 	function ativa_tipo_pergunta(){
@@ -145,16 +154,49 @@
 		document.getElementById("tipo_pergunta_sel").style.display = "block";			
 	}
 	
+	function clone(indice_pergunta, type){
+		var desc_perg;
+		num_perg += 1;
+		if (type == 1){
+			document.getElementById("tipo_unica_escolha_"+num_perg).style.display = "block";
+			document.getElementById("selecao_tipo").value = "";	
+			document.getElementById("tipo_pergunta_cab").style.display = "none";				
+			document.getElementById("tipo_pergunta_sel").style.display = "none";
+			
+			desc_perg = document.getElementById("desc_escolha_"+indice_pergunta).value;
+			document.getElementById("desc_escolha_"+num_perg).value = desc_perg;
+			
+			var i;
+			for (i = 1; i < perguntas[indice_pergunta]; i++){
+				document.getElementById("alter_"+num_perg+"_"+i).style.display = "block";
+				desc_perg = document.getElementById("desc_alter_"+indice_pergunta+"_"+i).value;
+				document.getElementById("desc_alter_"+num_perg+"_"+i).value = desc_perg;
+				perguntas[num_perg]++;
+			}
+			
+		}else if(type == 3){
+			document.getElementById("tipo_texto_"+num_perg).style.display = "block";
+			document.getElementById("selecao_tipo").value = "";	
+			document.getElementById("tipo_pergunta_cab").style.display = "none";				
+			document.getElementById("tipo_pergunta_sel").style.display = "none";
+			
+			desc_perg = document.getElementById("desc_"+indice_pergunta).value;
+			document.getElementById("desc_"+num_perg).value = desc_perg;	
+		}
+		
+		
+	}
+	
 	function ativa_campo(valor){
-		indice_texto = indice_texto + 1;		
+		num_perg = num_perg + 1;		
 		if(valor == 1){
-			document.getElementById("tipo_unica_escolha_"+indice_texto).style.display = "block";
+			document.getElementById("tipo_unica_escolha_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				
 			document.getElementById("tipo_pergunta_sel").style.display = "none";			
 		}else
 		if(valor == 3){
-			document.getElementById("tipo_texto_"+indice_texto).style.display = "block";
+			document.getElementById("tipo_texto_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				
 			document.getElementById("tipo_pergunta_sel").style.display = "none";						

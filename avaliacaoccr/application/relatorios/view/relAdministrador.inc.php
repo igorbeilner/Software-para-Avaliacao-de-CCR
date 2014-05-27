@@ -2,9 +2,9 @@
 	<h2>Relatórios de enquetes</h2>
     
     <div>
-        <form action="?module=relatorios&acao=rel_professor" id="frmBusca" method="get">
+        <form action="?module=relatorios&acao=rel_adm" id="frmBusca" method="get">
             <input type="hidden" name="module" value="relatorios" />
-            <input type="hidden" name="acao" value="rel_professor" />
+            <input type="hidden" name="acao" value="rel_adm" />
             <a style="position:relative; top:7px; left:2px;">Selecione o semestre:</a> <br />
             <select name="semestre" style="margin-top:10px;width:200px;">
             <?php
@@ -36,6 +36,7 @@
 					WHERE enq_semestre =".$semestre."";
 			$result = $data->find('dynamic',$sql);	
 			
+			$enquetes = array();
 			//procura o status das enquetes, os nomes das disciplinas das enquetes e os códigos das disciplinas
 			for ($i = 0; $i < count($result); $i++){
 				$sql = "select t.enq_status, d.dis_nome, d.dis_cod, t.enq_cod from
@@ -44,7 +45,7 @@
 						where ed.enq_cod =".$result[$i]['enq_cod']." and e.enq_cod =".$result[$i]['enq_cod'].") as t join disciplina as d 
 						where t.dis_cod = d.dis_cod";
 						
-				$res = $data->find('dynamic', $sql);
+				array_push($enquetes, $data->find('dynamic', $sql));
 			}
 			
 			if(count($result) > 0){
@@ -68,23 +69,25 @@
 			}
 		
 		 
-			for($i = 0; $i < count($res); $i++){
-			 
+			for($i = 0; $i < count($enquetes); $i++){
+				for ($j = 0; $j < count($enquetes[$i]); $j++){
+			 		$aux = $enquetes[$i];
 	?>
-				<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
-					<div class="linha_sol" style="width: 100%;">
-							<div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=professor_perguntas&enq=<?php echo $res[$i]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($res[$i]['dis_nome']);?></a></div>
-							<?php if ($res[$i]['enq_status'] == 0){?>
-								<div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Desativa</div>
-							<?php }else if($res[$i]['enq_status'] == 1){?>
-								<div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Ativa</div>
-							<?php } ?>
-							<div style="clear: both;"></div>
-					</div>
-					<div style="clear:both;"></div>
-				</div>
+                    <div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
+                        <div class="linha_sol" style="width: 100%;">
+                                <div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($aux[$j]['dis_nome']);?></a></div>
+                                <?php if ($aux[$j]['enq_status'] == 0){?>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Desativa</div>
+                                <?php }else if($aux[$j]['enq_status'] == 1){?>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Ativa</div>
+                                <?php } ?>
+                                <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
 				
 	<?php
+				}
 			}
 	?>
 		<a href="?module=relatorios&acao=professor" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 

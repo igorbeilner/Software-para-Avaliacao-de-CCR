@@ -6,6 +6,9 @@
             <ul <?php if($_GET['module'] == 'cadastros'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=cadastros&acao=nova_enquete'>Criar enquete</a></li>						
             </ul> 
+             <ul <?php if($_GET['module'] == 'relatorios'){ echo 'class="selected"';}?>>     	        
+                <li><a href='?module=relatorios&acao=rel_adm' >Relatórios</a></li>						
+            </ul> 
         </li>
 <?php
 	}
@@ -13,7 +16,7 @@
 ?>
         <li class="navprimary"><a href="#">Menu</a> 
             <ul <?php if($_GET['module'] == 'relatorios'){ echo 'class="selected"';}?>>     	        
-                <li><a href='?module=relatorios&acao=relatorios' >Relatórios</a></li>						
+                <li><a href='?module=relatorios&acao=rel_professor' >Relatórios</a></li>						
             </ul> 
         </li>
 <?php
