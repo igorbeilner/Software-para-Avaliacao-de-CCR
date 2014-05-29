@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Maio-2014 às 05:49
+-- Generation Time: 29-Maio-2014 às 04:41
 -- Versão do servidor: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -108,32 +108,6 @@ INSERT INTO `enquete` (`enq_cod`, `enq_nome`, `enq_num_perg`, `enq_num_resp_esp`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `enquete_disciplina`
---
-
-CREATE TABLE IF NOT EXISTS `enquete_disciplina` (
-  `edi_cod` int(10) NOT NULL AUTO_INCREMENT,
-  `enq_cod` int(10) unsigned NOT NULL,
-  `dis_cod` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`edi_cod`),
-  KEY `dis_cod` (`dis_cod`),
-  KEY `enq_cod` (`enq_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Extraindo dados da tabela `enquete_disciplina`
---
-
-INSERT INTO `enquete_disciplina` (`edi_cod`, `enq_cod`, `dis_cod`) VALUES
-(1, 1, 3),
-(2, 1, 2),
-(3, 1, 2),
-(4, 2, 3),
-(5, 2, 1);
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `enquete_perguntas`
 --
 
@@ -163,25 +137,29 @@ INSERT INTO `enquete_perguntas` (`epe_cod`, `enq_cod`, `per_cod`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `enquete_professor`
+-- Estrutura da tabela `enq_disc_prof`
 --
 
-CREATE TABLE IF NOT EXISTS `enquete_professor` (
-  `epr_cod` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `enq_disc_prof` (
+  `edi_cod` int(10) NOT NULL AUTO_INCREMENT,
   `enq_cod` int(10) unsigned NOT NULL,
+  `dis_cod` int(10) unsigned NOT NULL,
   `pro_cod` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`epr_cod`),
-  KEY `pro_cod` (`pro_cod`),
-  KEY `enq_cod` (`enq_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`edi_cod`),
+  KEY `dis_cod` (`dis_cod`),
+  KEY `enq_cod` (`enq_cod`),
+  KEY `edp_pro` (`pro_cod`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Extraindo dados da tabela `enquete_professor`
+-- Extraindo dados da tabela `enq_disc_prof`
 --
 
-INSERT INTO `enquete_professor` (`epr_cod`, `enq_cod`, `pro_cod`) VALUES
-(1, 1, 2),
-(2, 1, 1);
+INSERT INTO `enq_disc_prof` (`edi_cod`, `enq_cod`, `dis_cod`, `pro_cod`) VALUES
+(6, 1, 1, 2),
+(7, 1, 2, 1),
+(8, 1, 3, 2),
+(9, 2, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -369,13 +347,6 @@ ALTER TABLE `enquete`
   ADD CONSTRAINT `enquete_ibfk_1` FOREIGN KEY (`enq_semestre`) REFERENCES `semestre` (`sem_id`);
 
 --
--- Limitadores para a tabela `enquete_disciplina`
---
-ALTER TABLE `enquete_disciplina`
-  ADD CONSTRAINT `enquete_disciplina_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
-  ADD CONSTRAINT `enquete_disciplina_ibfk_2` FOREIGN KEY (`dis_cod`) REFERENCES `disciplina` (`dis_cod`);
-
---
 -- Limitadores para a tabela `enquete_perguntas`
 --
 ALTER TABLE `enquete_perguntas`
@@ -383,11 +354,12 @@ ALTER TABLE `enquete_perguntas`
   ADD CONSTRAINT `enquete_perguntas_ibfk_2` FOREIGN KEY (`per_cod`) REFERENCES `perguntas` (`per_cod`);
 
 --
--- Limitadores para a tabela `enquete_professor`
+-- Limitadores para a tabela `enq_disc_prof`
 --
-ALTER TABLE `enquete_professor`
-  ADD CONSTRAINT `enquete_professor_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
-  ADD CONSTRAINT `enquete_professor_ibfk_2` FOREIGN KEY (`pro_cod`) REFERENCES `professor` (`pro_cod`);
+ALTER TABLE `enq_disc_prof`
+  ADD CONSTRAINT `enq_disc_prof_ibfk_3` FOREIGN KEY (`pro_cod`) REFERENCES `professor` (`pro_cod`),
+  ADD CONSTRAINT `enq_disc_prof_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
+  ADD CONSTRAINT `enq_disc_prof_ibfk_2` FOREIGN KEY (`dis_cod`) REFERENCES `disciplina` (`dis_cod`);
 
 --
 -- Limitadores para a tabela `perguntas_opcoes`

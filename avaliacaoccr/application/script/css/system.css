@@ -111,8 +111,6 @@ h2{
 	-moz-border-radius: 0px 10px 10px 0px; /* Para Firefox */
 	-webkit-border-radius: 0px 10px 10px 0px; /*Para Safari e Chrome */
 	border-radius: 0px 10px 10px 0px; /* Para Opera 10.5+*/
-	height: 300px;
-	overflow:auto;
 }
 #rodape{
 	width: 1024px;

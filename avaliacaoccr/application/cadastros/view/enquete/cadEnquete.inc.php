@@ -147,6 +147,7 @@
 	
 	function delete_alternativa(indice_perg, indice_alter){
 		document.getElementById("alter_"+indice_perg+"_"+indice_alter).style.display = "none";
+		perguntas[indice_perg]--;
 	}
 	
 	function ativa_tipo_pergunta(){

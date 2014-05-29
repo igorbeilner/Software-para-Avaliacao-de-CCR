@@ -10,13 +10,13 @@
 			$login->table = 'professor';
 			
 			$result = $login->validateUser(array('pro_siape' => $user),$idSession);
-
+			
 			if($result['login'] == 'Logado'){
 				if($_SESSION['userPermissao'] == 1){ // ADM
 					echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=lista_professor'>";	
 				}else
 				if($_SESSION['userPermissao'] == 2){ // PROFESSOR
-					echo "<meta http-equiv='refresh' content='0;URL=?module=relatorios&acao=professor'>";	
+					echo "<meta http-equiv='refresh' content='0;URL=?module=relatorios&acao=professor&pro=".$user."'>";	
 				}
 				else{ // ALUNO
 					echo "<meta http-equiv='refresh' content='0;URL=?module=respostas&acao=respostas'>";	

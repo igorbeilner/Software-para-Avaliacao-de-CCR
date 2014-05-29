@@ -39,11 +39,12 @@
 			$enquetes = array();
 			//procura o status das enquetes, os nomes das disciplinas das enquetes e os códigos das disciplinas
 			for ($i = 0; $i < count($result); $i++){
-				$sql = "select t.enq_status, d.dis_nome, d.dis_cod, t.enq_cod from
-						(select e.enq_status, ed.dis_cod, ed.enq_cod
-						from enquete as e join enquete_disciplina as ed
+				$sql = "select j.enq_status, j.dis_nome, j.dis_cod, j.enq_cod, p.pro_nome from
+						(select t.enq_status, d.dis_nome, d.dis_cod, t.enq_cod, t.pro_cod from
+						(select e.enq_status, ed.dis_cod, ed.enq_cod, ed.pro_cod
+						from enquete as e join enq_disc_prof as ed
 						where ed.enq_cod =".$result[$i]['enq_cod']." and e.enq_cod =".$result[$i]['enq_cod'].") as t join disciplina as d 
-						where t.dis_cod = d.dis_cod";
+						where t.dis_cod = d.dis_cod) as j join professor as p where j.pro_cod = p.pro_cod";
 						
 				array_push($enquetes, $data->find('dynamic', $sql));
 			}
@@ -54,7 +55,8 @@
 				<div id="cab_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;">
 					<div class="linha" style="width: 100%;">	
 						<div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Disciplina</div>
-						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 415px;">Estado</div>
+                        <div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Professor</div>
+						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 30px;">Estado</div>
 						<div style="clear: both;"></div>
 					</div>
 				</div>	
@@ -76,10 +78,11 @@
                     <div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
                         <div class="linha_sol" style="width: 100%;">
                                 <div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($aux[$j]['dis_nome']);?></a></div>
+                                <div class="coluna" style="float:left; width: 300px;"><?php echo utf8_encode($aux[$j]['pro_nome']);?></div>
                                 <?php if ($aux[$j]['enq_status'] == 0){?>
-                                    <div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Desativa</div>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 30px;">Desativa</div>
                                 <?php }else if($aux[$j]['enq_status'] == 1){?>
-                                    <div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Ativa</div>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 30px;">Ativa</div>
                                 <?php } ?>
                                 <div style="clear: both;"></div>
                         </div>

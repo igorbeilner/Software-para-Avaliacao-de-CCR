@@ -3,7 +3,7 @@
 
 	//CADASTRO DO CARGO		
 		case 'professor':
-			require_once 'application/relatorios/view/inicial.php';
+			require_once 'application/relatorios/view/relProfessor.php';
 			break;
 			
 		case 'lista_professor':
