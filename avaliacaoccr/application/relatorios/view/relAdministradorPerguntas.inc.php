@@ -51,6 +51,6 @@
 	<?php
 			}
 	?>
-	<a href="?module=relatorios&acao=relatorios&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
 
 </div>

@@ -85,6 +85,6 @@
     
     
     <!--botão voltar-->
-	<a href="?module=relatorios&acao=professor_perguntas&enq=<?php echo $enq?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+	<a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $enq?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
 
 </div>

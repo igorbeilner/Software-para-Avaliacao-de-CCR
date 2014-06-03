@@ -6,7 +6,7 @@
             <input type="hidden" name="module" value="relatorios" />
             <input type="hidden" name="acao" value="rel_adm" />
             <a style="position:relative; top:7px; left:2px;">Selecione o semestre:</a> <br />
-            <select name="semestre" style="margin-top:10px;width:200px;">
+            <select name="semestre" style="margin-top:10px;width:200px;" onchange="location = this.options[this.selectedIndex].value;">
             <?php
 				//seleciona os semestres cadastrados e disponibiliza para o usuário
 				$sql = "SELECT *
@@ -17,11 +17,10 @@
 				echo "<option value=0>Selecione</option>";
 				for ($i = 0; $i <  count($result); $i++){
 					$n = $i + 1;
-					echo "<option value=".$n.">".$result[$i]['sem_ano']."/".$result[$i]['sem_parte']."</option>";
+					echo "<option value=?module=relatorios&acao=rel_adm&semestre=".$n.">".$result[$i]['sem_ano']."/".$result[$i]['sem_parte']."</option>";
 				}
 			?>
             </select>
-			<input style="position:relative; top:5px; left: 5px;" type="submit" value=""/>
 
         </form>                
     </div>
@@ -54,9 +53,11 @@
 	?>
 				<div id="cab_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;">
 					<div class="linha" style="width: 100%;">	
-						<div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Disciplina</div>
-                        <div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Professor</div>
-						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 30px;">Estado</div>
+						<div class="coluna" style="float:left; width:200px; font-weight:bold; color:#000;">Disciplina</div>
+                        <div class="coluna" style="float:left; width:200px; font-weight:bold; color:#000;">Professor</div>
+						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 10px;">Situação</div>
+                        <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 100px;">Número de Respostas</div>
+                        <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 20px;">Percentual</div>
 						<div style="clear: both;"></div>
 					</div>
 				</div>	
@@ -74,16 +75,25 @@
 			for($i = 0; $i < count($enquetes); $i++){
 				for ($j = 0; $j < count($enquetes[$i]); $j++){
 			 		$aux = $enquetes[$i];
+					$sql = "select e.enq_num_resp_esp, e.enq_num_resp 
+							from enquete as e
+							where e.enq_cod=".$aux[$j]['enq_cod']."";
+							
+					$resp = $data->find('dynamic', $sql);
+					
+					$per = ($resp[0]['enq_num_resp'] * 100) / $resp[0]['enq_num_resp_esp'];
 	?>
                     <div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
                         <div class="linha_sol" style="width: 100%;">
-                                <div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($aux[$j]['dis_nome']);?></a></div>
-                                <div class="coluna" style="float:left; width: 300px;"><?php echo utf8_encode($aux[$j]['pro_nome']);?></div>
+                                <div class="coluna" style="float:left; width: 200px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($aux[$j]['dis_nome']);?></a></div>
+                                <div class="coluna" style="float:left; width: 200px;"><?php echo utf8_encode($aux[$j]['pro_nome']);?></div>
                                 <?php if ($aux[$j]['enq_status'] == 0){?>
-                                    <div class="coluna" style="float: left; width: 50px; margin-left: 30px;">Desativa</div>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Desativa</div>
                                 <?php }else if($aux[$j]['enq_status'] == 1){?>
-                                    <div class="coluna" style="float: left; width: 50px; margin-left: 30px;">Ativa</div>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Ativa</div>
                                 <?php } ?>
+                                <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo utf8_encode($resp[0]['enq_num_resp']);?></div>
+                                <div class="coluna" style="float:left; width: 50px; margin-left:70px;"><?php echo $per."%";?></div>
                                 <div style="clear: both;"></div>
                         </div>
                         <div style="clear:both;"></div>
@@ -93,7 +103,7 @@
 				}
 			}
 	?>
-		<a href="?module=relatorios&acao=professor" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+		<a href="?module=relatorios&acao=rel_adm" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
 	<?php	
 		}
 	?>

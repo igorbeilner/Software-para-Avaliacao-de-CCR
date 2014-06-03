@@ -1,6 +1,7 @@
 ﻿<?php
-	if (isset($_GET['pro'])){
-		$pro = $_GET['pro'];	
+	session_start();
+	if (isset($_SESSION['userId'])){
+		$pro = $_SESSION['userId'];	
 	}
 ?>
 
@@ -23,11 +24,10 @@
 				echo "<option value=0>Selecione</option>";
 				for ($i = 0; $i <  count($result); $i++){
 					$n = $i + 1;
-					echo "<option value=?module=relatorios&acao=rel_professor&pro=".$pro."&semestre=".$n.">".$result[$i]['sem_ano']."/".$result[$i]['sem_parte']."</option>";
+					echo "<option value=?module=relatorios&acao=rel_professor&semestre=".$n.">".$result[$i]['sem_ano']."/".$result[$i]['sem_parte']."</option>";
 				}
 			?>
             </select>
-			<input style="position:relative; top:5px; left: 5px;" type="submit" value=""/>
 
         </form>                
     </div>
@@ -50,7 +50,6 @@
 			$result = $data->find('dynamic', $sql);	
 			
 			
-			
 			//procura o status das enquetes, os nomes das disciplinas das enquetes e os códigos das disciplinas
 			for ($i = 0; $i < count($result); $i++){
 				$sql = "select t.enq_status, d.dis_nome, d.dis_cod, t.enq_cod from
@@ -61,8 +60,8 @@
 						where t.dis_cod = d.dis_cod";
 						
 				$res = $data->find('dynamic', $sql);
-				
 			}
+			
 			
 			//ta retornando coisa que não deve, verificar isso.
 			//tive que fazer mudanças, pq do jeito que estava, o professor podia ver as enquetes de todos, enquanto que ele só pode ver a dele.
@@ -73,7 +72,9 @@
 				<div id="cab_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;">
 					<div class="linha" style="width: 100%;">	
 						<div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Disciplina</div>
-						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 415px;">Estado</div>
+						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 20px;">Situação</div>
+                        <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 150px;">Número de Respostas</div>
+                        <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 60px;">Percentual</div>
 						<div style="clear: both;"></div>
 					</div>
 				</div>	
@@ -89,16 +90,25 @@
 		
 		 
 			for($i = 0; $i < count($res); $i++){
+				$sql = "select e.enq_num_resp_esp, e.enq_num_resp 
+						from enquete as e
+						where e.enq_cod=".$res[$i]['enq_cod']."";
+							
+				$resp = $data->find('dynamic', $sql);
+					
+				$per = ($resp[0]['enq_num_resp'] * 100) / $resp[0]['enq_num_resp_esp'];
 			 
 	?>
 				<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
 					<div class="linha_sol" style="width: 100%;">
 							<div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=professor_perguntas&enq=<?php echo $res[$i]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($res[$i]['dis_nome']);?></a></div>
 							<?php if ($res[$i]['enq_status'] == 0){?>
-								<div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Desativa</div>
+								<div class="coluna" style="float: left; width: 50px; margin-left: 20px;">Desativa</div>
 							<?php }else if($res[$i]['enq_status'] == 1){?>
-								<div class="coluna" style="float: left; width: 50px; margin-left: 415px;">Ativa</div>
+								<div class="coluna" style="float: left; width: 50px; margin-left: 20px;">Ativa</div>
 							<?php } ?>
+                            <div class="coluna" style="float:left; width: 50px; margin-left:175px;"><?php echo utf8_encode($resp[0]['enq_num_resp']);?></div>
+                            <div class="coluna" style="float:left; width: 50px; margin-left:110px;"><?php echo $per."%";?></div>
 							<div style="clear: both;"></div>
 					</div>
 					<div style="clear:both;"></div>
