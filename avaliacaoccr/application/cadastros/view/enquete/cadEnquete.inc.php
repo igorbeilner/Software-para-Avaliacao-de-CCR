@@ -1,16 +1,30 @@
 <?php 
-	/*
 	$sql = "SELECT *
-			FROM municipio
-			ORDER BY mun_nome ASC";
-	$municipio = $data->find('dynamic',$sql);				
-	*/
+			FROM perguntas
+			WHERE per_tipo = 1
+			ORDER BY per_desc ASC";
+	$pergunta1 = $data->find('dynamic',$sql);				
+
+	$sql = "SELECT *
+			FROM perguntas
+			WHERE per_tipo = 2
+			ORDER BY per_desc ASC";
+	$pergunta2 = $data->find('dynamic',$sql);				
+	
+	for($i=0;$i<count($pergunta1);$i++){
+		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".trim($pergunta1[$i]['per_desc'])."\",";
+	}	
+	
+	for($i=0;$i<count($pergunta2);$i++){
+		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
+	}	
+
 ?>
 
 
 <div id="table">
 	<h2>Cadastro de Enquete</h2>
-    <form action="#" id="frmCadastro" method="post">
+    <form action="?module=cadastros&acao=gravar_enquete" id="frmCadastro" method="post">
         
         
         <div class="linha">
@@ -28,13 +42,45 @@
             <div style="clear: both;"></div>
             
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<input name="enq_semestre" maxlength="6" id="enq_semestre" type="text" size="3" placeholder="2014/2" style="text-transform: lowercase;" />
+            	<input name="enq_semestre" maxlength="6" id="enq_semestre" type="text" size="3" placeholder="2014/2" />
             </div>
             <div style="clear: both;"></div>           
 		</div>        
-<?php
 		
-		$vector_options = array();
+        <div class="linha">
+            <div style="width: 111px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Data:</div>
+            <div style="clear: both;"></div>
+            
+            <div class="coluna" style="margin-right: 23px; margin-left:0px;">
+            	<input name="enq_data" maxlength="10" id="enq_data" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" style="text-transform: lowercase;" />
+            </div>
+            <div style="clear: both;"></div>           
+		</div>       
+
+        <div class="linha">
+            <div style="width: 300px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Situação da Enquete:</div>
+            <div style="clear: both;"></div>
+            
+            <div class="coluna" style="margin-right: 23px; margin-left:0px;">
+            	<input type='radio' name='enq_status' value='1' checked style='position:relative; top:3px;' >Ativa
+				<input type='radio' name='enq_status' value='0' style='position:relative; top:3px;'>Inativa
+            </div>
+            <div style="clear: both;"></div>           
+		</div>     		
+		
+        <div class="linha">
+            <div style="width: 300px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Nº de Respostas Esperadas:</div>
+            <div style="clear: both;"></div>
+            
+            <div class="coluna" style="margin-right: 23px; margin-left:0px;">
+            	<input name="enq_num_resp_esp" maxlength="3" id="enq_num_resp_esp" type="text" size="3"  />
+            </div>
+            <div style="clear: both;"></div>           
+		</div>       		
+		
+		<input type='hidden' name='enq_num_perg' id='enq_num_perg' />
+		
+<?php
 		for($j=1; $j<= 15; $j++){
 
 			// PERGUNTA TEXTO
@@ -43,7 +89,8 @@
 				echo "<div style='clear: both;'></div>";
 					
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input name='per_desc' id='desc_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<input name='per_desc_".$j."_texto' id='desc_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<input type='hidden' name='tipo_".$j."' />";
 					echo "<a onclick='delete_pergunta_texto(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
 					echo "<a onclick='clone(".$j.", 3)';><img src='application/images/copy.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
 				echo "</div>";
@@ -56,7 +103,8 @@
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 
-					echo "<input name='per_desc_uma_resposta_".$j."' id='desc_escolha_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<input name='per_desc_".$j."_escala' id='desc_escolha_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<input type='hidden' name='tipo_".$j."' />";
 					echo "<a onclick='delete_pergunta(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
 					echo "<a onclick='clone(".$j.", 1)';><img src='application/images/copy.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
 					echo "<a onclick='mostra_alter(".$j.");'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>&nbsp;&nbsp;";
@@ -81,12 +129,9 @@
 				echo "<div style='clear: both;'></div>";
 			echo "</div>";			
 			
-		}
-		
+		}		
 ?>
    
-   		
-   		
         <div class="linha"><br/>
             <div id="tipo_pergunta_cab" style="width: 190px; margin-top: 8px; margin-left:0px; font-weight:bold; display:none;" class="coluna">Tipo de Pergunta:</div>
             <div style="clear: both;"></div>  
@@ -101,9 +146,30 @@
             </div>
             <div style="clear: both;"></div>           
 		</div>        
-        <br />
-		<div style="clear: both;"></div>               
-		<div class="coluna"><img src="application/images/nova_pergunta.png" onclick="ativa_tipo_pergunta();" /></div><br/><br/><br/>
+        <div style="clear: both;"></div>               
+
+		<!-- Seleciona o tipo de pergunta das perguntas do BANCO -->
+        <div class="linha">
+            <div id="tipo_pergunta_cab_banco" style="width: 190px; margin-top: 8px; margin-left:0px; font-weight:bold; display:none;" class="coluna">Tipo de Pergunta(banco):</div>
+            <div style="clear: both;"></div>  
+			<div id="tipo_pergunta_sel_banco" class="coluna" style="left: 0px; top:10px; display:none;">
+                <select id="" name="" onchange="ativa_campo_busca(this.value);"  >
+                	<option value="" >Selecione o tipo de pergunta</option>
+                    <option value="1" >Escala</option>
+                	<option value="2" >Texto</option>                    
+                </select>
+            </div>
+            <div style="clear: both;"></div>           
+		</div>        
+		
+        <!-- div auto complete -->
+		<input type="text" name="escala_ac" id="escala_ac" size="80" placeholder="BUSCA ESCALA" style="display:none;" > <!-- ESCALA -->
+        
+		<input type="text" name="texto_ac" id="texto_ac" size="80" placeholder="BUSCA TEXTO" style="display:none;" > <!-- TEXTO -->        
+		
+        <br /><br />	
+		<div class="coluna"><img src="application/images/nova_pergunta.png" onclick="ativa_tipo_pergunta();" /></div>
+		<div class="coluna"><img src="application/images/importa_pergunta.png" onclick="ativa_btn_importar();" style='margin-left:3px;' /></div><br/><br/><br/>
 
         <!-- Botão Salvar -->
         <div class="coluna">
@@ -125,19 +191,36 @@
 		perguntas.push(1);	
 	}
 	
+	function ativa_campo_busca(tipo){
+		if(tipo == 1){ // escala
+			document.getElementById('escala_ac').style.display = "block";
+			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
+			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";			
+		}
+		else{ // texto
+			document.getElementById('texto_ac').style.display = "block";
+		}
+	}
+	
+	
 	function mostra_alter(indice_pergunta) {		
 		document.getElementById("alter_"+indice_pergunta+"_"+perguntas[indice_pergunta]).style.display = "block";
 		perguntas[indice_pergunta]++;
 	}
 	
 	function delete_pergunta_texto(indice_pergunta){
+		num_perg--;
+		document.getElementById("tipo_texto_"+indice_pergunta).value = "";
 		document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
+		
 	}
 	
 	function delete_pergunta(indice_pergunta){
 		var i;
+		num_perg--;
 		// excluir cabeçalho e botões....
 		document.getElementById("tipo_unica_escolha_"+indice_pergunta).style.display = "none";
+		document.getElementById("tipo_unica_escolha_"+indice_pergunta).value = "";
 		
 		// excluindo alternativas da pergunta
 		for(i = 1; i <= perguntas[indice_pergunta]; i++){		
@@ -153,6 +236,11 @@
 	function ativa_tipo_pergunta(){
 		document.getElementById("tipo_pergunta_cab").style.display = "block";	
 		document.getElementById("tipo_pergunta_sel").style.display = "block";			
+	}
+	
+	function ativa_btn_importar(){
+		document.getElementById("tipo_pergunta_cab_banco").style.display = "block";	
+		document.getElementById("tipo_pergunta_sel_banco").style.display = "block";			
 	}
 	
 	function clone(indice_pergunta, type){
@@ -206,22 +294,57 @@
 
 	function valida_form(){
 		var mensagem, id;
-		if (document.getElementById('usu_nome').value == ''){ 
-			mensagem = "É necessário preencher o nome do usuário!";
-			id       = "usu_nome";
+		if (document.getElementById('enq_nome').value == ''){ 
+			mensagem = "É necessário preencher o nome da enquete!";
+			id       = "enq_nome";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else
-		if (document.getElementById('usu_login').value == ''){ 
-			mensagem = "É necessário preencher o login do usuário!";
-			id       = "usu_login";
+		if (document.getElementById('enq_semestre').value == ''){ 
+			mensagem = "É necessário preencher o semestre!";
+			id       = "enq_semestre";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else
-		if (document.getElementById('usu_senha').value == ''){ 
-			mensagem = "É necessário preencher a senha do usuário!";
-			id       = "usu_senha";
+		if (document.getElementById('enq_data').value == ''){ 
+			mensagem = "É necessário preencher a data da enquete!";
+			id       = "enq_data";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else
+		if (document.getElementById('enq_num_resp_esp').value == ''){ 
+			mensagem = "É necessário preencher o número de respostas esperadas!";
+			id       = "enq_num_resp_esp";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else{
+			document.getElementById('enq_num_perg').value = num_perg;
 			document.forms['frmCadastro'].submit();	
 		}
 	}
+	
+	$(document).ready(function(){
+		$("input#escala_ac").autocomplete({
+			source: [<?php echo $perg1; ?>]
+		})
+	});	
+
+	$(document).ready(function(){
+		$("input#texto_ac").autocomplete({
+			source: [<?php echo $perg2; ?>]
+		})
+	});	
+	
+	<!-- Calendário da Data -->
+	$(document).ready( function() {
+		$("#enq_data").datepicker({
+			dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+				dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+				dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+				monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior', 
+				changeMonth: true,
+				changeYear: true	
+		});
+	});		
+	
 </script>

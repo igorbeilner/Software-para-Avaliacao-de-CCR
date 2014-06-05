@@ -8,7 +8,10 @@
             </ul> 
              <ul <?php if($_GET['module'] == 'relatorios'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=relatorios&acao=rel_adm' >Relatórios</a></li>						
-            </ul> 
+            </ul>
+            <ul <?php if($_GET['module'] == 'about'){ echo 'class="selected"';}?>>     	        
+                <li><a href='?module=about&acao=about' >Sobre</a></li>						
+            </ul>  
         </li>
 <?php
 	}
@@ -18,7 +21,9 @@
 			<ul <?php if($_GET['module'] == 'relatorios'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=relatorios&acao=rel_professor' >Relatórios</a></li>						
            	</ul>
- 
+ 			<ul <?php if($_GET['module'] == 'about'){ echo 'class="selected"';}?>>     	        
+                <li><a href='?module=about&acao=about' >Sobre</a></li>						
+            </ul>  
         </li>
 <?php
 	}

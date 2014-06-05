@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="784.03871"
-     inkscape:cy="222.55795"
+     inkscape:zoom="2"
+     inkscape:cx="1152.532"
+     inkscape:cy="256.06769"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -190,29 +190,14 @@
     <rect
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
-       y="736.44281"
-       x="837.14288"
-       height="20.103552"
-       width="95.974594"
+       inkscape:export-filename="C:\xampp\htdocs\Software-para-Avaliacao-de-CCR\avaliacaoccr\application\images\nova_pergunta.png"
+       y="800.72852"
+       x="993.57147"
+       height="27.823275"
+       width="126.8932"
        id="rect3007"
-       style="fill:#448f00;fill-opacity:1;fill-rule:evenodd;stroke:none" />
-    <flowRoot
-       transform="matrix(0.5608531,0,0,0.5608531,556.45602,329.20151)"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       id="flowRoot3012"
-       xml:space="preserve"
-       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><flowRegion
-         id="flowRegion3014"><rect
-           y="732.36218"
-           x="515"
-           height="49.285713"
-           width="278.57144"
-           id="rect3016" /></flowRegion><flowPara
-         style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
-         id="flowPara3018">Nova Pergunta</flowPara></flowRoot>    <g
+       style="fill:#44b600;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    <g
        id="g3020"
        transform="matrix(0.99,0,0,0.99,165.12243,46.557352)">
       <rect
@@ -257,6 +242,120 @@
          height="15.033589"
          x="875.56378"
          y="-824.1875" />
+    </g>
+    <rect
+       style="fill:#448f00;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3019"
+       width="95.974594"
+       height="20.103552"
+       x="831.42859"
+       y="797.51422"
+       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
+       xml:space="preserve"
+       id="flowRoot3021"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="matrix(0.5608531,0,0,0.5608531,556.45602,393.13008)"><flowRegion
+         id="flowRegion3023"><rect
+           id="rect3025"
+           width="278.57144"
+           height="49.285713"
+           x="515"
+           y="732.36218" /></flowRegion><flowPara
+         id="flowPara3027"
+         style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold">Nova Pergunta</flowPara></flowRoot>    <g
+       id="g3860"
+       transform="translate(1.3651039,-1.0714376)"
+       inkscape:export-filename="C:\xampp\htdocs\Software-para-Avaliacao-de-CCR\avaliacaoccr\application\images\nova_pergunta.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         transform="matrix(0.52078958,0,0,0.52078958,732.42348,429.32308)"
+         style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         id="flowRoot3012"
+         xml:space="preserve"
+         inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><flowRegion
+           id="flowRegion3014"><rect
+             y="732.36218"
+             x="515"
+             height="49.285713"
+             width="278.57144"
+             id="rect3016" /></flowRegion><flowPara
+           style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold"
+           id="flowPara3018">NOVA PERGUNTA</flowPara></flowRoot>      <g
+         id="g3813"
+         transform="matrix(0.38445619,0,0,0.38445619,723.40074,523.2346)"
+         style="fill:#ffffff">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect3797"
+           width="6.7142863"
+           height="33.92857"
+           x="985"
+           y="743.79077" />
+        <rect
+           y="-1005.3214"
+           x="757.39789"
+           height="33.92857"
+           width="6.7142863"
+           id="rect3807"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           transform="matrix(0,1,-1,0,0,0)" />
+      </g>
+    </g>
+    <rect
+       style="fill:#44b600;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3869"
+       width="148.32178"
+       height="27.823275"
+       x="1153.5715"
+       y="800.72852"
+       inkscape:export-filename="C:\xampp\htdocs\Software-para-Avaliacao-de-CCR\avaliacaoccr\application\images\importa_pergunta.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3935"
+       transform="translate(-0.03909078,-0.3632394)"
+       inkscape:export-filename="C:\xampp\htdocs\Software-para-Avaliacao-de-CCR\avaliacaoccr\application\images\importa_pergunta.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\xampp\htdocs\avaliacaoccr\application\images\nova_pergunta.png"
+         xml:space="preserve"
+         id="flowRoot3873"
+         style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         transform="matrix(0.52078958,0,0,0.52078958,891.53345,428.61488)"><flowRegion
+           id="flowRegion3875"><rect
+             id="rect3877"
+             width="278.57144"
+             height="49.285713"
+             x="515"
+             y="732.36218" /></flowRegion><flowPara
+           id="flowPara3879"
+           style="font-weight:bold;fill:#ffffff;-inkscape-font-specification:Sans Bold">IMPORTAR PERGUNTA</flowPara></flowRoot>      <g
+         style="fill:#ffffff"
+         transform="matrix(0.17163153,0,0,0.17163153,1049.0735,671.10328)"
+         id="g3924">
+        <path
+           style="fill:#ffffff"
+           inkscape:connector-curvature="0"
+           d="m 1429.1824,844.99259 c 2.3456,0 4.2222,1.87655 4.2222,4.22223 v 22.98766 c 0,2.34568 -1.8766,4.22222 -4.2222,4.22222 h -65.3663 c -2.3457,0 -4.3786,-1.87654 -4.3786,-4.22222 v -22.98766 c 0,-2.34568 2.0329,-4.22223 4.3786,-4.22223 2.3457,0 4.2222,1.87655 4.2222,4.22223 v 18.60906 h 56.9218 v -18.60906 c 0,-2.34568 1.8766,-4.22223 4.2223,-4.22223 z"
+           id="path3-2" />
+        <path
+           style="fill:#ffffff"
+           inkscape:connector-curvature="0"
+           d="m 1393.528,854.53169 -17.2016,-17.20165 c -1.7202,-1.72017 -1.7202,-4.22222 0,-5.94239 1.7202,-1.72016 4.2222,-1.72016 5.9424,0 l 10.0082,9.85185 v -36.5926 c 0,-2.34568 1.8766,-4.22222 4.2222,-4.22222 2.3457,0 4.2223,1.87654 4.2223,4.22222 v 36.5926 l 9.8518,-9.85185 c 1.7202,-1.72016 4.3786,-1.72016 6.0988,0 1.7201,1.72017 1.7201,4.22222 0,5.94239 l -17.2017,17.20165 c -0.7819,0.78189 -1.8765,1.25103 -2.9712,1.25103 -1.0946,0 -2.1893,-0.46914 -2.9712,-1.25103 z"
+           id="path5" />
+      </g>
     </g>
   </g>
 </svg>
