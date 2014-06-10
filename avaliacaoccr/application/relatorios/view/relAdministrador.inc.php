@@ -14,10 +14,10 @@
 						ORDER BY sem_id ASC";
 				$result = $data->find('dynamic',$sql);				
 				
-				echo "<option value=0>Selecione</option>";
+				echo "<option value='0' >Selecione</option>";
 				for ($i = 0; $i <  count($result); $i++){
 					$n = $i + 1;
-					echo "<option value=?module=relatorios&acao=rel_adm&semestre=".$n.">".$result[$i]['sem_ano']."/".$result[$i]['sem_parte']."</option>";
+					echo "<option value='?module=relatorios&acao=rel_adm&semestre=".$n."'>".$result[$i]['sem_ano']."/".$result[$i]['sem_parte']."</option>";
 				}
 			?>
             </select>
