@@ -42,15 +42,69 @@
 	?>
 			<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; display:block;">
 				<div class="linha_sol" style="width: 100%;">
-						<div class="coluna" style="float:left; width: 300px;"><a href="?module=relatorios&acao=adm_respostas&per=<?php echo $res[$i]['per_cod']?>&enq=<?php echo $enq?>" ><?php echo utf8_encode($res[$i]['per_desc']);?></a></div>
-						<div class="coluna" style="float: left; width: 50px; margin-left: 420px;"><?php echo $num_res;?></div>							
-						<div style="clear: both;"></div>
-				</div>
-				<div style="clear:both;"></div>
-			</div>
-	<?php
+					<div class="coluna" style="float:left; width: 300px; font-weight: bold;"><?php echo utf8_encode($res[$i]['per_desc']);?></div>
+					<div class="coluna" style="float: left; width: 50px; margin-left: 420px;"><?php echo $num_res;?></div>							
+					<div style="clear: both;"></div>
+                    <?php 
+                      	$sql = "select r.res_desc
+								from respostas as r
+								where r.per_cod =".$res[$i]['per_cod']."";
+									
+						$resp = $data->find('dynamic', $sql);
+							
+						if (count($resp) > 5){
+						
+                      		echo "<div class='coluna' style='width:765px; margin-left: 10px; background-color:#E6E6FA; margin-top:10px;'>";
+                        
+								for ($j = 0; $j < 5; $j++){
+									$n = $j + 1;
+							
+									echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
+									echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 730px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
+								}
+							
+								echo "<div class='coluna' id='vermais".$i."' style='margin-left: 700px; margin-top: 2px; width: 60px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Ver mais</div>";
+								echo "<div id='mais".$i."' style='display:none;'>";
+							
+								for ($j = 5; $j < count($resp); $j++){
+									$n = $j + 1;	
+									
+									echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
+									echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 730px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
+							
+								}
+							
+								echo "</div>";
+								
+							echo "</div>";
+							echo "<div style='clear:both;'></div>";                        
+						}else{
+                        	echo "<div class='coluna' style='width:765px; margin-left: 10px; background-color:#E6E6FA; margin-top:10px;'>";
+                        
+								for ($j = 0; $j < count($resp); $j++){
+									$n = $j + 1;
+						
+                        			echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
+									echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 730px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
+                            
+                       
+								}
+						}
+                        	echo "</div>";
+				echo "</div>";
+				echo "<div style='clear:both;'></div>";
+                
+			echo "</div>";
+	
 			}
-	?>
-	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+			?>
+	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:810px; margin-top:40px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
 
 </div>
+
+<script>
+	function abrirmais(indice){
+		document.getElementById('vermais'+indice).style.display = "none";
+		document.getElementById('mais'+indice).style.display = "block";	
+	}
+</script>

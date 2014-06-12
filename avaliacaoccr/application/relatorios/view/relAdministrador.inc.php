@@ -92,7 +92,7 @@
                                 <?php }else if($aux[$j]['enq_status'] == 1){?>
                                     <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Ativa</div>
                                 <?php } ?>
-                                <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo utf8_encode($resp[0]['enq_num_resp']);?></div>
+                                <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo utf8_encode($resp[0]['enq_num_resp'])."/".utf8_encode($resp[0]['enq_num_resp_esp']);?></div>
                                 <div class="coluna" style="float:left; width: 50px; margin-left:70px;"><?php echo $per."%";?></div>
                                 <div style="clear: both;"></div>
                         </div>
