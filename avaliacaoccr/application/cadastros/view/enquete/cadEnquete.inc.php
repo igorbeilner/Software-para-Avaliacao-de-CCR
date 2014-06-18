@@ -1,6 +1,7 @@
 <?php 
+	// ALTERNATIVAS ESCALA
 	$sql = "SELECT *
-			FROM perguntas
+			FROM perguntas				
 			WHERE per_tipo = 1
 			ORDER BY per_desc ASC";
 	$pergunta1 = $data->find('dynamic',$sql);				
@@ -81,11 +82,13 @@
 		<input type='hidden' name='enq_num_perg' id='enq_num_perg' />
 		
 <?php
+		
+		$vector_options = array();
 		for($j=1; $j<= 15; $j++){
 
 			// PERGUNTA TEXTO
 			echo "<div class='linha' id='tipo_texto_".$j."' style='display:none;'>";
-				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna' >Descrição da pergunta ".$j.":</div>";
+				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna'  >Descrição da pergunta ".$j.":</div>";
 				echo "<div style='clear: both;'></div>";
 					
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
@@ -127,7 +130,18 @@
 					}
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
-			echo "</div>";			
+			echo "</div>";	
+
+			// CAMPOS INPUTS DE PERGUNTAS CARREGADAS DO BANCO			
+			// escala
+			echo "<div id='cab_escala_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta ".$j."</div>";
+			echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' size='80' placeholder='BUSCA ESCALA' style='display:none;' onClick='busca(this.value);' >"; 
+			
+// Resultado da consulta em AJAX
+			echo "<div id='resultado_busca'></div>";
+			// texto
+			echo "<div id='cab_texto_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta ".$j."</div>";
+			echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='BUSCA TEXTO' style='display:none;' >";
 			
 		}		
 ?>
@@ -153,7 +167,7 @@
             <div id="tipo_pergunta_cab_banco" style="width: 190px; margin-top: 8px; margin-left:0px; font-weight:bold; display:none;" class="coluna">Tipo de Pergunta(banco):</div>
             <div style="clear: both;"></div>  
 			<div id="tipo_pergunta_sel_banco" class="coluna" style="left: 0px; top:10px; display:none;">
-                <select id="" name="" onchange="ativa_campo_busca(this.value);"  >
+                <select id="selecao_tipo_banco" name="" onchange="ativa_campo_busca(this.value);"  >
                 	<option value="" >Selecione o tipo de pergunta</option>
                     <option value="1" >Escala</option>
                 	<option value="2" >Texto</option>                    
@@ -161,11 +175,6 @@
             </div>
             <div style="clear: both;"></div>           
 		</div>        
-		
-        <!-- div auto complete -->
-		<input type="text" name="escala_ac" id="escala_ac" size="80" placeholder="BUSCA ESCALA" style="display:none;" > <!-- ESCALA -->
-        
-		<input type="text" name="texto_ac" id="texto_ac" size="80" placeholder="BUSCA TEXTO" style="display:none;" > <!-- TEXTO -->        
 		
         <br /><br />	
 		<div class="coluna"><img src="application/images/nova_pergunta.png" onclick="ativa_tipo_pergunta();" /></div>
@@ -191,14 +200,29 @@
 		perguntas.push(1);	
 	}
 	
+	
+	function busca(per_cod){
+		var url = "application/script/php/busca.php?per_cod="+per_cod;
+		var div = "resultado_busca";
+		mostraConteudo(url, div);
+	}
+	
+	
 	function ativa_campo_busca(tipo){
+		num_perg++;
 		if(tipo == 1){ // escala
-			document.getElementById('escala_ac').style.display = "block";
+			document.getElementById('cab_escala_'+num_perg).style.display = "block";
+			document.getElementById('escala_ac_'+num_perg).style.display = "block";
 			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
-			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";			
+			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";	
+			document.getElementById('selecao_tipo_banco').value = "";
 		}
-		else{ // texto
-			document.getElementById('texto_ac').style.display = "block";
+		else{ // texto		
+			document.getElementById('cab_texto_'+num_perg).style.display = "block";
+			document.getElementById('texto_ac_'+num_perg).style.display = "block";
+			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
+			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";
+			document.getElementById('selecao_tipo_banco').value = "";			
 		}
 	}
 	
@@ -318,18 +342,23 @@
 			document.forms['frmCadastro'].submit();	
 		}
 	}
-	
+	var i;	
 	$(document).ready(function(){
-		$("input#escala_ac").autocomplete({
-			source: [<?php echo $perg1; ?>]
-		})
+		for(i=0; i<15; i++){	
+			$('input#escala_ac_'+i).autocomplete({
+				source: [<?php echo $perg1; ?>]
+			})
+		}
 	});	
 
 	$(document).ready(function(){
-		$("input#texto_ac").autocomplete({
-			source: [<?php echo $perg2; ?>]
-		})
+		for(i=0; i<15; i++){	
+			$("input#texto_ac_"+i).autocomplete({
+				source: [<?php echo $perg2; ?>]
+			})
+		}
 	});	
+	
 	
 	<!-- Calendário da Data -->
 	$(document).ready( function() {
