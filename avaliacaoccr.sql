@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Maio-2014 às 04:41
+-- Generation Time: 24-Jun-2014 às 03:35
 -- Versão do servidor: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `enq_disc_prof` (
   KEY `dis_cod` (`dis_cod`),
   KEY `enq_cod` (`enq_cod`),
   KEY `edp_pro` (`pro_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `enq_disc_prof`
@@ -159,7 +159,8 @@ INSERT INTO `enq_disc_prof` (`edi_cod`, `enq_cod`, `dis_cod`, `pro_cod`) VALUES
 (6, 1, 1, 2),
 (7, 1, 2, 1),
 (8, 1, 3, 2),
-(9, 2, 1, 3);
+(9, 2, 1, 3),
+(10, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -284,28 +285,38 @@ CREATE TABLE IF NOT EXISTS `respostas` (
   `res_desc` text,
   `per_cod` int(10) unsigned NOT NULL,
   `alu_cod` int(10) unsigned DEFAULT NULL,
+  `res_time` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`res_cod`),
   KEY `per_cod` (`per_cod`),
   KEY `alu_cod` (`alu_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Extraindo dados da tabela `respostas`
 --
 
-INSERT INTO `respostas` (`res_cod`, `res_desc`, `per_cod`, `alu_cod`) VALUES
-(1, 'kkkkkkkkkk, estou testando o software', 3, NULL),
-(2, 'hehehehe, mais uma resposta aleatória', 4, NULL),
-(3, 'shaiuhsuiahsaiuhsiuahiushaiuhsiuahs', 1, NULL),
-(4, 'lalalalala, testandooo', 2, NULL),
-(5, 'ruim', 5, NULL),
-(6, 'bom', 5, NULL),
-(7, 'ruim', 5, NULL),
-(8, 'excelente', 5, NULL),
-(9, 'regular', 5, NULL),
-(10, 'péssimo', 5, NULL),
-(11, 'ruim', 5, NULL),
-(12, 'bom', 5, NULL);
+INSERT INTO `respostas` (`res_cod`, `res_desc`, `per_cod`, `alu_cod`, `res_time`) VALUES
+(1, 'kkkkkkkkkk, estou testando o software', 3, NULL, '23/06/2014 21:11'),
+(2, 'hehehehe, mais uma resposta aleatória', 4, NULL, '23/06/2014 21:10'),
+(3, 'shaiuhsuiahsaiuhsiuahiushaiuhsiuahs', 1, NULL, '23/06/2014 21:10'),
+(4, 'lalalalala, testandooo', 2, NULL, '23/06/2014 21:10'),
+(5, 'ruim', 5, NULL, '23/06/2014 21:10'),
+(6, 'bom', 5, NULL, '23/06/2014 20:00'),
+(7, 'ruim', 5, NULL, '23/06/2014 21:00'),
+(8, 'excelente', 5, NULL, '23/06/2014 22:00'),
+(9, 'regular', 5, NULL, '23/06/2014 21:54'),
+(10, 'péssimo', 5, NULL, '23/06/2014 21:55'),
+(11, 'ruim', 5, NULL, '23/06/2014 21:45'),
+(12, 'bom', 5, NULL, '23/06/2014 21:44'),
+(13, 'shiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocio shiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocio', 1, NULL, '23/06/2014 21:10'),
+(14, 'lalalalala só outra resposta', 1, NULL, '23/06/2014 21:10'),
+(15, 'bla bla bla', 1, NULL, '23/06/2014 21:10'),
+(16, 'outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla', 1, NULL, '23/06/2014 21:10'),
+(17, 'siuahiushaiuhushaiusha teste', 1, NULL, '23/06/2014 21:10'),
+(18, 'ok, entendido.. hhaha', 3, NULL, '23/06/2014 21:10'),
+(19, 'testando....', 3, NULL, '23/06/2014 21:10'),
+(20, 'shiuhsiuhaiushuiahiusah mais um teste', 3, NULL, '23/06/2014 21:10'),
+(21, 'uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs ', 3, NULL, '23/06/2014 21:10');
 
 -- --------------------------------------------------------
 

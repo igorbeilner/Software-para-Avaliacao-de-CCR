@@ -47,22 +47,21 @@
 					<div class="coluna" style="float: left; width: 50px; margin-left: 420px;"><?php echo $num_res;?></div>							
 					<div style="clear: both;"></div>
                     <?php 
-                      	$sql = "select r.res_desc
+                      	$sql = "select r.res_desc, r.res_time
 								from respostas as r
 								where r.per_cod =".$res[$i]['per_cod']."";
 									
 						$resp = $data->find('dynamic', $sql);
 						 
-						if ($res[$i]['per_tipo'] == 2){
+						if ($res[$i]['per_tipo'] == 0){
 							if (count($resp) > 5){
 							
 								echo "<div class='coluna' style='width:765px; margin-left: 10px; background-color:#E6E6FA; margin-top:10px;'>";
 							
 									for ($j = 0; $j < 5; $j++){
-										$n = $j + 1;
 								
-										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
-										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 730px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
+										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 100px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
+										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 									}
 								
 									echo "<div class='coluna' id='vermais".$i."' style='margin-left: 700px; margin-top: 2px; width: 60px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Ver mais</div>";
@@ -71,8 +70,8 @@
 									for ($j = 5; $j < count($resp); $j++){
 										$n = $j + 1;	
 										
-										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
-										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 730px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
+										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width:100px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
+										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 								
 									}
 								
@@ -86,8 +85,8 @@
 									for ($j = 0; $j < count($resp); $j++){
 										$n = $j + 1;
 							
-										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
-										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 730px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
+										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 100px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
+										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 								
 						   
 									}
@@ -101,22 +100,41 @@
 									where po.per_cod =".$res[$i]['per_cod'].") as t join opcoes as o
 									where t.op_cod = o.op_cod";
 							
-							$res = $data->find('dynamic', $sql);
+							$options = $data->find('dynamic', $sql);
 							
 							$grafico = Array();
 								
-							for ($i = 0; $i < count($res); $i++){
+							for ($h = 0; $h < count($options); $h++){
 								$sql = "select r.res_cod from
 										respostas as r
-										where r.res_desc = '".$res[$i]['op_desc']."'";
+										where r.res_desc = '".$options[$h]['op_desc']."'";
 										
 								$result = $data->find('dynamic', $sql);
 								
-								array_push($grafico, array(utf8_encode($res[$i]['op_desc']), count($result)));
+								array_push($grafico, array(utf8_encode($options[$h]['op_desc']), count($result)));
 							}
-							echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$n."</div>";
-								echo phpHtmlChart($grafico, 'H', 'Gráfico de Respostas', 'Número de respostas', '8pt', 400, 'px', 15, 'px');
+							
+							echo phpHtmlChart($grafico, 'H', 'Gráfico de Respostas', 'Número de respostas', '8pt', 400, 'px', 15, 'px');
+							echo "<div class='coluna' id='vermais".$i."' style='margin-left: 650px; margin-top: 2px; width: 150px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Mais informações</div>";
+							$sql = "select r.res_desc, r.res_time from
+									respostas as r where
+									r.per_cod = '".$res[$i]['per_cod']."'";
+											
+							$resp = $data->find('dynamic', $sql);
+							echo "<div id='mais".$i."' style='display:none;'>";
+								echo "</br></br>";
+								echo "<div class='coluna' style='float:left; width:10px; font-weight:bold; color:#000; margin-left:10px;'>Id</div>";
+								echo "<div class='coluna' style='float:left; width:150px; font-weight:bold; color:#000; margin-left: 15px;'>Horário</div>";
+								echo "<div class='coluna' style='float:left; width:580px; font-weight:bold; color:#000; margin-left:15px;'>Resposta</div></br>";
+								for ($l = 0; $l < count($resp); $l++){
+									$m = $l + 1;
+									echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 10px;'>".$m."</div>";
+									echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 150px;'>".utf8_encode($resp[$l]['res_time'])."</div>";
+									echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 580px;'>".utf8_encode($resp[$l]['res_desc'])."</div>";
+									
+								}	
 							echo "</div>";
+							echo "<div style='clear:both;'></div>";
 						}
 				echo "</div>";
 				echo "<div style='clear:both;'></div>";
@@ -125,7 +143,7 @@
 	
 			}
 			?>
-	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:810px; margin-top:40px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:600px; margin-top:40px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
 
 </div>
 

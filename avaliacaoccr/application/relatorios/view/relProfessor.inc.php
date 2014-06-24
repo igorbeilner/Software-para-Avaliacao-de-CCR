@@ -107,8 +107,8 @@
 							<?php }else if($res[$i]['enq_status'] == 1){?>
 								<div class="coluna" style="float: left; width: 50px; margin-left: 20px;">Ativa</div>
 							<?php } ?>
-                            <div class="coluna" style="float:left; width: 50px; margin-left:175px;"><?php echo utf8_encode($resp[0]['enq_num_resp']);?></div>
-                            <div class="coluna" style="float:left; width: 50px; margin-left:110px;"><?php echo $per."%";?></div>
+                            <div class="coluna" style="float:left; width: 50px; margin-left:165px;"><?php echo utf8_encode($resp[0]['enq_num_resp'])."/".utf8_encode($resp[0]['enq_num_resp_esp']);?></div>
+                            <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo $per."%";?></div>
 							<div style="clear: both;"></div>
 					</div>
 					<div style="clear:both;"></div>
