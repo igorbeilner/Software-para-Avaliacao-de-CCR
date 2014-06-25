@@ -134,13 +134,13 @@
 
 			// CAMPOS INPUTS DE PERGUNTAS CARREGADAS DO BANCO			
 			// escala
-			echo "<div id='cab_escala_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta ".$j."</div>";
+			echo "<div id='cab_escala_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta: ".$j."</div>";
 			echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' size='80' placeholder='BUSCA ESCALA' style='display:none;' onClick='busca(this.value);' >"; 
 			
 // Resultado da consulta em AJAX
 			echo "<div id='resultado_busca'></div>";
 			// texto
-			echo "<div id='cab_texto_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta ".$j."</div>";
+			echo "<div id='cab_texto_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta: ".$j."</div>";
 			echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='BUSCA TEXTO' style='display:none;' >";
 			
 		}		
@@ -193,6 +193,12 @@
 </div>
 
 <script>
+ 
+ 	function delete_alter(indice){
+ 		document.getElementById("alter_"+indice).style.display     = "none";
+ 		document.getElementById("alter_btn_"+indice).style.display = "none"; 		
+ 	}
+
 	var num_perg = 0;
 	var perguntas = []; //guarda o número de alternativas em cada pergunta
 	var i;
@@ -270,7 +276,7 @@
 	function clone(indice_pergunta, type){
 		var desc_perg;
 		num_perg += 1;
-		if (type == 1){
+		if (type == 1){ // ESCALA
 			document.getElementById("tipo_unica_escolha_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				
@@ -287,7 +293,7 @@
 				perguntas[num_perg]++;
 			}
 			
-		}else if(type == 3){
+		}else if(type == 3){ // TEXTO
 			document.getElementById("tipo_texto_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				

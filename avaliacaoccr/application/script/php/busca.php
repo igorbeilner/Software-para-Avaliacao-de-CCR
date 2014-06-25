@@ -22,12 +22,17 @@ $total_rows = mysql_num_rows($sql);
  }
  else{
  	//Loop com resultado do select
-    while ($result = mysql_fetch_array($sql)) {
+    $i = 0;
+    while ($result = mysql_fetch_array($sql)){
 		//echo "OK a consulta<br />";
 		echo "<div class='coluna'  >";
-			echo "<input type='text' name='xxxx' value=".$result['op_desc']." style='margin-left:30px;'  />";
+			echo "<input id = 'alter_".$i."' type='text' name='xxxx' value=".$result['op_desc']." style='margin-left:30px;'  />";
+			echo "<a onclick='delete_alter(".$i.");' id='alter_btn_".$i."' ><img src='application/images/delete.png' style='cursor:pointer;' /></a>";
 		echo "</div>";
 		echo "<div style='clear: both;'></div>  ";
 		//echo $result['op_desc']."<br />";
+		$i++;
     }
  }
+
+ 
