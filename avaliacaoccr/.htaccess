@@ -6,9 +6,9 @@
 
     # Página de contato
 
-    RewriteRule ^relatorios/?$ ?module=relatorios&acao=rel_adm [NC]
+    RewriteRule ^enquete/([0-9]+)/?$ ?module=enquetes&acao=enquetes&enq_cod=$1 [NC]
 	
-	RewriteRule ^([0-9]+)/?$ ?module=relatorios&acao=rel_adm&semestre=$1 [NC]
+	#RewriteRule ^/?$ ?module=relatorios&acao=rel_adm&semestre=$1 [NC]
 
     # Página de exibição de um produto
 

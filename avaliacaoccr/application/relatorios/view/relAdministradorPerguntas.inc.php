@@ -74,7 +74,7 @@
 										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 								
 									}
-								
+									echo "<div class='coluna' id='vermenos".$i."' style='margin-left: 690px; margin-top: 2px; width: 100px; cursor:pointer; font-weight: bold; display: none;' onclick='esconder(".$i.");'>Ver menos</div>";
 									echo "</div>";
 									
 								echo "</div>";
@@ -133,9 +133,12 @@
 									echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 580px;'>".utf8_encode($resp[$l]['res_desc'])."</div>";
 									
 								}	
+							echo "<div class='coluna' id='vermenos".$i."' style='margin-left: 700px; margin-top: 2px; width: 100px; cursor:pointer; font-weight: bold; display: none;' onclick='esconder(".$i.");'>Ver menos</div>";	
 							echo "</div>";
 							echo "<div style='clear:both;'></div>";
+							
 						}
+						
 				echo "</div>";
 				echo "<div style='clear:both;'></div>";
                 
@@ -151,5 +154,12 @@
 	function abrirmais(indice){
 		document.getElementById('vermais'+indice).style.display = "none";
 		document.getElementById('mais'+indice).style.display = "block";	
+		document.getElementById('vermenos'+indice).style.display = "block";	
+	}
+
+	function esconder(indice){
+		document.getElementById('vermenos'+indice).style.display = "none";
+		document.getElementById('mais'+indice).style.display = "none";	
+		document.getElementById('vermais'+indice).style.display = "block";
 	}
 </script>
