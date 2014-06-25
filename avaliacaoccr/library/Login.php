@@ -60,6 +60,11 @@ class Login{
 			}else{
 				$retorno['logged'] = "no";
 			}
+
+			// Para o modulo enquete ele não vai precisar fazer Login
+			if($_GET['module'] == 'enquetes'){
+				$retorno['logged'] = "yes";
+			}
 			return $retorno;			
 		}	
 	

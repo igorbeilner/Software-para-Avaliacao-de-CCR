@@ -1,10 +1,12 @@
 <?php
-//session_start();
+
+session_start();
 class IndexCommand implements Command {
    
 	public function execute() {
-		require_once 'application/template/default.php';
+		require_once 'application/template/default_enquete.php';
 	}
 
 }
+
 ?>
