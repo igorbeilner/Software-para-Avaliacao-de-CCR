@@ -72,12 +72,13 @@
     			<div style="clear:both;"></div>
   			</div>
 			<div style="clear:both;"></div>
+            <div id="rodape">
+                <br />
+                <?php require_once 'application/incs/foot.inc.php';?>
+            </div>
+            <div style="clear:both;"></div>
 		</div>
-        
-        <div id="rodape">
-        	<br />
-        	<?php require_once 'application/incs/foot.inc.php';?>
-        </div>
         <div style="clear:both;"></div>
+       
 	</body>
 </html>
