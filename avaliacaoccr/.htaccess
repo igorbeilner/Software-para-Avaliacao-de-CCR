@@ -8,6 +8,8 @@
 
     RewriteRule ^enquete+-([0-9]+)/?$ ?module=enquetes&acao=enquetes&enq_cod=$0 [NC]
 
+    RewriteRule ^process/?$ ?module=enquetes&acao=process [NC]
+
     #RewriteRule ^enquete/?$ ?module=enquetes&acao=enquetes [NC]
 	
 	RewriteRule ^relatorios/?$ ?module=relatorios&acao=rel_adm [NC]

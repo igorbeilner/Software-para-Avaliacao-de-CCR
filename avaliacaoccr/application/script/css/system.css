@@ -20,6 +20,19 @@
 }
 */
 
+#form_enquete{
+	vertical-align: middle;
+	font-family: arial, sans-serif;
+	font-size: 13px;
+	margin-left: 25%;
+}
+
+.textarea{
+	padding: 5px;
+	overflow: auto;
+	width: 500px;
+	height: 10%;
+}
 
 @font-face {
     font-family: 'quattrocento_sansregular';

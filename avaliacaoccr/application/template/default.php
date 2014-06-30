@@ -57,7 +57,6 @@
 	</head>
 	<body>
     	<img id="selo" src="application/images/logo_fixa.png" style="position:fixed; top:500px; cursor:pointer;" onclick="topo();" title="Voltar ao Topo" />
-        <div id="vemaqui"></div>
 		<div id="geral">
   			<div id="topo">
 				<?php require_once 'application/incs/top.inc.php';?>
