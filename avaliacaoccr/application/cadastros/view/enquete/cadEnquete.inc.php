@@ -82,9 +82,8 @@
 		<input type='hidden' name='enq_num_perg' id='enq_num_perg' />
 		
 <?php
-		
 		$vector_options = array();
-		for($j=1; $j<= 15; $j++){
+		for($j=1; $j<= 30; $j++){
 
 			// PERGUNTA TEXTO
 			echo "<div class='linha' id='tipo_texto_".$j."' style='display:none;'>";
@@ -135,9 +134,9 @@
 			// CAMPOS INPUTS DE PERGUNTAS CARREGADAS DO BANCO			
 			// escala
 			echo "<div id='cab_escala_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta: ".$j."</div>";
-			echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' size='80' placeholder='BUSCA ESCALA' style='display:none;' onClick='busca(this.value);' >"; 
-			
-// Resultado da consulta em AJAX
+			echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' size='80' placeholder='BUSCA ESCALA' style='display:none;' onClick='busca(this.value, ".$j.");' >"; 
+			echo "<a id='btn_clone_escala_".$j."' style='display:none;' onclick='clone(".$j.", 2)' ;><img src='application/images/copy.png' style='cursor:pointer;'></a>";	
+			// Alternativas da escala (AJAX)
 			echo "<div id='resultado_busca'></div>";
 			// texto
 			echo "<div id='cab_texto_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta: ".$j."</div>";
@@ -207,8 +206,8 @@
 	}
 	
 	
-	function busca(per_cod){
-		var url = "application/script/php/busca.php?per_cod="+per_cod;
+	function busca(per_cod, indice_pergunta){
+		var url = "application/script/php/busca.php?per_cod="+per_cod+"&indice_pergunta="+indice_pergunta;
 		var div = "resultado_busca";
 		mostraConteudo(url, div);
 	}
@@ -219,6 +218,8 @@
 		if(tipo == 1){ // escala
 			document.getElementById('cab_escala_'+num_perg).style.display = "block";
 			document.getElementById('escala_ac_'+num_perg).style.display = "block";
+			document.getElementById('btn_clone_escala_'+num_perg).style.display = "block";			
+			
 			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
 			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";	
 			document.getElementById('selecao_tipo_banco').value = "";
@@ -293,7 +294,27 @@
 				perguntas[num_perg]++;
 			}
 			
-		}else if(type == 3){ // TEXTO
+		}else 
+		if(type == 2){ // ESCALA, CARREGADAS DO BANCO
+			document.getElementById("cab_escala_"+num_perg).style.display = "block";
+			document.getElementById("escala_ac_"+num_perg).style.display = "block";			
+			
+			document.getElementById("selecao_tipo_banco").value = "";	
+			document.getElementById("tipo_pergunta_cab_banco").style.display = "none";				
+			document.getElementById("tipo_pergunta_sel_banco").style.display = "none";
+			
+			desc_perg = document.getElementById("escala_ac_"+indice_pergunta).value;
+			document.getElementById("escala_ac_"+num_perg).value = desc_perg;
+			
+			var i;
+			for (i = 1; i < perguntas[indice_pergunta]; i++){
+				document.getElementById("alter_"+num_perg+"_"+i).style.display = "block";
+				desc_perg = document.getElementById("alter_"+indice_pergunta+"_"+i).value;
+				document.getElementById("alter_"+num_perg+"_"+i).value = desc_perg;
+				perguntas[num_perg]++;
+			}
+		}else		
+		if(type == 3){ // TEXTO
 			document.getElementById("tipo_texto_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				
