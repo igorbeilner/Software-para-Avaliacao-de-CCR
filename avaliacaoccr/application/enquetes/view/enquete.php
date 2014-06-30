@@ -24,7 +24,7 @@
 ?>
            	<div class="linha">
            		<div style="width: 100%; margin-top: 8px; margin-left:0px;" class="coluna"><?php echo $n." - ".utf8_encode($result[$i]['per_desc']) ?></div><br/>
-           		<textarea class="textarea" type='text' name='<?php echo "text_".$result[$i]['per_cod']."" ?>' id='text_".$i."' cols="20" rows="3" ></textarea>
+           		<textarea class="textarea" type='text' name='<?php echo "text_".$enq_cod."_".$result[$i]['per_cod']."_".$i."" ?>' id='text_".$i."' cols="20" rows="3" ></textarea>
            	</div>
 <?php
 		}else if ($result[$i]['per_tipo'] == 1){
@@ -44,7 +44,7 @@
 					for ($j = 0; $j < count($res); $j++){
            		?>
            			<div class="linha" style="margin-left: 15px;">
-						<input type="radio" name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo $res[$j]['op_desc']?>
+						<input type="radio" name="<?php echo "op_".$enq_cod."_".$result[$i]['per_cod']."_".$res[$j]['op_cod']."_".$i.""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo $res[$j]['op_desc']?>
 					</div>
 				<?php
 					}

@@ -81,7 +81,7 @@
 		</div>
         
         <div id="rodape">
-        	<br />
+        	<br/>
         	<?php require_once 'application/incs/foot.inc.php';?>
         </div>
         <div style="clear:both;"></div>
