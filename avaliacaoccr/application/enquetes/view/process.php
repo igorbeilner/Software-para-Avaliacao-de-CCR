@@ -19,10 +19,11 @@
 		if ($result[$i]['per_tipo'] == 0){
 			if (isset($_POST["text_".$result[$i]['per_cod'].""])){
 				$value = $_POST["text_".$result[$i]['per_cod'].""];
+				if ($value != ""){	
+					$sql = "INSERT INTO respostas (res_desc, per_cod) VALUES ('".$value."','".$result[$i]['per_cod']."')";
 
-				$sql = "INSERT INTO respostas (res_desc, per_cod) VALUES ('".$value."','".$result[$i]['per_cod']."')";
-
-				$r = $data->executaSQL($sql);
+					$r = $data->executaSQL($sql);
+				}
 			}
 		}else{
 			$sql = "select o.op_desc from

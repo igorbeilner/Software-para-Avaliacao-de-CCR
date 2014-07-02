@@ -60,21 +60,21 @@
 							
 									for ($j = 0; $j < 5; $j++){
 								
-										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 100px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
+										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 150px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
 										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 									}
 								
-									echo "<div class='coluna' id='vermais".$i."' style='margin-left: 700px; margin-top: 2px; width: 60px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Ver mais</div>";
+									echo "<div class='coluna' id='vermais".$i."' style='margin-left: 690px; margin-top: 2px; width: 100px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Ver mais</div>";
 									echo "<div id='mais".$i."' style='display:none;'>";
 								
 									for ($j = 5; $j < count($resp); $j++){
 										$n = $j + 1;	
 										
-										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width:100px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
+										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width:150px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
 										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 								
 									}
-									echo "<div class='coluna' id='vermenos".$i."' style='margin-left: 690px; margin-top: 2px; width: 100px; cursor:pointer; font-weight: bold; display: none;' onclick='esconder(".$i.");'>Ver menos</div>";
+									echo "<div class='coluna' id='vermenos".$i."' style='margin-left: 680px; margin-top: 2px; width: 140px; cursor:pointer; font-weight: bold; display: none;' onclick='esconder(".$i.");'>Ver menos</div>";
 									echo "</div>";
 									
 								echo "</div>";
@@ -85,7 +85,7 @@
 									for ($j = 0; $j < count($resp); $j++){
 										$n = $j + 1;
 							
-										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 100px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
+										echo "<div class='coluna' style='margin-left: 10px; margin-top: 7px; width: 150px;'>".utf8_encode($resp[$j]['res_time'])."</div>";
 										echo "<div class='coluna' style='margin-left: 15px; margin-top: 7px; width: 550px;'>".utf8_encode($resp[$j]['res_desc'])."</div>";
 								
 						   
@@ -114,7 +114,7 @@
 								array_push($grafico, array(utf8_encode($options[$h]['op_desc']), count($result)));
 							}
 							
-							echo phpHtmlChart($grafico, 'H', 'Gráfico de Respostas', 'Número de respostas', '8pt', 400, 'px', 15, 'px');
+							echo phpHtmlChart($grafico, 'H', '', 'Número de respostas', '8pt', 400, 'px', 15, 'px');
 							echo "<div class='coluna' id='vermais".$i."' style='margin-left: 650px; margin-top: 2px; width: 150px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Mais informações</div>";
 							$sql = "select r.res_desc, r.res_time from
 									respostas as r where

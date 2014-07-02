@@ -104,14 +104,14 @@ body{
 
 h1{
 	font-size: 32px;
-    color: #494d68;
+    color: #00640B;
     text-transform:uppercase;
 	font-family: 'quattrocento_sansregular';
 }
 
 h2{
 	font-size: 18px;
-    color: #494d68;
+    color: #00640B;
     text-transform:uppercase;
 	font-family: 'quattrocento_sansregular';
 }
@@ -183,7 +183,7 @@ ul{
 	padding-bottom: 20px;
 }
 #menu .navprimary{
-	color: #2D75D1;
+	color: #00640B;
 	/*border-top: #fff 1px solid;*/
 	width: 230px;
 	margin-left: 10px;
@@ -197,7 +197,7 @@ ul{
 }
 
 #menu .navprimary a{
-	color: #2D75D1;
+	color: #00640B;
 	text-decoration: none;
 	display:block;
 }

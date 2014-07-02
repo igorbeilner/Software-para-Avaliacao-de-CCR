@@ -5,8 +5,8 @@
         <form action="?module=relatorios&acao=rel_adm" id="frmBusca" method="get">
             <input type="hidden" name="module" value="relatorios" />
             <input type="hidden" name="acao" value="rel_adm" />
-            <a style="position:relative; top:7px; left:2px;">Selecione o semestre:</a> <br />
-            <select name="semestre" style="margin-top:10px;width:200px;" onchange="location = this.options[this.selectedIndex].value;">
+            <a style="width: 400px;" class="coluna">Selecione o semestre:</a> <br />
+            <select name="semestre" style="margin-top:10px; width: 400px;" onchange="location = this.options[this.selectedIndex].value;" class="cad_enq">
             <?php
 				//seleciona os semestres cadastrados e disponibiliza para o usuário
 				$sql = "SELECT *

@@ -24,7 +24,7 @@
 ?>
            	<div class="linha">
            		<div style="width: 100%; margin-top: 8px; margin-left:0px;" class="coluna"><?php echo $n." - ".utf8_encode($result[$i]['per_desc']) ?></div><br/>
-           		<textarea class="textarea" type='text' name='<?php echo "text_".$result[$i]['per_cod']."" ?>' id='text_".$i."' cols="20" rows="3" ></textarea>
+           		<textarea class="cad_enq" style="width: 500px; height: 75px;" type='text' name='<?php echo "text_".$result[$i]['per_cod']."" ?>' id='text_".$i."' cols="20" rows="3" ></textarea>
            	</div>
 <?php
 		}else if ($result[$i]['per_tipo'] == 1){

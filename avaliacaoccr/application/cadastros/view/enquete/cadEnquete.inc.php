@@ -130,14 +130,17 @@
 				echo "<div style='clear: both;'></div>";
 			echo "</div>";	
 
-			// CAMPOS INPUTS DE PERGUNTAS CARREGADAS DO BANCO			
+			// CAMPOS DE PERGUNTAS CARREGADAS DO BANCO			
 			// escala
-			echo "<div class = 'linha'>";
-				echo "<div id='cab_escala_".$j."' style='display:none; width: 500px;' class='coluna'>Descrição da pergunta a ser importada:</div>";
+			echo "<div class = 'linha' id='import_scale_".$j."' style='display: none;'>";
+				echo "<div id='cab_escala_".$j."' style='width: 500px;' class='coluna'>Descrição da pergunta a ser importada:</div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' placeholder='Pergunta do tipo escala' style='display:none; width: 500px;' class='cad_enq' onClick='busca(this.value, ".$j.");' >"; 
-					//echo "<a id='btn_clone_escala_".$j."' style='display:none; margin-left: 5px;' onclick='clone(".$j.", 2);'><img src='application/images/copy.png' style='cursor:pointer;'></a>";	
+					echo "<input type='text' name='escala_ac_".$j."' id='desc_import_scale_".$j."' placeholder='Pergunta do tipo escala' style='width: 500px;' class='cad_enq' onClick='busca(this.value, ".$j.");' >"; 
+					echo "<input type='hidden' name='tipo_".$j."' />";
+					echo "<a onclick='delete_pergunta(".$j.");' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='clone(".$j.", 2)'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='mostra_alter(".$j.");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";	
 				echo "</div>";
 			echo "</div>";
 			// Alternativas da escala (AJAX)
@@ -171,10 +174,10 @@
         <div style="clear: both;"></div>               
 
 		<!-- Seleciona o tipo de pergunta das perguntas importadas do BANCO -->
-        <div class="linha">
-            <div id="tipo_pergunta_cab_banco" style="width: 400px; margin-left:0px; display:none;" class="coluna">Tipo de Pergunta:</div>
+        <div class="linha" id="select_banco" style="display:none;">
+            <div id="tipo_pergunta_cab_banco" style="width: 400px; margin-left:0px;" class="coluna">Tipo de Pergunta:</div>
             <div style="clear: both;"></div>  
-			<div id="tipo_pergunta_sel_banco" class="coluna" style="left: 0px; top:10px; display:none;">
+			<div id="tipo_pergunta_sel_banco" class="coluna" style="left: 0px; top:10px;">
                 <select id="selecao_tipo_banco" name="" class="cad_enq" style="width:500px;" onchange="ativa_campo_busca(this.value);"  >
                 	<option value="" >Selecione o tipo de pergunta</option>
                     <option value="1" >Escala</option>
@@ -201,18 +204,28 @@
 </div>
 
 <script>
- 
- 	function delete_alter(indice){
- 		document.getElementById("alter_"+indice).style.display     = "none";
- 		document.getElementById("alter_btn_"+indice).style.display = "none"; 		
- 	}
 
 	var num_perg = 0;
 	var perguntas = []; //guarda o número de alternativas em cada pergunta
 	var i;
-	for (i = 1; i <= 15; i++){
+	for (i = 1; i <= 120; i++){
 		perguntas.push(0);	
 	}
+
+
+	/*function show_options(){
+		var indice_perg = $("#alternativas").data("indpergunta");
+		var value = $("#alternativas").data("value");
+		var indice_alter = $("alternativas").data("indalter");
+
+		$("#import_alter_"+indice_perg+"_"+indice_alter).show();
+		$("#desc_import_alter_"+indice_perg+"_"+indice_alter).value(value);
+	}*/
+
+ 	function delete_alter(indice_pergunta, indice){
+ 		document.getElementById("import_alter_"+indice_pergunta+"_"+indice).style.display = "none";	
+
+ 	}
 	
 	
 	function busca(per_cod, indice_pergunta){
@@ -225,13 +238,11 @@
 	function ativa_campo_busca(tipo){
 		num_perg++;
 		if(tipo == 1){ // escala
-			document.getElementById('cab_escala_'+num_perg).style.display = "block";
-			document.getElementById('escala_ac_'+num_perg).style.display = "block";
-			//document.getElementById('btn_clone_escala_'+num_perg).style.display = "block";			
+			document.getElementById('import_scale_'+num_perg).style.display = "block";
 			
-			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
-			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";	
+			document.getElementById('select_banco').style.display = "none";			
 			document.getElementById('selecao_tipo_banco').value = "";
+
 		}
 		else{ // texto		
 			document.getElementById('cab_texto_'+num_perg).style.display = "block";
@@ -290,8 +301,7 @@
 	}
 	
 	function ativa_btn_importar(){
-		document.getElementById("tipo_pergunta_cab_banco").style.display = "block";	
-		document.getElementById("tipo_pergunta_sel_banco").style.display = "block";			
+		document.getElementById("select_banco").style.display = "block";		
 	}
 	
 	function clone(indice_pergunta, type){
@@ -316,15 +326,14 @@
 			
 		}else 
 		if(type == 2){ // ESCALA, CARREGADAS DO BANCO
-			document.getElementById("cab_escala_"+num_perg).style.display = "block";
-			document.getElementById("escala_ac_"+num_perg).style.display = "block";			
+			document.getElementById("import_scale_"+num_perg).style.display = "block";			
 			
-			document.getElementById("selecao_tipo_banco").value = "";	
-			document.getElementById("tipo_pergunta_cab_banco").style.display = "none";				
-			document.getElementById("tipo_pergunta_sel_banco").style.display = "none";
+			//document.getElementById("selecao_tipo_banco").value = "";	
+			//document.getElementById("tipo_pergunta_cab_banco").style.display = "none";				
+			//document.getElementById("tipo_pergunta_sel_banco").style.display = "none";
 			
-			desc_perg = document.getElementById("escala_ac_"+indice_pergunta).value;
-			document.getElementById("escala_ac_"+num_perg).value = desc_perg;
+			desc_perg = document.getElementById("desc_import_scale_"+indice_pergunta).value;
+			document.getElementById("desc_import_scale_"+num_perg).value = desc_perg;
 			
 			var i;
 			for (i = 1; i < perguntas[indice_pergunta]; i++){
@@ -389,10 +398,11 @@
 			document.forms['frmCadastro'].submit();	
 		}
 	}
+
 	var i;	
 	$(document).ready(function(){
 		for(i=0; i<15; i++){	
-			$('input#escala_ac_'+i).autocomplete({
+			$('input#desc_import_scale_'+i).autocomplete({
 				source: [<?php echo $perg1; ?>]
 			})
 		}
