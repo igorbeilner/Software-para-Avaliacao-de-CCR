@@ -29,37 +29,37 @@
         
         
         <div class="linha">
-            <div style="width: 190px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Nome da Enquete:</div>
+            <div style="width: 190px;" class="coluna">Nome da Enquete:</div>
             <div style="clear: both;"></div>
             
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<input name="enq_nome" id="enq_nome" type="text" size="61" placeholder="Avaliação de componente curricular" style="text-transform: uppercase;" />
+            	<input name="enq_nome" id="enq_nome" type="text" size="61" placeholder="Avaliação de componente curricular" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
             </div>
             <div style="clear: both;"></div>           
 		</div>        
 
         <div class="linha">
-            <div style="width: 111px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Semestre:</div>
+            <div style="width: 111px;" class="coluna">Semestre:</div>
             <div style="clear: both;"></div>
             
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<input name="enq_semestre" maxlength="6" id="enq_semestre" type="text" size="3" placeholder="2014/2" />
+            	<input name="enq_semestre" maxlength="6" id="enq_semestre" type="text" size="3" placeholder="2014/2" class="cad_enq" style="width: 100px;" />
             </div>
             <div style="clear: both;"></div>           
 		</div>        
 		
         <div class="linha">
-            <div style="width: 111px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Data:</div>
+            <div style="width: 111px;" class="coluna">Data:</div>
             <div style="clear: both;"></div>
             
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<input name="enq_data" maxlength="10" id="enq_data" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" style="text-transform: lowercase;" />
+            	<input name="enq_data" maxlength="10" id="enq_data" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" />
             </div>
             <div style="clear: both;"></div>           
 		</div>       
 
         <div class="linha">
-            <div style="width: 300px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Situação da Enquete:</div>
+            <div style="width: 300px;" class="coluna">Situação:</div>
             <div style="clear: both;"></div>
             
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
@@ -70,11 +70,11 @@
 		</div>     		
 		
         <div class="linha">
-            <div style="width: 300px; margin-top: 8px; margin-left:0px; font-weight:bold;" class="coluna">Nº de Respostas Esperadas:</div>
+            <div style="width: 300px;" class="coluna">Nº de Respostas Esperadas:</div>
             <div style="clear: both;"></div>
             
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<input name="enq_num_resp_esp" maxlength="3" id="enq_num_resp_esp" type="text" size="3"  />
+            	<input name="enq_num_resp_esp" maxlength="3" id="enq_num_resp_esp" type="text" size="3"  class="cad_enq" style="width: 100px;"/>
             </div>
             <div style="clear: both;"></div>           
 		</div>       		
@@ -82,75 +82,84 @@
 		<input type='hidden' name='enq_num_perg' id='enq_num_perg' />
 		
 <?php
-		$vector_options = array();
 		for($j=1; $j<= 30; $j++){
 
 			// PERGUNTA TEXTO
 			echo "<div class='linha' id='tipo_texto_".$j."' style='display:none;'>";
-				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna'  >Descrição da pergunta ".$j.":</div>";
+				echo "<div style='width: 200px;' class='coluna'  >Descrição da pergunta:</div>";
 				echo "<div style='clear: both;'></div>";
 					
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input name='per_desc_".$j."_texto' id='desc_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<input name='per_desc_".$j."_texto' id='desc_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
 					echo "<input type='hidden' name='tipo_".$j."' />";
-					echo "<a onclick='delete_pergunta_texto(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
-					echo "<a onclick='clone(".$j.", 3)';><img src='application/images/copy.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
+					echo "<a onclick='delete_pergunta_texto(".$j.");' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='clone(".$j.", 3);' style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
 			echo "</div>";	
 		
 			// PERGUNTA ESCALA
 			echo "<div class='linha' id='tipo_unica_escolha_".$j."' style='display:none;'>";
-				echo "<div style='width: 200px; margin-top: 8px; margin-left:0px; font-weight:bold;' class='coluna'>Descrição da pergunta ".$j.":</div>";
+				echo "<div style='width: 200px;' class='coluna'>Descrição da pergunta:</div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 
-					echo "<input name='per_desc_".$j."_escala' id='desc_escolha_".$j."' type='text' size='61' style='text-transform: uppercase;' />&nbsp;&nbsp;";
+					echo "<input name='per_desc_".$j."_escala' id='desc_escolha_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
 					echo "<input type='hidden' name='tipo_".$j."' />";
-					echo "<a onclick='delete_pergunta(".$j.");' ><img src='application/images/delete.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
-					echo "<a onclick='clone(".$j.", 1)';><img src='application/images/copy.png' style='cursor:pointer;'></a>&nbsp;&nbsp;";
-					echo "<a onclick='mostra_alter(".$j.");'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>&nbsp;&nbsp;";
+					echo "<a onclick='delete_pergunta(".$j.");' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='clone(".$j.", 1)'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='mostra_alter(".$j.");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";
 
 				echo "</div>";
 				
-					echo "<div class='linha'   >";
-					echo "<div style='clear: both;'></div>";
-					//ALTERNATIVAS
-					for ($i = 1; $i <= 10; $i++) {
-						echo "<div id='alter_".$j."_".$i."' style='display:none;'>";
-							echo "<div style='clear: both;'></div>";
-							echo "<div class='coluna' > Alternativa ".$i."</div>";
-							echo "<div style='clear: both;'></div>";
-							echo "<div class='coluna' > 
-									<input type='text' name='alter_".$j."_".$i."' id='desc_alter_".$j."_".$i."'> 
-								 </div>";
-							echo "<a onclick='delete_alternativa(".$j.", ".$i.");' ><img src='application/images/delete.png' style='cursor:pointer;' /></a>";
-						echo "</div>";
-					}
+				echo "<div class='linha'   >";
+				echo "<div style='clear: both;'></div>";
+				//ALTERNATIVAS
+				for ($i = 1; $i <= 10; $i++) {
+					echo "<div id='alter_".$j."_".$i."' style='display:none;'>";
+						echo "<div style='clear: both;'></div>";
+						echo "<div class='coluna' style='width:400px;'> Descrição da alternativa: </div>";
+						echo "<div style='clear: both;'></div>";
+						echo "<div class='coluna' > 
+								<input type='text' name='alter_".$j."_".$i."' id='desc_alter_".$j."_".$i."' class='cad_enq' style='width: 400px;'> 
+							 </div>";
+						echo "<a onclick='delete_alternativa(".$j.", ".$i.");' ><img src='application/images/delete.png' style='cursor:pointer; margin-top:10px; margin-left:10px;' /></a>";
+					echo "</div>";
+				}
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
 			echo "</div>";	
 
 			// CAMPOS INPUTS DE PERGUNTAS CARREGADAS DO BANCO			
 			// escala
-			echo "<div id='cab_escala_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta: ".$j."</div>";
-			echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' size='80' placeholder='BUSCA ESCALA' style='display:none;' onClick='busca(this.value, ".$j.");' >"; 
-			echo "<a id='btn_clone_escala_".$j."' style='display:none;' onclick='clone(".$j.", 2)' ;><img src='application/images/copy.png' style='cursor:pointer;'></a>";	
+			echo "<div class = 'linha'>";
+				echo "<div id='cab_escala_".$j."' style='display:none; width: 500px;' class='coluna'>Descrição da pergunta a ser importada:</div>";
+				echo "<div style='clear: both;'></div>";
+				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
+					echo "<input type='text' name='escala_ac_".$j."' id='escala_ac_".$j."' placeholder='Pergunta do tipo escala' style='display:none; width: 500px;' class='cad_enq' onClick='busca(this.value, ".$j.");' >"; 
+					//echo "<a id='btn_clone_escala_".$j."' style='display:none; margin-left: 5px;' onclick='clone(".$j.", 2);'><img src='application/images/copy.png' style='cursor:pointer;'></a>";	
+				echo "</div>";
+			echo "</div>";
 			// Alternativas da escala (AJAX)
 			echo "<div id='resultado_busca'></div>";
 			// texto
-			echo "<div id='cab_texto_".$j."' style='display:none; font-weight:bold;'>Descrição da pergunta: ".$j."</div>";
-			echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='BUSCA TEXTO' style='display:none;' >";
-			
+			echo "<div class = 'linha'>";
+				echo "<div id='cab_texto_".$j."' style='display:none; width: 500px;' class='coluna'>Descrição da pergunta a ser importada: </div>";
+				echo "<div style='clear: both;'></div>";
+				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
+					echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='Pergunta do tipo texto' class='cad_enq' style='display:none; width: 500px;' >";
+				echo "</div>";
+			echo "</div>";
 		}		
 ?>
-   
-        <div class="linha"><br/>
-            <div id="tipo_pergunta_cab" style="width: 190px; margin-top: 8px; margin-left:0px; font-weight:bold; display:none;" class="coluna">Tipo de Pergunta:</div>
-            <div style="clear: both;"></div>  
-			<div id="tipo_pergunta_sel" class="coluna" style="left: 0px; top:10px; display:none;">
 
-                <select id="selecao_tipo" name="selecao" onchange="ativa_campo(this.value);"  >
+   		<!-- Seleciona o tipo da nova pergunta-->
+        <div class="linha">
+            <div id="tipo_pergunta_cab"  class="coluna" style="width: 400px; margin-left:0px; display:none;">Tipo de Pergunta:</div>
+            <div style="clear: both;"></div>  
+			<div id="tipo_pergunta_sel" class="coluna" style= "display:none;">
+
+                <select id="selecao_tipo" name="selecao" class="cad_enq" style="width:500px;" onchange="ativa_campo(this.value);"  >
                 	<option value="" >Selecione o tipo de pergunta</option>
                     <option value="1" >Escala</option>
                 	<option value="3" >Texto</option>                    
@@ -161,12 +170,12 @@
 		</div>        
         <div style="clear: both;"></div>               
 
-		<!-- Seleciona o tipo de pergunta das perguntas do BANCO -->
+		<!-- Seleciona o tipo de pergunta das perguntas importadas do BANCO -->
         <div class="linha">
-            <div id="tipo_pergunta_cab_banco" style="width: 190px; margin-top: 8px; margin-left:0px; font-weight:bold; display:none;" class="coluna">Tipo de Pergunta(banco):</div>
+            <div id="tipo_pergunta_cab_banco" style="width: 400px; margin-left:0px; display:none;" class="coluna">Tipo de Pergunta:</div>
             <div style="clear: both;"></div>  
 			<div id="tipo_pergunta_sel_banco" class="coluna" style="left: 0px; top:10px; display:none;">
-                <select id="selecao_tipo_banco" name="" onchange="ativa_campo_busca(this.value);"  >
+                <select id="selecao_tipo_banco" name="" class="cad_enq" style="width:500px;" onchange="ativa_campo_busca(this.value);"  >
                 	<option value="" >Selecione o tipo de pergunta</option>
                     <option value="1" >Escala</option>
                 	<option value="2" >Texto</option>                    
@@ -202,7 +211,7 @@
 	var perguntas = []; //guarda o número de alternativas em cada pergunta
 	var i;
 	for (i = 1; i <= 15; i++){
-		perguntas.push(1);	
+		perguntas.push(0);	
 	}
 	
 	
@@ -218,7 +227,7 @@
 		if(tipo == 1){ // escala
 			document.getElementById('cab_escala_'+num_perg).style.display = "block";
 			document.getElementById('escala_ac_'+num_perg).style.display = "block";
-			document.getElementById('btn_clone_escala_'+num_perg).style.display = "block";			
+			//document.getElementById('btn_clone_escala_'+num_perg).style.display = "block";			
 			
 			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
 			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";	
@@ -234,14 +243,14 @@
 	}
 	
 	
-	function mostra_alter(indice_pergunta) {		
+	function mostra_alter(indice_pergunta) {
+		perguntas[indice_pergunta]++;		
 		document.getElementById("alter_"+indice_pergunta+"_"+perguntas[indice_pergunta]).style.display = "block";
-		perguntas[indice_pergunta]++;
 	}
 	
 	function delete_pergunta_texto(indice_pergunta){
 		num_perg--;
-		document.getElementById("tipo_texto_"+indice_pergunta).value = "";
+		document.getElementById("desc_"+indice_pergunta).value = "";
 		document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
 		
 	}
@@ -254,13 +263,24 @@
 		document.getElementById("tipo_unica_escolha_"+indice_pergunta).value = "";
 		
 		// excluindo alternativas da pergunta
-		for(i = 1; i <= perguntas[indice_pergunta]; i++){		
+		for(i = 1; i <= perguntas[indice_pergunta]; i++){
+			document.getElementById("alter_"+indice_pergunta+"_"+i).value = "";			
 			document.getElementById("alter_"+indice_pergunta+"_"+i).style.display = "none";	
 		}
 	}
 	
 	function delete_alternativa(indice_perg, indice_alter){
-		document.getElementById("alter_"+indice_perg+"_"+indice_alter).style.display = "none";
+		var i, next, desc_alter;
+		if (indice_alter < perguntas[indice_perg]){
+			for (i = indice_alter; i < perguntas[indice_perg]; i++){
+				next = i+1;
+				desc_alter = document.getElementById("desc_alter_"+indice_perg+"_"+next).value;
+				document.getElementById("desc_alter_"+indice_perg+"_"+i).value = desc_alter;
+			}
+		}
+
+		document.getElementById("alter_"+indice_perg+"_"+perguntas[indice_perg]).value = "";
+		document.getElementById("alter_"+indice_perg+"_"+perguntas[indice_perg]).style.display = "none";	
 		perguntas[indice_perg]--;
 	}
 	
@@ -287,7 +307,7 @@
 			document.getElementById("desc_escolha_"+num_perg).value = desc_perg;
 			
 			var i;
-			for (i = 1; i < perguntas[indice_pergunta]; i++){
+			for (i = 1; i <= perguntas[indice_pergunta]; i++){
 				document.getElementById("alter_"+num_perg+"_"+i).style.display = "block";
 				desc_perg = document.getElementById("desc_alter_"+indice_pergunta+"_"+i).value;
 				document.getElementById("desc_alter_"+num_perg+"_"+i).value = desc_perg;

@@ -20,6 +20,15 @@
 }
 */
 
+.cad_enq{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	font-size: 15px;
+	font-family: Verdana;
+	margin-top: 5px;
+	height: 25px;
+}
+
 #form_enquete{
 	vertical-align: middle;
 	font-family: arial, sans-serif;
@@ -226,9 +235,12 @@ ul li:last-child a:hover{
 
 .coluna{
 	float: left;
+	font-family: Verdana;
+	font-size: 13px;
 }
 #table .linha{
 	margin-bottom: 5px;
+	margin-top: 5px;
 }
 .linha{
 	width: 100%;

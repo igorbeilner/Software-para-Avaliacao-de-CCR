@@ -115,10 +115,7 @@
 				</div>
 				
 	<?php
-			}
-	?>
-		<a href="?module=relatorios&acao=professor" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
-	<?php	
+			}	
 		}
 	?>
 	

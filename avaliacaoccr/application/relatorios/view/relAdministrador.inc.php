@@ -102,9 +102,6 @@
 	<?php
 				}
 			}
-	?>
-		<a href="?module=relatorios&acao=rel_adm" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
-	<?php	
 		}
 	?>
 	

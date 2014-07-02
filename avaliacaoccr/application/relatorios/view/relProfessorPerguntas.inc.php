@@ -90,9 +90,9 @@
 								
 						   
 									}
-							}
 								echo "</div>";
 								echo "<div style='clear:both;'></div>";
+							}
 						}else if ($res[$i]['per_tipo'] == 1){
 							$sql = "select o.op_desc, o.op_cod from
 									(select po.op_cod 
@@ -144,7 +144,7 @@
 	
 			}
 			?>
-	<a href="?module=relatorios&acao=rel_professor&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+	<a href="?module=relatorios&acao=rel_professor&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/back.png" title="Voltar" border="none" /></a> 
 
 </div>
 

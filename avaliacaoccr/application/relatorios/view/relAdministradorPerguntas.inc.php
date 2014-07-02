@@ -28,9 +28,9 @@
 				<div class="linha" style="width: 100%;">	
 					<div class="coluna" style="float:left; width:300px; font-weight:bold; color:#000;">Pergunta</div>
 					<div class="coluna" style="float:left; width:140px; font-weight:bold; color:#000; margin-left: 340px;">Número de respostas</div>
-				<div style="clear: both;"></div>
-			</div>
-		</div>	
+					<div style="clear: both;"></div>
+				</div>
+			</div>	
 	<?php		 
 		}
 		
@@ -90,9 +90,10 @@
 								
 						   
 									}
-							}
 								echo "</div>";
 								echo "<div style='clear:both;'></div>";
+							}
+								
 						}else if ($res[$i]['per_tipo'] == 1){
 							$sql = "select o.op_desc, o.op_cod from
 									(select po.op_cod 
@@ -146,7 +147,7 @@
 	
 			}
 			?>
-	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:600px; margin-top:40px;"><img src="application/images/voltar.png" title="Voltar" border="none" /></a> 
+	<a href="?module=relatorios&acao=rel_adm&semestre=<?php echo $sem?>" style="margin-left:600px; margin-top:40px;"><img src="application/images/back.png" title="Voltar" border="none" /></a> 
 
 </div>
 
