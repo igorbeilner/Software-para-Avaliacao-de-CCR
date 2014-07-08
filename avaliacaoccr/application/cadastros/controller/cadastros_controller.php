@@ -13,5 +13,8 @@
 		case 'nova_enquete':
 			require_once 'application/cadastros/view/enquete/cadEnquete.inc.php';
 			break;
+		case 'cadastra_professor':
+			require_once 'application/cadastros/view/professor/cadProfessor.inc.php';
+			break;
 	}
 ?>

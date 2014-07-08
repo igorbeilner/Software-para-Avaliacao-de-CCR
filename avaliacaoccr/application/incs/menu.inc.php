@@ -9,9 +9,12 @@
              <ul <?php if($_GET['module'] == 'relatorios'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=relatorios&acao=rel_adm' >Relatórios</a></li>						
             </ul>
-            <ul <?php if($_GET['module'] == 'about'){ echo 'class="selected"';}?>>     	        
-                <li><a href='?module=about&acao=about' >Sobre</a></li>						
+            <ul <?php if($_GET['module'] == 'cadastra_professor'){ echo 'class="selected"';}?>>     	        
+                <li><a href='?module=cadastros&acao=cadastra_professor' >Cadastrar professors</a></li>						
             </ul>  
+			 <ul <?php if($_GET['module'] == 'about'){ echo 'class="selected"';}?>>     	        
+                <li><a href='?module=about&acao=about' >Sobre</a></li>						
+            </ul> 
         </li>
 <?php
 	}

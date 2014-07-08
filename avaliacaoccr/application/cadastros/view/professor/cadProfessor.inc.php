@@ -30,13 +30,13 @@
 <div id="table">
 	<h2>Professores</h2>
     
-   <!-- Código com <div>
+    <div>
         <form action="?module=cadastros&acao=lista_cargo" id="frmBusca" method="get">
             <input type="hidden" name="module" value="cadastros" />
             <input type="hidden" name="acao" value="lista_cargo" />
             <a style="position:relative; top:7px; left:2px;">Filtrar por:</a> <br />
             <select name="tipo_filtro">
-            <?php/*
+            <?php
 				// Validação para que após realizado um filtro, permanecer selecionado o filtro realizado
 				if($_GET['tipo_filtro'] == 'car_codigo'){
 	            	echo "<option value='car_codigo' selected>Código</option>";
@@ -47,14 +47,14 @@
                 	echo "<option value='car_descricao' selected >Descrição</option>";
 				}else{
 					echo "<option value='car_descricao' >Descrição</option>";
-				}*/
+				}
 			?>
             </select>
-            <input type="text" name="filtro" value="<?php /*echo $_GET['filtro'];*/ ?>" />
+            <input type="text" name="filtro" value="<?php echo $_GET['filtro']; ?>" />
             <input style="position:relative; top:7px;" type="submit" value=""/>
             <a href="?module=cadastros&acao=novo_cargo"><img style="position:relative; top:8px;" src="application/images/novo.png"></a>
         </form>                
-    </div>        ordenação -->
+    </div>     
     
 	<?php
 		if(count($result) > 0){
