@@ -8,7 +8,7 @@
 
 	$sql = "SELECT *
 			FROM perguntas
-			WHERE per_tipo = 2
+			WHERE per_tipo = 0
 			ORDER BY per_desc ASC";
 	$pergunta2 = $data->find('dynamic',$sql);				
 	
@@ -92,7 +92,7 @@
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 					echo "<input name='per_desc_".$j."_texto' id='desc_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
 					echo "<input type='hidden' name='tipo_".$j."' />";
-					echo "<a onclick='delete_pergunta_texto(".$j.");' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='delete_pergunta(".$j.", 0);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='clone(".$j.", 3);' style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
@@ -106,7 +106,7 @@
 
 					echo "<input name='per_desc_".$j."_escala' id='desc_escolha_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
 					echo "<input type='hidden' name='tipo_".$j."' />";
-					echo "<a onclick='delete_pergunta(".$j.");' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
+					echo "<a onclick='delete_pergunta(".$j.", 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='clone(".$j.", 1)'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='mostra_alter(".$j.");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";
 
@@ -136,22 +136,23 @@
 				echo "<div id='cab_escala_".$j."' style='width: 500px;' class='coluna'>Descrição da pergunta a ser importada:</div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input type='text' name='escala_ac_".$j."' id='desc_import_scale_".$j."' placeholder='Pergunta do tipo escala' style='width: 500px;' class='cad_enq' onClick='busca(this.value, ".$j.");' >"; 
-					echo "<input type='hidden' name='tipo_".$j."' />";
-					echo "<a onclick='delete_pergunta(".$j.");' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
-					echo "<a onclick='clone(".$j.", 2)'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
-					echo "<a onclick='mostra_alter(".$j.");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";	
+					echo "<input type='text' name='escala_ac_".$j."' id='desc_import_scale_".$j."' placeholder='Pergunta do tipo escala' style='width: 500px;' class='cad_enq' onclick='busca(this.value, ".$j.");' >"; 
+					//echo "<input type='hidden' name='tipo_".$j."' />";
+					echo "<a onclick='delete_pergunta(".$j.", 2);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 				echo "</div>";
 			echo "</div>";
 			// Alternativas da escala (AJAX)
-			echo "<div id='resultado_busca'></div>";
+			echo "<div id='resultado_busca_".$j."'></div>";
 			// texto
-			echo "<div class = 'linha'>";
-				echo "<div id='cab_texto_".$j."' style='display:none; width: 500px;' class='coluna'>Descrição da pergunta a ser importada: </div>";
+			echo "<div class = 'linha' id='import_text_".$j."' style='display:none;'>";
+				echo "<div id='cab_texto_".$j."' style='width: 500px;' class='coluna'>Descrição da pergunta a ser importada: </div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='Pergunta do tipo texto' class='cad_enq' style='display:none; width: 500px;' >";
+					echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='Pergunta do tipo texto' class='cad_enq' style='width: 500px;' >";
+					//echo "<input type='hidden' name='tipo_".$j."' />";
+					echo "<a onclick='delete_pergunta(".$j.", 3);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";				
 				echo "</div>";
+
 			echo "</div>";
 		}		
 ?>
@@ -230,7 +231,7 @@
 	
 	function busca(per_cod, indice_pergunta){
 		var url = "application/script/php/busca.php?per_cod="+per_cod+"&indice_pergunta="+indice_pergunta;
-		var div = "resultado_busca";
+		var div = "resultado_busca_"+indice_pergunta;
 		mostraConteudo(url, div);
 	}
 	
@@ -245,8 +246,8 @@
 
 		}
 		else{ // texto		
-			document.getElementById('cab_texto_'+num_perg).style.display = "block";
-			document.getElementById('texto_ac_'+num_perg).style.display = "block";
+			document.getElementById('import_text_'+num_perg).style.display = "block";
+
 			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
 			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";
 			document.getElementById('selecao_tipo_banco').value = "";			
@@ -266,18 +267,32 @@
 		
 	}
 	
-	function delete_pergunta(indice_pergunta){
+	function delete_pergunta(indice_pergunta, tipo){
 		var i;
 		num_perg--;
-		// excluir cabeçalho e botões....
-		document.getElementById("tipo_unica_escolha_"+indice_pergunta).style.display = "none";
-		document.getElementById("tipo_unica_escolha_"+indice_pergunta).value = "";
-		
-		// excluindo alternativas da pergunta
-		for(i = 1; i <= perguntas[indice_pergunta]; i++){
-			document.getElementById("alter_"+indice_pergunta+"_"+i).value = "";			
-			document.getElementById("alter_"+indice_pergunta+"_"+i).style.display = "none";	
+		if (tipo == 0){ //texto
+			document.getElementById("desc_"+indice_pergunta).value = "";
+			document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
+		}else if (tipo == 1){ //escala
+			// excluir cabeçalho e botões....
+			document.getElementById("tipo_unica_escolha_"+indice_pergunta).style.display = "none";
+			document.getElementById("tipo_unica_escolha_"+indice_pergunta).value = "";
+			
+			// excluindo alternativas da pergunta
+			for(i = 1; i <= perguntas[indice_pergunta]; i++){
+				document.getElementById("alter_"+indice_pergunta+"_"+i).value = "";			
+				document.getElementById("alter_"+indice_pergunta+"_"+i).style.display = "none";	
+			}
+		}else if(tipo == 2){ //escala importada
+			// excluir cabeçalho e botões....
+			document.getElementById("import_scale_"+indice_pergunta).style.display = "none";
+			document.getElementById("import_scale_"+indice_pergunta).value = "";
+			document.getElementById("resultado_busca_"+indice_pergunta).style.display = "none";
+		}else{ //texto importada
+			document.getElementById("texto_ac_"+indice_pergunta).value = "";
+			document.getElementById("import_text_"+indice_pergunta).style.display = "none";
 		}
+		
 	}
 	
 	function delete_alternativa(indice_perg, indice_alter){

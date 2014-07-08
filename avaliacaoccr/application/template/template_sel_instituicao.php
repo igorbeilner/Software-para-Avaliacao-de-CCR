@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>EducaWeb - Sistema de Gestão Escolar Web</title>
         
-        <link href="application/images/icon.png" rel="icon">
+        <link href="application/images/icon_site.png" rel="icon">
         <link rel="stylesheet" href="library/jquery-ui-1.10/css/smoothness/jquery-ui-1.10.1.custom.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="application/script/css/system.css" type="text/css" media="screen" />
         

@@ -14,8 +14,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Avaliação CCR</title>
-        <link href="application/images/icon.png" rel="icon">
+		<title>Enquetes CC</title>
+        <link href="application/images/icon_site.png" rel="icon">
 		<script src="library/jquery-ui-1.10/js/jquery-1.9.1.js"></script>
         <script src="library/jquery-ui-1.10/js/jquery-ui-1.10.1.custom.js"></script>
 		<script src="application/script/js/system.js"></script>
@@ -41,7 +41,7 @@
 <body>
 	<div id="geral">
   		<div id="topo">
-    		<img src="application/images/logo_topo.png" />
+    		<img src="application/images/logo_site.png" />
   		</div>
 		<div style="clear:both;"></div>
 

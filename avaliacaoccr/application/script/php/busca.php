@@ -33,8 +33,8 @@ $total_rows = mysql_num_rows($sql);
 		echo "</div>";
 		echo "<div style='clear: both;'></div>";
 		$i++;
-
     }
+
     echo "</div>";
  }
  
