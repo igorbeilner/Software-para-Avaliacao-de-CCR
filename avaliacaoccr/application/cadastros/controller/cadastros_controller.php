@@ -16,5 +16,8 @@
 		case 'cadastra_professor':
 			require_once 'application/cadastros/view/professor/cadProfessor.inc.php';
 			break;
+		case 'cadastra_disciplina':
+			require_once 'application/cadastros/view/disciplina/cadDisciplina.inc.php';
+			break;
 	}
 ?>
