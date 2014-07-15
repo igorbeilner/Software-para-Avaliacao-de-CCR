@@ -16,5 +16,9 @@
 		case 'cadastra_professor':
 			require_once 'application/cadastros/view/professor/cadProfessor.inc.php';
 			break;
+
+		case 'gravar_enquete':
+			require_once 'application/cadastros/view/enquete/dataControls.inc.php';
+			break;
 	}
 ?>
