@@ -1,4 +1,6 @@
 <?php 
+	$qtd_perg = 50;
+
 	// ALTERNATIVAS ESCALA
 	$sql = "SELECT *
 			FROM perguntas				
@@ -25,9 +27,7 @@
 
 <div id="table">
 	<h2>Cadastro de Enquete</h2>
-    <form action="?module=cadastros&acao=gravar_enquete" id="frmCadastro" method="post">
-        
-        
+    <form action="?module=cadastros&acao=gravar_enquete" id="frmCadastro" method="post">        
         <div class="linha">
             <div style="width: 190px;" class="coluna">Nome da Enquete:</div>
             <div style="clear: both;"></div>
@@ -82,16 +82,16 @@
 		<input type='hidden' name='enq_num_perg' id='enq_num_perg' />
 		
 <?php
-		for($j=1; $j<= 30; $j++){
+		for($j=1; $j<= $qtd_perg; $j++){
 
 			// PERGUNTA TEXTO
 			echo "<div class='linha' id='tipo_texto_".$j."' style='display:none;'>";
-				echo "<div style='width: 200px;' class='coluna'  >Descrição da pergunta:</div>";
+				echo "<div style='width: 250px;' class='coluna'  >[Texto] Descrição da pergunta:</div>";
 				echo "<div style='clear: both;'></div>";
 					
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 					echo "<input name='per_desc_".$j."_texto' id='desc_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
-					echo "<input type='hidden' name='tipo_".$j."' />";
+					echo "<input type='hidden' name='tipo_".$j."' value='0' />";
 					echo "<a onclick='delete_pergunta(".$j.", 0);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='clone(".$j.", 3);' style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 				echo "</div>";
@@ -100,12 +100,12 @@
 		
 			// PERGUNTA ESCALA
 			echo "<div class='linha' id='tipo_unica_escolha_".$j."' style='display:none;'>";
-				echo "<div style='width: 200px;' class='coluna'>Descrição da pergunta:</div>";
+				echo "<div style='width: 250px;' class='coluna'>[Escala] Descrição da pergunta:</div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 
 					echo "<input name='per_desc_".$j."_escala' id='desc_escolha_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
-					echo "<input type='hidden' name='tipo_".$j."' />";
+					echo "<input type='hidden' name='tipo_".$j."' value='1' />";
 					echo "<a onclick='delete_pergunta(".$j.", 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='clone(".$j.", 1)'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='mostra_alter(".$j.");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";
@@ -116,7 +116,7 @@
 				echo "<div style='clear: both;'></div>";
 				//ALTERNATIVAS
 				for ($i = 1; $i <= 10; $i++) {
-					echo "<div id='alter_".$j."_".$i."' style='display:none;'>";
+					echo "<div id='alter_".$j."_".$i."' style='display:none; margin-left:30px;'>";
 						echo "<div style='clear: both;'></div>";
 						echo "<div class='coluna' style='width:400px;'> Descrição da alternativa: </div>";
 						echo "<div style='clear: both;'></div>";
@@ -133,7 +133,7 @@
 			// CAMPOS DE PERGUNTAS CARREGADAS DO BANCO			
 			// escala
 			echo "<div class = 'linha' id='import_scale_".$j."' style='display: none;'>";
-				echo "<div id='cab_escala_".$j."' style='width: 500px;' class='coluna'>Descrição da pergunta a ser importada:</div>";
+				echo "<div id='cab_escala_".$j."' style='width: 500px;' class='coluna'>[Escala] Descrição da pergunta a ser importada:</div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 					echo "<input type='text' name='escala_ac_".$j."' id='desc_import_scale_".$j."' placeholder='Pergunta do tipo escala' style='width: 500px;' class='cad_enq' onclick='busca(this.value, ".$j.");' >"; 
@@ -142,10 +142,10 @@
 				echo "</div>";
 			echo "</div>";
 			// Alternativas da escala (AJAX)
-			echo "<div id='resultado_busca_".$j."'></div>";
+			echo "<div id='resultado_busca_".$j."' style='margin-left:30px;'></div>";
 			// texto
 			echo "<div class = 'linha' id='import_text_".$j."' style='display:none;'>";
-				echo "<div id='cab_texto_".$j."' style='width: 500px;' class='coluna'>Descrição da pergunta a ser importada: </div>";
+				echo "<div id='cab_texto_".$j."' style='width: 500px;' class='coluna'>[Texto] Descrição da pergunta a ser importada: </div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 					echo "<input type='text' name='texto_ac_".$j."' id='texto_ac_".$j."' size='80' placeholder='Pergunta do tipo texto' class='cad_enq' style='width: 500px;' >";
@@ -192,6 +192,11 @@
 		<div class="coluna"><img src="application/images/nova_pergunta.png" onclick="ativa_tipo_pergunta();" /></div>
 		<div class="coluna"><img src="application/images/importa_pergunta.png" onclick="ativa_btn_importar();" style='margin-left:3px;' /></div><br/><br/><br/>
 
+		<!-- Envia o total de perguntas -->	
+		<input type='hidden' name='total_perg' value='<?php echo $qtd_perg; ?>' />
+		<!-- Envia a quantidade de perguntas criadas -->
+		<input type='hidden' name='qtd_perg' id='qtd_perg' />
+
         <!-- Botão Salvar -->
         <div class="coluna">
             <a onclick="valida_form();" href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none;'/></a>
@@ -205,7 +210,7 @@
 </div>
 
 <script>
-
+	
 	var num_perg = 0;
 	var perguntas = []; //guarda o número de alternativas em cada pergunta
 	var i;
@@ -214,14 +219,23 @@
 	}
 
 
-	/*function show_options(){
-		var indice_perg = $("#alternativas").data("indpergunta");
-		var value = $("#alternativas").data("value");
-		var indice_alter = $("alternativas").data("indalter");
+	function conta_perguntas(){
+		var total = "<?php echo $qtd_perg; ?>";
+		var i, qtd=0;
+		for(i=1; i<=total; i++){
+			if(document.getElementById("desc_"+i).value)
+				qtd++;
+			if(document.getElementById("desc_escolha_"+i).value)
+				qtd++;
+			if(document.getElementById("desc_import_scale_"+i).value)
+				qtd++;
+			if(document.getElementById("texto_ac_"+i).value)
+				qtd++;
+		}
+		return qtd;
+	}
 
-		$("#import_alter_"+indice_perg+"_"+indice_alter).show();
-		$("#desc_import_alter_"+indice_perg+"_"+indice_alter).value(value);
-	}*/
+
 
  	function delete_alter(indice_pergunta, indice){
  		document.getElementById("import_alter_"+indice_pergunta+"_"+indice).style.display = "none";	
@@ -248,9 +262,8 @@
 		else{ // texto		
 			document.getElementById('import_text_'+num_perg).style.display = "block";
 
-			document.getElementById('tipo_pergunta_cab_banco').style.display = "none";
-			document.getElementById('tipo_pergunta_sel_banco').style.display = "none";
-			document.getElementById('selecao_tipo_banco').value = "";			
+			document.getElementById('select_banco').style.display = "none";			
+			document.getElementById('selecao_tipo_banco').value = "";
 		}
 	}
 	
@@ -261,7 +274,7 @@
 	}
 	
 	function delete_pergunta_texto(indice_pergunta){
-		num_perg--;
+		//num_perg--;
 		document.getElementById("desc_"+indice_pergunta).value = "";
 		document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
 		
@@ -269,15 +282,17 @@
 	
 	function delete_pergunta(indice_pergunta, tipo){
 		var i;
-		num_perg--;
+		var qtd = "<?php echo $qtd_perg; ?>";
+		//num_perg--;
 		if (tipo == 0){ //texto
+
 			document.getElementById("desc_"+indice_pergunta).value = "";
 			document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
 		}else if (tipo == 1){ //escala
 			// excluir cabeçalho e botões....
 			document.getElementById("tipo_unica_escolha_"+indice_pergunta).style.display = "none";
-			document.getElementById("tipo_unica_escolha_"+indice_pergunta).value = "";
-			
+			document.getElementById("desc_escolha_"+indice_pergunta).value = "";
+
 			// excluindo alternativas da pergunta
 			for(i = 1; i <= perguntas[indice_pergunta]; i++){
 				document.getElementById("alter_"+indice_pergunta+"_"+i).value = "";			
@@ -286,11 +301,11 @@
 		}else if(tipo == 2){ //escala importada
 			// excluir cabeçalho e botões....
 			document.getElementById("import_scale_"+indice_pergunta).style.display = "none";
-			document.getElementById("import_scale_"+indice_pergunta).value = "";
+			document.getElementById("desc_import_scale_"+indice_pergunta).value = "";
 			document.getElementById("resultado_busca_"+indice_pergunta).style.display = "none";
 		}else{ //texto importada
-			document.getElementById("texto_ac_"+indice_pergunta).value = "";
 			document.getElementById("import_text_"+indice_pergunta).style.display = "none";
+			document.getElementById("texto_ac_"+indice_pergunta).value = "";			
 		}
 		
 	}
@@ -388,7 +403,7 @@
 	}
 
 	function valida_form(){
-		var mensagem, id;
+		var mensagem, id, qtd;
 		if (document.getElementById('enq_nome').value == ''){ 
 			mensagem = "É necessário preencher o nome da enquete!";
 			id       = "enq_nome";
@@ -409,7 +424,8 @@
 			id       = "enq_num_resp_esp";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else{
-			document.getElementById('enq_num_perg').value = num_perg;
+			qtd = conta_perguntas();
+			document.getElementById("qtd_perg").value = qtd;
 			document.forms['frmCadastro'].submit();	
 		}
 	}

@@ -14,6 +14,7 @@
 		case 'cadastra_professor':
 			require_once 'application/cadastros/view/professor/cadProfessor.inc.php';
 			break;
+<<<<<<< HEAD
 		case 'cadastra_disciplina':
 			require_once 'application/cadastros/view/disciplina/cadDisciplina.inc.php';
 			break;		
@@ -23,5 +24,11 @@
 		case 'gravar_disciplina':
 			require_once 'application/cadastros/view/disciplina/dataControls.inc.php';
 			break;			
+=======
+
+		case 'gravar_enquete':
+			require_once 'application/cadastros/view/enquete/dataControls.inc.php';
+			break;
+>>>>>>> 3b9beb33e0cf81baa87c349fe25387e8908ba424
 	}
 ?>
