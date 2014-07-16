@@ -1,7 +1,7 @@
 
 <div id="table">
 	<h2>Cadastro de professores</h2>
-    <form>
+    <form action="?module=cadastros&acao=gravar_professor" id="frmCadastro" method="post">
 		<!--nome-->
 		<div class="linha">
 			<div style="width: 190px " class="coluna">Nome:</div>
@@ -34,3 +34,24 @@
 	</form>
 	
 </div>
+<script>
+
+function valida_form(){
+		var mensagem, id;
+		if (document.getElementById('pro_nome').value == ''){ 
+			mensagem = "É necessário preencher o nome!";
+			id       = "pro_nome";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else
+		if (document.getElementById('pro_siape').value == ''){ 
+			mensagem = "É necessário preencher o número do siape!";
+			id       = "pro_siape";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		
+		}else{
+			document.forms['frmCadastro'].submit();	
+		}
+	}
+
+
+</script>

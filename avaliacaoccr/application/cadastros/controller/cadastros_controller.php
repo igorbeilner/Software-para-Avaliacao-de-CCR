@@ -4,12 +4,10 @@
 	//CADASTRO DO CARGO		
 		case 'professor':
 			require_once 'application/relatorios/view/relProfessor.php';
-			break;
-			
+			break;			
 		case 'lista_professor':
 			require_once 'application/cadastros/view/professor/listaProfessor.inc.php';
 			break;
-		
 		case 'nova_enquete':
 			require_once 'application/cadastros/view/enquete/cadEnquete.inc.php';
 			break;
@@ -18,6 +16,12 @@
 			break;
 		case 'cadastra_disciplina':
 			require_once 'application/cadastros/view/disciplina/cadDisciplina.inc.php';
-			break;
+			break;		
+		case 'gravar_professor':
+			require_once 'application/cadastros/view/professor/dataControls.inc.php';
+			break;			
+		case 'gravar_disciplina':
+			require_once 'application/cadastros/view/disciplina/dataControls.inc.php';
+			break;			
 	}
 ?>
