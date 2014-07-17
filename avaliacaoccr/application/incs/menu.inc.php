@@ -10,8 +10,11 @@
                 <li><a href='?module=relatorios&acao=rel_adm' >Relatórios</a></li>						
             </ul>
             <ul <?php if($_GET['module'] == 'cadastra_professor'){ echo 'class="selected"';}?>>     	        
-                <li><a href='?module=cadastros&acao=cadastra_professor' >Cadastrar professors</a></li>						
+                <li><a href='?module=cadastros&acao=cadastra_professor' >Cadastrar professor</a></li>						
             </ul>  
+			<ul <?php if($_GET['module'] == 'cadastra_disciplina'){ echo 'class="selected"';}?>>     	        
+                <li><a href='?module=cadastros&acao=cadastra_disciplina' >Cadastrar disciplina</a></li>						
+            </ul> 
 			 <ul <?php if($_GET['module'] == 'about'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=about&acao=about' >Sobre</a></li>						
             </ul> 

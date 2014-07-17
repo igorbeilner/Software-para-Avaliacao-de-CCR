@@ -13,7 +13,7 @@
 			
 			if($result['login'] == 'Logado'){
 				if($_SESSION['userPermissao'] == 1){ // ADM
-					echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=lista_professor'>";	
+					echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=administrador'>";	
 				}else
 				if($_SESSION['userPermissao'] == 2){ // PROFESSOR
 					echo "<meta http-equiv='refresh' content='0;URL=?module=relatorios&acao=professor'>";	
