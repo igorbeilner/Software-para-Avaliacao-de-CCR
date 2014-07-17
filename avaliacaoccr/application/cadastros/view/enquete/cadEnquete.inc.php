@@ -22,6 +22,12 @@
 		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
 	}	
 
+	// Lista todas as alternativas
+	$sql = "SELECT *
+			FROM opcoes
+			ORDER BY op_desc ASC";
+	$opcoes = $data->find('dynamic', $sql);
+
 ?>
 
 
@@ -120,9 +126,18 @@
 						echo "<div style='clear: both;'></div>";
 						echo "<div class='coluna' style='width:400px;'> Descrição da alternativa: </div>";
 						echo "<div style='clear: both;'></div>";
-						echo "<div class='coluna' > 
-								<input type='text' name='alter_".$j."_".$i."' id='desc_alter_".$j."_".$i."' class='cad_enq' style='width: 400px;'> 
-							 </div>";
+						echo "<div class='coluna' >"; 
+							
+							echo "<select name='alter_".$j."_".$i."' class='cad_enq' style='width:400px;' onchange='if(this.value == 0) mostra_outro(".$j.",".$i.");' >";
+								echo "<option >SELECIONE</option>";
+								for($k=0; $k< count($opcoes); $k++){
+									echo "<option value='".$opcoes[$k]['op_cod']."' >".$opcoes[$k]['op_desc']."</option>";	
+								}	
+								echo "<option value='0'>OUTRO</option>";	
+							echo "</select>";
+							
+							echo "<input type='text' name='alter_outro_".$j."_".$i."' id='alter_outro_".$j."_".$i."' class='cad_enq' style='width: 100px; display:none;'> ";
+						echo "</div>";
 						echo "<a onclick='delete_alternativa(".$j.", ".$i.");' ><img src='application/images/delete.png' style='cursor:pointer; margin-top:10px; margin-left:10px;' /></a>";
 					echo "</div>";
 				}
@@ -216,6 +231,13 @@
 	var i;
 	for (i = 1; i <= 120; i++){
 		perguntas.push(0);	
+	}
+
+
+	function  mostra_outro(perg, alter){
+		if()
+		document.getElementById("alter_outro_"+perg+"_"+alter).style.display = "block";
+
 	}
 
 
