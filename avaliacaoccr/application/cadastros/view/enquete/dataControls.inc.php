@@ -3,7 +3,12 @@
 		
 		case 'gravar_enquete':	
 
-			echo "qtd: ".$_POST['qtd_perg'];
+			echo "qtd: ".$_POST['qtd_perg']."<br />";
+			echo "vetor: ".$_POST['perg_alter']."<br />";
+
+
+			//echo "vetor: ".$_POST['perg_alter_novo'];
+
 
 			$aux = explode("/", $_POST['enq_semestre']);
 			$sem_ano = $aux[0];
@@ -37,14 +42,14 @@
 				// TEXTO
 				if($_POST['per_desc_'.$i.'_texto'] != ""){
 					$array_texto['per_desc'] = $_POST['per_desc_'.$i.'_texto'];
-					$array_texto['per_tipo'] = $_POST['tipo_'.$i];
+					$array_texto['per_tipo'] = $_POST['text_tipo_'.$i];
 					$data->add($array_texto);
 					$qtd_nova++;
 				}
 				// ESCALA
 				if($_POST['per_desc_'.$i.'_escala'] != ""){
 					$array_escala['per_desc'] = $_POST['per_desc_'.$i.'_escala'];
-					$array_escala['per_tipo'] = $_POST['tipo_'.$i];
+					$array_escala['per_tipo'] = $_POST['escala_tipo_'.$i];
 					$data->add($array_escala);
 					$qtd_nova++;
 				}
@@ -91,7 +96,32 @@
 				$data->add($array_ep2);
 			}
 
-
+			// Grava na tabela perguntas_opcoes
+			echo "<br/>qtd_nova: ".$qtd_nova;
+			$sql = "SELECT per_cod
+					FROM perguntas
+					WHERE per_tipo = 1
+					ORDER BY per_cod DESC
+					LIMIT 0, ".$qtd_nova;
+			$pergs_novas_escala = $data->find("dynamic", $sql);
+	
+			$indice = 0;
+			$aux1 = explode (',', $_POST['perg_alter']);
+			
+			$data->tabela = 'perguntas_opcoes';
+			for($j = sizeof($aux1) - 1; $j >= 0; $j--){
+				$aux = explode('_', $aux1[$j]);
+				$perg = $aux[0];
+				$alter = $aux[1];
+				$aux = explode('_', $aux1[$j-1]);
+				$next_perg = $aux[0];
+				
+				$array_per_opc['per_cod'] = $pergs_novas_escala[$indice]['per_cod'];
+				$array_per_opc['op_cod'] = $alter;
+				$data->add($array_per_opc);
+				
+				if ($perg != $next_perg) $indice++;
+			}
 
 
 

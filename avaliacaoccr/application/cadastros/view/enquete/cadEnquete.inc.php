@@ -1,5 +1,6 @@
 <?php 
-	$qtd_perg = 50;
+	$qtd_perg  = 50;
+	$qtd_alter = 10;
 
 	// ALTERNATIVAS ESCALA
 	$sql = "SELECT *
@@ -12,21 +13,21 @@
 			FROM perguntas
 			WHERE per_tipo = 0
 			ORDER BY per_desc ASC";
-	$pergunta2 = $data->find('dynamic',$sql);				
+	$pergunta2 = $data->find('dynamic',$sql);		
 	
-	for($i=0;$i<count($pergunta1);$i++){
-		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".trim($pergunta1[$i]['per_desc'])."\",";
-	}	
-	
-	for($i=0;$i<count($pergunta2);$i++){
-		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
-	}	
-
 	// Lista todas as alternativas
 	$sql = "SELECT *
 			FROM opcoes
 			ORDER BY op_desc ASC";
-	$opcoes = $data->find('dynamic', $sql);
+	$opcoes = $data->find('dynamic', $sql);			
+
+	for($i=0;$i<count($pergunta1);$i++){
+		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".trim($pergunta1[$i]['per_desc'])."\",";
+	}	
+
+	for($i=0;$i<count($pergunta2);$i++){
+		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
+	}	
 
 ?>
 
@@ -94,16 +95,16 @@
 			echo "<div class='linha' id='tipo_texto_".$j."' style='display:none;'>";
 				echo "<div style='width: 250px;' class='coluna'  >[Texto] Descrição da pergunta:</div>";
 				echo "<div style='clear: both;'></div>";
-					
+
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 					echo "<input name='per_desc_".$j."_texto' id='desc_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
-					echo "<input type='hidden' name='tipo_".$j."' value='0' />";
+					echo "<input type='hidden' name='text_tipo_".$j."' value='0' />";
 					echo "<a onclick='delete_pergunta(".$j.", 0);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='clone(".$j.", 3);' style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 				echo "</div>";
 				echo "<div style='clear: both;'></div>";
 			echo "</div>";	
-		
+
 			// PERGUNTA ESCALA
 			echo "<div class='linha' id='tipo_unica_escolha_".$j."' style='display:none;'>";
 				echo "<div style='width: 250px;' class='coluna'>[Escala] Descrição da pergunta:</div>";
@@ -111,32 +112,30 @@
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 
 					echo "<input name='per_desc_".$j."_escala' id='desc_escolha_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
-					echo "<input type='hidden' name='tipo_".$j."' value='1' />";
+					echo "<input type='hidden' name='escala_tipo_".$j."' value='1' />";
 					echo "<a onclick='delete_pergunta(".$j.", 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='clone(".$j.", 1)'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 					echo "<a onclick='mostra_alter(".$j.");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";
 
 				echo "</div>";
-				
+
 				echo "<div class='linha'   >";
 				echo "<div style='clear: both;'></div>";
 				//ALTERNATIVAS
-				for ($i = 1; $i <= 10; $i++) {
+				for ($i = 1; $i <= $qtd_alter; $i++) {
 					echo "<div id='alter_".$j."_".$i."' style='display:none; margin-left:30px;'>";
 						echo "<div style='clear: both;'></div>";
 						echo "<div class='coluna' style='width:400px;'> Descrição da alternativa: </div>";
 						echo "<div style='clear: both;'></div>";
-						echo "<div class='coluna' >"; 
-							
-							echo "<select name='alter_".$j."_".$i."' class='cad_enq' style='width:400px;' onchange='if(this.value == 0) mostra_outro(".$j.",".$i.");' >";
-								echo "<option >SELECIONE</option>";
+						echo "<div class='coluna' > ";
+							//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							echo "<select name='alter_".$j."_".$i."' id='option_".$j."_".$i."' class='cad_enq' style='width:400px;' >";
+								echo "<option value='0' >SELECIONE</option>";
 								for($k=0; $k< count($opcoes); $k++){
 									echo "<option value='".$opcoes[$k]['op_cod']."' >".$opcoes[$k]['op_desc']."</option>";	
-								}	
-								echo "<option value='0'>OUTRO</option>";	
-							echo "</select>";
-							
-							echo "<input type='text' name='alter_outro_".$j."_".$i."' id='alter_outro_".$j."_".$i."' class='cad_enq' style='width: 100px; display:none;'> ";
+								}		
+							echo "</select>";						
+							///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
 						echo "</div>";
 						echo "<a onclick='delete_alternativa(".$j.", ".$i.");' ><img src='application/images/delete.png' style='cursor:pointer; margin-top:10px; margin-left:10px;' /></a>";
 					echo "</div>";
@@ -211,6 +210,9 @@
 		<input type='hidden' name='total_perg' value='<?php echo $qtd_perg; ?>' />
 		<!-- Envia a quantidade de perguntas criadas -->
 		<input type='hidden' name='qtd_perg' id='qtd_perg' />
+        
+        <!-- Envia VETOR de perguntas_opcoes -->
+        <input type="hidden" name="perg_alter" id="perg_alter" />
 
         <!-- Botão Salvar -->
         <div class="coluna">
@@ -234,13 +236,6 @@
 	}
 
 
-	function  mostra_outro(perg, alter){
-		if()
-		document.getElementById("alter_outro_"+perg+"_"+alter).style.display = "block";
-
-	}
-
-
 	function conta_perguntas(){
 		var total = "<?php echo $qtd_perg; ?>";
 		var i, qtd=0;
@@ -257,7 +252,25 @@
 		return qtd;
 	}
 
-
+	function conta_alter(){
+		var qtd_perg  = "<?php echo $qtd_perg; ?>";	
+		var qtd_alter = "<?php echo $qtd_alter; ?>";
+		var i, j, indice=0;
+		var perg_alter = new Array();
+		
+		for(i=1; i<=qtd_perg; i++){
+			for(j=1; j<=qtd_alter; j++){
+				if(document.getElementById("option_"+i+"_"+j).value != 0){ // foi selecionada uma laternativa
+					perg_alter[indice] = i+"_"+document.getElementById("option_"+i+"_"+j).value;
+					//alert("vetor: "+perg_alter[indice]);
+					indice++;
+				}
+			}
+		}
+		
+		return perg_alter;
+		
+	}
 
  	function delete_alter(indice_pergunta, indice){
  		document.getElementById("import_alter_"+indice_pergunta+"_"+indice).style.display = "none";	
@@ -425,7 +438,7 @@
 	}
 
 	function valida_form(){
-		var mensagem, id, qtd;
+		var mensagem, id, qtd, perg_alter;
 		if (document.getElementById('enq_nome').value == ''){ 
 			mensagem = "É necessário preencher o nome da enquete!";
 			id       = "enq_nome";
@@ -448,6 +461,10 @@
 		}else{
 			qtd = conta_perguntas();
 			document.getElementById("qtd_perg").value = qtd;
+			
+			perg_alter = conta_alter();
+			document.getElementById("perg_alter").value = perg_alter;
+			
 			document.forms['frmCadastro'].submit();	
 		}
 	}
