@@ -17,6 +17,10 @@
 
 		case 'cadastra_disciplina':
 			require_once 'application/cadastros/view/disciplina/cadDisciplina.inc.php';
+			break;	
+
+		case 'cadastra_alternativa':
+			require_once 'application/cadastros/view/alternativa/cadAlternativa.inc.php';
 			break;		
 		
 		case 'gravar_professor':
@@ -25,10 +29,22 @@
 		
 		case 'gravar_disciplina':
 			require_once 'application/cadastros/view/disciplina/dataControls.inc.php';
+			break;	
+
+		case 'gravar_alternativa':
+			require_once 'application/cadastros/view/alternativa/dataControls.inc.php';
 			break;			
 		
 		case 'gravar_enquete':
 			require_once 'application/cadastros/view/enquete/dataControls.inc.php';
+			break;
+
+		case 'gravar_enquete_importada':
+			require_once 'application/cadastros/view/enquete/importDataControls.inc.php';
+			break;
+
+		case 'import_enquete':
+			require_once 'application/cadastros/view/enquete/importEnquete.inc.php';
 			break;
 	}
 ?>

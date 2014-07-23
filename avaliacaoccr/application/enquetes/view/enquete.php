@@ -1,4 +1,16 @@
 <?php
+	session_start();
+	$dominio= $_SERVER['HTTP_HOST'];
+ 	$url = "http://" . $dominio. $_SERVER['REQUEST_URI'];
+
+ 	if (isset($_SESSION['logado'])){
+ 		if ($_SESSION['logado'] == 0){
+ 			echo "<meta http-equiv='refresh' content='0;URL=?module=index&url=".$url."'>";
+ 		}
+ 	}else{
+ 		echo "<meta http-equiv='refresh' content='0;URL=?module=index&url=".$url."'>";
+ 	}
+
 	if (isset($_GET['enq_cod'])){
 		$enq_cod = $_GET['enq_cod'];
 	}
@@ -13,25 +25,37 @@
 			where j.per_cod = p.per_cod";
 
 	$result = $data->find('dynamic', $sql);
-?>
-<h2 style="margin-left:25%;"><?php echo utf8_encode($result[0]['enq_nome']) ?></h2>
 
-<form action="<?php echo "process-".$enq_cod."" ?>" id="form_enquete" method="post">
+	$sql = "select * from enq_disc_prof as edp where edp.enq_cod=".$enq_cod;
+
+	$res = $data->find('dynamic', $sql);
+
+	$sql = "select * from professor as p where p.pro_cod=".$res[0]['pro_cod'];
+	$professor = $data->find('dynamic', $sql);
+
+	$sql = "select * from disciplina as d where d.dis_cod=".$res[0]['dis_cod'];
+	$disciplina = $data->find('dynamic', $sql);
+
+
+?>
+<h2 style="margin-left:25%;"><?php echo $result[0]['enq_nome'] ?> <br/><br/>Professor: <?php echo $professor[0]['pro_nome']?> <br/>Discplina: <?php echo $disciplina[0]['dis_nome'] ?></h2>
+
+<form action="<?php echo "process-".$enq_cod."" ?>" id="form_enquete" method="post" style="margin:auto; display:table;">
 <?php
 	for ($i = 0; $i < count($result); $i++){	
 		$n = $i + 1;
 		if ($result[$i]['per_tipo'] == 0){
 ?>
-           	<div class="linha">
-           		<div style="width: 100%; margin-top: 8px; margin-left:0px;" class="coluna"><?php echo $n." - ".utf8_encode($result[$i]['per_desc']) ?></div><br/>
+           	<div class="linha" style="margin-top: 20px;">
+           		<div style="width: 100%; margin-top: 8px; margin-left:0px;" class="coluna"><?php echo $n." - ".$result[$i]['per_desc'] ?></div><br/>
            		<textarea class="cad_enq" style="width: 500px; height: 75px;" type='text' name='<?php echo "text_".$result[$i]['per_cod']."" ?>' id='text_".$i."' cols="20" rows="3" ></textarea>
            	</div>
 <?php
 		}else if ($result[$i]['per_tipo'] == 1){
 ?>
 
-			<div class="linha">
-           		<div style="width: 100%; margin-top: 8px; margin-left:0px; margin-bottom:5px;" class="coluna"><?php echo $n." - ".utf8_encode($result[$i]['per_desc']) ?></div><br/>
+			<div class="linha" style="margin-top: 20px;">
+           		<div style="width: 100%; margin-top: 8px; margin-left:0px; margin-bottom:5px;" class="coluna"><?php echo $n." - ".$result[$i]['per_desc'] ?></div><br/>
            		<?php
            			$sql = "select o.op_desc from
 							(select op.op_cod from
@@ -49,12 +73,12 @@
 				<?php
 					}
 				?>
-				<input style="margin-top:10px;" type="submit" value="Enviar resposta">	
            	</div>
 <?php
 		}				
 	}
 ?>
+<input style="margin-top:10px;" type="submit" value="Enviar resposta">	
 </form>
 
 

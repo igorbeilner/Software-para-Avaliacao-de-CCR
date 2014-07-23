@@ -85,14 +85,14 @@
 	?>
                     <div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
                         <div class="linha_sol" style="width: 100%;">
-                                <div class="coluna" style="float:left; width: 200px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo utf8_encode($aux[$j]['dis_nome']);?></a></div>
-                                <div class="coluna" style="float:left; width: 200px;"><?php echo utf8_encode($aux[$j]['pro_nome']);?></div>
+                                <div class="coluna" style="float:left; width: 200px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo $aux[$j]['dis_nome'];?></a></div>
+                                <div class="coluna" style="float:left; width: 200px;"><?php echo $aux[$j]['pro_nome'];?></div>
                                 <?php if ($aux[$j]['enq_status'] == 0){?>
                                     <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Desativa</div>
                                 <?php }else if($aux[$j]['enq_status'] == 1){?>
                                     <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Ativa</div>
                                 <?php } ?>
-                                <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo utf8_encode($resp[0]['enq_num_resp'])."/".utf8_encode($resp[0]['enq_num_resp_esp']);?></div>
+                                <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo $resp[0]['enq_num_resp']."/".$resp[0]['enq_num_resp_esp'];?></div>
                                 <div class="coluna" style="float:left; width: 50px; margin-left:70px;"><?php echo $per."%";?></div>
                                 <div style="clear: both;"></div>
                         </div>

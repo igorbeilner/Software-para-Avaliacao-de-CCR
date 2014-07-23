@@ -57,14 +57,14 @@
 	</head>
 	<body>
     	<img id="selo" src="application/images/logo_fixa.png" style="position:fixed; top:500px; cursor:pointer;" onclick="topo();" title="Voltar ao Topo" />
-		<div id="geral">
+		<div id="geral" style="width:940px;" >
   			<div id="topo">
 				<?php require_once 'application/incs/top_enquete.inc.php';?>
   			</div>
 			<div style="clear:both;"></div>
 
   			<div id="container">    
-    			<div id="conteudo" style="width:100%; border-radius: 10px;">
+    			<div id="conteudo" style="width:900px; border-radius: 10px;">
 					<?php 
                       require_once 'application/'.$_GET['module'].'/controller/'.$_GET['module'].'_controller.php';
                     ?>
@@ -72,7 +72,7 @@
     			<div style="clear:both;"></div>
   			</div>
 			<div style="clear:both;"></div>
-            <div id="rodape">
+            <div id="rodape" style="width:900px;">
                 <br />
                 <?php require_once 'application/incs/foot.inc.php';?>
             </div>

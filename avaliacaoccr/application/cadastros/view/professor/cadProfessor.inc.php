@@ -20,6 +20,15 @@
 				</div>
 			<div style="clear: both;"></div>  
 		</div>
+		<!--cpf-->
+		<div class="linha">
+			<div style="width: 190px " class="coluna">CPF:</div>
+				<div style="clear: both;"></div>
+				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
+					<input name="pro_cpf" id="pro_cpf" type="text" size="61" placeholder="Número do CPF" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
+				</div>
+			<div style="clear: both;"></div>  
+		</div>
 		 
 		<br/><br/>
 		 <!-- Botão Salvar -->
@@ -46,6 +55,10 @@ function valida_form(){
 		if (document.getElementById('pro_siape').value == ''){ 
 			mensagem = "É necessário preencher o número do siape!";
 			id       = "pro_siape";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else if (document.getElementById('pro_cpf').value == ''){ 
+			mensagem = "É necessário preencher o número do cpf!";
+			id       = "pro_cpf";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		
 		}else{

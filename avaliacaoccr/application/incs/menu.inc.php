@@ -1,4 +1,4 @@
-<!--------------------------- CADASTROS -------------------------------------->
+<!-- ------------------------- CADASTROS ------------------------------------ -->
 <?php 
 	if($_SESSION['userPermissao'] == 1){ // ADM
 ?>
@@ -14,6 +14,9 @@
             </ul>  
 			<ul <?php if($_GET['module'] == 'cadastra_disciplina'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=cadastros&acao=cadastra_disciplina' >Cadastrar disciplina</a></li>						
+            </ul> 
+            <ul <?php if($_GET['module'] == 'alternativa'){ echo 'class="selected"';}?>>                
+                <li><a href='?module=cadastros&acao=cadastra_alternativa' >Cadastrar alternativa</a></li>                     
             </ul> 
 			 <ul <?php if($_GET['module'] == 'about'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=about&acao=about' >Sobre</a></li>						

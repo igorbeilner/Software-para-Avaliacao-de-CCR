@@ -1,3 +1,5 @@
+<script src="application/script/js/mask.js"></script>
+
 <?php 
 	$qtd_perg  = 50;
 	$qtd_alter = 10;
@@ -29,10 +31,27 @@
 		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
 	}	
 
+	$sql = "select * from professor";
+	$professores = $data->find('dynamic', $sql);
+
+	$sql = "select * from disciplina";
+	$disciplinas = $data->find('dynamic', $sql);
+
 ?>
 
 
 <div id="table">
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+BOTÕES DE NOVA ENQUETE E IMPORTAR ENQUETE //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<div class="coluna" id="escolha_enquete">
+	<a onclick='mostra_enquete(0);' style=' margin-left: 120px;'><img src='application/images/import_enquete.png' style='cursor:pointer;'></a>
+	<a onclick='mostra_enquete(1);' style=' margin-left: 50px;'><img src='application/images/nova_enquete.png' style='cursor:pointer;'></a>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+AQUI É A NOVA ENQUETE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<div id="cadastro_enquete" style="display:none;">
 	<h2>Cadastro de Enquete</h2>
     <form action="?module=cadastros&acao=gravar_enquete" id="frmCadastro" method="post">        
         <div class="linha">
@@ -168,8 +187,8 @@
 				echo "</div>";
 
 			echo "</div>";
-		}		
-?>
+		}
+?>	
 
    		<!-- Seleciona o tipo da nova pergunta-->
         <div class="linha">
@@ -202,28 +221,108 @@
             <div style="clear: both;"></div>           
 		</div>        
 		
+
+		<?php
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////AQUI FICA O SELECT PARA PROFESSORES E DISCIPLINA//////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		echo "<div class='linha' style='width:600px; margin-top: 50px;'>";
+		echo "<div class='coluna' style='width: 600px;' id='prof_cab'> Professores associados: </div>";
+		for ($i = 0; $i < 20; $i++){
+			if ($i == 0)
+				echo "<div id='pro_disc_".$i."' style='margin-left:10px;'>";
+			else
+				echo "<div id='pro_disc_".$i."' style='display:none; margin-left:10px;'>";
+				echo "<div style='clear: both;'></div>";
+				echo "<div class='coluna' style='width:250px; margin-top: 10px;'> Professor: </div>";
+				echo "<div class='coluna' style='width:250px; margin-left: 20px; margin-top: 10px;'> Disciplina: </div>";
+				echo "<div style='clear: both;'></div>";
+				
+				echo "<div class='coluna' > ";
+					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					echo "<select name='pro_".$i."' id='pro_option_".$i."' class='cad_enq' style='width:250px;' >";
+						echo "<option value='0' >SELECIONE</option>";
+							for($k=0; $k< count($professores); $k++){
+								echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";	
+							}		
+						echo "</select>";						
+					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
+				echo "</div>";
+
+				echo "<div class='coluna' > ";
+					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					echo "<select name='disc_".$i."' id='disc_option_".$i."' class='cad_enq' style='width:250px; margin-left: 20px;' >";
+						echo "<option value='0' >SELECIONE</option>";
+							for($k=0; $k< count($disciplinas); $k++){
+								echo "<option value='".$disciplinas[$k]['dis_cod']."' >".$disciplinas[$k]['dis_nome']."</option>";	
+							}		
+						echo "</select>";						
+					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
+				echo "</div>";
+				echo "<a onclick='delete_prof_disc(".$i.");' ><img src='application/images/delete.png' style='cursor:pointer; margin-top:10px; margin-left:10px;' /></a>";
+			echo "</div>";
+		}
+		echo "</div>";
+		echo '<div class="coluna" style="margin-top: 20px; margin-left: 10px;" id="add_prof_disc"><img src="application/images/add_prof.png" onclick="add();" style="cursor:pointer;" /></div>';
+		echo "<div style='clear: both;'></div>";	
+		?>
+
         <br /><br />	
-		<div class="coluna"><img src="application/images/nova_pergunta.png" onclick="ativa_tipo_pergunta();" /></div>
-		<div class="coluna"><img src="application/images/importa_pergunta.png" onclick="ativa_btn_importar();" style='margin-left:3px;' /></div><br/><br/><br/>
+		<div class="coluna"><img src="application/images/nova_pergunta1.png" onclick="ativa_tipo_pergunta();" style="cursor:pointer;" /></div>
+		<div class="coluna"><img src="application/images/import_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' /></div><br/><br/><br/>
 
 		<!-- Envia o total de perguntas -->	
 		<input type='hidden' name='total_perg' value='<?php echo $qtd_perg; ?>' />
 		<!-- Envia a quantidade de perguntas criadas -->
 		<input type='hidden' name='qtd_perg' id='qtd_perg' />
-        
+        <!-- Envia quantidade de professores e disciplinas add -->
+        <input type='hidden' name='qtd_pd' id='qtd_pd' />
+
         <!-- Envia VETOR de perguntas_opcoes -->
         <input type="hidden" name="perg_alter" id="perg_alter" />
 
         <!-- Botão Salvar -->
-        <div class="coluna">
+        <div class="coluna" style="margin-top: 10px;">
             <a onclick="valida_form();" href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none;'/></a>
         </div>  
         
         <!-- Botão Cancelar -->        
-        <div class="coluna" >
+        <div class="coluna" style="margin-top: 10px; margin-left: 2px;">
             <a href="?module=cadastros&acao=lista_usuario"><img src="application/images/cancelar.png" /></a>
         </div>
 	</form>		
+	</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+AQUI APARECE A ENQUETE IMPORTADA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <div id="import_enquete" style="display:none;">
+    <?php
+		//mostra as enquetes existentes
+			$sql = "select e.enq_nome, e.enq_cod
+					from enquete as e";
+					
+			$result = $data->find('dynamic', $sql);
+			
+			echo "<div id='cab_enq' class='listagem' style='margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;'>
+					<div class='linha' style='width: 100%;'>	
+						<div class='coluna' style='float:left; width:300px; font-weight:bold; color:#000;'>Nome da Enquete</div>
+						<div style='clear: both;'></div>
+					</div>
+				</div>";	
+			
+			for ($i = 0; $i < count($result); $i++){
+				echo '<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
+						<div class="linha_sol" style="width: 100%;">';
+							$cod_enq = $result[$i]['enq_cod'];
+							echo '<div class="coluna" style="float:left; width: 300px;"><a href="?module=cadastros&acao=import_enquete&enq='.$result[$i]['enq_cod'].'">'.utf8_encode($result[$i]["enq_nome"]).'</a></div>';
+						echo "<div style='clear: both;'></div>";
+					echo "</div>";
+				echo "</div>";
+			}	
+	?>	
+    </div>
 </div>
 
 <script>
@@ -234,7 +333,66 @@
 	for (i = 1; i <= 120; i++){
 		perguntas.push(0);	
 	}
+	var num_pd = 1;
+	var qtd_prof_disc = 20;
 
+	function select_prof_disc(){
+		document.getElementById("pro_disc_"+num_pd).style.display = "block";
+		document.getElementById("add_prof_disc").style.display = "block";
+		num_pd++;
+	}
+
+	
+	function add(){
+		document.getElementById("pro_disc_"+num_pd).style.display = "block";
+		num_pd++;
+	}
+
+	function delete_prof_disc(indice){
+		var i, next, desc;
+		if (indice != 0){
+			if (indice < num_pd - 1){
+				for (i = indice; i < qtd_prof_disc - 1; i++){
+					next = i+1;
+					desc = document.getElementById("pro_option_"+next).value;
+					document.getElementById("pro_option_"+i).value = desc;
+					desc = document.getElementById("disc_option_"+next).value;
+					document.getElementById("disc_option_"+i).value = desc;
+				}
+			}
+
+			var index = num_pd-1;
+			document.getElementById("pro_option_"+index).value = "0";
+			document.getElementById("disc_option_"+index).value = "0";
+			document.getElementById("pro_disc_"+index).style.display = "none";
+			num_pd--;
+
+			if (num_pd == 0){
+				document.getElementById("add_prof_disc").style.display = "none";
+			}
+		}else{
+			alert("É necessário ter pelo menos um professor associado!");
+		}
+	}
+
+	function conta_prof_disc(){
+		var i, qtd = 0;
+		for (i = 0; i < qtd_prof_disc; i++){
+			if (document.getElementById("pro_option_"+i).value != "0"){
+				qtd++;
+			}
+		}
+		return qtd;
+	}
+
+	function mostra_enquete(tipo){
+		document.getElementById("escolha_enquete").style.display = "none";
+		if (tipo == 1){
+			document.getElementById("cadastro_enquete").style.display = "block";
+		}else{
+			document.getElementById("import_enquete").style.display = "block";
+		}
+	}
 
 	function conta_perguntas(){
 		var total = "<?php echo $qtd_perg; ?>";
@@ -274,7 +432,6 @@
 
  	function delete_alter(indice_pergunta, indice){
  		document.getElementById("import_alter_"+indice_pergunta+"_"+indice).style.display = "none";	
-
  	}
 	
 	
@@ -308,26 +465,18 @@
 		document.getElementById("alter_"+indice_pergunta+"_"+perguntas[indice_pergunta]).style.display = "block";
 	}
 	
-	function delete_pergunta_texto(indice_pergunta){
-		//num_perg--;
-		document.getElementById("desc_"+indice_pergunta).value = "";
-		document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
-		
-	}
-	
-	function delete_pergunta(indice_pergunta, tipo){
+	function delete_pergunta(indice_pergunta, tipo, enquete_import, importada){
 		var i;
 		var qtd = "<?php echo $qtd_perg; ?>";
 		//num_perg--;
 		if (tipo == 0){ //texto
-
 			document.getElementById("desc_"+indice_pergunta).value = "";
 			document.getElementById("tipo_texto_"+indice_pergunta).style.display = "none";
 		}else if (tipo == 1){ //escala
 			// excluir cabeçalho e botões....
 			document.getElementById("tipo_unica_escolha_"+indice_pergunta).style.display = "none";
 			document.getElementById("desc_escolha_"+indice_pergunta).value = "";
-
+	
 			// excluindo alternativas da pergunta
 			for(i = 1; i <= perguntas[indice_pergunta]; i++){
 				document.getElementById("alter_"+indice_pergunta+"_"+i).value = "";			
@@ -350,12 +499,12 @@
 		if (indice_alter < perguntas[indice_perg]){
 			for (i = indice_alter; i < perguntas[indice_perg]; i++){
 				next = i+1;
-				desc_alter = document.getElementById("desc_alter_"+indice_perg+"_"+next).value;
-				document.getElementById("desc_alter_"+indice_perg+"_"+i).value = desc_alter;
+				desc_alter = document.getElementById("option_"+indice_perg+"_"+next).value;
+				document.getElementById("option_"+indice_perg+"_"+i).value = desc_alter;
 			}
 		}
 
-		document.getElementById("alter_"+indice_perg+"_"+perguntas[indice_perg]).value = "";
+		document.getElementById("option_"+indice_perg+"_"+perguntas[indice_perg]).value = "0";
 		document.getElementById("alter_"+indice_perg+"_"+perguntas[indice_perg]).style.display = "none";	
 		perguntas[indice_perg]--;
 	}
@@ -371,53 +520,33 @@
 	
 	function clone(indice_pergunta, type){
 		var desc_perg;
-		num_perg += 1;
+		num_perg++;
 		if (type == 1){ // ESCALA
 			document.getElementById("tipo_unica_escolha_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				
 			document.getElementById("tipo_pergunta_sel").style.display = "none";
-			
+				
 			desc_perg = document.getElementById("desc_escolha_"+indice_pergunta).value;
 			document.getElementById("desc_escolha_"+num_perg).value = desc_perg;
-			
+				
 			var i;
 			for (i = 1; i <= perguntas[indice_pergunta]; i++){
 				document.getElementById("alter_"+num_perg+"_"+i).style.display = "block";
-				desc_perg = document.getElementById("desc_alter_"+indice_pergunta+"_"+i).value;
-				document.getElementById("desc_alter_"+num_perg+"_"+i).value = desc_perg;
+				desc_perg = document.getElementById("option_"+indice_pergunta+"_"+i).value;
+				document.getElementById("option_"+num_perg+"_"+i).value = desc_perg;
 				perguntas[num_perg]++;
 			}
-			
-		}else 
-		if(type == 2){ // ESCALA, CARREGADAS DO BANCO
-			document.getElementById("import_scale_"+num_perg).style.display = "block";			
-			
-			//document.getElementById("selecao_tipo_banco").value = "";	
-			//document.getElementById("tipo_pergunta_cab_banco").style.display = "none";				
-			//document.getElementById("tipo_pergunta_sel_banco").style.display = "none";
-			
-			desc_perg = document.getElementById("desc_import_scale_"+indice_pergunta).value;
-			document.getElementById("desc_import_scale_"+num_perg).value = desc_perg;
-			
-			var i;
-			for (i = 1; i < perguntas[indice_pergunta]; i++){
-				document.getElementById("alter_"+num_perg+"_"+i).style.display = "block";
-				desc_perg = document.getElementById("alter_"+indice_pergunta+"_"+i).value;
-				document.getElementById("alter_"+num_perg+"_"+i).value = desc_perg;
-				perguntas[num_perg]++;
-			}
-		}else		
-		if(type == 3){ // TEXTO
+				
+		}else if(type == 3){ // TEXTO
 			document.getElementById("tipo_texto_"+num_perg).style.display = "block";
 			document.getElementById("selecao_tipo").value = "";	
 			document.getElementById("tipo_pergunta_cab").style.display = "none";				
 			document.getElementById("tipo_pergunta_sel").style.display = "none";
-			
+				
 			desc_perg = document.getElementById("desc_"+indice_pergunta).value;
 			document.getElementById("desc_"+num_perg).value = desc_perg;	
-		}
-		
+		}	
 		
 	}
 	
@@ -449,6 +578,11 @@
 			id       = "enq_semestre";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else
+		if (document.getElementById('enq_semestre').value.length < 5){ 
+			mensagem = "Campo incompleto!";
+			id       = "enq_semestre";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else
 		if (document.getElementById('enq_data').value == ''){ 
 			mensagem = "É necessário preencher a data da enquete!";
 			id       = "enq_data";
@@ -465,6 +599,9 @@
 			perg_alter = conta_alter();
 			document.getElementById("perg_alter").value = perg_alter;
 			
+			qtd = conta_prof_disc();
+			document.getElementById("qtd_pd").value = qtd;
+
 			document.forms['frmCadastro'].submit();	
 		}
 	}
@@ -502,5 +639,9 @@
 				changeYear: true	
 		});
 	});		
+
+	jQuery(function($){
+		$("#enq_semestre").mask("9999/9");
+	});
 	
 </script>

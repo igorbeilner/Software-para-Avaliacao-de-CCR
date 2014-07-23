@@ -33,7 +33,6 @@
 	vertical-align: middle;
 	font-family: arial, sans-serif;
 	font-size: 13px;
-	margin-left: 25%;
 }
 
 .textarea{
@@ -78,9 +77,10 @@ body{
 	float:left;
 }
 #topo .sair{
-	float:right;
+	float:left;
 	font-weight:bold;
-	margin-top: 10px;
+	margin-top: 32px;
+	margin-left: 15px;
 }
 #topo .sair a{
 	color: #5b5b5b;

@@ -3,12 +3,14 @@
 		
 		case 'gravar_enquete':	
 
-			echo "qtd: ".$_POST['qtd_perg']."<br />";
-			echo "vetor: ".$_POST['perg_alter']."<br />";
+			//echo "qtd: ".$_POST['qtd_perg']."<br />";
+			//echo "vetor: ".$_POST['perg_alter']."<br />";
 
 
 			//echo "vetor: ".$_POST['perg_alter_novo'];
+			$num_enq = $_POST['qtd_pd'];
 
+			//Grava as informações das enquetes no banco
 
 			$aux = explode("/", $_POST['enq_semestre']);
 			$sem_ano = $aux[0];
@@ -21,18 +23,21 @@
 			$res = $data->find('dynamic', $sql);
 
 			$semestre = $res[0]['sem_id'];
-
-			// Tabela ENQUETE
-			$data->tabela = 'enquete';						
 			$_POST['enq_data']         = $utils->formatDate('/', $_POST['enq_data']); // Transformando data p/ gravar no banco			
-			$array['enq_nome']         = addslashes($_POST['enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
-			$array['enq_num_perg']     = $_POST['qtd_perg'];
-			$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
-			$array['enq_semestre']     = $semestre;
-			$array['enq_data']         = $_POST['enq_data'];												
-			$array['enq_status']       = $_POST['enq_status'];															
-			$data->add($array);
 			
+			for ($m = 0; $m < $num_enq; $m++){
+
+				// Tabela ENQUETE
+				$data->tabela = 'enquete';						
+				$array['enq_nome']         = addslashes($_POST['enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+				$array['enq_num_perg']     = $_POST['qtd_perg'];
+				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
+				$array['enq_semestre']     = $semestre;
+				$array['enq_data']         = $_POST['enq_data'];												
+				$array['enq_status']       = $_POST['enq_status'];															
+				$data->add($array);
+			}
+
 			// Tabela PERGUNTAS
 			$data->tabela = 'perguntas';
 			$qtd_nova = 0;
@@ -59,70 +64,107 @@
 					$cod = explode(" - ", $_POST['escala_ac_'.$i]);	
 					array_push($cod_car, $cod[0]);
 					$qtd_car++;
-
 				}
 				if($_POST['texto_ac_'.$i] != ""){ // Texto
 					$cod = explode(" - ", $_POST['texto_ac_'.$i]);	
 					array_push($cod_car, $cod[0]);
 					$qtd_car++;
 				}
-
 			}
 
-			// Código da enquete
-			$sql = "SELECT MAX(enq_cod) AS enq_cod
-					FROM enquete";
-			$enq_cod = $data->find("dynamic", $sql);
+			if ($qtd_nova > 0){
+				// Código das enquetes
+				// Código das novas perguntas
+				$sql = "SELECT enq_cod
+						FROM enquete
+						ORDER BY enq_cod DESC
+						LIMIT 0,".$num_enq;
+				$enqs = $data->find("dynamic", $sql);
 
-			// Código das novas perguntas
-			$sql = "SELECT per_cod
-					FROM perguntas
-					ORDER BY per_cod DESC
-					LIMIT 0, ".$qtd_nova;
-			$pergs_novas_cod = $data->find("dynamic", $sql);
+				// Código das novas perguntas
+				$sql = "SELECT per_cod
+						FROM perguntas
+						ORDER BY per_cod DESC
+						LIMIT 0, ".$qtd_nova;
+				$pergs_novas_cod = $data->find("dynamic", $sql);
 
-			// Grava na tabela enquete_perguntas
-			// Novas perguntas
-			$data->tabela = "enquete_perguntas";
-			for($i=0; $i< $qtd_nova; $i++){
-				$array_ep['enq_cod'] = $enq_cod[0]['enq_cod'];		
-				$array_ep['per_cod'] = $pergs_novas_cod[$i]['per_cod'];
-				$data->add($array_ep);
-			}
-			// Perguntas carregadas
-			for($i=0; $i< $qtd_car; $i++){
-				$array_ep2['enq_cod'] = $enq_cod[0]['enq_cod'];		
-				$array_ep2['per_cod'] = $cod_car[$i];
-				$data->add($array_ep2);
-			}
+				//Relaciona as perguntas com as enquetes
+				$data->tabela = "enquete_perguntas";
+				echo "numero de enquetes = ".count($enqs);
+				for ($i = 0; $i < count($enq_cod); $i++){
+					// Grava na tabela enquete_perguntas
+					// Novas perguntas
+					for($j=0; $j< $qtd_nova; $j++){
+						echo "<br/>i: ".$i;
+						echo"<br/>j: ".$j;
+						$array_ep['enq_cod'] = $enqs[$i]['enq_cod'];		
+						$array_ep['per_cod'] = $pergs_novas_cod[$j]['per_cod'];
+						$data->add($array_ep);
+					}
+					// Perguntas carregadas
+					for($j=0; $j< $qtd_car; $j++){
+						$array_ep2['enq_cod'] = $enqs[$i]['enq_cod'];		
+						$array_ep2['per_cod'] = $cod_car[$j];
+						$data->add($array_ep2);
+					}
+				}
 
-			// Grava na tabela perguntas_opcoes
-			echo "<br/>qtd_nova: ".$qtd_nova;
-			$sql = "SELECT per_cod
-					FROM perguntas
-					WHERE per_tipo = 1
-					ORDER BY per_cod DESC
-					LIMIT 0, ".$qtd_nova;
-			$pergs_novas_escala = $data->find("dynamic", $sql);
-	
-			$indice = 0;
-			$aux1 = explode (',', $_POST['perg_alter']);
+				// Grava na tabela perguntas_opcoes
+				//echo "<br/>qtd_nova: ".$qtd_nova;
+				$sql = "SELECT per_cod
+						FROM perguntas
+						WHERE per_tipo = 1
+						ORDER BY per_cod DESC
+						LIMIT 0, ".$qtd_nova;
+				$pergs_novas_escala = $data->find("dynamic", $sql);
 			
-			$data->tabela = 'perguntas_opcoes';
-			for($j = sizeof($aux1) - 1; $j >= 0; $j--){
-				$aux = explode('_', $aux1[$j]);
-				$perg = $aux[0];
-				$alter = $aux[1];
-				$aux = explode('_', $aux1[$j-1]);
-				$next_perg = $aux[0];
-				
-				$array_per_opc['per_cod'] = $pergs_novas_escala[$indice]['per_cod'];
-				$array_per_opc['op_cod'] = $alter;
-				$data->add($array_per_opc);
-				
-				if ($perg != $next_perg) $indice++;
+				$indice = 0;
+				$aux1 = explode (',', $_POST['perg_alter']);
+					
+				$data->tabela = 'perguntas_opcoes';
+				for($j = sizeof($aux1) - 1; $j >= 0; $j--){
+					$aux = explode('_', $aux1[$j]);
+					$perg = $aux[0];
+					$alter = $aux[1];
+					$aux = explode('_', $aux1[$j-1]);
+					$next_perg = $aux[0];
+						
+					$array_per_opc['per_cod'] = $pergs_novas_escala[$indice]['per_cod'];
+					$array_per_opc['op_cod'] = $alter;
+					$data->add($array_per_opc);
+						
+					if ($perg != $next_perg) $indice++;
+				}
 			}
 
+			$array_pd = Array();
+
+			$indice = 0;
+			$data->tabela = "enq_disc_prof";
+			for ($i = 0; $i < 20; $i++){
+				if (isset($_POST['pro_'.$i]) && isset($_POST['disc_'.$i])){
+					$array_pd[$indice] = array($_POST['pro_'.$i], $_POST['disc_'.$i]);
+					$indice++;
+					///gravar na tabela enq_prof_disc
+				}
+			}
+
+			echo '<h2 style="text-align: center; margin-top:50px; width: 800px;">ENQUETE GRAVADA COM SUCESSO!</h2>';
+
+			echo "<div class='linha'>";
+			echo "<div class='coluna' style='width: 800px; font-weight:bold; margin-bottom: 20px;'>Links para as enquetes:</div>";
+			for ($i = 0; $i < count($enqs); $i++){
+				echo "<div class='coluna' style='width: 800px;'>";
+					echo "http://localhost/Software-para-Avaliacao-de-CCR/avaliacaoccr/enquete-".$enqs[$i]['enq_cod'];
+				echo "</div>";
+				$array_edp['enq_cod'] = $enqs[$i]['enq_cod'];
+				$array_edp['pro_cod'] = $_POST['pro_'.$i];
+				$array_edp['dis_cod'] = $_POST['disc_'.$i];
+				$data->add($array_edp);
+			}
+			echo "</div>";
+
+			
 
 
 			//echo "<meta http-equiv='Refresh' CONTENT='0;URL=?module=cadastros&acao=lista_cargo'>";	

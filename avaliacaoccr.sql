@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Jun-2014 às 03:35
+-- Generation Time: 23-Jul-2014 às 21:06
 -- Versão do servidor: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -41,39 +41,39 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 
 CREATE TABLE IF NOT EXISTS `disciplina` (
   `dis_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `dis_nome` char(80) DEFAULT NULL,
+  `dis_nome` char(80) CHARACTER SET utf8 DEFAULT NULL,
   `dis_dominio` int(10) DEFAULT NULL,
   PRIMARY KEY (`dis_cod`),
   KEY `dis_dominio` (`dis_dominio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `disciplina`
 --
 
 INSERT INTO `disciplina` (`dis_cod`, `dis_nome`, `dis_dominio`) VALUES
-(1, 'Computação Gráfica', 1),
-(2, 'Algoritmos e Programação', 1),
-(3, 'Banco de Dados I', 1);
+(5, 'ENGENHARIA DE SOFTWARE I', 3),
+(6, 'COMPUTAÃ‡ÃƒO GRÃFICA', 3),
+(7, 'ALGORITMOS E PROGRAMAÃ‡ÃƒO', 3);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `domínio`
+-- Estrutura da tabela `dominio`
 --
 
-CREATE TABLE IF NOT EXISTS `domínio` (
+CREATE TABLE IF NOT EXISTS `dominio` (
   `dom_id` int(10) NOT NULL AUTO_INCREMENT,
-  `dom_nome` varchar(40) NOT NULL,
-  `dom_desc` varchar(200) NOT NULL,
+  `dom_nome` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `dom_desc` varchar(200) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`dom_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Extraindo dados da tabela `domínio`
+-- Extraindo dados da tabela `dominio`
 --
 
-INSERT INTO `domínio` (`dom_id`, `dom_nome`, `dom_desc`) VALUES
+INSERT INTO `dominio` (`dom_id`, `dom_nome`, `dom_desc`) VALUES
 (1, 'Específico', 'bla bla bla'),
 (2, 'Comum', 'alalal'),
 (3, 'Conexo', 'hahahaha');
@@ -86,7 +86,7 @@ INSERT INTO `domínio` (`dom_id`, `dom_nome`, `dom_desc`) VALUES
 
 CREATE TABLE IF NOT EXISTS `enquete` (
   `enq_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `enq_nome` char(40) NOT NULL,
+  `enq_nome` char(40) CHARACTER SET utf8 NOT NULL,
   `enq_num_perg` int(10) unsigned DEFAULT NULL,
   `enq_num_resp_esp` int(11) NOT NULL,
   `enq_num_resp` int(10) unsigned DEFAULT NULL,
@@ -95,15 +95,20 @@ CREATE TABLE IF NOT EXISTS `enquete` (
   `enq_status` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`enq_cod`),
   KEY `enq_semestre` (`enq_semestre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `enquete`
 --
 
 INSERT INTO `enquete` (`enq_cod`, `enq_nome`, `enq_num_perg`, `enq_num_resp_esp`, `enq_num_resp`, `enq_semestre`, `enq_data`, `enq_status`) VALUES
-(1, 'Enquete 1', 10, 100, 50, 1, '2014-05-15', 1),
-(2, 'Enquete 2', 10, 100, 10, 2, '2014-05-15', 0);
+(6, 'NOVA ENQUETE', 0, 200, NULL, 2, '2014-07-01', 1),
+(7, 'Nova enquete de teste', 2, 100, NULL, 1, '2014-07-02', 1),
+(8, 'Nova enquete de teste', 2, 100, NULL, 1, '0000-00-00', 1),
+(9, 'Nova enquete de teste', 2, 100, NULL, 1, '2014-07-02', 1),
+(10, 'Nova enquete de teste', 2, 100, NULL, 1, '2014-07-02', 1),
+(11, 'Nova enquete de teste', 2, 100, NULL, 1, '2014-07-02', 1),
+(12, 'Nova enquete de teste', 2, 100, NULL, 1, '2014-07-02', 1);
 
 -- --------------------------------------------------------
 
@@ -118,21 +123,7 @@ CREATE TABLE IF NOT EXISTS `enquete_perguntas` (
   PRIMARY KEY (`epe_cod`),
   KEY `enq_cod` (`enq_cod`),
   KEY `per_cod` (`per_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
-
---
--- Extraindo dados da tabela `enquete_perguntas`
---
-
-INSERT INTO `enquete_perguntas` (`epe_cod`, `enq_cod`, `per_cod`) VALUES
-(4, 1, 1),
-(5, 1, 2),
-(6, 1, 3),
-(7, 2, 4),
-(8, 2, 1),
-(9, 2, 2),
-(10, 2, 3),
-(11, 2, 5);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 -- --------------------------------------------------------
 
@@ -149,33 +140,20 @@ CREATE TABLE IF NOT EXISTS `enq_disc_prof` (
   KEY `dis_cod` (`dis_cod`),
   KEY `enq_cod` (`enq_cod`),
   KEY `edp_pro` (`pro_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `enq_disc_prof`
 --
 
 INSERT INTO `enq_disc_prof` (`edi_cod`, `enq_cod`, `dis_cod`, `pro_cod`) VALUES
-(6, 1, 1, 2),
-(7, 1, 2, 1),
-(8, 1, 3, 2),
-(9, 2, 1, 3),
-(10, 2, 2, 2);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `links`
---
-
-CREATE TABLE IF NOT EXISTS `links` (
-  `lin_cod` int(11) NOT NULL AUTO_INCREMENT,
-  `enq_cod` int(11) NOT NULL,
-  `dis_cod` int(11) NOT NULL,
-  `pro_cod` int(11) NOT NULL,
-  `lin_desc` int(11) NOT NULL,
-  PRIMARY KEY (`lin_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+(6, 6, 5, 9),
+(7, 8, 6, 6),
+(8, 7, 5, 9),
+(9, 10, 6, 6),
+(10, 9, 5, 9),
+(11, 12, 6, 6),
+(12, 11, 5, 9);
 
 -- --------------------------------------------------------
 
@@ -185,20 +163,20 @@ CREATE TABLE IF NOT EXISTS `links` (
 
 CREATE TABLE IF NOT EXISTS `opcoes` (
   `op_cod` int(10) NOT NULL AUTO_INCREMENT,
-  `op_desc` varchar(30) NOT NULL,
+  `op_desc` varchar(30) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`op_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `opcoes`
 --
 
 INSERT INTO `opcoes` (`op_cod`, `op_desc`) VALUES
-(1, 'bom'),
-(2, 'excelente'),
-(3, 'regular'),
-(4, 'ruim'),
-(5, 'péssimo');
+(8, 'excelente'),
+(9, 'bom'),
+(10, 'regular'),
+(11, 'ruim'),
+(12, 'pÃ©ssimo');
 
 -- --------------------------------------------------------
 
@@ -208,21 +186,22 @@ INSERT INTO `opcoes` (`op_cod`, `op_desc`) VALUES
 
 CREATE TABLE IF NOT EXISTS `perguntas` (
   `per_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `per_desc` text NOT NULL,
+  `per_desc` text CHARACTER SET utf8 NOT NULL,
   `per_tipo` int(11) NOT NULL,
   PRIMARY KEY (`per_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Extraindo dados da tabela `perguntas`
 --
 
 INSERT INTO `perguntas` (`per_cod`, `per_desc`, `per_tipo`) VALUES
-(1, 'e aqui vamos com mais um teste', 0),
-(2, 'quantos patos tem na lagoa?', 0),
-(3, 'Esta é uma pergunta de teste, ok?', 0),
-(4, 'bla bla bla... bla?', 0),
-(5, 'O que vc acha deste teste?', 1);
+(23, 'pergunta de teste', 1),
+(24, 'testando outra pergunta', 0),
+(25, 'pergunta de teste', 1),
+(26, 'testando outra pergunta', 0),
+(27, 'pergunta de teste', 1),
+(28, 'testando outra pergunta', 0);
 
 -- --------------------------------------------------------
 
@@ -237,18 +216,22 @@ CREATE TABLE IF NOT EXISTS `perguntas_opcoes` (
   PRIMARY KEY (`pop_cod`),
   KEY `per_cod` (`per_cod`,`op_cod`),
   KEY `op_cod` (`op_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Extraindo dados da tabela `perguntas_opcoes`
 --
 
 INSERT INTO `perguntas_opcoes` (`pop_cod`, `per_cod`, `op_cod`) VALUES
-(1, 5, 1),
-(2, 5, 2),
-(3, 5, 3),
-(4, 5, 4),
-(5, 5, 5);
+(35, 23, 9),
+(33, 23, 10),
+(34, 23, 12),
+(38, 25, 9),
+(36, 25, 10),
+(37, 25, 12),
+(41, 27, 9),
+(39, 27, 10),
+(40, 27, 12);
 
 -- --------------------------------------------------------
 
@@ -258,21 +241,21 @@ INSERT INTO `perguntas_opcoes` (`pop_cod`, `per_cod`, `op_cod`) VALUES
 
 CREATE TABLE IF NOT EXISTS `professor` (
   `pro_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pro_nome` char(40) DEFAULT NULL,
-  `pro_siape` char(10) NOT NULL,
-  `pro_senha` char(20) DEFAULT NULL,
+  `pro_nome` char(40) CHARACTER SET utf8 DEFAULT NULL,
+  `pro_siape` char(10) CHARACTER SET utf8 NOT NULL,
   `pro_permissao` int(11) NOT NULL,
+  `pro_cpf` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`pro_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `professor`
 --
 
-INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_senha`, `pro_permissao`) VALUES
-(1, 'Denio Duarte', '123', '', 1),
-(2, 'Fernando Bevilacqua', '321', NULL, 2),
-(3, 'Aluno Fulano', '456', '456', 3);
+INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_permissao`, `pro_cpf`) VALUES
+(6, 'Aline Menin', '', 1, '7758791930'),
+(7, 'Ramon Perondi', '123', 2, '7295445919'),
+(9, 'GRAZIELA TONIN', '123', 2, '1234');
 
 -- --------------------------------------------------------
 
@@ -282,41 +265,14 @@ INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_senha`, `pro_p
 
 CREATE TABLE IF NOT EXISTS `respostas` (
   `res_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `res_desc` text,
+  `res_desc` text CHARACTER SET utf8,
   `per_cod` int(10) unsigned NOT NULL,
   `alu_cod` int(10) unsigned DEFAULT NULL,
-  `res_time` varchar(50) DEFAULT NULL,
+  `res_time` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`res_cod`),
   KEY `per_cod` (`per_cod`),
   KEY `alu_cod` (`alu_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
-
---
--- Extraindo dados da tabela `respostas`
---
-
-INSERT INTO `respostas` (`res_cod`, `res_desc`, `per_cod`, `alu_cod`, `res_time`) VALUES
-(1, 'kkkkkkkkkk, estou testando o software', 3, NULL, '23/06/2014 21:11'),
-(2, 'hehehehe, mais uma resposta aleatória', 4, NULL, '23/06/2014 21:10'),
-(3, 'shaiuhsuiahsaiuhsiuahiushaiuhsiuahs', 1, NULL, '23/06/2014 21:10'),
-(4, 'lalalalala, testandooo', 2, NULL, '23/06/2014 21:10'),
-(5, 'ruim', 5, NULL, '23/06/2014 21:10'),
-(6, 'bom', 5, NULL, '23/06/2014 20:00'),
-(7, 'ruim', 5, NULL, '23/06/2014 21:00'),
-(8, 'excelente', 5, NULL, '23/06/2014 22:00'),
-(9, 'regular', 5, NULL, '23/06/2014 21:54'),
-(10, 'péssimo', 5, NULL, '23/06/2014 21:55'),
-(11, 'ruim', 5, NULL, '23/06/2014 21:45'),
-(12, 'bom', 5, NULL, '23/06/2014 21:44'),
-(13, 'shiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocio shiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocioshiuhsuihaiushiuahsaiuhsiauhisuahia resposta grande pra testar o negocio', 1, NULL, '23/06/2014 21:10'),
-(14, 'lalalalala só outra resposta', 1, NULL, '23/06/2014 21:10'),
-(15, 'bla bla bla', 1, NULL, '23/06/2014 21:10'),
-(16, 'outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla outra resposta grande bla bla bla', 1, NULL, '23/06/2014 21:10'),
-(17, 'siuahiushaiuhushaiusha teste', 1, NULL, '23/06/2014 21:10'),
-(18, 'ok, entendido.. hhaha', 3, NULL, '23/06/2014 21:10'),
-(19, 'testando....', 3, NULL, '23/06/2014 21:10'),
-(20, 'shiuhsiuhaiushuiahiusah mais um teste', 3, NULL, '23/06/2014 21:10'),
-(21, 'uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs uma resposta grande..... mais linhas ... hsiuahsiuhaiushuiahsiuahs ', 3, NULL, '23/06/2014 21:10');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
@@ -349,7 +305,7 @@ INSERT INTO `semestre` (`sem_id`, `sem_ano`, `sem_parte`) VALUES
 -- Limitadores para a tabela `disciplina`
 --
 ALTER TABLE `disciplina`
-  ADD CONSTRAINT `disciplina_ibfk_1` FOREIGN KEY (`dis_dominio`) REFERENCES `domínio` (`dom_id`);
+  ADD CONSTRAINT `disciplina_ibfk_1` FOREIGN KEY (`dis_dominio`) REFERENCES `dominio` (`dom_id`);
 
 --
 -- Limitadores para a tabela `enquete`
@@ -368,9 +324,9 @@ ALTER TABLE `enquete_perguntas`
 -- Limitadores para a tabela `enq_disc_prof`
 --
 ALTER TABLE `enq_disc_prof`
-  ADD CONSTRAINT `enq_disc_prof_ibfk_3` FOREIGN KEY (`pro_cod`) REFERENCES `professor` (`pro_cod`),
   ADD CONSTRAINT `enq_disc_prof_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
-  ADD CONSTRAINT `enq_disc_prof_ibfk_2` FOREIGN KEY (`dis_cod`) REFERENCES `disciplina` (`dis_cod`);
+  ADD CONSTRAINT `enq_disc_prof_ibfk_2` FOREIGN KEY (`dis_cod`) REFERENCES `disciplina` (`dis_cod`),
+  ADD CONSTRAINT `enq_disc_prof_ibfk_3` FOREIGN KEY (`pro_cod`) REFERENCES `professor` (`pro_cod`);
 
 --
 -- Limitadores para a tabela `perguntas_opcoes`

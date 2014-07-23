@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="New document 1">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="2369.3883"
+     inkscape:cy="355.58061"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3156"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Informatica\Desktop\sie.png"
+         rx="6.8426552"
+         ry="6.8426552"
+         y="610.68054"
+         x="1889.6688"
+         height="94"
+         width="94"
+         id="rect4570"
+         style="fill:#026331;fill-opacity:1;stroke:none" />
+      <g
+         style="fill:#ffffff"
+         transform="matrix(2.9615498,0,0,2.9615498,1906.2615,624.89026)"
+         id="g3">
+        <polygon
+           id="polygon5"
+           points="1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 "
+           style="fill:#ffffff;fill-rule:evenodd" />
+        <polygon
+           id="polygon7"
+           points="14.438,22.144 14.438,17.266 9.242,17.266 9.242,13.729 14.438,13.729 14.438,8.852 18.224,8.852 18.224,13.729 23.429,13.729 23.429,17.266 18.224,17.266 18.224,22.144 "
+           style="fill:#ffffff;fill-rule:evenodd" />
+      </g>
+    </g>
+    <g
+       id="g3162"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#026331;fill-opacity:1;stroke:none"
+         id="rect3128"
+         width="94"
+         height="94"
+         x="2029.6688"
+         y="610.68054"
+         ry="6.8426552"
+         rx="6.8426552"
+         inkscape:export-filename="C:\Users\Informatica\Desktop\sie.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <g
+         transform="matrix(1,0,0,1.0027691,2.3861589,-0.93531704)"
+         id="g3152">
+        <polygon
+           style="fill:#ffffff;fill-rule:evenodd"
+           points="15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 "
+           id="polygon3132"
+           transform="matrix(2.9615498,0,0,2.9615498,2044.0398,624.09717)" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 2114.8487,683.00464 c -0.4434,0 -0.8499,-0.25364 -1.0241,-0.66989 l 0,0 c -0.1279,-0.30202 -3.3224,-7.46733 -15.2658,-8.88647 -2.4879,-0.30202 -5.4674,-0.45691 -9.0859,-0.484 v 8.93099 c 0,0.41238 -0.2227,0.78604 -0.5886,0.98352 -0.364,0.18973 -0.7996,0.16262 -1.1384,-0.0638 l -22.9461,-15.44581 c -0.3097,-0.20714 -0.4917,-0.55564 -0.4917,-0.92155 0,-0.36979 0.182,-0.70667 0.4917,-0.92349 l 22.9558,-15.44774 c 0.3388,-0.23427 0.7706,-0.24976 1.1384,-0.0561 0.3679,0.19748 0.5867,0.57114 0.5867,0.9719 v 8.31146 c 4.9911,0.65051 26.4734,4.511 26.4734,22.60144 0,0.52467 -0.3698,0.98352 -0.8886,1.08806 -0.071,0.0116 -0.1472,0.0116 -0.2168,0.0116 z"
+           id="path3-6"
+           style="fill:#ffffff" />
+      </g>
+    </g>
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete.png"
+       rx="6.8426552"
+       ry="6.8426552"
+       y="610.68054"
+       x="1889.6688"
+       height="94"
+       width="94"
+       id="rect3170"
+       style="fill:#026331;fill-opacity:1;stroke:none" />
+    <g
+       style="fill:#ffffff"
+       transform="matrix(2.9615498,0,0,2.9615498,1905.7564,628.47688)"
+       id="g3172"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <polygon
+         id="polygon3174"
+         points="1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 11.935,20.504 "
+         style="fill:#ffffff;fill-rule:evenodd" />
+      <polygon
+         id="polygon3176"
+         points="14.438,17.266 9.242,17.266 9.242,13.729 14.438,13.729 14.438,8.852 18.224,8.852 18.224,13.729 23.429,13.729 23.429,17.266 18.224,17.266 18.224,22.144 14.438,22.144 "
+         style="fill:#ffffff;fill-rule:evenodd" />
+    </g>
+    <rect
+       style="fill:#026331;fill-opacity:1;stroke:none"
+       id="rect3180"
+       width="94"
+       height="94"
+       x="2029.6688"
+       y="610.68054"
+       ry="6.8426552"
+       rx="6.8426552"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="matrix(1,0,0,1.0027691,0.80965413,3.1563767)"
+       id="g3182"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <polygon
+         style="fill:#ffffff;fill-rule:evenodd"
+         points="11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 "
+         id="polygon3184"
+         transform="matrix(2.9615498,0,0,2.9615498,2044.0398,624.09717)" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 2114.8487,683.00464 c -0.4434,0 -0.8499,-0.25364 -1.0241,-0.66989 l 0,0 c -0.1279,-0.30202 -3.3224,-7.46733 -15.2658,-8.88647 -2.4879,-0.30202 -5.4674,-0.45691 -9.0859,-0.484 v 8.93099 c 0,0.41238 -0.2227,0.78604 -0.5886,0.98352 -0.364,0.18973 -0.7996,0.16262 -1.1384,-0.0638 l -22.9461,-15.44581 c -0.3097,-0.20714 -0.4917,-0.55564 -0.4917,-0.92155 0,-0.36979 0.182,-0.70667 0.4917,-0.92349 l 22.9558,-15.44774 c 0.3388,-0.23427 0.7706,-0.24976 1.1384,-0.0561 0.3679,0.19748 0.5867,0.57114 0.5867,0.9719 v 8.31146 c 4.9911,0.65051 26.4734,4.511 26.4734,22.60144 0,0.52467 -0.3698,0.98352 -0.8886,1.08806 -0.071,0.0116 -0.1472,0.0116 -0.2168,0.0116 z"
+         id="path3186"
+         style="fill:#ffffff" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3224"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       transform="matrix(0.57583438,0,0,0.57583438,853.05438,282.54988)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3226"><rect
+           id="rect3228"
+           width="171.78572"
+           height="26.428572"
+           x="1826.4286"
+           y="577.36218"
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'" /></flowRegion><flowPara
+         id="flowPara3230"
+         style="font-size:15.62949371px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'">NOVA ENQUETE</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.57583438,0,0,0.57583438,982.63442,282.54988)"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       id="flowRoot3232"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3234"><rect
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+           y="577.36218"
+           x="1826.4286"
+           height="26.428572"
+           width="235.66818"
+           id="rect3236" /></flowRegion><flowPara
+         style="font-size:15.62949371px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+         id="flowPara3238">IMPORTAR ENQUETE</flowPara></flowRoot>    <g
+       id="g3240"
+       transform="translate(0,120)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#026331;fill-opacity:1;stroke:none"
+         id="rect3242"
+         width="94"
+         height="94"
+         x="1889.6688"
+         y="610.68054"
+         ry="6.8426552"
+         rx="6.8426552"
+         inkscape:export-filename="C:\Users\Informatica\Desktop\sie.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <g
+         id="g3244"
+         transform="matrix(2.9615498,0,0,2.9615498,1906.2615,624.89026)"
+         style="fill:#ffffff">
+        <polygon
+           style="fill:#ffffff;fill-rule:evenodd"
+           points="16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 "
+           id="polygon3246" />
+        <polygon
+           style="fill:#ffffff;fill-rule:evenodd"
+           points="18.224,8.852 18.224,13.729 23.429,13.729 23.429,17.266 18.224,17.266 18.224,22.144 14.438,22.144 14.438,17.266 9.242,17.266 9.242,13.729 14.438,13.729 14.438,8.852 "
+           id="polygon3248" />
+      </g>
+    </g>
+    <g
+       id="g3250"
+       transform="translate(0,120)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\Informatica\Desktop\sie.png"
+         rx="6.8426552"
+         ry="6.8426552"
+         y="610.68054"
+         x="2029.6688"
+         height="94"
+         width="94"
+         id="rect3252"
+         style="fill:#026331;fill-opacity:1;stroke:none" />
+      <g
+         id="g3254"
+         transform="matrix(1,0,0,1.0027691,2.3861589,-0.93531704)">
+        <polygon
+           transform="matrix(2.9615498,0,0,2.9615498,2044.0398,624.09717)"
+           id="polygon3256"
+           points="0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 "
+           style="fill:#ffffff;fill-rule:evenodd" />
+        <path
+           style="fill:#ffffff"
+           id="path3258"
+           d="m 2114.8487,683.00464 c -0.4434,0 -0.8499,-0.25364 -1.0241,-0.66989 l 0,0 c -0.1279,-0.30202 -3.3224,-7.46733 -15.2658,-8.88647 -2.4879,-0.30202 -5.4674,-0.45691 -9.0859,-0.484 v 8.93099 c 0,0.41238 -0.2227,0.78604 -0.5886,0.98352 -0.364,0.18973 -0.7996,0.16262 -1.1384,-0.0638 l -22.9461,-15.44581 c -0.3097,-0.20714 -0.4917,-0.55564 -0.4917,-0.92155 0,-0.36979 0.182,-0.70667 0.4917,-0.92349 l 22.9558,-15.44774 c 0.3388,-0.23427 0.7706,-0.24976 1.1384,-0.0561 0.3679,0.19748 0.5867,0.57114 0.5867,0.9719 v 8.31146 c 4.9911,0.65051 26.4734,4.511 26.4734,22.60144 0,0.52467 -0.3698,0.98352 -0.8886,1.08806 -0.071,0.0116 -0.1472,0.0116 -0.2168,0.0116 z"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <rect
+       style="fill:#44b600;fill-opacity:1;stroke:none"
+       id="rect3260"
+       width="94"
+       height="94"
+       x="1889.6688"
+       y="730.68054"
+       ry="6.8426552"
+       rx="6.8426552"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3262"
+       transform="matrix(2.9615498,0,0,2.9615498,1905.7564,748.47688)"
+       style="fill:#ffffff"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <polygon
+         style="fill:#ffffff;fill-rule:evenodd"
+         points="16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 "
+         id="polygon3264" />
+      <polygon
+         style="fill:#ffffff;fill-rule:evenodd"
+         points="18.224,13.729 23.429,13.729 23.429,17.266 18.224,17.266 18.224,22.144 14.438,22.144 14.438,17.266 9.242,17.266 9.242,13.729 14.438,13.729 14.438,8.852 18.224,8.852 "
+         id="polygon3266" />
+    </g>
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete_hover.png"
+       rx="6.8426552"
+       ry="6.8426552"
+       y="730.68054"
+       x="2029.6688"
+       height="94"
+       width="94"
+       id="rect3268"
+       style="fill:#44b600;fill-opacity:1;stroke:none" />
+    <g
+       id="g3270"
+       transform="matrix(1,0,0,1.0027691,0.80965413,123.15638)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <polygon
+         transform="matrix(2.9615498,0,0,2.9615498,2044.0398,624.09717)"
+         id="polygon3272"
+         points="15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 "
+         style="fill:#ffffff;fill-rule:evenodd" />
+      <path
+         style="fill:#ffffff"
+         id="path3274"
+         d="m 2114.8487,683.00464 c -0.4434,0 -0.8499,-0.25364 -1.0241,-0.66989 l 0,0 c -0.1279,-0.30202 -3.3224,-7.46733 -15.2658,-8.88647 -2.4879,-0.30202 -5.4674,-0.45691 -9.0859,-0.484 v 8.93099 c 0,0.41238 -0.2227,0.78604 -0.5886,0.98352 -0.364,0.18973 -0.7996,0.16262 -1.1384,-0.0638 l -22.9461,-15.44581 c -0.3097,-0.20714 -0.4917,-0.55564 -0.4917,-0.92155 0,-0.36979 0.182,-0.70667 0.4917,-0.92349 l 22.9558,-15.44774 c 0.3388,-0.23427 0.7706,-0.24976 1.1384,-0.0561 0.3679,0.19748 0.5867,0.57114 0.5867,0.9719 v 8.31146 c 4.9911,0.65051 26.4734,4.511 26.4734,22.60144 0,0.52467 -0.3698,0.98352 -0.8886,1.08806 -0.071,0.0116 -0.1472,0.0116 -0.2168,0.0116 z"
+         inkscape:connector-curvature="0" />
+    </g>
+    <flowRoot
+       transform="matrix(0.57583438,0,0,0.57583438,853.05438,402.54988)"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       id="flowRoot3276"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3278"><rect
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+           y="577.36218"
+           x="1826.4286"
+           height="26.428572"
+           width="171.78572"
+           id="rect3280" /></flowRegion><flowPara
+         style="font-size:15.62949371px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+         id="flowPara3282">NOVA ENQUETE</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3284"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       transform="matrix(0.57583438,0,0,0.57583438,982.63442,402.54988)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_enquete_hover.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion3286"><rect
+           id="rect3288"
+           width="235.66818"
+           height="26.428572"
+           x="1826.4286"
+           y="577.36218"
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'" /></flowRegion><flowPara
+         id="flowPara3290"
+         style="font-size:15.62949371px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'">IMPORTAR ENQUETE</flowPara></flowRoot>    <rect
+       style="fill:#44b600;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3303"
+       width="200"
+       height="30"
+       x="2173.1514"
+       y="672.98065"
+       rx="6.3012862"
+       ry="0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\save2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4088"
+       transform="translate(33.986885,-109.73454)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\save2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         transform="matrix(1.1935079,0,0,1.1935079,4.476895,99.639554)"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+         id="flowRoot4073"
+         xml:space="preserve"><flowRegion
+           id="flowRegion4075"><rect
+             style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+             y="577.36218"
+             x="1826.4286"
+             height="26.428572"
+             width="235.66818"
+             id="rect4077" /></flowRegion><flowPara
+           style="font-size:16.75732613px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+           id="flowPara4079">SALVAR </flowPara></flowRoot>      <path
+         style="fill:#ffffff"
+         id="path3"
+         d="m 2281.4298,786.36051 c -3.6464,0 -6.8892,1.72076 -8.9667,4.3924 -2.9619,2.96186 -3.9911,9.8993 -0.1257,13.76468 2.071,2.764 5.3728,4.55228 9.0924,4.55228 6.2712,0 11.3547,-5.08351 11.3547,-11.35468 0,-6.27117 -5.0835,-11.35468 -11.3547,-11.35468 z m 6.6022,7.25814 c -0.7235,1.26971 -6.01,10.81923 -8.2404,10.81923 -1.7358,0 -4.2982,-4.28971 -5.0353,-5.84871 -0.7098,-1.49898 3.1762,-3.73363 4.0136,-1.95004 0.8374,1.78406 1.2636,2.69133 1.2636,2.69133 0,0 3.7899,-6.86523 4.7778,-8.40313 0.9884,-1.5379 3.9442,1.42209 3.2207,2.69132 z"
+         inkscape:connector-curvature="0" />
+    </g>
+    <rect
+       ry="0"
+       rx="6.3012862"
+       y="632.98065"
+       x="2173.1514"
+       height="30"
+       width="200"
+       id="rect4095"
+       style="fill:#026331;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\save1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(33.986885,-149.73454)"
+       id="g4097"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\save1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot4099"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+         transform="matrix(1.1935079,0,0,1.1935079,4.476895,99.639554)"><flowRegion
+           id="flowRegion4101"><rect
+             id="rect4103"
+             width="235.66818"
+             height="26.428572"
+             x="1826.4286"
+             y="577.36218"
+             style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'" /></flowRegion><flowPara
+           id="flowPara4105"
+           style="font-size:16.75732613px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'">SALVAR </flowPara></flowRoot>      <path
+         inkscape:connector-curvature="0"
+         d="m 2281.4298,786.36051 c -3.6464,0 -6.8892,1.72076 -8.9667,4.3924 -2.9619,2.96186 -3.9911,9.8993 -0.1257,13.76468 2.071,2.764 5.3728,4.55228 9.0924,4.55228 6.2712,0 11.3547,-5.08351 11.3547,-11.35468 0,-6.27117 -5.0835,-11.35468 -11.3547,-11.35468 z m 6.6022,7.25814 c -0.7235,1.26971 -6.01,10.81923 -8.2404,10.81923 -1.7358,0 -4.2982,-4.28971 -5.0353,-5.84871 -0.7098,-1.49898 3.1762,-3.73363 4.0136,-1.95004 0.8374,1.78406 1.2636,2.69133 1.2636,2.69133 0,0 3.7899,-6.86523 4.7778,-8.40313 0.9884,-1.5379 3.9442,1.42209 3.2207,2.69132 z"
+         id="path4107"
+         style="fill:#ffffff" />
+    </g>
+    <rect
+       style="fill:#800000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4109"
+       width="200"
+       height="30"
+       x="2393.1514"
+       y="632.98065"
+       rx="6.3012862"
+       ry="0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\cancel1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4111"
+       transform="translate(253.98689,-149.73454)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\cancel1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4130"
+         transform="translate(9.9102086,4.8554689e-6)">
+        <flowRoot
+           xml:space="preserve"
+           id="flowRoot4113"
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+           transform="matrix(1.1935079,0,0,1.1935079,-15.523105,99.639554)"><flowRegion
+             id="flowRegion4115"><rect
+               id="rect4117"
+               width="235.66818"
+               height="26.428572"
+               x="1826.4286"
+               y="577.36218"
+               style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'" /></flowRegion><flowPara
+             id="flowPara4119"
+             style="font-size:16.75732613px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'">CANCELAR</flowPara></flowRoot>        <path
+           style="fill:#ffffff"
+           id="path3-4"
+           d="m 2291.8776,793.24889 c -0.6046,-1.40074 -1.4236,-2.61778 -2.457,-3.65111 -1.0333,-1.03334 -2.2504,-1.85235 -3.6511,-2.45704 -1.4008,-0.60469 -2.8896,-0.90704 -4.4664,-0.90704 -1.0562,0 -2.0742,0.13778 -3.054,0.41333 -0.9797,0.27556 -1.8945,0.66211 -2.744,1.15964 -0.8497,0.49752 -1.6228,1.09456 -2.3193,1.79111 -0.6966,0.69654 -1.2936,1.46962 -1.7911,2.31926 -0.4976,0.84967 -0.8841,1.76432 -1.1597,2.74407 -0.2755,0.97975 -0.4133,1.99778 -0.4133,3.05408 0,1.05629 0.1378,2.07432 0.4133,3.05407 0.2756,0.97971 0.6621,1.89437 1.1597,2.74408 0.4975,0.84962 1.0945,1.62275 1.7911,2.31926 0.6965,0.69654 1.4696,1.29361 2.3193,1.79111 0.8495,0.49753 1.7643,0.88403 2.744,1.15962 0.9798,0.27556 1.9978,0.41334 3.054,0.41334 1.0564,0 2.0744,-0.13778 3.0542,-0.41334 0.9797,-0.27559 1.8943,-0.66209 2.7441,-1.15962 0.8496,-0.4975 1.6227,-1.09457 2.3192,-1.79111 0.6966,-0.69651 1.2936,-1.46964 1.7911,-2.31926 0.4976,-0.84971 0.8841,-1.76437 1.1597,-2.74408 0.2755,-0.97975 0.4133,-1.99778 0.4133,-3.05407 0,-1.5768 -0.3024,-3.06556 -0.9071,-4.4663 z m -4.4892,7.68111 c 0.076,0.0765 0.1148,0.16074 0.1148,0.25259 0,0.0919 -0.038,0.1684 -0.1148,0.22964 l -2.2504,2.27333 c -0.061,0.0612 -0.1454,0.0919 -0.2526,0.0919 -0.1071,0 -0.1836,-0.0306 -0.2296,-0.0919 l -3.2378,-3.23777 -3.2148,3.23777 c -0.092,0.0612 -0.1761,0.0919 -0.2526,0.0919 -0.061,0 -0.1378,-0.0306 -0.2296,-0.0919 l -2.2504,-2.27333 c -0.077,-0.046 -0.1148,-0.12254 -0.1148,-0.22964 0,-0.0919 0.038,-0.17605 0.1148,-0.25259 l 3.2148,-3.21481 -3.2148,-3.21482 c -0.077,-0.0765 -0.1148,-0.16074 -0.1148,-0.2526 0,-0.10715 0.038,-0.1837 0.1148,-0.22962 l 2.2504,-2.27333 c 0.061,-0.0612 0.1377,-0.0919 0.2296,-0.0919 0.092,0 0.1761,0.0306 0.2526,0.0919 l 3.2148,3.23777 3.2378,-3.23777 c 0.061,-0.0612 0.1378,-0.0919 0.2296,-0.0919 0.092,0 0.1761,0.0306 0.2526,0.0919 l 2.2504,2.27333 c 0.076,0.0612 0.1148,0.13778 0.1148,0.22962 0,0.0919 -0.038,0.17606 -0.1148,0.2526 l -3.2149,3.21482 3.2149,3.21481 z"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <rect
+       ry="0"
+       rx="6.3012862"
+       y="672.98065"
+       x="2393.1514"
+       height="30"
+       width="200"
+       id="rect4137"
+       style="fill:#d40000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\cancel2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(253.98689,-109.73454)"
+       id="g4139"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\cancel2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="translate(9.9102086,4.8554689e-6)"
+         id="g4141">
+        <flowRoot
+           transform="matrix(1.1935079,0,0,1.1935079,-15.523105,99.639554)"
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+           id="flowRoot4143"
+           xml:space="preserve"><flowRegion
+             id="flowRegion4145"><rect
+               style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+               y="577.36218"
+               x="1826.4286"
+               height="26.428572"
+               width="235.66818"
+               id="rect4147" /></flowRegion><flowPara
+             style="font-size:16.75732613px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+             id="flowPara4149">CANCELAR</flowPara></flowRoot>        <path
+           inkscape:connector-curvature="0"
+           d="m 2291.8776,793.24889 c -0.6046,-1.40074 -1.4236,-2.61778 -2.457,-3.65111 -1.0333,-1.03334 -2.2504,-1.85235 -3.6511,-2.45704 -1.4008,-0.60469 -2.8896,-0.90704 -4.4664,-0.90704 -1.0562,0 -2.0742,0.13778 -3.054,0.41333 -0.9797,0.27556 -1.8945,0.66211 -2.744,1.15964 -0.8497,0.49752 -1.6228,1.09456 -2.3193,1.79111 -0.6966,0.69654 -1.2936,1.46962 -1.7911,2.31926 -0.4976,0.84967 -0.8841,1.76432 -1.1597,2.74407 -0.2755,0.97975 -0.4133,1.99778 -0.4133,3.05408 0,1.05629 0.1378,2.07432 0.4133,3.05407 0.2756,0.97971 0.6621,1.89437 1.1597,2.74408 0.4975,0.84962 1.0945,1.62275 1.7911,2.31926 0.6965,0.69654 1.4696,1.29361 2.3193,1.79111 0.8495,0.49753 1.7643,0.88403 2.744,1.15962 0.9798,0.27556 1.9978,0.41334 3.054,0.41334 1.0564,0 2.0744,-0.13778 3.0542,-0.41334 0.9797,-0.27559 1.8943,-0.66209 2.7441,-1.15962 0.8496,-0.4975 1.6227,-1.09457 2.3192,-1.79111 0.6966,-0.69651 1.2936,-1.46964 1.7911,-2.31926 0.4976,-0.84971 0.8841,-1.76437 1.1597,-2.74408 0.2755,-0.97975 0.4133,-1.99778 0.4133,-3.05407 0,-1.5768 -0.3024,-3.06556 -0.9071,-4.4663 z m -4.4892,7.68111 c 0.076,0.0765 0.1148,0.16074 0.1148,0.25259 0,0.0919 -0.038,0.1684 -0.1148,0.22964 l -2.2504,2.27333 c -0.061,0.0612 -0.1454,0.0919 -0.2526,0.0919 -0.1071,0 -0.1836,-0.0306 -0.2296,-0.0919 l -3.2378,-3.23777 -3.2148,3.23777 c -0.092,0.0612 -0.1761,0.0919 -0.2526,0.0919 -0.061,0 -0.1378,-0.0306 -0.2296,-0.0919 l -2.2504,-2.27333 c -0.077,-0.046 -0.1148,-0.12254 -0.1148,-0.22964 0,-0.0919 0.038,-0.17605 0.1148,-0.25259 l 3.2148,-3.21481 -3.2148,-3.21482 c -0.077,-0.0765 -0.1148,-0.16074 -0.1148,-0.2526 0,-0.10715 0.038,-0.1837 0.1148,-0.22962 l 2.2504,-2.27333 c 0.061,-0.0612 0.1377,-0.0919 0.2296,-0.0919 0.092,0 0.1761,0.0306 0.2526,0.0919 l 3.2148,3.23777 3.2378,-3.23777 c 0.061,-0.0612 0.1378,-0.0919 0.2296,-0.0919 0.092,0 0.1761,0.0306 0.2526,0.0919 l 2.2504,2.27333 c 0.076,0.0612 0.1148,0.13778 0.1148,0.22962 0,0.0919 -0.038,0.17606 -0.1148,0.2526 l -3.2149,3.21482 3.2149,3.21481 z"
+           id="path4151"
+           style="fill:#ffffff" />
+      </g>
+    </g>
+    <rect
+       ry="0"
+       rx="6.3012862"
+       y="772.98065"
+       x="2173.1514"
+       height="30"
+       width="200"
+       id="rect4153"
+       style="fill:#44b600;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#026331;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4200"
+       width="200"
+       height="30"
+       x="2173.1514"
+       y="722.98065"
+       rx="6.3012862"
+       ry="0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(39.749758,-170)"
+       id="g4202"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         transform="matrix(1.1935079,0,0,1.1935079,-41.53622,209.90501)"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+         id="flowRoot4204"
+         xml:space="preserve"><flowRegion
+           id="flowRegion4206"><rect
+             style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+             y="577.36218"
+             x="1826.4286"
+             height="26.428572"
+             width="235.66818"
+             id="rect4208" /></flowRegion><flowPara
+           style="font-size:16.75732613px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+           id="flowPara4210">NOVA PERGUNTA</flowPara></flowRoot>      <path
+         inkscape:connector-curvature="0"
+         d="m 2319.6865,897.37509 c -1.4141,-0.57322 -2.852,-0.86507 -4.3135,-0.87563 -1.4616,-0.0106 -2.9035,0.26053 -4.3258,0.81325 -1.4223,0.55273 -2.695,1.38259 -3.8182,2.48966 -0.7524,0.74161 -1.3808,1.55451 -1.8852,2.43865 -0.5044,0.88414 -0.8845,1.80168 -1.1404,2.75258 -0.2559,0.95092 -0.3874,1.91895 -0.3945,2.90415 -0.01,0.98519 0.1104,1.95503 0.3525,2.90953 0.2422,0.95452 0.609,1.87743 1.1006,2.76877 0.4916,0.89135 1.1082,1.71322 1.8498,2.46562 0.7416,0.7524 1.5545,1.38081 2.4387,1.88523 0.8841,0.50439 1.8016,0.8845 2.7525,1.14044 0.951,0.2559 1.919,0.38742 2.9042,0.3945 0.9852,0.007 1.955,-0.11036 2.9095,-0.35252 0.9545,-0.24211 1.8774,-0.60902 2.7688,-1.10057 0.8913,-0.49159 1.7132,-1.1082 2.4656,-1.84982 0.7524,-0.74161 1.3808,-1.55451 1.8852,-2.43865 0.5044,-0.88417 0.8846,-1.80165 1.1405,-2.75262 0.2559,-0.95087 0.3874,-1.91899 0.3945,-2.90414 0.01,-0.98516 -0.1104,-1.95506 -0.3525,-2.90953 -0.2422,-0.95457 -0.609,-1.87745 -1.1006,-2.76877 -0.4916,-0.89132 -1.1082,-1.71319 -1.8498,-2.4656 -1.1071,-1.12315 -2.3677,-1.97133 -3.7819,-2.54453 z m 2.1952,8.62313 c 0.1082,7.5e-4 0.1946,0.0338 0.2591,0.0993 0.064,0.0654 0.091,0.14684 0.079,0.24423 l -0.01,3.19926 c 0,0.0866 -0.039,0.16751 -0.1155,0.24277 -0.076,0.0752 -0.1523,0.10713 -0.228,0.0958 l -4.5795,-0.0331 -0.017,4.56335 c -0.023,0.10811 -0.061,0.18902 -0.1154,0.24277 -0.044,0.043 -0.1196,0.0749 -0.2281,0.0958 l -3.199,-0.0393 c -0.087,0.021 -0.1678,-0.007 -0.243,-0.083 -0.064,-0.0654 -0.096,-0.15225 -0.095,-0.26053 l 0.033,-4.547 -4.547,-0.0328 c -0.1082,-7.4e-4 -0.1946,-0.0339 -0.2591,-0.0993 -0.075,-0.0763 -0.1017,-0.15772 -0.079,-0.24418 l 0.01,-3.19927 c 0,-0.0866 0.034,-0.16215 0.099,-0.22664 0.065,-0.0645 0.1469,-0.10178 0.2444,-0.11192 l 4.5631,0.0492 0.033,-4.57949 c 0,-0.0866 0.034,-0.16221 0.099,-0.22664 0.065,-0.0645 0.1469,-0.1018 0.2444,-0.11192 l 3.199,0.0393 c 0.097,-0.0101 0.1786,0.0175 0.243,0.0829 0.064,0.0654 0.096,0.15229 0.095,0.26058 l -0.033,4.54701 4.547,0.0328 z"
+         id="path4212"
+         style="fill:#ffffff" />
+    </g>
+    <rect
+       ry="0"
+       rx="6.3012862"
+       y="722.98065"
+       x="2173.1514"
+       height="30"
+       width="200"
+       id="rect4214"
+       style="fill:#026331;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#026331;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4228"
+       width="200"
+       height="30"
+       x="2393.1514"
+       y="722.98065"
+       rx="6.3012862"
+       ry="0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4232"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       transform="matrix(1.1935079,0,0,1.1935079,220.88837,42.15015)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4234"><rect
+           id="rect4236"
+           width="235.66818"
+           height="26.428572"
+           x="1826.4286"
+           y="577.36218"
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'" /></flowRegion><flowPara
+         id="flowPara4238"
+         style="font-size:12.56799412px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'">IMPORTAR PERGUNTA</flowPara></flowRoot>    <flowRoot
+       transform="matrix(1.1935079,0,0,1.1935079,17.925875,42.15015)"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       id="flowRoot4256"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4258"><rect
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+           y="577.36218"
+           x="1826.4286"
+           height="26.428572"
+           width="235.66818"
+           id="rect4260" /></flowRegion><flowPara
+         style="font-size:12.56799412px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+         id="flowPara4262">NOVA PERGUNTA</flowPara></flowRoot>    <path
+       inkscape:connector-curvature="0"
+       d="m 2340.1489,727.37509 c -1.4141,-0.57322 -2.852,-0.86507 -4.3135,-0.87563 -1.4616,-0.0106 -2.9035,0.26053 -4.3258,0.81325 -1.4223,0.55273 -2.695,1.38259 -3.8182,2.48966 -0.7524,0.74161 -1.3808,1.55451 -1.8852,2.43865 -0.5044,0.88414 -0.8845,1.80168 -1.1404,2.75258 -0.2559,0.95092 -0.3874,1.91895 -0.3945,2.90415 -0.01,0.98519 0.1104,1.95503 0.3525,2.90953 0.2422,0.95452 0.609,1.87743 1.1006,2.76877 0.4916,0.89135 1.1082,1.71322 1.8498,2.46562 0.7416,0.7524 1.5545,1.38081 2.4387,1.88523 0.8841,0.50439 1.8016,0.8845 2.7525,1.14044 0.951,0.2559 1.919,0.38742 2.9042,0.3945 0.9852,0.007 1.955,-0.11036 2.9095,-0.35252 0.9545,-0.24211 1.8774,-0.60902 2.7688,-1.10057 0.8913,-0.49159 1.7132,-1.1082 2.4656,-1.84982 0.7524,-0.74161 1.3808,-1.55451 1.8852,-2.43865 0.5044,-0.88417 0.8846,-1.80165 1.1405,-2.75262 0.2559,-0.95087 0.3874,-1.91899 0.3945,-2.90414 0.01,-0.98516 -0.1104,-1.95506 -0.3525,-2.90953 -0.2422,-0.95457 -0.609,-1.87745 -1.1006,-2.76877 -0.4916,-0.89132 -1.1082,-1.71319 -1.8498,-2.4656 -1.1071,-1.12315 -2.3677,-1.97133 -3.7819,-2.54453 z m 2.1952,8.62313 c 0.1082,7.5e-4 0.1946,0.0338 0.2591,0.0993 0.064,0.0654 0.091,0.14684 0.079,0.24423 l -0.01,3.19926 c 0,0.0866 -0.039,0.16751 -0.1155,0.24277 -0.076,0.0752 -0.1523,0.10713 -0.228,0.0958 l -4.5795,-0.0331 -0.017,4.56335 c -0.023,0.10811 -0.061,0.18902 -0.1154,0.24277 -0.044,0.043 -0.1196,0.0749 -0.2281,0.0958 l -3.199,-0.0393 c -0.087,0.021 -0.1678,-0.007 -0.243,-0.083 -0.064,-0.0654 -0.096,-0.15225 -0.095,-0.26053 l 0.033,-4.547 -4.547,-0.0328 c -0.1082,-7.4e-4 -0.1946,-0.0339 -0.2591,-0.0993 -0.075,-0.0763 -0.1017,-0.15772 -0.079,-0.24418 l 0.01,-3.19927 c 0,-0.0866 0.034,-0.16215 0.099,-0.22664 0.065,-0.0645 0.1469,-0.10178 0.2444,-0.11192 l 4.5631,0.0492 0.033,-4.57949 c 0,-0.0866 0.034,-0.16221 0.099,-0.22664 0.065,-0.0645 0.1469,-0.1018 0.2444,-0.11192 l 3.199,0.0393 c 0.097,-0.0101 0.1786,0.0175 0.243,0.0829 0.064,0.0654 0.096,0.15229 0.095,0.26058 l -0.033,4.54701 4.547,0.0328 z"
+       id="path4264"
+       style="fill:#ffffff"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(17.037515,-69.999996)"
+       id="g4278"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\nova_pergunta2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <flowRoot
+         transform="matrix(1.1935079,0,0,1.1935079,0.88836,162.15015)"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+         id="flowRoot4280"
+         xml:space="preserve"><flowRegion
+           id="flowRegion4282"><rect
+             style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+             y="577.36218"
+             x="1826.4286"
+             height="26.428572"
+             width="235.66818"
+             id="rect4284" /></flowRegion><flowPara
+           style="font-size:12.56799412px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+           id="flowPara4286">NOVA PERGUNTA</flowPara></flowRoot>      <path
+         inkscape:connector-curvature="0"
+         d="m 2323.1114,847.37509 c -1.4141,-0.57322 -2.852,-0.86507 -4.3135,-0.87563 -1.4616,-0.0106 -2.9035,0.26053 -4.3258,0.81325 -1.4223,0.55273 -2.695,1.38259 -3.8182,2.48966 -0.7524,0.74161 -1.3808,1.55451 -1.8852,2.43865 -0.5044,0.88414 -0.8845,1.80168 -1.1404,2.75258 -0.2559,0.95092 -0.3874,1.91895 -0.3945,2.90415 -0.01,0.98519 0.1104,1.95503 0.3525,2.90953 0.2422,0.95452 0.609,1.87743 1.1006,2.76877 0.4916,0.89135 1.1082,1.71322 1.8498,2.46562 0.7416,0.7524 1.5545,1.38081 2.4387,1.88523 0.8841,0.50439 1.8016,0.8845 2.7525,1.14044 0.951,0.2559 1.919,0.38742 2.9042,0.3945 0.9852,0.007 1.955,-0.11036 2.9095,-0.35252 0.9545,-0.24211 1.8774,-0.60902 2.7688,-1.10057 0.8913,-0.49159 1.7132,-1.1082 2.4656,-1.84982 0.7524,-0.74161 1.3808,-1.55451 1.8852,-2.43865 0.5044,-0.88417 0.8846,-1.80165 1.1405,-2.75262 0.2559,-0.95087 0.3874,-1.91899 0.3945,-2.90414 0.01,-0.98516 -0.1104,-1.95506 -0.3525,-2.90953 -0.2422,-0.95457 -0.609,-1.87745 -1.1006,-2.76877 -0.4916,-0.89132 -1.1082,-1.71319 -1.8498,-2.4656 -1.1071,-1.12315 -2.3677,-1.97133 -3.7819,-2.54453 z m 2.1952,8.62313 c 0.1082,7.5e-4 0.1946,0.0338 0.2591,0.0993 0.064,0.0654 0.091,0.14684 0.079,0.24423 l -0.01,3.19926 c 0,0.0866 -0.039,0.16751 -0.1155,0.24277 -0.076,0.0752 -0.1523,0.10713 -0.228,0.0958 l -4.5795,-0.0331 -0.017,4.56335 c -0.023,0.10811 -0.061,0.18902 -0.1154,0.24277 -0.044,0.043 -0.1196,0.0749 -0.2281,0.0958 l -3.199,-0.0393 c -0.087,0.021 -0.1678,-0.007 -0.243,-0.083 -0.064,-0.0654 -0.096,-0.15225 -0.095,-0.26053 l 0.033,-4.547 -4.547,-0.0328 c -0.1082,-7.4e-4 -0.1946,-0.0339 -0.2591,-0.0993 -0.075,-0.0763 -0.1017,-0.15772 -0.079,-0.24418 l 0.01,-3.19927 c 0,-0.0866 0.034,-0.16215 0.099,-0.22664 0.065,-0.0645 0.1469,-0.10178 0.2444,-0.11192 l 4.5631,0.0492 0.033,-4.57949 c 0,-0.0866 0.034,-0.16221 0.099,-0.22664 0.065,-0.0645 0.1469,-0.1018 0.2444,-0.11192 l 3.199,0.0393 c 0.097,-0.0101 0.1786,0.0175 0.243,0.0829 0.064,0.0654 0.096,0.15229 0.095,0.26058 l -0.033,4.54701 4.547,0.0328 z"
+         id="path4288"
+         style="fill:#ffffff" />
+    </g>
+    <rect
+       ry="0"
+       rx="6.3012862"
+       y="770.98065"
+       x="2393.1514"
+       height="30"
+       width="200"
+       id="rect4290"
+       style="fill:#44b600;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_pergunta2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       transform="matrix(1.1935079,0,0,1.1935079,220.88837,90.15015)"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+       id="flowRoot4294"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_pergunta2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4296"><rect
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:Klavika CH Regular;-inkscape-font-specification:'Klavika CH Regular,'"
+           y="577.36218"
+           x="1826.4286"
+           height="26.428572"
+           width="235.66818"
+           id="rect4298" /></flowRegion><flowPara
+         style="font-size:12.56799412px;font-weight:bold;-inkscape-font-specification:'Klavika CH Regular, Bold'"
+         id="flowPara4300">IMPORTAR PERGUNTA</flowPara></flowRoot>    <g
+       transform="matrix(0.31932453,0,0,0.32020877,1908.521,527.66845)"
+       id="g4314"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_pergunta1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <polygon
+         style="fill:#ffffff;fill-rule:evenodd"
+         points="11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 0,22.083 "
+         id="polygon4316"
+         transform="matrix(2.9615498,0,0,2.9615498,2044.0398,624.09717)" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 2114.8487,683.00464 c -0.4434,0 -0.8499,-0.25364 -1.0241,-0.66989 l 0,0 c -0.1279,-0.30202 -3.3224,-7.46733 -15.2658,-8.88647 -2.4879,-0.30202 -5.4674,-0.45691 -9.0859,-0.484 v 8.93099 c 0,0.41238 -0.2227,0.78604 -0.5886,0.98352 -0.364,0.18973 -0.7996,0.16262 -1.1384,-0.0638 l -22.9461,-15.44581 c -0.3097,-0.20714 -0.4917,-0.55564 -0.4917,-0.92155 0,-0.36979 0.182,-0.70667 0.4917,-0.92349 l 22.9558,-15.44774 c 0.3388,-0.23427 0.7706,-0.24976 1.1384,-0.0561 0.3679,0.19748 0.5867,0.57114 0.5867,0.9719 v 8.31146 c 4.9911,0.65051 26.4734,4.511 26.4734,22.60144 0,0.52467 -0.3698,0.98352 -0.8886,1.08806 -0.071,0.0116 -0.1472,0.0116 -0.2168,0.0116 z"
+         id="path4318"
+         style="fill:#ffffff" />
+    </g>
+    <g
+       id="g4320"
+       transform="matrix(0.31932453,0,0,0.32020877,1908.521,575.66845)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\import_pergunta2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <polygon
+         transform="matrix(2.9615498,0,0,2.9615498,2044.0398,624.09717)"
+         id="polygon4322"
+         points="0,22.083 11.935,22.083 11.935,20.504 1.777,20.504 1.777,6.209 6.926,6.209 6.926,1.578 15.169,1.578 15.169,6.468 16.946,6.468 16.946,0 5.019,0 0,4.489 "
+         style="fill:#ffffff;fill-rule:evenodd" />
+      <path
+         style="fill:#ffffff"
+         id="path4324"
+         d="m 2114.8487,683.00464 c -0.4434,0 -0.8499,-0.25364 -1.0241,-0.66989 l 0,0 c -0.1279,-0.30202 -3.3224,-7.46733 -15.2658,-8.88647 -2.4879,-0.30202 -5.4674,-0.45691 -9.0859,-0.484 v 8.93099 c 0,0.41238 -0.2227,0.78604 -0.5886,0.98352 -0.364,0.18973 -0.7996,0.16262 -1.1384,-0.0638 l -22.9461,-15.44581 c -0.3097,-0.20714 -0.4917,-0.55564 -0.4917,-0.92155 0,-0.36979 0.182,-0.70667 0.4917,-0.92349 l 22.9558,-15.44774 c 0.3388,-0.23427 0.7706,-0.24976 1.1384,-0.0561 0.3679,0.19748 0.5867,0.57114 0.5867,0.9719 v 8.31146 c 4.9911,0.65051 26.4734,4.511 26.4734,22.60144 0,0.52467 -0.3698,0.98352 -0.8886,1.08806 -0.071,0.0116 -0.1472,0.0116 -0.2168,0.0116 z"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       style="fill:#000000"
+       id="path4331"
+       d="m 2643.2893,730.73682 c -0.7872,-0.31913 -1.5878,-0.48162 -2.4015,-0.48749 -0.8137,-0.006 -1.6164,0.14505 -2.4083,0.45276 -0.7919,0.30773 -1.5005,0.76975 -2.1257,1.3861 -0.4189,0.41288 -0.7688,0.86546 -1.0497,1.35769 -0.2808,0.49224 -0.4924,1.00307 -0.6348,1.53247 -0.1426,0.52942 -0.2158,1.06836 -0.2196,1.61686 -0.01,0.54849 0.061,1.08844 0.1962,1.61985 0.1349,0.53142 0.339,1.04524 0.6128,1.54149 0.2736,0.49625 0.6169,0.95382 1.0298,1.3727 0.4128,0.4189 0.8655,0.76876 1.3577,1.04959 0.4923,0.28081 1.003,0.49244 1.5324,0.63492 0.5295,0.14247 1.0684,0.21569 1.6169,0.21964 0.5486,0.004 1.0884,-0.0615 1.6198,-0.19626 0.5314,-0.13479 1.0453,-0.33907 1.5416,-0.61274 0.4961,-0.27369 0.9538,-0.61698 1.3727,-1.02987 0.4189,-0.41288 0.7687,-0.86545 1.0495,-1.35769 0.2808,-0.49225 0.4925,-1.00305 0.635,-1.53249 0.1424,-0.52939 0.2156,-1.06837 0.2196,-1.61685 0.01,-0.54848 -0.062,-1.08846 -0.1962,-1.61985 -0.1349,-0.53144 -0.3391,-1.04526 -0.6128,-1.54148 -0.2737,-0.49624 -0.6169,-0.95381 -1.0299,-1.37271 -0.6163,-0.6253 -1.3181,-1.09751 -2.1055,-1.41664 z m 1.2222,4.80084 c 0.061,4.2e-4 0.1083,0.0189 0.1442,0.0553 0.036,0.0364 0.05,0.0817 0.044,0.13598 l -0.01,1.78115 c 0,0.0482 -0.022,0.0933 -0.064,0.13516 -0.043,0.0419 -0.085,0.0597 -0.127,0.0533 l -2.5495,-0.0185 -0.01,2.54059 c -0.013,0.0602 -0.034,0.10524 -0.064,0.13516 -0.025,0.024 -0.066,0.0417 -0.127,0.0533 l -1.781,-0.0219 c -0.048,0.0116 -0.094,-0.004 -0.1353,-0.0462 -0.036,-0.0364 -0.053,-0.0848 -0.053,-0.14506 l 0.018,-2.53149 -2.5315,-0.0183 c -0.061,-4.1e-4 -0.1084,-0.0188 -0.1443,-0.0553 -0.042,-0.0425 -0.057,-0.0878 -0.044,-0.13594 l 0.01,-1.78117 c 0,-0.0482 0.019,-0.0903 0.055,-0.12618 0.036,-0.0359 0.082,-0.0566 0.1361,-0.0623 l 2.5405,0.0274 0.018,-2.54959 c 0,-0.0482 0.019,-0.0904 0.055,-0.12617 0.036,-0.0359 0.082,-0.0566 0.1361,-0.0623 l 1.781,0.0219 c 0.054,-0.006 0.1,0.01 0.1353,0.0461 0.036,0.0364 0.053,0.0848 0.053,0.14507 l -0.018,2.5315 2.5315,0.0183 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\mais.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 2664.3036,732.84392 h -2.0411 v -2.48264 c 0,-0.27409 -0.2221,-0.49653 -0.4965,-0.49653 h -4.0613 c -0.1241,0 -0.2436,0.0466 -0.3353,0.13042 l -3.2761,3.00002 c -0.1026,0.0943 -0.1612,0.22741 -0.1612,0.36612 v 6.58098 c 0,0.27408 0.2221,0.49653 0.4965,0.49653 h 2.0411 v 2.48264 c 0,0.27409 0.2221,0.49653 0.4966,0.49653 h 7.3373 c 0.2744,0 0.4965,-0.22244 0.4965,-0.49653 v -9.58101 c 0,-0.27409 -0.2224,-0.49653 -0.4965,-0.49653 z m -6.9749,-1.46443 v 1.8451 h -2.0153 l 2.0153,-1.8451 z m -2.4035,8.0666 v -5.22844 h 2.9 c 0.2744,0 0.4965,-0.22245 0.4965,-0.49653 v -2.86331 h 2.9478 v 1.98611 h -1.0272 c -0.1241,0 -0.2436,0.047 -0.3352,0.13075 l -3.2762,3.00036 c -0.1026,0.0937 -0.1612,0.22707 -0.1612,0.36577 v 3.10496 h -1.5445 z m 4.9415,-5.08743 v 1.84444 h -2.0147 l 2.0147,-1.84444 z m 3.9403,8.06661 h -6.3443 v -5.22911 h 2.9005 c 0.274,0 0.4965,-0.22245 0.4965,-0.49653 v -2.86265 h 2.9473 v 8.58829 z"
+       id="path3-0"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\duplicar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4360"
+       transform="matrix(0.32540508,0,0,0.32540508,1788.5027,491.49517)"
+       inkscape:export-filename="C:\Users\Informatica02\Desktop\imagens\deletar.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         id="path3-5"
+         d="m 2720.2716,735.46838 c -3.859,0.85 -7.268,2.737 -8.391,5.8 -0.38,1.037 0.502,2.081 1.599,2.212 8.31,0.994 16.746,0.992 25.316,-0.008 1.097,-0.128 1.806,-1.14 1.306,-2.125 -1.786,-3.515 -5.92,-5.459 -9.139,-6.191 -1.077,-0.245 -1.248,-1.406 -2.19,-1.984 -1.482,-0.91 -5.354,-0.857 -6.601,0.205 -0.841,0.718 -0.821,1.853 -1.9,2.091 z"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path5"
+         d="m 2714.2346,744.91338 c -1.089,-0.185 -2.344,-0.276 -2.569,0.076 -0.116,0.182 -0.177,0.419 -0.169,0.725 0.807,7.359 1.559,17.625 2.101,24.61 0.044,0.574 0.235,1.669 1.003,2.407 0.796,0.765 2.69,0.913 3.786,1.051 5.776,0.723 13.726,0.401 18.132,-0.457 1.831,-0.356 2.427,-2.148 2.467,-2.913 0.141,-2.735 1.121,-14.322 2.151,-22.543 0.137,-1.096 0.34,-2.511 -0.082,-2.793 -0.203,-0.136 -0.498,-0.178 -0.89,-0.124 -9.197,1.285 -16.572,1.55 -25.93,-0.039 z m 6.973,22.71 c 0,0.71 -0.988,1.286 -2,1.286 -1.012,0 -2,-0.576 -2,-1.286 v -18.012 c 0,-0.71 0.988,-1.286 2,-1.286 1.012,0 2,0.576 2,1.286 v 18.012 z m 7,0 c 0,0.71 -0.988,1.286 -2,1.286 -1.012,0 -2,-0.576 -2,-1.286 v -18.012 c 0,-0.71 0.988,-1.286 2,-1.286 1.012,0 2,0.576 2,1.286 v 18.012 z m 7,0 c 0,0.71 -0.988,1.286 -2,1.286 -1.012,0 -2,-0.576 -2,-1.286 v -18.012 c 0,-0.71 0.988,-1.286 2,-1.286 1.012,0 2,0.576 2,1.286 v 18.012 z"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

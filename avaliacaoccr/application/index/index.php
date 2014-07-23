@@ -57,7 +57,8 @@
     			<form id="login" action='?module=index&action=valida_senha' method="post">	
                     <input type="text" 		name="usuario" placeholder="Insira aqui seu CPF"/>
 
-                    <input type="hidden" 	name="idSession" value="<?php echo $randon;?>" />
+                    <!--<input type="hidden" 	name="idSession" value="<?php echo $randon;?>" /> -->
+                    <input type="password" 	name="senha" value="" />
  					<input style="width: 320px; margin-top: 10px;" type="submit" value="enviar"/>
     			</form>
     		</div>
