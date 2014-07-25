@@ -29,7 +29,7 @@
 	*/
 	function phpHtmlChart($paData, $psOrientation = 'H', $psTitle = '', $psAxisLabel = '', $psFontSize = '8pt',
 						  $piMaxSize = 100, $psMaxSizeUnit = 'px', $piBarSize = 15, $psBarUnit = 'px',
-						  $paColors = Array('#a0a0a0', '#707070')) {
+						  $paColors = Array('#006400', '#228B22')) {
 
 		$iColors = sizeof($paColors);
 

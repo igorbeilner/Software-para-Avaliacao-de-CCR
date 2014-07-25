@@ -79,7 +79,7 @@ body{
 #topo .sair{
 	float:left;
 	font-weight:bold;
-	margin-top: 32px;
+	margin-top: 0px;
 	margin-left: 15px;
 }
 #topo .sair a{
@@ -297,7 +297,7 @@ textarea{
 }
 
 .listagem a{
-	color: #777777;
+	color: #000;
 	text-decoration: none;
 }
 .listagem a:hover{

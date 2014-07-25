@@ -15,12 +15,12 @@
 		<br/><br/>
 		 <!-- Botão Salvar -->
         <div class="coluna">
-            <a onclick="valida_form();" href="#"><img src="application/images/save.png" style='border: none; cursor:pointer; background:none;'/></a>
+            <a onclick="valida_form();" href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none;'/></a>
         </div>  
         
         <!-- Botão Cancelar -->        
         <div class="coluna" >
-            <a href="?module=cadastros&acao=lista_usuario"><img src="application/images/cancelar.png" /></a>
+            <a href="?module=cadastros&acao=lista_usuario" style="margin-left:3px;"><img src="application/images/cancelar.png" /></a>
         </div>
 	</form>
 	
@@ -30,7 +30,7 @@
 function valida_form(){
 		var mensagem, id;
 		if (document.getElementById('pro_nome').value == ''){ 
-			mensagem = "É necessário preencher o nome!";
+			mensagem = "É necessário preencher a descrição da alternativa!";
 			id       = "pro_nome";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else{

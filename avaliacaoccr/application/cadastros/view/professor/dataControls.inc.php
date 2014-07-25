@@ -18,3 +18,5 @@
 		
 	}	
 ?>
+
+<h2 style="text-align: center; margin-top:50px; width: 800px;">PROFESSOR CADASTRADO COM SUCESSO!</h2>

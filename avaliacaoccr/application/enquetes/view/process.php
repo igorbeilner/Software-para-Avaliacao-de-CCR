@@ -23,6 +23,16 @@
 					$sql = "INSERT INTO respostas (res_desc, per_cod) VALUES ('".$value."','".$result[$i]['per_cod']."')";
 
 					$r = $data->executaSQL($sql);
+
+					$sql = "SELECT MAX(res_cod) AS res_cod
+						FROM respostas";
+					$res_cod = $data->find('dynamic', $sql);
+					
+					$data->tabela = "enq_per_res";
+					$array['enq_cod'] = $enq_cod;
+					$array['per_cod'] = $result[$i]['per_cod'];
+					$array['res_cod'] = $res_cod[0]['res_cod'];
+					$data->add($array);
 				}
 			}
 		}else{
@@ -42,6 +52,16 @@
 
 					$r = $data->executaSQL($sql);
 
+					$sql = "SELECT MAX(res_cod) AS res_cod
+						FROM respostas";
+					$res_cod = $data->find('dynamic', $sql);
+					
+					$data->tabela = "enq_per_res";
+					$array['enq_cod'] = $enq_cod;
+					$array['per_cod'] = $result[$i]['per_cod'];
+					$array['res_cod'] = $res_cod[0]['res_cod'];
+					$data->add($array);
+
 					break;
 				}
 			}
@@ -49,6 +69,21 @@
 		}
 
 	}
+
+	$data->tabela = "enquete";
+	$sql = "select enq_num_resp from enquete where enq_cod=".$enq_cod;
+	$result = $data->find('dynamic', $sql);
+	
+	$num_resp = $result[0]['enq_num_resp'] + 1;
+
+	$resss['enq_cod']      = $enq_cod;
+	$resss['enq_num_resp'] = $num_resp;
+	$data->update($resss);
+
+	$data->tabela = "alu_enq";
+	$array_alu['alu_cod'] = $_SESSION['userId'];
+	$array_alu['enq_cod'] = $enq_cod;
+	$data->add($array_alu);
 
 ?>
 

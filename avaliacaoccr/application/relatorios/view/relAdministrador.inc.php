@@ -48,15 +48,15 @@
 				array_push($enquetes, $data->find('dynamic', $sql));
 			}
 			
-			if(count($result) > 0){
+			if(count($enquetes) > 0){
 				$flag = 1; //Mostrar rodapé paginação
 	?>
 				<div id="cab_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;">
 					<div class="linha" style="width: 100%;">	
 						<div class="coluna" style="float:left; width:200px; font-weight:bold; color:#000;">Disciplina</div>
-                        <div class="coluna" style="float:left; width:200px; font-weight:bold; color:#000;">Professor</div>
-						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 10px;">Situação</div>
-                        <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 100px;">Número de Respostas</div>
+                        <div class="coluna" style="float:left; width:200px; font-weight:bold; color:#000; margin-left: 20px;">Professor</div>
+						<div class="coluna" style="float:left; width:50px; font-weight:bold; color:#000; margin-left: 30px;">Situação</div>
+                        <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 60px;">Número de Respostas</div>
                         <div class="coluna" style="float:left; width:100px; font-weight:bold; color:#000; margin-left: 20px;">Percentual</div>
 						<div style="clear: both;"></div>
 					</div>
@@ -71,7 +71,6 @@
 				$flag = 0; //Esconder rodapé paginação
 			}
 		
-		 
 			for($i = 0; $i < count($enquetes); $i++){
 				for ($j = 0; $j < count($enquetes[$i]); $j++){
 			 		$aux = $enquetes[$i];
@@ -86,14 +85,14 @@
                     <div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
                         <div class="linha_sol" style="width: 100%;">
                                 <div class="coluna" style="float:left; width: 200px;"><a href="?module=relatorios&acao=adm_perguntas&enq=<?php echo $aux[$j]['enq_cod']?>&sem=<?php echo $semestre?>" ><?php echo $aux[$j]['dis_nome'];?></a></div>
-                                <div class="coluna" style="float:left; width: 200px;"><?php echo $aux[$j]['pro_nome'];?></div>
+                                <div class="coluna" style="float:left; width: 200px; margin-left: 20px;"><?php echo $aux[$j]['pro_nome'];?></div>
                                 <?php if ($aux[$j]['enq_status'] == 0){?>
-                                    <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Desativa</div>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 30px;">Desativa</div>
                                 <?php }else if($aux[$j]['enq_status'] == 1){?>
-                                    <div class="coluna" style="float: left; width: 50px; margin-left: 10px;">Ativa</div>
+                                    <div class="coluna" style="float: left; width: 50px; margin-left: 30px;">Ativa</div>
                                 <?php } ?>
-                                <div class="coluna" style="float:left; width: 50px; margin-left:120px;"><?php echo $resp[0]['enq_num_resp']."/".$resp[0]['enq_num_resp_esp'];?></div>
-                                <div class="coluna" style="float:left; width: 50px; margin-left:70px;"><?php echo $per."%";?></div>
+                                <div class="coluna" style="float:left; width: 50px; margin-left:60px;"><?php echo $resp[0]['enq_num_resp']."/".$resp[0]['enq_num_resp_esp'];?></div>
+                                <div class="coluna" style="float:left; width: 50px; margin-left:70px;"><?php echo round($per, 2)."%";?></div>
                                 <div style="clear: both;"></div>
                         </div>
                         <div style="clear:both;"></div>

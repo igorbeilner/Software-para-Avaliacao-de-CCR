@@ -32,7 +32,7 @@
         
         <!-- Botão Cancelar -->        
         <div class="coluna" >
-            <a href="?module=cadastros&acao=lista_usuario"><img src="application/images/cancelar.png" /></a>
+            <a href="?module=cadastros&acao=lista_usuario" style="margin-left:3px;"><img src="application/images/cancelar.png" /></a>
         </div>
 	</form>
 	

@@ -34,7 +34,8 @@
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;
 				$array['enq_data']         = $_POST['enq_data'];												
-				$array['enq_status']       = $_POST['enq_status'];															
+				$array['enq_status']       = $_POST['enq_status'];	
+				$array['enq_num_resp'] = 0;														
 				$data->add($array);
 			}
 
@@ -90,19 +91,16 @@
 
 				//Relaciona as perguntas com as enquetes
 				$data->tabela = "enquete_perguntas";
-				echo "numero de enquetes = ".count($enqs);
-				for ($i = 0; $i < count($enq_cod); $i++){
+				for ($i = 0; $i < count($enqs); $i++){
 					// Grava na tabela enquete_perguntas
 					// Novas perguntas
-					for($j=0; $j< $qtd_nova; $j++){
-						echo "<br/>i: ".$i;
-						echo"<br/>j: ".$j;
+					for($j=$qtd_nova - 1; $j >= 0; $j--){
 						$array_ep['enq_cod'] = $enqs[$i]['enq_cod'];		
 						$array_ep['per_cod'] = $pergs_novas_cod[$j]['per_cod'];
 						$data->add($array_ep);
 					}
 					// Perguntas carregadas
-					for($j=0; $j< $qtd_car; $j++){
+					for($j=$qtd_car - 1; $j >= 0; $j--){
 						$array_ep2['enq_cod'] = $enqs[$i]['enq_cod'];		
 						$array_ep2['per_cod'] = $cod_car[$j];
 						$data->add($array_ep2);

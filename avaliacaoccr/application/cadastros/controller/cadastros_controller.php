@@ -43,8 +43,16 @@
 			require_once 'application/cadastros/view/enquete/importDataControls.inc.php';
 			break;
 
+		case 'gravar_enquete_editada':
+			require_once 'application/cadastros/view/enquete/editDataControls.inc.php';
+			break;
+
 		case 'import_enquete':
 			require_once 'application/cadastros/view/enquete/importEnquete.inc.php';
+			break;
+
+		case 'editar_enquete':
+			require_once 'application/cadastros/view/enquete/editEnquete.inc.php';
 			break;
 	}
 ?>

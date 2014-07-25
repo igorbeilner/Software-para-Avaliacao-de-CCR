@@ -45,8 +45,8 @@
 BOTÕES DE NOVA ENQUETE E IMPORTAR ENQUETE //////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <div class="coluna" id="escolha_enquete">
-	<a onclick='mostra_enquete(0);' style=' margin-left: 120px;'><img src='application/images/import_enquete.png' style='cursor:pointer;'></a>
-	<a onclick='mostra_enquete(1);' style=' margin-left: 50px;'><img src='application/images/nova_enquete.png' style='cursor:pointer;'></a>
+	<a onclick='mostra_enquete(0);' style=' margin-left: 200px;'><img src='application/images/importa_enquete1.png' style='cursor:pointer;'></a>
+	<a onclick='mostra_enquete(1);' style=' margin-left: 50px;'><img src='application/images/nova_enquete1.png' style='cursor:pointer;'></a>
 </div>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -264,13 +264,13 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
 			echo "</div>";
 		}
 		echo "</div>";
-		echo '<div class="coluna" style="margin-top: 20px; margin-left: 10px;" id="add_prof_disc"><img src="application/images/add_prof.png" onclick="add();" style="cursor:pointer;" /></div>';
+		echo '<div class="coluna" style="margin-top: 20px; margin-left: 10px;" id="add_prof_disc"><img src="application/images/professor_disciplina4.png" onclick="add();" style="cursor:pointer;" /></div>';
 		echo "<div style='clear: both;'></div>";	
 		?>
 
         <br /><br />	
-		<div class="coluna"><img src="application/images/nova_pergunta1.png" onclick="ativa_tipo_pergunta();" style="cursor:pointer;" /></div>
-		<div class="coluna"><img src="application/images/import_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' /></div><br/><br/><br/>
+		<div class="coluna"><img src="application/images/nova_pergunta1.png" onclick="ativa_tipo_pergunta();" style="cursor:pointer; margin-left: 10px;" /></div>
+		<div class="coluna"><img src="application/images/importar_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' /></div><br/><br/><br/>
 
 		<!-- Envia o total de perguntas -->	
 		<input type='hidden' name='total_perg' value='<?php echo $qtd_perg; ?>' />
@@ -284,7 +284,7 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
 
         <!-- Botão Salvar -->
         <div class="coluna" style="margin-top: 10px;">
-            <a onclick="valida_form();" href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none;'/></a>
+            <a onclick="valida_form();" href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none; margin-left: 10px;'/></a>
         </div>  
         
         <!-- Botão Cancelar -->        
@@ -295,7 +295,7 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
 	</div>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-AQUI APARECE A ENQUETE IMPORTADA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+AQUI APARECE AS ENQUETES PARA SEREM IMPORTADAS ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <div id="import_enquete" style="display:none;">
     <?php
@@ -317,6 +317,36 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 						<div class="linha_sol" style="width: 100%;">';
 							$cod_enq = $result[$i]['enq_cod'];
 							echo '<div class="coluna" style="float:left; width: 300px;"><a href="?module=cadastros&acao=import_enquete&enq='.$result[$i]['enq_cod'].'">'.utf8_encode($result[$i]["enq_nome"]).'</a></div>';
+						echo "<div style='clear: both;'></div>";
+					echo "</div>";
+				echo "</div>";
+			}	
+	?>	
+    </div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+AQUI APARECE AS ENQUETES PARA SEREM EDITADAS ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <div id="edit_enquete" style="display:none;">
+    <?php
+		//mostra as enquetes existentes
+			$sql = "select e.enq_nome, e.enq_cod
+					from enquete as e";
+					
+			$result = $data->find('dynamic', $sql);
+			
+			echo "<div id='cab_enq' class='listagem' style='margin-bottom: 5px; background-color: #F0F5FF; padding: 5px; margin-top:10px;'>
+					<div class='linha' style='width: 100%;'>	
+						<div class='coluna' style='float:left; width:300px; font-weight:bold; color:#000;'>Nome da Enquete</div>
+						<div style='clear: both;'></div>
+					</div>
+				</div>";	
+			
+			for ($i = 0; $i < count($result); $i++){
+				echo '<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
+						<div class="linha_sol" style="width: 100%;">';
+							$cod_enq = $result[$i]['enq_cod'];
+							echo '<div class="coluna" style="float:left; width: 300px;"><a href="?module=cadastros&acao=editar_enquete&enq='.$result[$i]['enq_cod'].'">'.utf8_encode($result[$i]["enq_nome"]).'</a></div>';
 						echo "<div style='clear: both;'></div>";
 					echo "</div>";
 				echo "</div>";
@@ -350,7 +380,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 
 	function delete_prof_disc(indice){
 		var i, next, desc;
-		if (indice != 0){
+		if (num_pd != 1){
 			if (indice < num_pd - 1){
 				for (i = indice; i < qtd_prof_disc - 1; i++){
 					next = i+1;
@@ -366,10 +396,6 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 			document.getElementById("disc_option_"+index).value = "0";
 			document.getElementById("pro_disc_"+index).style.display = "none";
 			num_pd--;
-
-			if (num_pd == 0){
-				document.getElementById("add_prof_disc").style.display = "none";
-			}
 		}else{
 			alert("É necessário ter pelo menos um professor associado!");
 		}
@@ -389,8 +415,11 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 		document.getElementById("escolha_enquete").style.display = "none";
 		if (tipo == 1){
 			document.getElementById("cadastro_enquete").style.display = "block";
-		}else{
+		}else if (tipo == 0){
 			document.getElementById("import_enquete").style.display = "block";
+		}
+		else{
+			document.getElementById("edit_enquete").style.display = "block";
 		}
 	}
 

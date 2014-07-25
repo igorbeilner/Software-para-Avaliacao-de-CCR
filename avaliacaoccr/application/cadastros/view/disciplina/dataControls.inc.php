@@ -14,3 +14,5 @@
 		
 	}	
 ?>
+
+<h2 style="text-align: center; margin-top:50px; width: 800px;">DISCIPLINA CADASTRADA COM SUCESSO!</h2>

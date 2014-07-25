@@ -54,10 +54,6 @@
 
 	$resposta = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-	if ($resposta == '404'){
-		echo "fora do ar";
-	}
-
 			//echo 'response=';
 			//print_r($response);
 
@@ -71,21 +67,63 @@
 			$_SESSION['userPermissao'] = $result[0]['pro_permissao'];
 
 			if($_SESSION['userPermissao'] == 1){ // ADM
-				echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=administrador'>";	
+				echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=nova_enquete'>";	
 			}else
 			if($_SESSION['userPermissao'] == 2){ // PROFESSOR
 				echo "<meta http-equiv='refresh' content='0;URL=?module=relatorios&acao=professor'>";	
 			}
 		}
 		else{ // ALUNO
-			if (isset($GET['url'])){
-				//echo "<meta http-equiv='refresh' content='0;URL=".$GET['url']."'>";
+			if (isset($_GET['enq_cod'])){
+				$aux = explode("-", $_GET['enq_cod']);
+				$enq_cod = $aux[1];
+
+				$aluno = md5($user);
+				$sql = "select * from aluno as a where a.alu_cpf=md5('".$user."')";
+				$result = $data->find('dynamic', $sql);
+
+				if (count($result) > 0){
+					$alu_cod = $result[0]['alu_cod'];
+
+					$sql = "select * from alu_enq where enq_cod = ".$enq_cod." and alu_cod = ".$alu_cod;
+					$res = $data->find('dynamic', $sql);
+
+					if (count($res) > 0){
+						$_SESSION['logado'] = 0;
+						echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."-1'>";
+						exit;
+					}else{
+						$_SESSION['userId'] = $alu_cod;
+						$_SESSION['logado'] = 1;
+						$_SESSION['enquete'] = 0;
+						echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."'>";
+					}
+				}else{
+					$data->tabela = "aluno";
+					$array1['alu_cpf'] = $aluno;
+					$data->add($array1);
+
+					$sql = "SELECT MAX(alu_cod) AS alu_cod
+						FROM aluno";
+					$alu_cod = $data->find("dynamic", $sql);
+					
+					$_SESSION['userId'] = $alu_cod[0]['alu_cod'];
+					$_SESSION['logado'] = 1;
+					$_SESSION['enquete'] = 0;
+					echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."'>";
+				}
 			}
 		}
 	}else{
 		$_SESSION['logado'] = 0;
 		echo "<script>alert('Senha e/ou login invalido');</script>"; 
-		echo "<meta http-equiv='refresh' content='0;URL=?module=index'>";
+		if (isset($_GET['enq_cod'])){
+			$aux = explode("-", $_GET['enq_cod']);
+			$enq_cod = $aux[1];
+			echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."'>";
+		}else{
+			echo "<meta http-equiv='refresh' content='0;URL=?module=index'>";
+		}		
 	}
 
 			//close connection

@@ -38,7 +38,7 @@
 		if ($semestre > 0){
 			$sql = "select *
 					from professor as p
-					where p.pro_siape =".$pro."";
+					where p.pro_cpf =".$pro."";
 				
 			$res = $data->find('dynamic', $sql);
 			
