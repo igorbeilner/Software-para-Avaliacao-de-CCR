@@ -1,7 +1,7 @@
 <?php
 	switch($_GET['acao']){
-		
-		case 'gravar_enquete':	
+
+		case 'gravar_enquete':
 
 			//echo "qtd: ".$_POST['qtd_perg']."<br />";
 			//echo "vetor: ".$_POST['perg_alter']."<br />";
@@ -16,26 +16,26 @@
 			$sem_ano = $aux[0];
 			$sem_parte = $aux[1];
 
-			$sql = 'select s.sem_id 
-					from semestre as s 
+			$sql = 'select s.sem_id
+					from semestre as s
 					where sem_ano = '.$sem_ano.' and sem_parte = '.$sem_parte.'';
 
 			$res = $data->find('dynamic', $sql);
 
 			$semestre = $res[0]['sem_id'];
-			$_POST['enq_data']         = $utils->formatDate('/', $_POST['enq_data']); // Transformando data p/ gravar no banco			
-			
+			$_POST['enq_data']         = $utils->formatDate('/', $_POST['enq_data']); // Transformando data p/ gravar no banco
+
 			for ($m = 0; $m < $num_enq; $m++){
 
 				// Tabela ENQUETE
-				$data->tabela = 'enquete';						
+				$data->tabela = 'enquete';
 				$array['enq_nome']         = addslashes($_POST['enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 				$array['enq_num_perg']     = $_POST['qtd_perg'];
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;
-				$array['enq_data']         = $_POST['enq_data'];												
-				$array['enq_status']       = $_POST['enq_status'];	
-				$array['enq_num_resp'] = 0;														
+				$array['enq_data']         = $_POST['enq_data'];
+				$array['enq_status']       = $_POST['enq_status'];
+				$array['enq_num_resp'] = 0;
 				$data->add($array);
 			}
 
@@ -62,12 +62,12 @@
 
 				// Perguntas do BANCO
 				if($_POST['escala_ac_'.$i] != ""){ // Escala
-					$cod = explode(" - ", $_POST['escala_ac_'.$i]);	
+					$cod = explode(" - ", $_POST['escala_ac_'.$i]);
 					array_push($cod_car, $cod[0]);
 					$qtd_car++;
 				}
 				if($_POST['texto_ac_'.$i] != ""){ // Texto
-					$cod = explode(" - ", $_POST['texto_ac_'.$i]);	
+					$cod = explode(" - ", $_POST['texto_ac_'.$i]);
 					array_push($cod_car, $cod[0]);
 					$qtd_car++;
 				}
@@ -95,13 +95,13 @@
 					// Grava na tabela enquete_perguntas
 					// Novas perguntas
 					for($j=$qtd_nova - 1; $j >= 0; $j--){
-						$array_ep['enq_cod'] = $enqs[$i]['enq_cod'];		
+						$array_ep['enq_cod'] = $enqs[$i]['enq_cod'];
 						$array_ep['per_cod'] = $pergs_novas_cod[$j]['per_cod'];
 						$data->add($array_ep);
 					}
 					// Perguntas carregadas
 					for($j=$qtd_car - 1; $j >= 0; $j--){
-						$array_ep2['enq_cod'] = $enqs[$i]['enq_cod'];		
+						$array_ep2['enq_cod'] = $enqs[$i]['enq_cod'];
 						$array_ep2['per_cod'] = $cod_car[$j];
 						$data->add($array_ep2);
 					}
@@ -115,10 +115,10 @@
 						ORDER BY per_cod DESC
 						LIMIT 0, ".$qtd_nova;
 				$pergs_novas_escala = $data->find("dynamic", $sql);
-			
+
 				$indice = 0;
 				$aux1 = explode (',', $_POST['perg_alter']);
-					
+
 				$data->tabela = 'perguntas_opcoes';
 				for($j = sizeof($aux1) - 1; $j >= 0; $j--){
 					$aux = explode('_', $aux1[$j]);
@@ -126,11 +126,11 @@
 					$alter = $aux[1];
 					$aux = explode('_', $aux1[$j-1]);
 					$next_perg = $aux[0];
-						
+
 					$array_per_opc['per_cod'] = $pergs_novas_escala[$indice]['per_cod'];
 					$array_per_opc['op_cod'] = $alter;
 					$data->add($array_per_opc);
-						
+
 					if ($perg != $next_perg) $indice++;
 				}
 			}
@@ -153,7 +153,7 @@
 			echo "<div class='coluna' style='width: 800px; font-weight:bold; margin-bottom: 20px;'>Links para as enquetes:</div>";
 			for ($i = 0; $i < count($enqs); $i++){
 				echo "<div class='coluna' style='width: 800px;'>";
-					echo "http://localhost/Software-para-Avaliacao-de-CCR/avaliacaoccr/enquete-".$enqs[$i]['enq_cod'];
+					echo 'http://' . $_SERVER['HTTP_HOST']  .  explode('?',$_SERVER["REQUEST_URI"])[0]  ."enquete-".$enqs[$i]['enq_cod'];
 				echo "</div>";
 				$array_edp['enq_cod'] = $enqs[$i]['enq_cod'];
 				$array_edp['pro_cod'] = $_POST['pro_'.$i];
@@ -162,11 +162,11 @@
 			}
 			echo "</div>";
 
-			
 
 
-			//echo "<meta http-equiv='Refresh' CONTENT='0;URL=?module=cadastros&acao=lista_cargo'>";	
+
+			//echo "<meta http-equiv='Refresh' CONTENT='0;URL=?module=cadastros&acao=lista_cargo'>";
 		break;
-	
-	}	
+
+	}
 ?>
