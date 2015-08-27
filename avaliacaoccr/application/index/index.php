@@ -49,18 +49,18 @@
 		<div id="container">
 
     		<div style="background-color: #f0f0f0; left:-120px; position:relative; width:325px; top:-70px;" id="conteudo">
-                <div >
-                    CPF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Senha
-                </div>
+                
     			<form id="login" action='?module=index&action=valida_senha' method="post">
-                    <input type="text" 		name="usuario" placeholder="Insira aqui seu CPF"/>
+
+                    <input type="text" 		name="usuario" placeholder="Insira aqui seu CPF" />
 
                     <!--<input type="hidden" 	name="idSession" value="<?php echo $randon;?>" /> -->
-                    <input type="password" 	name="senha" value="" />
- 									<input style="width: 320px; margin-top: 10px;" type="submit" value="enviar"/>
+                    <input type="password" 	name="senha" placeholder="Insira aqui sua senha" />
+                    <?php
+                    	if(isset($_GET['err']) and $_GET['err'] == 1)
+	    					echo '<div style="color: #f00;">Login ou senha inválidos!</div>';
+    				?>
+ 									<input style="width: 180px; margin-top: 10px;" type="submit" value="enviar"/>
     			</form>
     		</div>
     		<div style="clear:both;"></div>

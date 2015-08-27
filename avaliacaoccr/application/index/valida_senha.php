@@ -110,13 +110,12 @@
 		}
 	}else{
 		$_SESSION['logado'] = 0;
-		echo "<script>alert('Senha e/ou login invalido');</script>";
 		if (isset($_GET['enq_cod'])){
 			$aux = explode("-", $_GET['enq_cod']);
 			$enq_cod = $aux[1];
-			echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."'>";
+			header("location: enquete-".$enq_cod."&err=1");
 		}else{
-			echo "<meta http-equiv='refresh' content='0;URL=?module=index'>";
+			header("location: ?module=index&err=1");
 		}
 	}
 
