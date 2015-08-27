@@ -21,9 +21,9 @@
 		$fields_string .= $key.'='.$value.'&';
 	}
 	rtrim($fields_string,'&');
-	goto teste;
+
 	//open connection
-	/*$ch = curl_init();
+	$ch = curl_init();
 
 	//set the url, number of POST vars, POST data
 	curl_setopt($ch,CURLOPT_URL,$url);
@@ -32,7 +32,7 @@
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)");
+	curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 	curl_setopt($ch, CURLOPT_HEADER, 1);
 	curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	curl_setopt($ch,CURLOPT_FAILONERROR, true);
@@ -41,7 +41,7 @@
 	$result = curl_exec($ch);
 
 	preg_match_all('/^Set-Cookie:\s*([^\r\n]*)/mi', $result, $ms);
-	*/
+	
 	$cookies = array();
 	foreach ($ms[1] as $m) {
 	    list($name, $value) = explode('=', $m, 2);
@@ -51,7 +51,6 @@
 	$response = curl_getinfo( $ch );
 
 	if ($response['redirect_count'] == 2){
-		teste:
 
 		$sql = "select * from professor where pro_cpf = ".$user;
 		$result = $data->find('dynamic', $sql);
@@ -62,10 +61,10 @@
 			$_SESSION['userPermissao'] = $result[0]['pro_permissao'];
 
 			if($_SESSION['userPermissao'] == 1){ // ADM
-				echo "<meta http-equiv='refresh' content='0;URL=?module=cadastros&acao=nova_enquete'>";
+				header("location: ?module=cadastros&acao=nova_enquete");
 			}else
 			if($_SESSION['userPermissao'] == 2){ // PROFESSOR
-				echo "<meta http-equiv='refresh' content='0;URL=?module=relatorios&acao=professor'>";
+				header("locaton: ?module=relatorios&acao=professor");
 			}
 		}
 		else{ // ALUNO
@@ -122,7 +121,7 @@
 	}
 
 			//close connection
-	//curl_close($ch);
+	curl_close($ch);
 
 
 
