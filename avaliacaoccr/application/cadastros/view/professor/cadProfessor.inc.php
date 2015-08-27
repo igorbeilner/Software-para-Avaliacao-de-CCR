@@ -44,27 +44,60 @@
 	
 </div>
 <script>
+function testNome(nome){
+		if(nome==''||nome==null){
+			return "É necessário preencher o nome!";			
+		};
+		return "";
+	}
+function testCpf(cpf){
+		if(cpf==''||cpf==null){
+			return "É necessário preencher o cpf!";			
+		}
+		else if(cpf.length!=11){
+			return "O CPF deve ter 11 digitos!";
+		}
+		return "";
+	}
+function testSiape(siape){
+		if(siape==''||siape==null){
+			return "É necessário preencher o siape!";			
+		}
+		else if(siape.length<7||siape.length>9){
+			return "O Siape deve ter 7 digitos!";
+		};
+		return "";
+	}
 
 function valida_form(){
 		var mensagem, id;
-		if (document.getElementById('pro_nome').value == ''){ 
-			mensagem = "É necessário preencher o nome!";
-			id       = "pro_nome";
-			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
-		}else
-		if (document.getElementById('pro_siape').value == ''){ 
-			mensagem = "É necessário preencher o número do siape!";
-			id       = "pro_siape";
-			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
-		}else if (document.getElementById('pro_cpf').value == ''){ 
+		
+		if (document.getElementById('pro_cpf').value == ''){
 			mensagem = "É necessário preencher o número do cpf!";
 			id       = "pro_cpf";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
-		
+		}
+		else if (document.getElementById('pro_cpf').value.length!=11){
+			mensagem = "O número do cpf deve possuir 11 digitos!";
+			id       = "pro_cpf";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}
+		else if (document.getElementById('pro_siape').value == ''){ 
+			mensagem = "É necessário preencher o número do siape!";
+			id       = "pro_siape";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else if (document.getElementById('pro_siape').value.length!=7){ 
+			mensagem = "O número do siape deve possuir 7 digitos!";
+			id       = "pro_siape";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else if (document.getElementById('pro_nome').value == ''){ 
+			mensagem = "É necessário preencher o nome!";
+			id       = "pro_nome";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else{
 			document.forms['frmCadastro'].submit();	
-		}
-	}
+		};	
+	};
 
 
 </script>
