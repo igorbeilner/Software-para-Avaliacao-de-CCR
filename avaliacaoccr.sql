@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 3.4.10.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 26-Jul-2014 às 01:38
--- Versão do servidor: 5.5.36
--- PHP Version: 5.4.27
+-- Servidor: localhost
+-- Tempo de Geração: 27/08/2015 às 22h26min
+-- Versão do Servidor: 5.5.20
+-- Versão do PHP: 5.3.10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `avaliacaoccr`
+-- Banco de Dados: `avaliacaoccr`
 --
 
 -- --------------------------------------------------------
@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `enquete` (
   `enq_num_resp` int(10) unsigned DEFAULT NULL,
   `enq_semestre` int(40) DEFAULT NULL,
   `enq_data` date DEFAULT NULL,
+  `enq_data_fim` date DEFAULT NULL,
   `enq_status` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`enq_cod`),
   KEY `enq_semestre` (`enq_semestre`)
@@ -129,9 +130,9 @@ CREATE TABLE IF NOT EXISTS `enquete` (
 -- Extraindo dados da tabela `enquete`
 --
 
-INSERT INTO `enquete` (`enq_cod`, `enq_nome`, `enq_num_perg`, `enq_num_resp_esp`, `enq_num_resp`, `enq_semestre`, `enq_data`, `enq_status`) VALUES
-(35, 'enquete de teste', 2, 100, 1, 2, '2014-07-25', 1),
-(36, 'enquete de teste', 2, 100, 1, 2, '2014-07-25', 1);
+INSERT INTO `enquete` (`enq_cod`, `enq_nome`, `enq_num_perg`, `enq_num_resp_esp`, `enq_num_resp`, `enq_semestre`, `enq_data`, `enq_data_fim`, `enq_status`) VALUES
+(35, 'enquete de teste', 2, 100, 1, 2, '2014-07-25', NULL, 1),
+(36, 'enquete de teste', 2, 100, 1, 2, '2014-07-25', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -293,17 +294,18 @@ CREATE TABLE IF NOT EXISTS `professor` (
   `pro_permissao` int(11) NOT NULL,
   `pro_cpf` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`pro_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=667 ;
 
 --
 -- Extraindo dados da tabela `professor`
 --
 
 INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_permissao`, `pro_cpf`) VALUES
-(6, 'Aline Menin', '', 1, '7758791930'),
+(6, 'Dinara Rigon', '', 1, '1979984026'),
 (7, 'Ramon Perondi', '123', 2, '7295445919'),
 (9, 'GRAZIELA TONIN', '123', 2, '1234'),
-(10, 'FERNANDO BEVILACQUA', '123', 2, '12345');
+(10, 'FERNANDO BEVILACQUA', '123', 2, '12345'),
+(666, 'Rafael Hengen Ribeiro', '', 1, '7251501902');
 
 -- --------------------------------------------------------
 
@@ -354,37 +356,37 @@ INSERT INTO `semestre` (`sem_id`, `sem_ano`, `sem_parte`) VALUES
 (4, 2015, 2);
 
 --
--- Constraints for dumped tables
+-- Restrições para as tabelas dumpadas
 --
 
 --
--- Limitadores para a tabela `alu_enq`
+-- Restrições para a tabela `alu_enq`
 --
 ALTER TABLE `alu_enq`
-  ADD CONSTRAINT `alu_enq_ibfk_2` FOREIGN KEY (`alu_cod`) REFERENCES `aluno` (`alu_cod`),
-  ADD CONSTRAINT `alu_enq_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`);
+  ADD CONSTRAINT `alu_enq_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
+  ADD CONSTRAINT `alu_enq_ibfk_2` FOREIGN KEY (`alu_cod`) REFERENCES `aluno` (`alu_cod`);
 
 --
--- Limitadores para a tabela `disciplina`
+-- Restrições para a tabela `disciplina`
 --
 ALTER TABLE `disciplina`
   ADD CONSTRAINT `disciplina_ibfk_1` FOREIGN KEY (`dis_dominio`) REFERENCES `dominio` (`dom_id`);
 
 --
--- Limitadores para a tabela `enquete`
+-- Restrições para a tabela `enquete`
 --
 ALTER TABLE `enquete`
   ADD CONSTRAINT `enquete_ibfk_1` FOREIGN KEY (`enq_semestre`) REFERENCES `semestre` (`sem_id`);
 
 --
--- Limitadores para a tabela `enquete_perguntas`
+-- Restrições para a tabela `enquete_perguntas`
 --
 ALTER TABLE `enquete_perguntas`
   ADD CONSTRAINT `enquete_perguntas_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
   ADD CONSTRAINT `enquete_perguntas_ibfk_2` FOREIGN KEY (`per_cod`) REFERENCES `perguntas` (`per_cod`);
 
 --
--- Limitadores para a tabela `enq_disc_prof`
+-- Restrições para a tabela `enq_disc_prof`
 --
 ALTER TABLE `enq_disc_prof`
   ADD CONSTRAINT `enq_disc_prof_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
@@ -392,7 +394,7 @@ ALTER TABLE `enq_disc_prof`
   ADD CONSTRAINT `enq_disc_prof_ibfk_3` FOREIGN KEY (`pro_cod`) REFERENCES `professor` (`pro_cod`);
 
 --
--- Limitadores para a tabela `enq_per_res`
+-- Restrições para a tabela `enq_per_res`
 --
 ALTER TABLE `enq_per_res`
   ADD CONSTRAINT `enq_per_res_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
@@ -400,14 +402,14 @@ ALTER TABLE `enq_per_res`
   ADD CONSTRAINT `enq_per_res_ibfk_3` FOREIGN KEY (`res_cod`) REFERENCES `respostas` (`res_cod`);
 
 --
--- Limitadores para a tabela `perguntas_opcoes`
+-- Restrições para a tabela `perguntas_opcoes`
 --
 ALTER TABLE `perguntas_opcoes`
   ADD CONSTRAINT `perguntas_opcoes_ibfk_1` FOREIGN KEY (`op_cod`) REFERENCES `opcoes` (`op_cod`),
   ADD CONSTRAINT `perguntas_opcoes_ibfk_2` FOREIGN KEY (`per_cod`) REFERENCES `perguntas` (`per_cod`);
 
 --
--- Limitadores para a tabela `respostas`
+-- Restrições para a tabela `respostas`
 --
 ALTER TABLE `respostas`
   ADD CONSTRAINT `respostas_ibfk_2` FOREIGN KEY (`per_cod`) REFERENCES `perguntas` (`per_cod`);
