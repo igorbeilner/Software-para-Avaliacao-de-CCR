@@ -6,14 +6,14 @@
  	if (isset($_GET['enq_cod'])){
 		$enq_cod = $_GET['enq_cod'];
 	}
-	
+
 	$aux = explode("-", $enq_cod);
 	$enq_cod = $aux[1];
 
 	$_SESSION['cod_enq'] = $cod_enq;
 
  	if (isset($_SESSION['enquete'])){
- 		if ($_SESSION['enquete'] == 1){	
+ 		if ($_SESSION['enquete'] == 1){
  			if(isset($_GET['erro'])){
  				echo "<script> alert('Você já respondeu essa enquete!') </script>";
  			}
@@ -25,7 +25,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Senha
                 </div>
-    			<form id="login" action="valida_senha-'.$enq_cod.'" method="post">	
+    			<form id="login" action="valida_senha-'.$enq_cod.'" method="post">
                     <input type="text" 		name="usuario" placeholder="Insira aqui seu CPF"/>
                     <input type="password" 	name="senha" value="" />
  					<input style="width: 320px; margin-top: 10px;" type="submit" value="enviar"/>
@@ -42,7 +42,7 @@
 		if (count($res) == 0){
 
 			$sql = "select p.per_desc, p.per_tipo, p.per_cod, j.enq_nome from
-					(select e.enq_cod, ep.per_cod, e.enq_nome 
+					(select e.enq_cod, ep.per_cod, e.enq_nome
 					from enquete as e join enquete_perguntas as ep
 					where e.enq_cod = ".$enq_cod." and ep.enq_cod = ".$enq_cod.") as j join perguntas as p
 					where j.per_cod = p.per_cod";
@@ -65,7 +65,7 @@
 
 		<form action="<?php echo "process-".$enq_cod."" ?>" id="form_enquete" method="post" style="margin:auto; display:table;">
 		<?php
-			for ($i = 0; $i < count($result); $i++){	
+			for ($i = 0; $i < count($result); $i++){
 				$n = $i + 1;
 				if ($result[$i]['per_tipo'] == 0){
 		?>
@@ -82,8 +82,8 @@
 		           		<?php
 		           			$sql = "select o.op_desc from
 									(select op.op_cod from
-		           					perguntas as p join perguntas_opcoes as op 
-		           					where p.per_cod = ".$result[$i]['per_cod']." and op.per_cod = ".$result[$i]['per_cod'].") as t 
+		           					perguntas as p join perguntas_opcoes as op
+		           					where p.per_cod = ".$result[$i]['per_cod']." and op.per_cod = ".$result[$i]['per_cod'].") as t
 									join opcoes as o where t.op_cod = o.op_cod";
 
 							$res = $data->find('dynamic', $sql);
@@ -98,12 +98,12 @@
 						?>
 		           	</div>
 
-		           
+
 		<?php
-				}				
+				}
 			}
 		?>
-		<input style="margin-top:10px;" type="submit" value="Enviar resposta">	
+		<input style="margin-top:10px;" type="submit" value="Enviar resposta">
 		</form>
 <?php
 		}else{
@@ -114,7 +114,3 @@
 		}
 	}
 ?>
-
-
-
-

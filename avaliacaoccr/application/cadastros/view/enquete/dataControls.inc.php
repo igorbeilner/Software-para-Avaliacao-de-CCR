@@ -23,7 +23,11 @@
 			$res = $data->find('dynamic', $sql);
 
 			$semestre = $res[0]['sem_id'];
-			$_POST['enq_data']         = $utils->formatDate('/', $_POST['enq_data']); // Transformando data p/ gravar no banco
+
+			#data de inicio
+			$_POST['enq_data'] = $utils->formatDate('/', $_POST['enq_data']); // Transformando data p/ gravar no banco
+			#data de fim
+			$_POST['enq_data_fim'] = $utils->formatDate('/', $_POST['enq_data_fim']);
 
 			for ($m = 0; $m < $num_enq; $m++){
 
@@ -34,8 +38,9 @@
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;
 				$array['enq_data']         = $_POST['enq_data'];
+				$array['enq_data_fim']     = $_POST['enq_data_fim'];
 				$array['enq_status']       = $_POST['enq_status'];
-				$array['enq_num_resp'] = 0;
+				$array['enq_num_resp'] 		 = 0;
 				$data->add($array);
 			}
 
