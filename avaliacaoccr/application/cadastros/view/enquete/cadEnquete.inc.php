@@ -356,6 +356,7 @@ AQUI APARECE AS ENQUETES PARA SEREM EDITADAS ///////////////////////////////////
     </div>
 </div>
 
+<script src="application/script/js/validaEnquete.js"></script>
 <script>
 
 	var num_perg = 0;
@@ -489,10 +490,24 @@ AQUI APARECE AS ENQUETES PARA SEREM EDITADAS ///////////////////////////////////
 		}
 	}
 
-
+	/*
+		Verifica para que a quantidade de alternativas seja menor ou igual
+		a quantidade de alternativas possiveis. 
+	*/
 	function mostra_alter(indice_pergunta) {
-		perguntas[indice_pergunta]++;
-		document.getElementById("alter_"+indice_pergunta+"_"+perguntas[indice_pergunta]).style.display = "block";
+		var novaAlternativa = document.getElementById("alter_"+indice_pergunta+"_"+(perguntas[indice_pergunta]+1));
+
+		var alternativas = document.getElementById('alter_1_1'); 
+		if( alternativas !== undefined ){
+
+			if( perguntas[indice_pergunta] < alternativas.children.length ){
+				perguntas[indice_pergunta]++;
+				novaAlternativa.style.display = "block";
+			}
+		}
+		else{
+			novaAlternativa.style.display = "block";
+		}
 	}
 
 	function delete_pergunta(indice_pergunta, tipo, enquete_import, importada){
@@ -542,6 +557,8 @@ AQUI APARECE AS ENQUETES PARA SEREM EDITADAS ///////////////////////////////////
 	function ativa_tipo_pergunta(){
 		document.getElementById("tipo_pergunta_cab").style.display = "block";
 		document.getElementById("tipo_pergunta_sel").style.display = "block";
+		
+		document.getElementById("selecao_tipo").focus();
 	}
 
 	function ativa_btn_importar(){

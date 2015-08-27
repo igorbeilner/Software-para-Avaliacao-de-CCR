@@ -49,8 +49,7 @@
 				left:-18px;
 			}
 		</style>
-        <script src="application/script/js/imc_percentil.js"></script>
-        <script src="application/script/js/circ_abdominal.js"></script>
+
         <script src="application/script/js/system.js"></script>
         <script src="application/script/js/masc_val.js"></script>
 		<?php require_once 'application/incs/header.inc.php'; ?>
