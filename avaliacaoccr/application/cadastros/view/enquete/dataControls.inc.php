@@ -158,7 +158,8 @@
 			echo "<div class='coluna' style='width: 800px; font-weight:bold; margin-bottom: 20px;'>Links para as enquetes:</div>";
 			for ($i = 0; $i < count($enqs); $i++){
 				echo "<div class='coluna' style='width: 800px;'>";
-					echo 'http://' . $_SERVER['HTTP_HOST']  .  explode('?',$_SERVER["REQUEST_URI"])[0]  ."enquete-".$enqs[$i]['enq_cod'];
+					$urlExplode = explode('?',$_SERVER["REQUEST_URI"]);
+					echo 'http://' . $_SERVER['HTTP_HOST']  .  $urlExplode[0]  ."enquete-".$enqs[$i]['enq_cod'];
 				echo "</div>";
 				$array_edp['enq_cod'] = $enqs[$i]['enq_cod'];
 				$array_edp['pro_cod'] = $_POST['pro_'.$i];
