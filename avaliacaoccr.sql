@@ -68,21 +68,21 @@ INSERT INTO `alu_enq` (`ale_cod`, `enq_cod`, `alu_cod`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `disciplina` (
-  `dis_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `dis_cod` char(7) CHARACTER SET utf8 NOT NULL,
   `dis_nome` char(80) CHARACTER SET utf8 DEFAULT NULL,
   `dis_dominio` int(10) DEFAULT NULL,
   PRIMARY KEY (`dis_cod`),
   KEY `dis_dominio` (`dis_dominio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `disciplina`
 --
 
 INSERT INTO `disciplina` (`dis_cod`, `dis_nome`, `dis_dominio`) VALUES
-(5, 'ENGENHARIA DE SOFTWARE I', 3),
-(6, 'COMPUTAÃ‡ÃƒO GRÃFICA', 3),
-(7, 'ALGORITMOS E PROGRAMAÃ‡ÃƒO', 3);
+('GEX103', 'ENGENHARIA DE SOFTWARE II', 3),
+('GEX105', 'REDES DE COMPUTADORES', 3),
+('GEX119', 'TCC', 3);
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,7 @@ INSERT INTO `enquete_perguntas` (`epe_cod`, `enq_cod`, `per_cod`) VALUES
 CREATE TABLE IF NOT EXISTS `enq_disc_prof` (
   `edi_cod` int(10) NOT NULL AUTO_INCREMENT,
   `enq_cod` int(10) unsigned NOT NULL,
-  `dis_cod` int(10) unsigned NOT NULL,
+  `dis_cod` char(7) CHARACTER SET utf8 NOT NULL,
   `pro_cod` int(10) unsigned NOT NULL,
   PRIMARY KEY (`edi_cod`),
   KEY `dis_cod` (`dis_cod`),
@@ -181,8 +181,8 @@ CREATE TABLE IF NOT EXISTS `enq_disc_prof` (
 --
 
 INSERT INTO `enq_disc_prof` (`edi_cod`, `enq_cod`, `dis_cod`, `pro_cod`) VALUES
-(30, 36, 5, 9),
-(31, 35, 7, 10);
+(30, 36, 'GEX103', 9),
+(31, 35, 'GEX105', 10);
 
 -- --------------------------------------------------------
 
@@ -302,6 +302,8 @@ CREATE TABLE IF NOT EXISTS `professor` (
 
 INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_permissao`, `pro_cpf`) VALUES
 (6, 'Dinara Rigon', '', 1, '1979984026'),
+(6, 'Aline Menin', '', 1, '7758791930'),
+(8, 'Igor Beilner', '', 1, '9308347984'),
 (7, 'Ramon Perondi', '123', 2, '7295445919'),
 (9, 'GRAZIELA TONIN', '123', 2, '1234'),
 (10, 'FERNANDO BEVILACQUA', '123', 2, '12345'),

@@ -4,10 +4,19 @@
    <form action="?module=cadastros&acao=gravar_disciplina" id="frmCadastro" method="post">
 		<!--nome-->
 		<div class="linha">
-			<div style="width: 190px " class="coluna">Nome:</div>
+			<div style="width: 190px " class="coluna">Nome da Disciplina:</div>
 				<div style="clear: both;"></div>
 				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
-					<input name="dis_nome" id="dis_nome" type="text" size="61" placeholder="Nome da disciplina" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
+					<input name="dis_nome" id="dis_nome" type="text" size="61" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
+				</div>
+			<div style="clear: both;"></div>  
+		</div>
+		<!--código-->
+		<div class="linha">
+			<div style="width: 190px " class="coluna">Código da Disciplina:</div>
+				<div style="clear: both;"></div>
+				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
+					<input name="dis_cod" id="dis_cod" type="text" size="6" maxlength="6" class="cad_enq" style="width: 75px; text-transform: uppercase;" />
 				</div>
 			<div style="clear: both;"></div>  
 		</div>
@@ -39,16 +48,19 @@
 </div>
 <script>
 
-function valida_form(){
+	function valida_form(){
 		var mensagem, id;
 		if (document.getElementById('dis_nome').value == ''){ 
 			mensagem = "É necessário preencher o nome!";
 			id       = "dis_nome";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
-		}else{
+		} else if (document.getElementById('dis_cod').value.length != 6){ 
+			mensagem = "O código deve er 6 dígitos!";
+			id       = "dis_cod";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		} else {
 			document.forms['frmCadastro'].submit();	
 		}
 	}
-
 
 </script>
