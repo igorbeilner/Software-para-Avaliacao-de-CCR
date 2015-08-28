@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
 --
 
 INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_permissao`, `pro_cpf`) VALUES
-(6, 'Dinara Rigon', '', 1, '1979984026'),
+(5, 'Dinara Rigon', '', 1, '1979984026'),
 (6, 'Aline Menin', '', 1, '7758791930'),
 (8, 'Igor Beilner', '', 1, '9308347984'),
 (7, 'Ramon Perondi', '123', 2, '7295445919'),
