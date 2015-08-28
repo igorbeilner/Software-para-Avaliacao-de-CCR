@@ -4,19 +4,10 @@
     <form action="?module=cadastros&acao=gravar_professor" id="frmCadastro" method="post">
 		<!--nome-->
 		<div class="linha">
-			<div style="width: 190px " class="coluna">Nome:</div>
+			<div style="width: 190px " class="coluna">Nome do Professor:</div>
 				<div style="clear: both;"></div>
 				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
-					<input name="pro_nome" id="pro_nome" type="text" size="61" placeholder="Nome do professor" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
-				</div>
-			<div style="clear: both;"></div>  
-		</div>
-		<!--siape-->
-		<div class="linha">
-			<div style="width: 190px " class="coluna">Siape:</div>
-				<div style="clear: both;"></div>
-				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
-					<input name="pro_siape" id="pro_siape" type="text" size="61" placeholder="Código do siape" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
+					<input name="pro_nome" id="pro_nome" type="text" size="61" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
 				</div>
 			<div style="clear: both;"></div>  
 		</div>
@@ -25,7 +16,16 @@
 			<div style="width: 190px " class="coluna">CPF:</div>
 				<div style="clear: both;"></div>
 				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
-					<input name="pro_cpf" id="pro_cpf" type="text" size="61" placeholder="Número do CPF" class="cad_enq" style="width: 500px; text-transform: uppercase;" />
+					<input name="pro_cpf" id="pro_cpf" type="text" size="7" maxlength="11" class="cad_enq" style="width: 120px; text-transform: uppercase;" />
+				</div>
+			<div style="clear: both;"></div>  
+		</div>
+		<!--siape-->
+		<div class="linha">
+			<div style="width: 190px " class="coluna">Siape:</div>
+				<div style="clear: both;"></div>
+				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
+					<input name="pro_siape" id="pro_siape" type="text" size="7" maxlength="7" class="cad_enq" style="width: 80px; text-transform: uppercase;" />
 				</div>
 			<div style="clear: both;"></div>  
 		</div>

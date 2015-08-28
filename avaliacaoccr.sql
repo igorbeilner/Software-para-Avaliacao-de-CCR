@@ -169,20 +169,20 @@ CREATE TABLE IF NOT EXISTS `enq_disc_prof` (
   `edi_cod` int(10) NOT NULL AUTO_INCREMENT,
   `enq_cod` int(10) unsigned NOT NULL,
   `dis_cod` char(7) CHARACTER SET utf8 NOT NULL,
-  `pro_cod` int(10) unsigned NOT NULL,
+  `pro_siape` char(10) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`edi_cod`),
   KEY `dis_cod` (`dis_cod`),
   KEY `enq_cod` (`enq_cod`),
-  KEY `edp_pro` (`pro_cod`)
+  KEY `edp_pro` (`pro_siape`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Extraindo dados da tabela `enq_disc_prof`
 --
 
-INSERT INTO `enq_disc_prof` (`edi_cod`, `enq_cod`, `dis_cod`, `pro_cod`) VALUES
-(30, 36, 'GEX103', 9),
-(31, 35, 'GEX105', 10);
+INSERT INTO `enq_disc_prof` (`edi_cod`, `enq_cod`, `dis_cod`, `pro_siape`) VALUES
+(30, 36, 'GEX103', '2234569'),
+(31, 35, 'GEX105', '3234569');
 
 -- --------------------------------------------------------
 
@@ -288,26 +288,25 @@ INSERT INTO `perguntas_opcoes` (`pop_cod`, `per_cod`, `op_cod`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `professor` (
-  `pro_cod` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pro_nome` char(40) CHARACTER SET utf8 DEFAULT NULL,
   `pro_siape` char(10) CHARACTER SET utf8 NOT NULL,
   `pro_permissao` int(11) NOT NULL,
   `pro_cpf` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
-  PRIMARY KEY (`pro_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=667 ;
+  PRIMARY KEY (`pro_siape`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `professor`
 --
 
-INSERT INTO `professor` (`pro_cod`, `pro_nome`, `pro_siape`, `pro_permissao`, `pro_cpf`) VALUES
-(5, 'Dinara Rigon', '', 1, '1979984026'),
-(6, 'Aline Menin', '', 1, '7758791930'),
-(8, 'Igor Beilner', '', 1, '9308347984'),
-(7, 'Ramon Perondi', '123', 2, '7295445919'),
-(9, 'GRAZIELA TONIN', '123', 2, '1234'),
-(10, 'FERNANDO BEVILACQUA', '123', 2, '12345'),
-(666, 'Rafael Hengen Ribeiro', '', 1, '7251501902');
+INSERT INTO `professor` (`pro_nome`, `pro_siape`, `pro_permissao`, `pro_cpf`) VALUES
+('Dinara Rigon'         , '2234569', 1, '1979984026'),
+('Aline Menin'          , '3234569', 1, '7758791930'),
+('Igor Beilner'         , '4234569', 1, '9308347984'),
+('Ramon Perondi'        , '1234567', 2, '7295445919'),
+('GRAZIELA TONIN'       , '1234568', 2, '1234567890'),
+('FERNANDO BEVILACQUA'  , '1234569', 2, '1234587643'),
+('Rafael Hengen Ribeiro', '1634569', 1, '7251501902');
 
 -- --------------------------------------------------------
 
@@ -393,7 +392,7 @@ ALTER TABLE `enquete_perguntas`
 ALTER TABLE `enq_disc_prof`
   ADD CONSTRAINT `enq_disc_prof_ibfk_1` FOREIGN KEY (`enq_cod`) REFERENCES `enquete` (`enq_cod`),
   ADD CONSTRAINT `enq_disc_prof_ibfk_2` FOREIGN KEY (`dis_cod`) REFERENCES `disciplina` (`dis_cod`),
-  ADD CONSTRAINT `enq_disc_prof_ibfk_3` FOREIGN KEY (`pro_cod`) REFERENCES `professor` (`pro_cod`);
+  ADD CONSTRAINT `enq_disc_prof_ibfk_3` FOREIGN KEY (`pro_siape`) REFERENCES `professor` (`pro_siape`);
 
 --
 -- Restrições para a tabela `enq_per_res`

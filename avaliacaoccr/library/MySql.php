@@ -48,7 +48,8 @@ class MySql
         $this->result = mysql_query($sql);
         if (!$this->result)
         {//caso nao execute a query corretamente
-            echo 'Não foi possivel executar o comando SQL. '.$this->error();
+            echo '<script>alert("DADO JÁ ESTÁ CADASTRADO!")</script>';
+            //echo 'Não foi possivel executar o comando SQL. '.$this->error();
             exit (1);
         }
 		
