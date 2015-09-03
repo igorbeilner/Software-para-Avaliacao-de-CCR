@@ -46,19 +46,19 @@ class MySql
 		$this->connOpen();
 
         $this->result = mysql_query($sql);
-        if (!$this->result)
-        {//caso nao execute a query corretamente
-            echo '<script>alert("DADO JÁ ESTÁ CADASTRADO!")</script>';
-            //echo 'Não foi possivel executar o comando SQL. '.$this->error();
-            exit (1);
+        if (!$this->result){//caso nao execute a query corretamente
+            //echo 'Não foi possivel executar o comando SQL. '.$this-s>error();
+            //exit (1);
+
+            return false;
         }
-		
+		;
 		if ($param){
 			$this->result = $this->lastId();
 		}
         	$this->connClose();
 		
-			return $this->result;
+		return $this->result;
     }
 
     /**
