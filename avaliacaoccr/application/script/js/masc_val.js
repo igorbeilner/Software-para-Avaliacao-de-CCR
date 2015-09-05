@@ -21,6 +21,61 @@ function campo_vazio(mensagem, id){
 						$(this).dialog("close");
 						document.getElementById(id).focus();
 						document.getElementById(id).style.backgroundColor = '#fff6d5';
+						document.getElementById(id2).style.backgroundColor = '#fff6d5';
+						
+					}
+				}
+		});
+	});	
+}
+function campo_vazio(mensagem, id, id2){
+	// div do alert
+	var div = document.createElement("div"); 
+	div.innerHTML = "<div id='preencha' title='Aviso' >"+mensagem+"</div>";
+
+	$(function() {		
+		$(div.innerHTML).dialog({			
+				autoOpen: true,
+				resizable: false,
+				autoClose: false,
+				height: 145,
+				width: 360,
+				hide: "clip",
+				modal: true,
+				resize: false,
+				buttons: {
+					Ok: function() {
+						$(this).dialog("close");
+						document.getElementById(id).focus();
+						document.getElementById(id).style.backgroundColor = '#fff6d5';
+						document.getElementById(id2).style.backgroundColor = '#fff6d5';
+						document.getElementById(id3).style.backgroundColor = '#fff6d5';
+						
+					}
+				}
+		});
+	});	
+}
+function campo_vazio(mensagem, id, id2, id3){
+	// div do alert
+	var div = document.createElement("div"); 
+	div.innerHTML = "<div id='preencha' title='Aviso' >"+mensagem+"</div>";
+
+	$(function() {		
+		$(div.innerHTML).dialog({			
+				autoOpen: true,
+				resizable: false,
+				autoClose: false,
+				height: 145,
+				width: 360,
+				hide: "clip",
+				modal: true,
+				resize: false,
+				buttons: {
+					Ok: function() {
+						$(this).dialog("close");
+						document.getElementById(id).focus();
+						document.getElementById(id).style.backgroundColor = '#fff6d5';
 					}
 				}
 		});

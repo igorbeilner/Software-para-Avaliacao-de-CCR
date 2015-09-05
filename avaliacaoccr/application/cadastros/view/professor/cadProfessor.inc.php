@@ -33,7 +33,7 @@
 		<br/><br/>
 		 <!-- Botão Salvar -->
         <div class="coluna">
-            <a onclick="valida_form();" href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none;'/></a>
+            <a onclick='valida_form();' href="#"><img src="application/images/salvar.png" style='border: none; cursor:pointer; background:none;'/></a>
         </div>  
         
         <!-- Botão Cancelar -->        
@@ -72,23 +72,23 @@ function testSiape(siape){
 function valida_form(){
 		var mensagem, id;
 		
-		if (document.getElementById('pro_cpf').value == ''){
-			mensagem = "É necessário preencher o número do cpf!";
-			id       = "pro_cpf";
-			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
-		}
-		else if (document.getElementById('pro_cpf').value.length!=11){
-			mensagem = "O número do cpf deve possuir 11 digitos!";
-			id       = "pro_cpf";
-			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
-		}
-		else if (document.getElementById('pro_siape').value == ''){ 
+		
+		if (document.getElementById('pro_siape').value == ''){ 
 			mensagem = "É necessário preencher o número do siape!";
 			id       = "pro_siape";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else if (document.getElementById('pro_siape').value.length!=7){ 
 			mensagem = "O número do siape deve possuir 7 digitos!";
 			id       = "pro_siape";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}
+		else if (document.getElementById('pro_cpf').value == ''){
+			mensagem = "É necessário preencher o número do cpf!";
+			id       = "pro_cpf";
+			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
+		}else if (document.getElementById('pro_cpf').value.length!=11){
+			mensagem = "O número do cpf deve possuir 11 digitos!";
+			id       = "pro_cpf";
 			campo_vazio(mensagem, id); // mensagem que mostrará no alert e o id para dar foco ao campo ...
 		}else if (document.getElementById('pro_nome').value == ''){ 
 			mensagem = "É necessário preencher o nome!";
