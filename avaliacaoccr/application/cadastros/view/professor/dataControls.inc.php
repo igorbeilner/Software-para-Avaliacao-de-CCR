@@ -12,11 +12,19 @@
 			$array['pro_cpf'] = addslashes($_POST['pro_cpf']);
 			$array['pro_siape'] = addslashes($_POST['pro_siape']);		
 			$array['pro_permissao'] = 2;	
-			$data->add($array);
+
+
+			$ok = $data->add($array);
 			//echo "<meta http-equiv='Refresh' CONTENT='0;URL=?module=cadastros&acao=lista_cargo'>";	
 		break;
 		
 	}	
 ?>
-
-<h2 style="text-align: center; margin-top:50px; width: 800px;">PROFESSOR CADASTRADO COM SUCESSO!</h2>
+<?php if( $ok ) { ?>
+	<h2 style="text-align: center; margin-top:50px; width: 800px;">PROFESSOR CADASTRADO COM SUCESSO!</h2>
+<?php
+	} 
+	else{ 
+		echo '<script>alert("PROFESSOR JÁ ESTÁ CADASTRADO!")</script>';
+	}
+?>

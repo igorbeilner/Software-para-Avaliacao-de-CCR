@@ -28,7 +28,7 @@ class DataManipulation{
 		$dataset = new DataSet();
 		$sql = "INSERT INTO ".$this->tabela." (".$field.") VALUES (".$values.")";
 		//echo $sql;
-		$dataset->executeRecord($sql);
+		return $dataset->executeRecord($sql);
 	}
 	
 	function update($data){

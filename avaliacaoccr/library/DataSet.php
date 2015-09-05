@@ -10,6 +10,10 @@
 		function listRecord($sql){
 			$database = new MySql();	
 			$result = $database->executeQuery($sql);
+
+			if( !$result ){
+				return false;
+			}
 	
 			for($i = 0;$i < $database->countFields($result);$i++){		
 				$campo = $database->fieldName($result,$i);	
