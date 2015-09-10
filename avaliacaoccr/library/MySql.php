@@ -26,6 +26,8 @@ class MySql
             echo 'Erro ao selecionar a base de dados. '.$this->error();
             exit (1);
         }
+
+        mysql_set_charset("utf8", $this->conn);
     }
 
     //fechar a conexao com o banco

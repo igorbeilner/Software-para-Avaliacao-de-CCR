@@ -1,6 +1,9 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
+
+header('Content-Type: text/html; charset=utf-8');
+
 function __autoload($nomeClasse) {
 	if (implode('/',explode('_',$nomeClasse))== 'FPDF'){
 		require_once 'library/fpdf/'.implode('/',explode('_',$nomeClasse)).'.php';
