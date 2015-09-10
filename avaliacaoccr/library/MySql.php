@@ -10,7 +10,6 @@ class MySql
 		$server   = 'localhost';	// Endereço do servidor
 		$user     = 'root';			// Usuário
 		$passw    = '';				// Senha
-		//$passw	  = 'amosc999m';	// Senha
 		$database = 'avaliacaoccr';		// Nome Banco
 		   	
 		//@$this->conn = mysql_connect($server, $user, $passw);
@@ -54,7 +53,7 @@ class MySql
 
             return false;
         }
-		;
+		
 		if ($param){
 			$this->result = $this->lastId();
 		}
