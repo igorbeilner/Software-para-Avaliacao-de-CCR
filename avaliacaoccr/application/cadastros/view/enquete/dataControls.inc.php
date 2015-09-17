@@ -40,7 +40,7 @@
 				$array['enq_data']         = $_POST['enq_data'];
 				$array['enq_data_fim']     = $_POST['enq_data_fim'];
 				$array['enq_status']       = $_POST['enq_status'];
-				$array['enq_num_resp'] 		 = 0;
+				$array['enq_num_resp'] 	   = 0;
 				$data->add($array);
 			}
 
@@ -168,11 +168,6 @@
 			}
 			echo "</div>";
 
-
-
-
-			//echo "<meta http-equiv='Refresh' CONTENT='0;URL=?module=cadastros&acao=lista_cargo'>";
 		break;
-
 	}
 ?>

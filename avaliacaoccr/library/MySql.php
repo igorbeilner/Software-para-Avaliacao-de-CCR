@@ -10,7 +10,6 @@ class MySql
 		$server   = 'localhost';	// Endereço do servidor
 		$user     = 'root';			// Usuário
 		$passw    = '';				// Senha
-		//$passw	  = 'amosc999m';	// Senha
 		$database = 'avaliacaoccr';		// Nome Banco
 		   	
 		//@$this->conn = mysql_connect($server, $user, $passw);
@@ -26,6 +25,8 @@ class MySql
             echo 'Erro ao selecionar a base de dados. '.$this->error();
             exit (1);
         }
+
+        mysql_set_charset("utf8", $this->conn);
     }
 
     //fechar a conexao com o banco
@@ -52,7 +53,7 @@ class MySql
 
             return false;
         }
-		;
+		
 		if ($param){
 			$this->result = $this->lastId();
 		}
