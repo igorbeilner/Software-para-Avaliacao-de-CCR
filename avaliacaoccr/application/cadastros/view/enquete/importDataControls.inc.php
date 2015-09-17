@@ -163,6 +163,7 @@
 					$array_pd[$indice] = array($_POST['pro_'.$i], $_POST['disc_'.$i]);
 					$indice++;
 					///gravar na tabela enq_prof_disc
+					$data->add($array_pd);
 				}
 			}
 

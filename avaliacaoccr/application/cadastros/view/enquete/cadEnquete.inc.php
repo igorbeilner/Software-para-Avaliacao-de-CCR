@@ -69,7 +69,7 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
             <div style="clear: both;"></div>
 
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<input name="enq_semestre" maxlength="6" id="enq_semestre" type="text" size="3" placeholder="2014/2" class="cad_enq" style="width: 100px;" />
+            	<input name="enq_semestre" maxlength="6" id="enq_semestre" type="text" size="3" placeholder="2015/2" class="cad_enq" style="width: 100px;" />
             </div>
             <div style="clear: both;"></div>
 		</div>

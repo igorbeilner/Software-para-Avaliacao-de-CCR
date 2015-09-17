@@ -82,7 +82,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
                 <input name="enqimp_semestre" maxlength="6" id="enqimp_semestre" type="text" size="3" placeholder="2014/2" class="cad_enq" style="width: 100px;"  value='<?php echo $semestre[0]['sem_ano'].'/'.$semestre[0]['sem_parte']; ?>'/>
             </div>
-            <div style="clear: both;"></div>           
+            <div style="clear: both;"></div>
         </div>        
                 
         <div class="linha">
@@ -363,6 +363,13 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 
 		echo "<div class='linha' style='width:600px; margin-top: 50px;'>";
 		echo "<div class='coluna' style='width: 600px;' id='prof_cab'> Professores associados: </div>";
+		$sql = "select * from enq_disc_prof where enq_cod=".$_GET['enq'];
+		//echo $_GET['enq'];
+		$prof_dic = $data->find('dynamic',$sql);
+		//echo $prof_dic[0]['pro_cod'];
+		$sql = "select pro_nome from professor where pro_cod=".$prof_dic[0]['pro_cod'];
+		$prof_nome_banco = $data->find('dynamic',$sql);
+		//echo "<div>".$prof_nome_banco[0]['pro_nome']."</div>";
 		for ($i = 0; $i < 20; $i++){
 			if ($i == 0)
 				echo "<div id='pro_disc_".$i."' style='margin-left:10px;'>";
@@ -376,10 +383,15 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				echo "<div class='coluna' > ";
 					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					echo "<select name='pro_".$i."' id='pro_option_".$i."' class='cad_enq' style='width:250px;' >";
-						echo "<option value='0' >SELECIONE</option>";
+						if($i==0)
+							echo "<option value='".$prof_dic[0]['pro_cod']."' >".$prof_nome_banco[0]['pro_nome']."</option>";//
+						else
+							echo "<option value='0' >SELECIONE</option>";
 							for($k=0; $k< count($professores); $k++){
-								echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";	
-							}		
+								if($professores[$k]['pro_cod']!=$prof_dic[0]['pro_cod'])
+									echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";	
+							}
+								
 						echo "</select>";						
 					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
 				echo "</div>";
