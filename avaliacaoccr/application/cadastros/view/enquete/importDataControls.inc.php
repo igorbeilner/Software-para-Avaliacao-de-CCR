@@ -33,7 +33,7 @@
 				$array['enq_data']         = $_POST['enqimp_data'];												
 				$array['enq_status']       = $_POST['enqimp_status'];	
 				$array['enq_num_resp']     = 0;																
-				$data->add($array);
+				$data->update($array);
 			}
 			
 			// Tabela PERGUNTAS
