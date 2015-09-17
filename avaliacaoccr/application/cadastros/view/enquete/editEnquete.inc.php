@@ -63,7 +63,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 	$semestre = $data->find('dynamic', $sql);
 			
 ?>
-	<h2>Enquete Importada</h2>
+	<h2>Editar Enquete</h2>
     <form action="?module=cadastros&acao=gravar_enquete_importada" id="frmCadastro" method="post">        
         <div class="linha">
             <div style="width: 190px;" class="coluna">Nome da Enquete:</div>

@@ -45,7 +45,7 @@
 BOTÕES DE NOVA ENQUETE E IMPORTAR ENQUETE //////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <div class="coluna" id="escolha_enquete">
-	<a onclick='mostra_enquete(0);' style=' margin-left: 200px;'><img src='application/images/importa_enquete1.png' style='cursor:pointer;'></a>
+	<a onclick='mostra_enquete(0);' style=' margin-left: 200px;'><img src='application/images/editar_enquete1.png' style='cursor:pointer;'></a>
 	<a onclick='mostra_enquete(1);' style=' margin-left: 50px;'><img src='application/images/nova_enquete1.png' style='cursor:pointer;'></a>
 </div>
 

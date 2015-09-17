@@ -4,7 +4,7 @@
 ?>
         <li class="navprimary"><a class="abremenu" href="#">Menu</a> 
             <ul <?php if($_GET['module'] == 'cadastros'){ echo 'class="selected"';}?>>     	        
-                <li><a href='?module=cadastros&acao=nova_enquete'>Criar enquete</a></li>						
+                <li><a href='?module=cadastros&acao=nova_enquete'>Enquetes</a></li>						
             </ul> 
              <ul <?php if($_GET['module'] == 'relatorios'){ echo 'class="selected"';}?>>     	        
                 <li><a href='?module=relatorios&acao=rel_adm' >Relatórios</a></li>						

@@ -404,7 +404,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
                 
         <br /><br />	
        	<div class="coluna"><img src="application/images/nova_pergunta1.png" onclick="ativa_tipo_pergunta();" style="cursor:pointer; margin-left: 10px;" /></div>
-		<div class="coluna"><img src="application/images/importar_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' /></div><br/><br/><br/>
+		<div class="coluna"><!--<img src="application/images/importar_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' />--></div><br/><br/><br/>
         
         <!-- Envia o total de perguntas -->	
        	<input type='hidden' name='enqimp_total_perg' value='<?php echo $qtd_perg; ?>' />
