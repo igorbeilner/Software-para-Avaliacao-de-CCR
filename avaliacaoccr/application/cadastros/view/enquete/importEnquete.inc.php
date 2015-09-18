@@ -165,8 +165,11 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 					echo "<input type='hidden' name='enqimp_escala_tipo_".$i."' value='1' />";
 					echo "<input type='hidden' name='escala_per_cod_".$i."' value='".$perguntas[$i][2]."'/>";
 					echo "<a onclick='delete_pergunta(".$i.", 1, 1, 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
+//							 function delete_pergunta final deste arquivo! \/ nos scripts
 					echo "<a onclick='clone(".$i.", 1, 1, 1, ".$alter_enqimp[$i].")'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
+//							 function clone final deste arquivo! \/ nos scripts
 					echo "<a onclick='mostra_alter(".$i.", 1, ".$alter_enqimp[$i].");' style=' margin-left: 5px;'><img src='application/images/mais.png' title='Inserir alternativa' style='cursor:pointer;'/></a>";
+//							 function mostra_alter final deste arquivo! \/ nos scripts
 
 				echo "</div>";
 
@@ -195,6 +198,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 							///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
 						echo "</div>";
 						echo "<a onclick='delete_alternativa(".$i.", ".$l.", 1, ".$alter_enqimp[$i].");' ><img src='application/images/delete.png' style='cursor:pointer; margin-top:10px; margin-left:10px;' /></a>";
+//							     function delete_alternativa final deste arquivo \/
 					echo "</div>";
 				}
 				echo "</div>";
