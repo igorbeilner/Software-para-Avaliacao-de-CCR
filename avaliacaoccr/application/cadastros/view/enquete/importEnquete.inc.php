@@ -20,7 +20,7 @@
 	// Lista todas as alternativas
 	$sql = "SELECT *
 			FROM opcoes
-			ORDER BY op_desc ASC";
+			ORDER BY op_cod ASC";
 	$opcoes = $data->find('dynamic', $sql);			
 
 	for($i=0;$i<count($pergunta1);$i++){
@@ -418,6 +418,8 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
        	<div class="coluna"><img src="application/images/nova_pergunta1.png" onclick="ativa_tipo_pergunta();" style="cursor:pointer; margin-left: 10px;" /></div>
 		<div class="coluna"><!--<img src="application/images/importar_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' />--></div><br/><br/><br/>
         
+        <!-- Envia o codigo da enquete que sera alterada-->
+        <input type='hidden' name='enqimp_enq_cod' value="<?php echo $_GET['enq']; ?>" />
         <!-- Envia o total de perguntas -->	
        	<input type='hidden' name='enqimp_total_perg' value='<?php echo $qtd_perg; ?>' />
        	 <!-- Envia a quantidade de perguntas importadas com a enquete -->
