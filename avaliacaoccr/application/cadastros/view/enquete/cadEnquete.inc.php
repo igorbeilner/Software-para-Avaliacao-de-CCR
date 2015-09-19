@@ -34,7 +34,7 @@
 	$sql = "select * from professor";
 	$professores = $data->find('dynamic', $sql);
 
-	$sql = "select * from disciplina";
+	$sql = "SELECT * FROM disciplina ORDER BY dis_nome ASC";
 	$disciplinas = $data->find('dynamic', $sql);
 
 ?>
@@ -255,6 +255,7 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
 					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					echo "<select name='disc_".$i."' id='disc_option_".$i."' class='cad_enq' style='width:250px; margin-left: 20px;' >";
 						echo "<option value='0' >SELECIONE</option>";
+							// a consulta da tabela $disciplinas esta aproximadamente na linha 37 /\ deste arquivo.
 							for($k=0; $k< count($disciplinas); $k++){
 								echo "<option value='".$disciplinas[$k]['dis_cod']."' >".$disciplinas[$k]['dis_nome']."</option>";
 							}
@@ -266,13 +267,13 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
 		}
 		echo "</div>";
 		echo '<div class="coluna" style="margin-top: 20px; margin-left: 10px;" id="add_prof_disc"><img src="application/images/professor_disciplina4.png" onclick="add();" style="cursor:pointer;" /></div>';
-		echo "<div style='clear: both;'></div>";
+		echo "<div style='clear: both;'></div>";//																		function add() aproximadamente na linha 379 \/ neste arquivo!						
 		?>
 
         <br /><br />
 		<div class="coluna"><img src="application/images/nova_pergunta1.png" onclick="ativa_tipo_pergunta();" style="cursor:pointer; margin-left: 10px;" /></div>
-		<div class="coluna"><img src="application/images/importar_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' /></div><br/><br/><br/>
-
+		<!--<div class="coluna"><img src="application/images/importar_pergunta1.png" onclick="ativa_btn_importar();" style='margin-left:3px; cursor:pointer;' /></div>--><br/><br/><br/> 
+<!--DIV excluida /\ pois sua função não muda nada do botão nova pergunta! Como será multiplicado o número das enquetes, pelo número de disciplinas, então não será necessário importar perguntas. -->
 		<!-- Envia o total de perguntas -->
 		<input type='hidden' name='total_perg' value='<?php echo $qtd_perg; ?>' />
 		<!-- Envia a quantidade de perguntas criadas -->
@@ -399,14 +400,14 @@ AQUI APARECE AS ENQUETES PARA SEREM EDITADAS ///////////////////////////////////
 			document.getElementById("pro_disc_"+index).style.display = "none";
 			num_pd--;
 		}else{
-			alert("É necessário ter pelo menos um professor associado!");
+			alert("É necessário ter pelo menos uma disciplina associada!");
 		}
 	}
 
 	function conta_prof_disc(){
 		var i, qtd = 0;
 		for (i = 0; i < qtd_prof_disc; i++){
-			if (document.getElementById("pro_option_"+i).value != "0"){
+			if (document.getElementById("disc_option_"+i).value != "0"){
 				qtd++;
 			}
 		}
