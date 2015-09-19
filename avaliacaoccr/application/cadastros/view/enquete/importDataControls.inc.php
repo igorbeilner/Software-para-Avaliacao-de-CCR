@@ -25,35 +25,79 @@
 			$data->tabela = 'enquete';		
 
 			for ($m = 0; $m < $qtd_enq; $m++){				
-				$array['enq_cod']		   = $_POST['enqimp_enq_cod'];
-				$array['enq_nome']         = addslashes($_POST['enqimp_enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
-				$array['enq_num_perg']     = $total_pergs;
-				$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
-				$array['enq_semestre']     = $semestre;
-				$array['enq_data']         = $_POST['enqimp_data'];												
-				$array['enq_status']       = $_POST['enqimp_status'];	
-				$array['enq_num_resp']     = 0;																
-				$data->update($array);
+				if($m==0&&isset($_POST['enqimp_enq_cod'])){
+				// este if é para não importar e editar enquetes não selecionadas
+					$array['enq_cod']		   = $_POST['enqimp_enq_cod'];
+					$array['enq_nome']         = addslashes($_POST['enqimp_enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+					$array['enq_num_perg']     = $total_pergs;
+					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
+					$array['enq_semestre']     = $semestre;
+					$array['enq_data']         = $_POST['enqimp_data'];												
+					$array['enq_status']       = $_POST['enqimp_status'];	
+					$array['enq_num_resp']     = 0;																
+					$data->update($array);
+				}
+				else{
+					$array['enq_nome']         = addslashes($_POST['enqimp_enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+					$array['enq_num_perg']     = $total_pergs;
+					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
+					$array['enq_semestre']     = $semestre;
+					$array['enq_data']         = $_POST['enqimp_data'];												
+					$array['enq_status']       = $_POST['enqimp_status'];	
+					$array['enq_num_resp']     = 0;																
+					$data->add($array);
+				}
 			}
+			//$sql = "SELECT * FROM enquete";
+
 			$Cod_Enq=$_POST['enqimp_enq_cod'];
 			// Tabela PERGUNTAS
 			$data->tabela = 'perguntas';
 			$qtd_nova = 0;
 			$qtd_car = 0;
 			$cod_car = Array();
+			$sql = "SELECT * FROM perguntas WHERE per_tipo=0";
+			$perguntas_texto = $data->find('dynamic',$sql);
+			$sql = "SELECT * FROM perguntas WHERE per_tipo=1";
+			$perguntas_escala = $data->find('dynamic',$sql);
+
+
 			for($i=1; $i<=$_POST['enqimp_total_perg']; $i++){
 				// TEXTO
 				if($_POST['enqimp_nova_per_desc_'.$i.'_texto'] != ""){
+					$existe=false;
 					$array_texto['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_texto'];
 					$array_texto['per_tipo'] = $_POST['enqimp_nova_text_tipo_'.$i];
-					$data->add($array_texto);
+					for ($p=0; $p < count($perguntas_texto); $p++) { 
+						if($perguntas_texto[$p]['per_desc']==$array_texto['per_desc']){
+							$existe=true;
+							break;
+						};
+					};
+					if($existe){
+						$array_texto['per_cod']=$perguntas_texto[$p]['per_cod'];
+						//$data->update($array_texto);
+					}
+					else
+						$data->add($array_texto);	
 					$qtd_nova++;
 				}
 				// ESCALA
 				if($_POST['enqimp_nova_per_desc_'.$i.'_escala'] != ""){
 					$array_escala['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_escala'];
 					$array_escala['per_tipo'] = $_POST['enqimp_nova_escala_tipo_'.$i];
-					$data->add($array_escala);
+					for ($p=0; $p < count($perguntas_escala); $p++) { 
+						if($perguntas_escala[$p]['per_desc']==$array_escala['per_desc']){
+							$existe=true;
+							break;
+						};
+					}
+					if($existe){
+						$array_escala['per_cod']=$perguntas_escala[$p]['per_cod'];
+						//$data->update($array_escala);
+					}
+					else
+						$data->add($array_escala);
 					$qtd_nova++;
 				}
 
@@ -165,9 +209,15 @@
 
 			echo "<div class='linha'>";
 			echo "<div class='coluna' style='width: 800px; font-weight:bold; margin-bottom: 20px;'>Links para as enquetes:</div>";
+			$pagina="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+			$site=explode('?',$pagina);
+			//echo $site[0];
 			for ($i = 0; $i < count($Cod_Enq); $i++){
 				echo "<div class='coluna' style='width: 800px;'>";
-					echo "http://localhost/Software-para-Avaliacao-de-CCR/avaliacaoccr/enquete-".$Cod_Enq;
+					if(count($Cod_Enq)==1)
+						echo $site[0]."/enquete-".$Cod_Enq;
+					else
+						echo $site[0]."/enquete-".;
 				echo "</div>";
 				$array_edp['enq_cod'] = $Cod_Enq;
 				$array_edp['pro_cod'] = $_POST['pro_'.$i];
