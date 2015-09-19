@@ -61,7 +61,7 @@
 
 
 		?>
-		<h2 style="margin-left:25%;"><?php echo $result[0]['enq_nome'] ?> <br/><br/>Professor: <?php echo $professor[0]['pro_nome']?> <br/>Discplina: <?php echo $disciplina[0]['dis_nome'] ?></h2>
+		<h2 style="margin-left:25%;"><?php echo $result[0]['enq_nome'] ?> <br/><br/>Professor: <?php echo $professor[0]['pro_nome']?> <br/>Disciplina: <?php echo $disciplina[0]['dis_nome'] ?></h2>
 
 		<form action="<?php echo "process-".$enq_cod."" ?>" id="form_enquete" method="post" style="margin:auto; display:table;">
 		<?php

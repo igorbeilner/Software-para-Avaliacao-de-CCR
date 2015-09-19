@@ -391,7 +391,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				echo "<div class='coluna' > ";
 					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					echo "<select name='pro_".$i."' id='pro_option_".$i."' class='cad_enq' style='width:250px;' >";
-						if($i==0)
+						if($i==0&&isset($prof_dic[0]['pro_cod']))
 							echo "<option value='".$prof_dic[0]['pro_cod']."' >".$prof_nome_banco[0]['pro_nome']."</option>";//
 						else
 							echo "<option value='0' >SELECIONE</option>";
@@ -407,7 +407,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				echo "<div class='coluna' > ";
 					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					echo "<select name='disc_".$i."' id='disc_option_".$i."' class='cad_enq' style='width:250px; margin-left: 20px;' >";
-						if($i==0)
+						if($i==0&&isset($prof_dic[0]['dis_cod']))
 							echo "<option value='".$prof_dic[0]['dis_cod']."' >".$disc_prof[0]['dis_nome']."</option>";
 						else
 							echo "<option value='0' >SELECIONE</option>";

@@ -215,9 +215,9 @@
 			for ($i = 0; $i < count($Cod_Enq); $i++){
 				echo "<div class='coluna' style='width: 800px;'>";
 					if(count($Cod_Enq)==1)
-						echo $site[0]."/enquete-".$Cod_Enq;
-					else
-						echo $site[0]."/enquete-".;
+						echo $site[0]."enquete-".$Cod_Enq;
+				//	else
+				//		echo $site[0]."/enquete-".;
 				echo "</div>";
 				$array_edp['enq_cod'] = $Cod_Enq;
 				$array_edp['pro_cod'] = $_POST['pro_'.$i];
