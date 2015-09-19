@@ -9,5 +9,9 @@ O sistema fornece relatórios das enquetes, mostrando gráficos de respostas de 
 
 Esse projeto surgiu na disciplina de "Tópicos Especiais em Engenharia de Software - Extreme Programming", ministrada pela Professora Graziela Tonin. </br></br>
 
-Participantes do projeto: Aline Menin, Diogo Adilio, Marina Girolimetto, Ramon Perondi e Roberto Delavi.
+Participantes do projeto: Aline Menin, Diogo Adilio, Marina Girolimetto, Ramon Perondi e Roberto Delavi.</br></br>
+
+Continuado na disciplina de "Engenharia de Software II", ministrada pela Professora Graziela Tonin. </br></br>
+
+Participantes da Continuação do Projeto: Dinara Rigon, Igor Beilner, Lucas Cezar Parnoff, Matheus Antonio Venancio Dall'Rosa e Rafael Hengen Ribeiro.
 </div>
