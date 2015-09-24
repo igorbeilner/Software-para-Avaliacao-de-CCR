@@ -56,9 +56,9 @@
 			$qtd_nova = 0;
 			$qtd_car = 0;
 			$cod_car = Array();
-			$sql = "SELECT * FROM perguntas WHERE per_tipo=0";
+			$sql = "SELECT * FROM perguntas NATURAL JOIN enquete_perguntas WHERE per_tipo=0 AND enq_cod=".$Cod_Enq;
 			$perguntas_texto = $data->find('dynamic',$sql);
-			$sql = "SELECT * FROM perguntas WHERE per_tipo=1";
+			$sql = "SELECT * FROM perguntas NATURAL JOIN enquete_perguntas WHERE per_tipo=1 AND enq_cod=".$Cod_Enq;
 			$perguntas_escala = $data->find('dynamic',$sql);
 
 
@@ -66,14 +66,17 @@
 				// TEXTO
 				if($_POST['enqimp_nova_per_desc_'.$i.'_texto'] != ""){
 					$existe=false;
+					$array_texto['per_cod']  = $_POST['enqimp_nova_per_cod'.$i];
 					$array_texto['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_texto'];
 					$array_texto['per_tipo'] = $_POST['enqimp_nova_text_tipo_'.$i];
-					for ($p=0; $p < count($perguntas_texto); $p++) { 
-						if($perguntas_texto[$p]['per_desc']==$array_texto['per_desc']){
-							$existe=true;
-							break;
+					if(isset($array_texto['per_cod'])&&){
+						for ($p=0; $p < count($perguntas_texto); $p++) { 
+							if($perguntas_texto[$p]['per_cod']==$array_texto['per_cod']){
+								$existe=true;
+								break;
+							};
 						};
-					};
+					}
 					if($existe){
 						$array_texto['per_cod']=$perguntas_texto[$p]['per_cod'];
 						//$data->update($array_texto);
@@ -84,6 +87,7 @@
 				}
 				// ESCALA
 				if($_POST['enqimp_nova_per_desc_'.$i.'_escala'] != ""){
+					$array_escala['per_cod']  = $_POST['enqimp_nova_per_cod'.$i];
 					$array_escala['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_escala'];
 					$array_escala['per_tipo'] = $_POST['enqimp_nova_escala_tipo_'.$i];
 					for ($p=0; $p < count($perguntas_escala); $p++) { 
