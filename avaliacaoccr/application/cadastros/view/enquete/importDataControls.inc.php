@@ -188,21 +188,21 @@
 				};
 				$perguntas_deletar=array();
 				$indice_delete=0;
-				for($i=0;$i<$indice_perguntas_texto){
+				for($i=0;$i<$indice_perguntas_texto;$i++){
 					if($Deletar_texto[$i]==0){
-						$perguntas_deletar[$indice_delete]=$perguntas_delete[$i];
+						$perguntas_deletar[$indice_delete]=$perguntas_delete[$i]['per_cod'];
 						$indice_delete++;
 					};
 				};
-				for($i=0;$i<$indice_perguntas_escala){
+				for($i=0;$i<$indice_perguntas_escala;$i++){
 					if($Deletar_escala[$i]==0){
-						$perguntas_deletar[$indice_delete]=$perguntas_delete[$i];
+						$perguntas_deletar[$indice_delete]=$perguntas_delete[$i]['per_cod'];
 						$indice_delete++;
 					};
 				};
 				for($i = 0; $i < $indice_delete; $i++){
 					$sql = "DELETE FROM enquete_perguntas
-							WHERE enq_cod=".$perguntas_deletar[$i]['per_cod'];
+							WHERE enq_cod=".$perguntas_deletar[$i];
 					$retorno = $data->delete('dynamic',$sql);
 					if($retorno==true){
 						echo $perguntas_deletar[$i]['per_cod'].' ';	
