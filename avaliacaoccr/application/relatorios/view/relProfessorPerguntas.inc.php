@@ -157,7 +157,7 @@
 			}
 		}
 			?>
-	<a href="?module=relatorios&acao=rel_professor&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/back.png" title="Voltar" border="none" /></a> 
+	<a href="?module=relatorios&acao=rel_professor&semestre=<?php echo $sem?>" style="margin-left:595px;"><img src="application/images/voltar1.png" title="Voltar" border="none" /></a> 
 
 </div>
 
