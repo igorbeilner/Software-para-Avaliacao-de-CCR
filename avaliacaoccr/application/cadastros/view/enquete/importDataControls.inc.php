@@ -56,11 +56,18 @@
 			$qtd_nova = 0;
 			$qtd_car = 0;
 			$cod_car = Array();
-			$sql = "SELECT * FROM perguntas NATURAL JOIN enquete_perguntas WHERE per_tipo=0 AND enq_cod=".$Cod_Enq;
+			$sql = "SELECT * 
+					FROM perguntas 
+					WHERE per_tipo=0";
 			$perguntas_texto = $data->find('dynamic',$sql);
-			$sql = "SELECT * FROM perguntas NATURAL JOIN enquete_perguntas WHERE per_tipo=1 AND enq_cod=".$Cod_Enq;
+			$sql = "SELECT * 
+					FROM perguntas 
+					WHERE per_tipo=1";
 			$perguntas_escala = $data->find('dynamic',$sql);
-
+			$perguntas_texto_ativas=array();
+			$perguntas_escala_ativas=array();
+			$indice_perguntas_texto=0;
+			$indice_perguntas_escala=0;
 
 			for($i=1; $i<=$_POST['enqimp_total_perg']; $i++){
 				// TEXTO
@@ -69,7 +76,7 @@
 					$array_texto['per_cod']  = $_POST['enqimp_nova_per_cod'.$i];
 					$array_texto['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_texto'];
 					$array_texto['per_tipo'] = $_POST['enqimp_nova_text_tipo_'.$i];
-					if(isset($array_texto['per_cod'])&&){
+					if(isset($array_texto['per_cod'])) {
 						for ($p=0; $p < count($perguntas_texto); $p++) { 
 							if($perguntas_texto[$p]['per_cod']==$array_texto['per_cod']){
 								$existe=true;
@@ -78,8 +85,10 @@
 						};
 					}
 					if($existe){
-						$array_texto['per_cod']=$perguntas_texto[$p]['per_cod'];
+						$perguntas_texto_ativas[$indice_perguntas_texto]=$perguntas_texto[$p]['per_cod'];
+						//$array_texto[$i]['per_cod']=$perguntas_texto[$p]['per_cod'];
 						//$data->update($array_texto);
+						$indice_perguntas_texto++;
 					}
 					else
 						$data->add($array_texto);	
@@ -91,14 +100,16 @@
 					$array_escala['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_escala'];
 					$array_escala['per_tipo'] = $_POST['enqimp_nova_escala_tipo_'.$i];
 					for ($p=0; $p < count($perguntas_escala); $p++) { 
-						if($perguntas_escala[$p]['per_desc']==$array_escala['per_desc']){
+						if($perguntas_escala[$p]['per_cod']==$array_escala['per_cod']){
 							$existe=true;
 							break;
 						};
 					}
 					if($existe){
-						$array_escala['per_cod']=$perguntas_escala[$p]['per_cod'];
+						$perguntas_escala_ativas[$indice_perguntas_escala]=$perguntas_escala[$p]['per_cod'];
+						//$array_escala['per_cod']=$perguntas_escala[$p]['per_cod'];
 						//$data->update($array_escala);
+						$indice_perguntas_escala++;
 					}
 					else
 						$data->add($array_escala);
@@ -122,7 +133,7 @@
 
 			if ($qtd_nova > 0){
 				// Código da enquete está na variavel    $Cod_Enq;
-				
+				$enqs=$Cod_Enq;
 				//Grava as perguntas importads junto com a enquete na tabela enquete_perguntas
 				$data->tabela = "enquete_perguntas";
 				$total = $_POST['enqimp_total_imp'];
@@ -143,7 +154,60 @@
 						}
 					}
 				}
-
+				$sql = "SELECT *
+						FROM perguntas
+						NATURAL JOIN enquete_perguntas
+						WHERE enq_cod='$Cod_Enq' 
+						LIMIT 0,".$indice_perguntas_texto+$indice_perguntas_escala;
+				$perguntas_delete = $data->find('dynamic',$sql);
+				$Deletar_texto=array();
+				$Deletar_escala=array();
+				for( $i = 0 ; $i < count($perguntas_delete) ; $i++ ) {
+					$set=false;
+					for( $h = 0 ; $h < $indice_perguntas_texto ; $h++ ) {
+						if($perguntas_delete[$i]['per_cod']==$perguntas_texto[$h]['per_cod']&&$set==false){
+							$Deletar_texto[$i]=$h;
+							$set=true;
+						}
+						else if($set==false){
+							$Deletar_texto[$i]=0;
+						};
+					};
+				};
+				for( $i = 0 ; $i < $indice_perguntas_escala ; $i++ ) {
+					$set=false;
+					for( $h = 0 ; $h < $indice_perguntas_escala ; $h++ ) {
+						if($perguntas_delete[$i]['per_cod']==$perguntas_escala[$h]['per_cod']&&$set==false){
+							$Deletar_escala[$i]=$h;
+							$set=true;
+						}
+						else if($set==false){
+							$Deletar_escala[$i]=0;
+						};
+					};
+				};
+				$perguntas_deletar=array();
+				$indice_delete=0;
+				for($i=0;$i<$indice_perguntas_texto){
+					if($Deletar_texto[$i]==0){
+						$perguntas_deletar[$indice_delete]=$perguntas_delete[$i];
+						$indice_delete++;
+					};
+				};
+				for($i=0;$i<$indice_perguntas_escala){
+					if($Deletar_escala[$i]==0){
+						$perguntas_deletar[$indice_delete]=$perguntas_delete[$i];
+						$indice_delete++;
+					};
+				};
+				for($i = 0; $i < $indice_delete; $i++){
+					$sql = "DELETE FROM enquete_perguntas
+							WHERE enq_cod=".$perguntas_deletar[$i]['per_cod'];
+					$retorno = $data->delete('dynamic',$sql);
+					if($retorno==true){
+						echo $perguntas_deletar[$i]['per_cod'].' ';	
+					}
+				};
 				// Código das novas perguntas
 				$sql = "SELECT per_cod
 						FROM perguntas
