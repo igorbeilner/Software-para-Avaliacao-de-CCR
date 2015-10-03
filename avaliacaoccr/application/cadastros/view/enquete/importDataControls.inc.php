@@ -58,10 +58,12 @@
 			$cod_car = Array();
 			$sql = "SELECT * 
 					FROM perguntas 
+					NATURAL JOIN enquete_perguntas
 					WHERE per_tipo=0";
 			$perguntas_texto = $data->find('dynamic',$sql);
 			$sql = "SELECT * 
-					FROM perguntas 
+					FROM perguntas
+					NATURAL JOIN enquete_perguntas
 					WHERE per_tipo=1";
 			$perguntas_escala = $data->find('dynamic',$sql);
 			$perguntas_texto_ativas=array();
@@ -157,7 +159,7 @@
 				$sql = "SELECT *
 						FROM perguntas
 						NATURAL JOIN enquete_perguntas
-						WHERE enq_cod='$Cod_Enq' 
+						WHERE enq_cod='$Cod_Enq'
 						LIMIT 0,".$indice_perguntas_texto+$indice_perguntas_escala;
 				$perguntas_delete = $data->find('dynamic',$sql);
 				$Deletar_texto=array();
@@ -202,7 +204,8 @@
 				};
 				for($i = 0; $i < $indice_delete; $i++){
 					$sql = "DELETE FROM enquete_perguntas
-							WHERE enq_cod=".$perguntas_deletar[$i];
+							WHERE enq_cod='$Cod_Enq'
+							AND per_cod=".$perguntas_deletar[$i];
 					$retorno = $data->delete('dynamic',$sql);
 					if($retorno==true){
 						echo $perguntas_deletar[$i]['per_cod'].' ';	
