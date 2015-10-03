@@ -48,9 +48,13 @@
 					$data->add($array);
 				}
 			}
-			//$sql = "SELECT * FROM enquete";
+			$sql = "SELECT enq_cod 
+					FROM enquete 
+					ORDER BY enq_cod DESC
+					LIMIT 0,".$qtd_enq-1;
 
-			$Cod_Enq=$_POST['enqimp_enq_cod'];
+			$enqs=$_POST['enqimp_enq_cod'];
+			array_push($enqs,$data->find('dynamic',$sql));
 			// Tabela PERGUNTAS
 			$data->tabela = 'perguntas';
 			$qtd_nova = 0;
@@ -134,8 +138,7 @@
 			}
 
 			if ($qtd_nova > 0){
-				// Código da enquete está na variavel    $Cod_Enq;
-				$enqs=$Cod_Enq;
+				// Código da enquete está na variavel    $enqs a enquete atual no [0] e as outras
 				//Grava as perguntas importads junto com a enquete na tabela enquete_perguntas
 				$data->tabela = "enquete_perguntas";
 				$total = $_POST['enqimp_total_imp'];
@@ -145,13 +148,13 @@
 						//echo "<br/>i = ".$i;
 						if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])){
 							$array_import['per_cod'] = $_POST['escala_per_cod_'.$i];
-							$array_import['enq_cod'] = $Cod_Enq;
+							$array_import['enq_cod'] = $enqs[$j];
 							$data->add($array_import);
 						}
 
 						if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
 							$array_import_text['per_cod'] = $_POST['texto_per_cod_'.$i];
-							$array_import_text['enq_cod'] = $Cod_Enq;
+							$array_import_text['enq_cod'] = $enqs[$j];
 							$data->add($array_import_text);
 						}
 					}
@@ -159,7 +162,7 @@
 				$sql = "SELECT *
 						FROM perguntas
 						NATURAL JOIN enquete_perguntas
-						WHERE enq_cod='$Cod_Enq'
+						WHERE enq_cod=".$enqs[0]."
 						LIMIT 0,".$indice_perguntas_texto+$indice_perguntas_escala;
 				$perguntas_delete = $data->find('dynamic',$sql);
 				$Deletar_texto=array();
@@ -204,7 +207,7 @@
 				};
 				for($i = 0; $i < $indice_delete; $i++){
 					$sql = "DELETE FROM enquete_perguntas
-							WHERE enq_cod='$Cod_Enq'
+							WHERE enq_cod='$enqs[0]'
 							AND per_cod=".$perguntas_deletar[$i];
 					$retorno = $data->delete('dynamic',$sql);
 					if($retorno==true){
