@@ -50,7 +50,7 @@ class MySql
         if (!$this->result){//caso nao execute a query corretamente
             //echo 'Não foi possivel executar o comando SQL. '.$this-s>error();
             //exit (1);
-
+            $this->connClose();
             return false;
         }
 		
