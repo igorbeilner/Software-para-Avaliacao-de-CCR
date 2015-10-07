@@ -254,7 +254,6 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				echo "<div style='clear: both;'></div>";
 
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-					echo "<input name='enqimp_nova_per_cod_".$j."' id='enqimp_nova_cod_".$j."' type='hidden' />";
 					echo "<input name='enqimp_nova_per_desc_".$j."_texto' id='enqimp_nova_desc_".$j."' type='text' size='61' class='cad_enq' style='width: 500px;' />";
 					echo "<input type='hidden' name='enqimp_nova_text_tipo_".$j."' value='0' />";
 					echo "<a onclick='delete_pergunta(".$j.", 0, 0);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";

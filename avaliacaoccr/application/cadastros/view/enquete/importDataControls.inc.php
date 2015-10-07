@@ -92,8 +92,9 @@
 						//$data->update($array_texto);
 						$indice_perguntas++;
 					}
-					else
+					else{
 						$data->add($array_texto);	
+					}
 					$qtd_nova++;
 				}
 				// ESCALA
@@ -114,8 +115,9 @@
 						//$data->update($array_escala);
 						$indice_perguntas++;
 					}
-					else
+					else{
 						$data->add($array_escala);
+					}
 					$qtd_nova++;
 				}
 
@@ -133,58 +135,72 @@
 				}
 
 			}
+			$data->tabela = "enquete_perguntas";
+			$total = $_POST['enqimp_total_imp'];
+			unset($array);
+			$array=array();
+			$array_import_text=array();
+			//perguntas que vieram junto do banco!!! que serão adicionadas as enquetes adicionais.
+			for ($j = 1; $j < count($enqs); $j++){
+				for ($i = 0; $i < $total; $i++){
+					//echo "<br/>i = ".$i;
+					if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])){
+						$array['per_cod'] = $_POST['escala_per_cod_'.$i];
+						$array['enq_cod'] = $enqs[$j]['enq_cod'];
+						$data->add($array);
+					}
 
+					if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
+						$array_import_text['per_cod'] = $_POST['texto_per_cod_'.$i];
+						$array_import_text['enq_cod'] = $enqs[$j];
+						$data->add($array_import_text);
+					}
+				}
+			}
+			//verificar todas as perguntas existentes no banco na hora de salvar.
+			for ($i = 0; $i < $total; $i++){
+				//echo "<br/>i = ".$i;
+				if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])){
+					$perguntas_ativas[$indice_perguntas++] = $_POST['escala_per_cod_'.$i];
+				}
+
+				if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
+					$perguntas_ativas[$indice_perguntas++] = $_POST['texto_per_cod_'.$i];
+				}
+			}	
+			unset($array);
+			$Deletar=array();
+			$contador=count($perguntas);
+			for( $i = 0 ; $i < $contador ; $i++ ) {
+				$existe=false;
+				for( $h = 0 ; $h < $indice_perguntas; $h++ ) {
+					if($perguntas_ativas[$h]==$perguntas[$i]['per_cod']&&$existe==false){
+						$Deletar[$i]=$perguntas[$i]['per_cod'];
+						$existe=true;
+					};
+				};
+				if(!$existe){
+					$Deletar[$i]=0;
+				};
+			
+			};
+			$perguntas_deletar=array();
+			for($i=0;$i<$contador;$i++){
+				if($Deletar[$i]==0){
+					array_push($perguntas_deletar,$perguntas[$i]);
+				};
+			};
+			$data->delete($perguntas_deletar);
+			
+			unset($indice_perguntas);
+			unset($indice_delete);
+			unset($existe);
+			
 			if ($qtd_nova > 0){
 				// Código da enquete está na variavel    $enqs a enquete atual no [0] e as outras estão 
 				//Grava as perguntas importads junto com a enquete na tabela enquete_perguntas
 				$data->tabela = "enquete_perguntas";
-				$total = $_POST['enqimp_total_imp'];
-				unset($array);
-				$array=array();
-				$array_import_text=array();
-				for ($j = 0; $j < count($enqs); $j++){
-					for ($i = 0; $i < $total; $i++){
-						//echo "<br/>i = ".$i;
-						if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])){
-							$array['per_cod'] = $_POST['escala_per_cod_'.$i];
-							$array['enq_cod'] = $enqs[$j]['enq_cod'];
-							$data->add($array);
-						}
 
-						if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
-							$array_import_text['per_cod'] = $_POST['texto_per_cod_'.$i];
-							$array_import_text['enq_cod'] = $enqs[$j];
-							$data->add($array_import_text);
-						}
-					}
-				}
-				unset($array_import_text);
-				unset($array);
-				$Deletar=array();
-				for( $i = 0 ; $i < count($perguntas) ; $i++ ) {
-					$set=false;
-					for( $h = 0 ; $h < $indice_perguntas; $h++ ) {
-						if($perguntas[$i]['per_cod']==$perguntas_ativas[$h]&&$set==false){
-							$Deletar[$i]=$perguntas_ativas[$h];
-							$set=true;
-						}
-						else if($set==false){
-							$Deletar[$i]=0;
-						};
-					};
-				
-				};
-				$perguntas_deletar=array();
-				for($i=0;$i<$indice_perguntas;$i++){
-					if($Deletar[$i]==0){
-						array_push($perguntas_deletar,$perguntas[$i]);
-					};
-				};
-				$data->delete($perguntas_deletar);
-				
-				unset($indice_perguntas);
-				unset($indice_delete);
-				unset($existe);
 				// Código das novas perguntas
 				$sql = "SELECT per_cod
 						FROM perguntas
