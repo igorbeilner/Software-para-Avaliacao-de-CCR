@@ -84,8 +84,8 @@ class DataManipulation{
 				$values .= " AND ".$campos[$i]." = '".$valores[$i]."'";	
 			}
 		}
-		
-		$sql = "DELETE FROM ".$this->tabela." WHERE ".$values;
+		echo $values;
+		$sql = "DELETE FROM ".$this->tabela." WHERE ".$values.";";
 		//echo $sql."<br />";
 		$dataset->executeRecord($sql);	
 	}

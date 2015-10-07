@@ -74,50 +74,16 @@
 				// TEXTO
 
 				if($_POST['enqimp_nova_per_desc_'.$i.'_texto'] != ""){
-					$existe=false;
-					$array_texto['per_cod']  = $_POST['enqimp_nova_per_cod'.$i];
 					$array_texto['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_texto'];
 					$array_texto['per_tipo'] = $_POST['enqimp_nova_text_tipo_'.$i];
-					if(isset($array_texto['per_cod'])) {
-						for ($p=0; $p < count($perguntas); $p++) { 
-							if($perguntas[$p]['per_cod']==$array_texto['per_cod']){
-								$existe=true;
-								break;
-							};
-						};
-					}
-					if($existe){
-						$perguntas_ativas[$indice_perguntas]=$perguntas[$p]['per_cod'];
-						//$array_texto[$i]['per_cod']=$perguntas_texto[$p]['per_cod'];
-						//$data->update($array_texto);
-						$indice_perguntas++;
-					}
-					else{
-						$data->add($array_texto);	
-					}
+					$data->add($array_texto);	
 					$qtd_nova++;
 				}
 				// ESCALA
 				if($_POST['enqimp_nova_per_desc_'.$i.'_escala'] != ""){
-					$existe=false;
-					$array_escala['per_cod']  = $_POST['enqimp_nova_per_cod'.$i];
 					$array_escala['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_escala'];
 					$array_escala['per_tipo'] = $_POST['enqimp_nova_escala_tipo_'.$i];
-					for ($p=0; $p < count($perguntas); $p++) { 
-						if($perguntas[$p]['per_cod']==$array_escala['per_cod']){
-							$existe=true;
-							break;
-						};
-					}
-					if($existe){
-						$perguntas_ativas[$indice_perguntas]=$perguntas[$p]['per_cod'];
-						//$array_escala['per_cod']=$perguntas_escala[$p]['per_cod'];
-						//$data->update($array_escala);
-						$indice_perguntas++;
-					}
-					else{
-						$data->add($array_escala);
-					}
+					$data->add($array_escala);
 					$qtd_nova++;
 				}
 
@@ -185,11 +151,16 @@
 			
 			};
 			$perguntas_deletar=array();
-			for($i=0;$i<$contador;$i++){
+			/*for($i=0;$i<$contador;$i++){
 				if($Deletar[$i]==0){
-					array_push($perguntas_deletar,$perguntas[$i]);
+					$perguntas_deletar[$i]['epe_cod']=$perguntas[$i]['epe_cod'];
+					$perguntas_deletar[$i]['enq_cod']=$perguntas[$i]['enq_cod'];
+					$perguntas_deletar[$i]['per_cod']=$perguntas[$i]['per_cod'];
 				};
-			};
+			};*/
+			$perguntas_deletar[0]['epe_cod']=111;
+			$perguntas_deletar[0]['enq_cod']=40;
+			$perguntas_deletar[0]['per_cod']=78;
 			$data->delete($perguntas_deletar);
 			
 			unset($indice_perguntas);
