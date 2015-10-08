@@ -65,7 +65,7 @@
 			$cod_car = Array();
 			$sql = "SELECT * 
 					FROM enquete_perguntas
-					WHERE enq_cod=".$enqs[0]['enq_cod'];
+					WHERE enq_cod='".$enqs[0]['enq_cod']."';";
 			$perguntas = $data->find('dynamic',$sql);
 			$perguntas_ativas=array();
 			$indice_perguntas=0;
@@ -124,15 +124,17 @@
 				}
 			}
 			//verificar todas as perguntas existentes no banco na hora de salvar.
+			echo "<div class='coluna'>".$total."</div>";
 			for ($i = 0; $i < $total; $i++){
 				//echo "<br/>i = ".$i;
-				if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])){
-					$perguntas_ativas[$indice_perguntas++] = $_POST['escala_per_cod_'.$i];
+				if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])) {
+					$perguntas_ativas[$indice_perguntas] = $_POST['escala_per_cod_'.$i];
+					$indice_perguntas++;
 				}
-
-				if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
-					$perguntas_ativas[$indice_perguntas++] = $_POST['texto_per_cod_'.$i];
-				}
+				else if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
+					$perguntas_ativas[$indice_perguntas] = $_POST['texto_per_cod_'.$i];
+					$indice_perguntas++;
+				};
 			}	
 			unset($array);
 			$Deletar=array();
@@ -151,17 +153,24 @@
 			
 			};
 			$perguntas_deletar=array();
-			/*for($i=0;$i<$contador;$i++){
+			$sql="DELETE FROM `enquete_perguntas` WHERE ";
+			for($i=0;$i<$contador;$i++){
 				if($Deletar[$i]==0){
-					$perguntas_deletar[$i]['epe_cod']=$perguntas[$i]['epe_cod'];
-					$perguntas_deletar[$i]['enq_cod']=$perguntas[$i]['enq_cod'];
-					$perguntas_deletar[$i]['per_cod']=$perguntas[$i]['per_cod'];
+					$sql .="epe_cod = '".$perguntas[$i]['epe_cod']."' AND ";
+					$sql .="enq_cod = '".$perguntas[$i]['enq_cod']."' AND ";
+					$sql .="per_cod = '".$perguntas[$i]['per_cod']."' ;";
 				};
-			};*/
+			};
+			$data->delete($sql);
+			/*
 			$perguntas_deletar[0]['epe_cod']=111;
 			$perguntas_deletar[0]['enq_cod']=40;
 			$perguntas_deletar[0]['per_cod']=78;
-			$data->delete($perguntas_deletar);
+			if (count($perguntas_deletar)>=count($perguntas)) {
+				echo 'Problema delete = numero de perguntas';
+			}
+			else
+				*/
 			
 			unset($indice_perguntas);
 			unset($indice_delete);
@@ -258,6 +267,7 @@
 				else
 					$data->add($array);
 			}
+
 			echo "</div>";
 			unset($array);
 

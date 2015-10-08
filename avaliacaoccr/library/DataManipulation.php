@@ -72,22 +72,10 @@ class DataManipulation{
 		$dataset = new DataSet();
 		$sql = "SHOW INDEXES FROM ".$this->tabela." WHERE Key_name = 'PRIMARY'";
 		$result = $dataset->listRecord($sql);
-		foreach($data as $key => $valor){	
-			$campos[]  = $key;
-			$valores[] = $valor;
-		}
-		
-		for ($i=0;$i<count($campos);$i++){
-			if ($i==0){
-				$values = $campos[$i]." = '".$valores[$i]."'";
-			}else{
-				$values .= " AND ".$campos[$i]." = '".$valores[$i]."'";	
-			}
-		}
-		echo $values;
-		$sql = "DELETE FROM ".$this->tabela." WHERE ".$values.";";
+		// trocado para colocar o comando de Deletar diretamente.!!!!
+		$sql = $data;
 		//echo $sql."<br />";
-		$dataset->executeRecord($sql);	
+		$dataset->executeRecord($sql);
 	}
 	
 	function find($type=false,$params=false,$order=false){
