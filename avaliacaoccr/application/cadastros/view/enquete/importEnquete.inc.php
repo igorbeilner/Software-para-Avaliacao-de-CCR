@@ -160,7 +160,8 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				echo "<div style='width: 250px;' class='coluna'>[Escala] Descrição da pergunta:</div>";
 				echo "<div style='clear: both;'></div>";
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-
+				
+					echo "<input type='hidden' name='escala_ativa_".$i."' value='".$res[$i]['epe_cod']."'/>";
 					echo "<input name='enqimp_per_desc_".$i."_escala' id='enqimp_desc_escala_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".$perguntas[$i][1]."'/>";
 					echo "<input type='hidden' name='enqimp_escala_tipo_".$i."' value='1' />";
 					echo "<input type='hidden' name='escala_per_cod_".$i."' value='".$perguntas[$i][2]."'/>";
@@ -172,7 +173,6 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 //							 function mostra_alter final deste arquivo! \/ nos scripts
 
 				echo "</div>";
-				echo "<input type='hidden' name='escala_ativa_".$i."' value='1'/>";
 				echo "<div class='linha'   >";
 				echo "<div style='clear: both;'></div>";
 				
@@ -230,7 +230,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 			echo "</div>";	
 			
 			}else{ //perguntas do tipo texto
-				echo "<input type='hidden' name='texto_ativa_".$i."' value='1'/>";
+				echo "<input type='hidden' name='texto_ativa_".$i."' value='".$res[$i]['epe_cod']."'/>";
 				echo "<div class='linha' id='enqimp_tipo_texto_".$i."''>";
 					echo "<div style='width: 250px;' class='coluna'  >[Texto] Descrição da pergunta:</div>";
 					echo "<div style='clear: both;'></div>";
@@ -657,12 +657,10 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 			if (tipo == 0){ //texto
 				document.getElementById("enqimp_desc_"+indice_pergunta).value = "";
 				document.getElementById("enqimp_tipo_texto_"+indice_pergunta).style.display = "none";
-				document.getElementById("texto_ativa_"+indice_pergunta).value = "0"
 			}else if (tipo == 1){ //escala
 				// excluir cabeçalho e botões....
 				document.getElementById("enqimp_escala_"+indice_pergunta).style.display = "none";
 				document.getElementById("enqimp_desc_escala_"+indice_pergunta).value = "";
-				document.getElementById("escala_ativa_"+indice_pergunta).value = "0";
 				
 				// excluindo alternativas da pergunta
 				for(i = 1; i <= perguntas[indice_pergunta]; i++){

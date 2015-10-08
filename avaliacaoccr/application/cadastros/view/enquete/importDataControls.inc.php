@@ -112,12 +112,19 @@
 						$array['per_cod'] = $_POST['escala_per_cod_'.$i];
 						$array['enq_cod'] = $enqs[$j]['enq_cod'];
 						$data->add($array);
-					}
-
-					if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
+					}else if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
 						$array_import_text['per_cod'] = $_POST['texto_per_cod_'.$i];
 						$array_import_text['enq_cod'] = $enqs[$j];
+						$Deletar[$i]=0;
 						$data->add($array_import_text);
+					}else{
+						if (isset($_POST['escala_ativa_'.$i])) {
+							$Deletar[$i]=$_POST['escala_ativa_'.$i];
+						}
+						else if (isset($_POST['texto_ativa_'.$i])) {
+							$Deletar[$i]=$_POST['texto_ativa_'.$i];
+						}
+						
 					}
 				}
 			}
@@ -125,19 +132,15 @@
 			//echo "<div class='coluna'>".$total."</div>";
 			$Deletar=array();
 			echo "<div class='coluna'>";
-			for ($i = 0, $j = 0 ; $i < $total*2; $i++){
+			for ($i = 0, $j = 0 ; $i < $total; $i++){
 				//echo "<br/>i = ".$i;
-				if (isset($_POST['escala_ativa_'.$i])) {
-					if($_POST['escala_ativa_'.$i]==0) {
-						$Deletar[$j]=$_POST['escala_per_cod_'.$i];
-						$j++;
-					}
+				if (isset($_POST['escala_ativa_'.$i])&&($_POST['enqimp_per_desc_'.$i.'_escala']==""||$_POST['enqimp_per_desc_'.$i.'_escala']==null)) {
+					$Deletar[$j]=$_POST['escala_ativa_'.$i];
+					$j++;
 				}
-				else if (isset($_POST['texto_ativa_'.$i])){
-					if($_POST['texto_ativa_'.$i]==0){
-						$Deletar[$j]=$_POST['texto_per_cod_'.$i];
-						$j++;
-					}
+				else if (isset($_POST['texto_ativa_'.$i])&&($_POST['enqimp_per_desc_'.$i.'_texto']==""||$_POST['enqimp_per_desc_'.$i.'_texto']==null)) {
+					$Deletar[$j]=$_POST['texto_ativa_'.$i];
+					$j++;
 				};
 			};	
 			unset($array);
@@ -148,14 +151,15 @@
 						AND 	enq_cod = '$perguntas[$i][1]'<br /> 
 						AND 	per_cod = '$perguntas[$i][2]'<br />";
 			};*/
-			for( $j = 0, $i = 0 ; $j < count($perguntas) ; $j++ ){
-				if($Deletar[$j]==$perguntas[$i]['per_cod']&&$perguntas[$i]['enq_cod']==$enqs[0]['enq_cod']){
-					$sql="	DELETE FROM enquete_perguntas 
-							WHERE epe_cod = '$perguntas[$i][0]' 
-							AND enq_cod = '$perguntas[$i][1]' 
-							AND per_cod = '$perguntas[$i][2]' ;";
-					echo $sql;
-					$data->delete($sql);
+			//echo count($Deletar)." a.! ".count($perguntas);
+			for( $j = 0; $j < count($Deletar) ; $j++ ){
+				for($i = 0 ; $i < count($perguntas) ; $i++){
+					if($Deletar[$j]==$i){
+						$sql="	DELETE FROM enquete_perguntas 
+								WHERE epe_cod = '$Deletar[$i]' ;";
+						echo $sql."<br />";
+						$data->delete($sql);
+					};
 				};	
 			};
 			echo "</div>";
