@@ -172,7 +172,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 //							 function mostra_alter final deste arquivo! \/ nos scripts
 
 				echo "</div>";
-
+				echo "<input type='hidden' name='escala_ativa_".$i."' value='1'/>";
 				echo "<div class='linha'   >";
 				echo "<div style='clear: both;'></div>";
 				
@@ -230,6 +230,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 			echo "</div>";	
 			
 			}else{ //perguntas do tipo texto
+				echo "<input type='hidden' name='texto_ativa_".$i."' value='1'/>";
 				echo "<div class='linha' id='enqimp_tipo_texto_".$i."''>";
 					echo "<div style='width: 250px;' class='coluna'  >[Texto] Descrição da pergunta:</div>";
 					echo "<div style='clear: both;'></div>";
@@ -242,7 +243,9 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 						echo "<a onclick='clone(".$i.", 3, 1, 1, 0);' style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 					echo "</div>";
 					echo "<div style='clear: both;'></div>";
-				echo "</div>";	
+				echo "</div>";
+				
+							
 			}
 		}
 		
@@ -654,10 +657,12 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 			if (tipo == 0){ //texto
 				document.getElementById("enqimp_desc_"+indice_pergunta).value = "";
 				document.getElementById("enqimp_tipo_texto_"+indice_pergunta).style.display = "none";
+				document.getElementById("texto_ativa_"+indice_pergunta).value = "0"
 			}else if (tipo == 1){ //escala
 				// excluir cabeçalho e botões....
 				document.getElementById("enqimp_escala_"+indice_pergunta).style.display = "none";
 				document.getElementById("enqimp_desc_escala_"+indice_pergunta).value = "";
+				document.getElementById("escala_ativa_"+indice_pergunta).value = "0";
 				
 				// excluindo alternativas da pergunta
 				for(i = 1; i <= perguntas[indice_pergunta]; i++){

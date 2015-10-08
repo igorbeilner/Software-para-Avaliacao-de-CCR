@@ -67,9 +67,6 @@
 					FROM enquete_perguntas
 					WHERE enq_cod='".$enqs[0]['enq_cod']."';";
 			$perguntas = $data->find('dynamic',$sql);
-			$perguntas_ativas=array();
-			$indice_perguntas=0;
-			$existe=false;
 			for($i=1; $i<=$_POST['enqimp_total_perg']; $i++){
 				// TEXTO
 
@@ -86,6 +83,7 @@
 					$data->add($array_escala);
 					$qtd_nova++;
 				}
+
 
 				// Perguntas do BANCO
 				if($_POST['enqimp_nova_escala_ac_'.$i] != ""){ // Escala
@@ -124,54 +122,44 @@
 				}
 			}
 			//verificar todas as perguntas existentes no banco na hora de salvar.
-			echo "<div class='coluna'>".$total."</div>";
-			for ($i = 0; $i < $total; $i++){
-				//echo "<br/>i = ".$i;
-				if (isset($_POST['enqimp_per_desc_'.$i.'_escala'])) {
-					$perguntas_ativas[$indice_perguntas] = $_POST['escala_per_cod_'.$i];
-					$indice_perguntas++;
-				}
-				else if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
-					$perguntas_ativas[$indice_perguntas] = $_POST['texto_per_cod_'.$i];
-					$indice_perguntas++;
-				};
-			}	
-			unset($array);
+			//echo "<div class='coluna'>".$total."</div>";
 			$Deletar=array();
-			$contador=count($perguntas);
-			for( $i = 0 ; $i < $contador ; $i++ ) {
-				$existe=false;
-				for( $h = 0 ; $h < $indice_perguntas; $h++ ) {
-					if($perguntas_ativas[$h]==$perguntas[$i]['per_cod']&&$existe==false){
-						$Deletar[$i]=$perguntas[$i]['per_cod'];
-						$existe=true;
-					};
+			echo "<div class='coluna'>";
+			for ($i = 0, $j = 0 ; $i < $total*2; $i++){
+				//echo "<br/>i = ".$i;
+				if (isset($_POST['escala_ativa_'.$i])) {
+					if($_POST['escala_ativa_'.$i]==0) {
+						$Deletar[$j]=$_POST['escala_per_cod_'.$i];
+						$j++;
+					}
+				}
+				else if (isset($_POST['texto_ativa_'.$i])){
+					if($_POST['texto_ativa_'.$i]==0){
+						$Deletar[$j]=$_POST['texto_per_cod_'.$i];
+						$j++;
+					}
 				};
-				if(!$existe){
-					$Deletar[$i]=0;
-				};
-			
-			};
+			};	
+			unset($array);
 			$perguntas_deletar=array();
-			$sql="DELETE FROM `enquete_perguntas` WHERE ";
-			for($i=0;$i<$contador;$i++){
-				if($Deletar[$i]==0){
-					$sql .="epe_cod = '".$perguntas[$i]['epe_cod']."' AND ";
-					$sql .="enq_cod = '".$perguntas[$i]['enq_cod']."' AND ";
-					$sql .="per_cod = '".$perguntas[$i]['per_cod']."' ;";
-				};
+			//echo count($perguntas);
+			/*for($i = 0 ; $i < count($perguntas) ; $i++ ){
+				echo "	WHERE 	epe_cod = '$perguntas[$i][0]'<br /> 
+						AND 	enq_cod = '$perguntas[$i][1]'<br /> 
+						AND 	per_cod = '$perguntas[$i][2]'<br />";
+			};*/
+			for( $j = 0, $i = 0 ; $j < count($perguntas) ; $j++ ){
+				if($Deletar[$j]==$perguntas[$i]['per_cod']&&$perguntas[$i]['enq_cod']==$enqs[0]['enq_cod']){
+					$sql="	DELETE FROM enquete_perguntas 
+							WHERE epe_cod = '$perguntas[$i][0]' 
+							AND enq_cod = '$perguntas[$i][1]' 
+							AND per_cod = '$perguntas[$i][2]' ;";
+					echo $sql;
+					$data->delete($sql);
+				};	
 			};
-			$data->delete($sql);
-			/*
-			$perguntas_deletar[0]['epe_cod']=111;
-			$perguntas_deletar[0]['enq_cod']=40;
-			$perguntas_deletar[0]['per_cod']=78;
-			if (count($perguntas_deletar)>=count($perguntas)) {
-				echo 'Problema delete = numero de perguntas';
-			}
-			else
-				*/
-			
+			echo "</div>";
+
 			unset($indice_perguntas);
 			unset($indice_delete);
 			unset($existe);
