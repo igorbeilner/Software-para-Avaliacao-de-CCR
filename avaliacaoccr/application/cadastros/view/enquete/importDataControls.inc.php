@@ -115,7 +115,6 @@
 					}else if (isset($_POST['enqimp_per_desc_'.$i.'_texto'])){
 						$array_import_text['per_cod'] = $_POST['texto_per_cod_'.$i];
 						$array_import_text['enq_cod'] = $enqs[$j];
-						$Deletar[$i]=0;
 						$data->add($array_import_text);
 					}else{
 						if (isset($_POST['escala_ativa_'.$i])) {
