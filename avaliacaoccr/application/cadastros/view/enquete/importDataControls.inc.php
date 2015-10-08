@@ -144,23 +144,16 @@
 				};
 			};	
 			unset($array);
-			$perguntas_deletar=array();
 			//echo count($perguntas);
-			/*for($i = 0 ; $i < count($perguntas) ; $i++ ){
-				echo "	WHERE 	epe_cod = '$perguntas[$i][0]'<br /> 
-						AND 	enq_cod = '$perguntas[$i][1]'<br /> 
-						AND 	per_cod = '$perguntas[$i][2]'<br />";
+			/*for($i = 0 ; $i < count($Deletar) ; $i++ ){
+				echo "	WHERE 	epe_cod = '$Deletar[$i]'<br />";
 			};*/
 			//echo count($Deletar)." a.! ".count($perguntas);
 			for( $j = 0; $j < count($Deletar) ; $j++ ){
-				for($i = 0 ; $i < count($perguntas) ; $i++){
-					if($Deletar[$j]==$i){
-						$sql="	DELETE FROM enquete_perguntas 
-								WHERE epe_cod = '$Deletar[$i]' ;";
-						echo $sql."<br />";
-						$data->delete($sql);
-					};
-				};	
+				$sql="	DELETE FROM enquete_perguntas 
+						WHERE epe_cod = '$Deletar[$j]' ;";
+				//echo $sql."<br />";
+				$data->delete($sql);
 			};
 			echo "</div>";
 
