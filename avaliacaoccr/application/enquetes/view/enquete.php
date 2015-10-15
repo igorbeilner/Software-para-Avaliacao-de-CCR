@@ -71,7 +71,7 @@
 		?>
 		           	<div class="linha" style="margin-top: 20px;">
 		           		<div style="width: 100%; margin-top: 8px; margin-left:0px;" class="coluna"><?php echo $n." - ".$result[$i]['per_desc'] ?></div><br/>
-		           		<textarea class="cad_enq" style="width: 500px; height: 75px;" type='text' name='<?php echo "text_".$result[$i]['per_cod']."" ?>' id='text_".$i."' cols="20" rows="3" ></textarea>
+		           		<textarea class="cad_enq" style="width: 500px; height: 75px;" type='text' name='<?php echo "text_".$result[$i]['per_cod']."" ?>' id='text_".$i."' cols="20" rows="3" required ></textarea>
 		           	</div>
 		<?php
 				}else if ($result[$i]['per_tipo'] == 1){
@@ -91,7 +91,7 @@
 							for ($j = 0; $j < count($res); $j++){
 		           		?>
 		           			<div class="linha" style="margin-left: 15px;">
-								<input type="radio" name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
+								<input type="radio" required name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
 							</div>
 						<?php
 							}

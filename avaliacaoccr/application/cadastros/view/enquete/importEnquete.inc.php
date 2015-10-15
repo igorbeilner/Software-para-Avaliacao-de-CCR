@@ -401,9 +401,10 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 							echo "<option value='0' >SELECIONE</option>";
 							for($k=0; $k< count($professores); $k++){
 								if($i==0&&$professores[$k]['pro_cod']!=$prof_dic[0]['pro_cod'])
-									echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";	
-							}
-								
+									echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";
+								else		
+									echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";
+							};	
 						echo "</select>";						
 					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
 				echo "</div>";

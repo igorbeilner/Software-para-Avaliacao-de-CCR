@@ -38,6 +38,7 @@
 					$data->update($array);
 				}
 				else{
+					$array=array();
 					$array['enq_nome']         = addslashes($_POST['enqimp_enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 					$array['enq_num_perg']     = $total_pergs;
 					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
@@ -46,7 +47,7 @@
 					$array['enq_status']       = $_POST['enqimp_status'];	
 					$array['enq_num_resp']     = 0;																
 					$data->add($array);
-				}
+				};
 			}
 			unset($array);
 			$sql = "SELECT enq_cod 

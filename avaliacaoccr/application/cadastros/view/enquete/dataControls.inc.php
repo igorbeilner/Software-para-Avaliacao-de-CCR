@@ -8,10 +8,8 @@
 
 
 			//echo "vetor: ".$_POST['perg_alter_novo'];
-			$num_enq = $_POST['qtd_pd'];
 
 			//Grava as informações das enquetes no banco
-
 			$aux = explode("/", $_POST['enq_semestre']);
 			$sem_ano = $aux[0];
 			$sem_parte = $aux[1];
@@ -29,19 +27,24 @@
 			#data de fim
 			$_POST['enq_data_fim'] = $utils->formatDate('/', $_POST['enq_data_fim']);
 
+			$num_enq = $_POST['qtd_pd'];
+			//echo $num_enq;
 			for ($m = 0; $m < $num_enq; $m++){
 
+				$array=array();
 				// Tabela ENQUETE
 				$data->tabela = 'enquete';
+				
 				$array['enq_nome']         = addslashes($_POST['enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 				$array['enq_num_perg']     = $_POST['qtd_perg'];
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;
 				$array['enq_data']         = $_POST['enq_data'];
-				$array['enq_data_fim']     = $_POST['enq_data_fim'];
 				$array['enq_status']       = $_POST['enq_status'];
 				$array['enq_num_resp'] 	   = 0;
 				$data->add($array);
+				//echo "fugiu";
+				unset($array);
 			}
 
 			// Tabela PERGUNTAS
@@ -51,7 +54,7 @@
 			$cod_car = Array();
 			for($i=1; $i<=$_POST['total_perg']; $i++){
 				// TEXTO
-				if($_POST['per_desc_'.$i.'_texto'] != ""){
+				if($_POST['per_desc_'.$i.'_texto'] != "" ){
 					$array_texto['per_desc'] = $_POST['per_desc_'.$i.'_texto'];
 					$array_texto['per_tipo'] = $_POST['text_tipo_'.$i];
 					$data->add($array_texto);
@@ -80,13 +83,12 @@
 
 			if ($qtd_nova > 0){
 				// Código das enquetes
-				// Código das novas perguntas
 				$sql = "SELECT enq_cod
 						FROM enquete
 						ORDER BY enq_cod DESC
 						LIMIT 0,".$num_enq;
 				$enqs = $data->find("dynamic", $sql);
-
+				
 				// Código das novas perguntas
 				$sql = "SELECT per_cod
 						FROM perguntas
@@ -160,7 +162,7 @@
 			$site=explode('?',$pagina);
 			for ($i = 0; $i < count($enqs); $i++){
 				echo "<div class='coluna' style='width: 800px;'>";
-					echo $site[0]."enquete-".$enqs[$i]['enq_cod'];
+					echo $site[0]."enquete-".($enqs[$i]['enq_cod']);
 				echo "</div>";
 				$array_edp['enq_cod'] = $enqs[$i]['enq_cod'];
 				$array_edp['pro_cod'] = $_POST['pro_'.$i];
