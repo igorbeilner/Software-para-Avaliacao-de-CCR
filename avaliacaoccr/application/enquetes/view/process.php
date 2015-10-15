@@ -2,7 +2,7 @@
 	if (isset($_GET['enq_cod'])){
 		$enq_cod = $_GET['enq_cod'];
 	}
-
+	echo '<meta charset="UTF-8">'; 
 	$aux = explode("-", $enq_cod);
 	$enq_cod = $aux[1];
 

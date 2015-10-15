@@ -2,7 +2,7 @@
 	session_start();
 	$dominio= $_SERVER['HTTP_HOST'];
  	$url = "http://" . $dominio. $_SERVER['REQUEST_URI'];
-
+ 	echo '<meta charset="UTF-8">'; 
  	if (isset($_GET['enq_cod'])){
 		$enq_cod = $_GET['enq_cod'];
 	}
