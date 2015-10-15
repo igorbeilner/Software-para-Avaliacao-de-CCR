@@ -47,6 +47,7 @@
 					$array['enq_status']       = $_POST['enqimp_status'];	
 					$array['enq_num_resp']     = 0;																
 					$data->add($array);
+					unset($array);
 				};
 			}
 			unset($array);
@@ -179,13 +180,13 @@
 
 				for ($j = 0; $j < count($enqs); $j++){
 					for($i=$qtd_nova - 1; $i >= 0; $i--){
-						$array_ep['enq_cod'] = $enqs[$j];		
+						$array_ep['enq_cod'] = $enqs[$j]['enq_cod'];		
 						$array_ep['per_cod'] = $pergs_novas_cod[$i]['per_cod'];
 						$data->add($array_ep);
 					}
 					// Perguntas carregadas
 					for($i=$qtd_car - 1; $i >= 0; $i--){
-						$array_ep2['enq_cod'] = $enqs[$j];		
+						$array_ep2['enq_cod'] = $enqs[$j]['enq_cod'];		
 						$array_ep2['per_cod'] = $cod_car[$i];
 						$data->add($array_ep2);
 					}

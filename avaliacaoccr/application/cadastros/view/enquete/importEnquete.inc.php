@@ -418,6 +418,8 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 							echo "<option value='0' >SELECIONE</option>";
 							for($k=0; $k< count($disciplinas); $k++){
 								if($i==0&&$disciplinas[$k]['dis_cod']!=$prof_dic[0]['dis_cod'])
+									echo "<option value='".$disciplinas[$k]['dis_cod']."' >".$disciplinas[$k]['dis_nome']."</option>";
+								else 
 									echo "<option value='".$disciplinas[$k]['dis_cod']."' >".$disciplinas[$k]['dis_nome']."</option>";	
 							}		
 						echo "</select>";						
