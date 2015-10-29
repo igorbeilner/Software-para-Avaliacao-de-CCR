@@ -89,11 +89,19 @@
 							$res = $data->find('dynamic', $sql);
 
 							for ($j = 0; $j < count($res); $j++){
+		           				if($j==0){
 		           		?>
 		           			<div class="linha" style="margin-left: 15px;">
-								<input type="radio" required name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
+								<input type="radio" selected name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
 							</div>
-						<?php
+						<?php									
+								}
+								else{ ?>
+							<div class="linha" style="margin-left: 15px;">
+								<input type="radio" name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
+							</div>
+							<?php
+								}
 							}
 						?>
 		           	</div>
@@ -105,12 +113,12 @@
 		?>
 		<input style="margin-top:10px;" type="submit" value="Enviar resposta">
 		</form>
-<?php
+
+<?php	
+		
 		}else{
 			$_SESSION['enquete'] = 1;
 			$_SESSION['logado'] = 0;
 			echo "<script> alert('Você já respondeu essa enquete!') </script>";
 			echo "<meta http-equiv='refresh' content='0;URL=logout'>";
-		}
-	}
-?>
+		};};?>

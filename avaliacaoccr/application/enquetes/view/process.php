@@ -13,7 +13,7 @@
 			where j.per_cod = p.per_cod";
 
 	$result = $data->find('dynamic', $sql);
-
+	$count=0;
 	for ($i = 0; $i < count($result); $i++){	
 		$n = $i + 1;
 		if ($result[$i]['per_tipo'] == 0){
@@ -33,6 +33,7 @@
 					$array['per_cod'] = $result[$i]['per_cod'];
 					$array['res_cod'] = $res_cod[0]['res_cod'];
 					$data->add($array);
+					$count++;
 				}
 			}
 		}else{
@@ -61,7 +62,7 @@
 					$array['per_cod'] = $result[$i]['per_cod'];
 					$array['res_cod'] = $res_cod[0]['res_cod'];
 					$data->add($array);
-
+					$count++;
 					break;
 				}
 			}
@@ -73,18 +74,18 @@
 	$data->tabela = "enquete";
 	$sql = "select enq_num_resp from enquete where enq_cod=".$enq_cod;
 	$result = $data->find('dynamic', $sql);
-	
-	$num_resp = $result[0]['enq_num_resp'] + 1;
+	if($count==count($result)){
+		$num_resp = $result[0]['enq_num_resp'] + 1;
 
-	$resss['enq_cod']      = $enq_cod;
-	$resss['enq_num_resp'] = $num_resp;
-	$data->update($resss);
+		$resss['enq_cod']      = $enq_cod;
+		$resss['enq_num_resp'] = $num_resp;
+		$data->update($resss);
 
-	$data->tabela = "alu_enq";
-	$array_alu['alu_cod'] = $_SESSION['userId'];
-	$array_alu['enq_cod'] = $enq_cod;
-	$data->add($array_alu);
-
+		$data->tabela = "alu_enq";
+		$array_alu['alu_cod'] = $_SESSION['userId'];
+		$array_alu['enq_cod'] = $enq_cod;
+		$data->add($array_alu);
+	};
 ?>
 
 <h2 style="margin-left:37%;"> Resposta enviada com sucesso! </h2>

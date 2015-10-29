@@ -134,7 +134,7 @@
 			$Deletar=array();
 			echo "<div class='coluna'>";
 			for ($i = 0, $j = 0 ; $i < $total; $i++){
-				//echo "<br/>i = ".$i;
+				//echo "<br/>i = ".$i; nas $_POST['<escala/texto>_ativa_'.$i] está os epe_cod da tabela enquete_perguntas usada para remover perguntas excluidas
 				if (isset($_POST['escala_ativa_'.$i])&&($_POST['enqimp_per_desc_'.$i.'_escala']==""||$_POST['enqimp_per_desc_'.$i.'_escala']==null)) {
 					$Deletar[$j]=$_POST['escala_ativa_'.$i];
 					$j++;
