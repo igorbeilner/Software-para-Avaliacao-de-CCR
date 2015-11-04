@@ -92,7 +92,7 @@
 		           				if($j==0){
 		           		?>
 		           			<div class="linha" style="margin-left: 15px;">
-								<input type="radio" selected name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
+								<input type="radio" checked="true" name="<?php echo "op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""?>" value="<?php echo $res[$j]['op_desc']?>"> <?php echo utf8_encode($res[$j]['op_desc'])?>
 							</div>
 						<?php									
 								}

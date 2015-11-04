@@ -56,11 +56,18 @@
 		$result = $data->find('dynamic', $sql);
 
 		$_SESSION['userId'] = $user;
-		$_SESSION['logado'] = 1;
+
 		if(count($result) > 0){
 			$_SESSION['userPermissao'] = $result[0]['pro_permissao'];
 
-			if($_SESSION['userPermissao'] == 1){ // ADM
+			if (isset($_GET['enq_cod'])){
+				$aux = explode("-", $_GET['enq_cod']);
+				$enq_cod = $aux[1];
+				$_SESSION['logado'] = 1;
+				$_SESSION['enquete'] = 0;
+				echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."'>";
+			}
+			else if($_SESSION['userPermissao'] == 1){ // ADM
 				header("location: ?module=cadastros&acao=nova_enquete");
 			}else
 			if($_SESSION['userPermissao'] == 2){ // PROFESSOR
@@ -73,7 +80,7 @@
 				$enq_cod = $aux[1];
 
 				$aluno = md5($user);
-				$sql = "select * from aluno as a where a.alu_cpf=md5('".$user."')";
+				$sql = "select * from aluno as a where a.alu_cpf='".md5($user)."'";
 				$result = $data->find('dynamic', $sql);
 
 				if (count($result) > 0){
