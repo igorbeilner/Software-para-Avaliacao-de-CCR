@@ -28,7 +28,7 @@
 				if($m==0&&isset($_POST['enqimp_enq_cod'])){
 				// este if é para não importar e editar enquetes não selecionadas
 					$array['enq_cod']		   = $_POST['enqimp_enq_cod'];
-					$array['enq_nome']         = addslashes($_POST['enqimp_enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+					$array['enq_nome']         = html_entity_decode(addslashes($_POST['enqimp_enq_nome'])); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 					$array['enq_num_perg']     = $total_pergs;
 					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
 					$array['enq_semestre']     = $semestre;
@@ -39,7 +39,7 @@
 				}
 				else{
 					$array=array();
-					$array['enq_nome']         = addslashes($_POST['enqimp_enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+					$array['enq_nome']         = html_entity_decode(addslashes($_POST['enqimp_enq_nome'])); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 					$array['enq_num_perg']     = $total_pergs;
 					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
 					$array['enq_semestre']     = $semestre;
@@ -73,14 +73,14 @@
 				// TEXTO
 
 				if($_POST['enqimp_nova_per_desc_'.$i.'_texto'] != ""){
-					$array_texto['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_texto'];
+					$array_texto['per_desc'] = html_entity_decode($_POST['enqimp_nova_per_desc_'.$i.'_texto']);
 					$array_texto['per_tipo'] = $_POST['enqimp_nova_text_tipo_'.$i];
 					$data->add($array_texto);	
 					$qtd_nova++;
 				}
 				// ESCALA
 				if($_POST['enqimp_nova_per_desc_'.$i.'_escala'] != ""){
-					$array_escala['per_desc'] = $_POST['enqimp_nova_per_desc_'.$i.'_escala'];
+					$array_escala['per_desc'] = html_entity_decode($_POST['enqimp_nova_per_desc_'.$i.'_escala']);
 					$array_escala['per_tipo'] = $_POST['enqimp_nova_escala_tipo_'.$i];
 					$data->add($array_escala);
 					$qtd_nova++;
@@ -134,7 +134,7 @@
 			$Deletar=array();
 			echo "<div class='coluna'>";
 			for ($i = 0, $j = 0 ; $i < $total; $i++){
-				//echo "<br/>i = ".$i; nas $_POST['<escala/texto>_ativa_'.$i] está os epe_cod da tabela enquete_perguntas usada para remover perguntas excluidas
+//nas $_POST['<escala/texto>_ativa_'.$i] está os epe_cod da tabela enquete_perguntas usada para remover perguntas excluidas
 				if (isset($_POST['escala_ativa_'.$i])&&($_POST['enqimp_per_desc_'.$i.'_escala']==""||$_POST['enqimp_per_desc_'.$i.'_escala']==null)) {
 					$Deletar[$j]=$_POST['escala_ativa_'.$i];
 					$j++;
@@ -150,12 +150,13 @@
 				echo "	WHERE 	epe_cod = '$Deletar[$i]'<br />";
 			};*/
 			//echo count($Deletar)." a.! ".count($perguntas);
-			for( $j = 0; $j < count($Deletar) ; $j++ ){
-				$sql="	DELETE FROM enquete_perguntas 
-						WHERE epe_cod = '$Deletar[$j]' ;";
-				//echo $sql."<br />";
-				$data->delete($sql);
-			};
+			if(isset($Deletar))
+				for( $j = 0; $j < count($Deletar) ; $j++ ){
+					$sql="	DELETE FROM enquete_perguntas 
+							WHERE epe_cod = '$Deletar[$j]' ;";
+					//echo $sql."<br />";
+					$data->delete($sql);
+				};
 			echo "</div>";
 
 			unset($indice_perguntas);

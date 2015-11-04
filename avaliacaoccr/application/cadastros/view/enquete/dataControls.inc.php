@@ -35,7 +35,7 @@
 				// Tabela ENQUETE
 				$data->tabela = 'enquete';
 				
-				$array['enq_nome']         = addslashes($_POST['enq_nome']); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+				$array['enq_nome']         = html_entity_decode(addslashes($_POST['enqimp_enq_nome'])); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 				$array['enq_num_perg']     = $_POST['qtd_perg'];
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;
@@ -55,14 +55,14 @@
 			for($i=1; $i<=$_POST['total_perg']; $i++){
 				// TEXTO
 				if($_POST['per_desc_'.$i.'_texto'] != "" ){
-					$array_texto['per_desc'] = $_POST['per_desc_'.$i.'_texto'];
+					$array_texto['per_desc'] = html_entity_decode($_POST['per_desc_'.$i.'_texto']);
 					$array_texto['per_tipo'] = $_POST['text_tipo_'.$i];
 					$data->add($array_texto);
 					$qtd_nova++;
 				}
 				// ESCALA
 				if($_POST['per_desc_'.$i.'_escala'] != ""){
-					$array_escala['per_desc'] = $_POST['per_desc_'.$i.'_escala'];
+					$array_escala['per_desc'] = html_entity_decode($_POST['per_desc_'.$i.'_escala']);
 					$array_escala['per_tipo'] = $_POST['escala_tipo_'.$i];
 					$data->add($array_escala);
 					$qtd_nova++;

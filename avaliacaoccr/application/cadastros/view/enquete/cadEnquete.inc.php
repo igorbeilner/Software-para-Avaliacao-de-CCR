@@ -24,11 +24,11 @@
 	$opcoes = $data->find('dynamic', $sql);
 
 	for($i=0;$i<count($pergunta1);$i++){
-		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".trim($pergunta1[$i]['per_desc'])."\",";
+		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".html_entity_decode(trim($pergunta1[$i]['per_desc']))."\",";
 	}
 
 	for($i=0;$i<count($pergunta2);$i++){
-		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
+		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".html_entity_decode(trim($pergunta2[$i]['per_desc']))."\",";
 	}
 
 	$sql = "select * from professor";
@@ -318,7 +318,7 @@ AQUI APARECE AS ENQUETES PARA SEREM IMPORTADAS /////////////////////////////////
 				echo '<div id = "list_enq" class="listagem" style="margin-bottom: 5px; background-color: #F0F5FF; padding: 5px;">
 						<div class="linha_sol" style="width: 100%;">';
 							$cod_enq = $result[$i]['enq_cod'];
-							echo '<div class="coluna" style="float:left; width: 300px;"><a href="?module=cadastros&acao=import_enquete&enq='.$result[$i]['enq_cod'].'">'.utf8_encode($result[$i]["enq_nome"]).'</a></div>';
+							echo '<div class="coluna" style="float:left; width: 300px;"><a href="?module=cadastros&acao=import_enquete&enq='.$result[$i]['enq_cod'].'">'.html_entity_decode($result[$i]["enq_nome"]).'</a></div>';
 						echo "<div style='clear: both;'></div>";
 					echo "</div>";
 				echo "</div>";

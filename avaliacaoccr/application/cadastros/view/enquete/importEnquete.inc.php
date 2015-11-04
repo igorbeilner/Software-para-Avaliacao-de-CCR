@@ -24,11 +24,11 @@
 	$opcoes = $data->find('dynamic', $sql);			
 
 	for($i=0;$i<count($pergunta1);$i++){
-		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".trim($pergunta1[$i]['per_desc'])."\",";
+		$perg1 .= "\"".trim($pergunta1[$i]['per_cod'])." - ".html_entity_decode(trim($pergunta1[$i]['per_desc']))."\",";
 	}	
 
 	for($i=0;$i<count($pergunta2);$i++){
-		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".trim($pergunta2[$i]['per_desc'])."\",";
+		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".html_entity_decode(trim($pergunta2[$i]['per_desc']))."\",";
 	}	
 
 	$sql = "select * from professor";
@@ -70,7 +70,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
             <div style="clear: both;"></div>
            
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-                <input name="enqimp_enq_nome" id="enqimp_enq_nome" type="text" size="61" placeholder="Avaliação de componente curricular" class="cad_enq" style="width: 500px; text-transform: uppercase;" value='<?php echo $res[0]['enq_nome']; ?>' />
+                <input name="enqimp_enq_nome" id="enqimp_enq_nome" type="text" size="61" placeholder="Avaliação de componente curricular" class="cad_enq" style="width: 500px; text-transform: uppercase;" value='<?php echo html_entity_decode($res[0]['enq_nome']); ?>' />
         	</div>
             <div style="clear: both;"></div>           
         </div>        
@@ -162,7 +162,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 				
 					echo "<input type='hidden' name='escala_ativa_".$i."' value='".$res[$i]['epe_cod']."'/>";
-					echo "<input name='enqimp_per_desc_".$i."_escala' id='enqimp_desc_escala_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".$perguntas[$i][1]."'/>";
+					echo "<input name='enqimp_per_desc_".$i."_escala' id='enqimp_desc_escala_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".html_entity_decode($perguntas[$i][1])."'/>";
 					echo "<input type='hidden' name='enqimp_escala_tipo_".$i."' value='1' />";
 					echo "<input type='hidden' name='escala_per_cod_".$i."' value='".$perguntas[$i][2]."'/>";
 					echo "<a onclick='delete_pergunta(".$i.", 1, 1, 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
@@ -189,9 +189,9 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 								echo "<option value='0' >SELECIONE</option>";
 								for($k=0; $k< count($opcoes); $k++){
 									if ($op[$l]['op_cod'] == $opcoes[$k]['op_cod']){
-										echo "<option value='".$opcoes[$k]['op_cod']."' selected>".$opcoes[$k]['op_desc']."</option>";	
+										echo "<option value='".$opcoes[$k]['op_cod']."' selected>".html_entity_decode($opcoes[$k]['op_desc'])."</option>";	
 									}else{
-										echo "<option value='".$opcoes[$k]['op_cod']."' >".$opcoes[$k]['op_desc']."</option>";
+										echo "<option value='".$opcoes[$k]['op_cod']."' >".html_entity_decode($opcoes[$k]['op_desc'])."</option>";
 									}
 								}		
 							echo "</select>";						
@@ -236,7 +236,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 					echo "<div style='clear: both;'></div>";
 
 					echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
-						echo "<input name='enqimp_per_desc_".$i."_texto' id='enqimp_desc_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".$perguntas[$i][1]."' />";
+						echo "<input name='enqimp_per_desc_".$i."_texto' id='enqimp_desc_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".html_entity_decode($perguntas[$i][1])."' />";
 						echo "<input type='hidden' name='enqimp_text_tipo_".$j."' value='0' />";
 						echo "<input type='hidden' name='texto_per_cod_".$i."' value='".$perguntas[$i][2]."'/>";
 						echo "<a onclick='delete_pergunta(".$i.", 0, 1, 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
@@ -396,14 +396,14 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 					//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					echo "<select name='pro_".$i."' id='pro_option_".$i."' class='cad_enq' style='width:250px;' >";
 						if($i==0&&isset($prof_dic[0]['pro_cod']))
-							echo "<option value='".$prof_dic[0]['pro_cod']."' >".$prof_nome_banco[0]['pro_nome']."</option>";//
+							echo "<option value='".$prof_dic[0]['pro_cod']."' >".html_entity_decode($prof_nome_banco[0]['pro_nome'])."</option>";//
 						else
 							echo "<option value='0' >SELECIONE</option>";
 							for($k=0; $k< count($professores); $k++){
 								if($i==0&&$professores[$k]['pro_cod']!=$prof_dic[0]['pro_cod'])
-									echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";
+									echo "<option value='".$professores[$k]['pro_cod']."' >".html_entity_decode($professores[$k]['pro_nome'])."</option>";
 								else		
-									echo "<option value='".$professores[$k]['pro_cod']."' >".$professores[$k]['pro_nome']."</option>";
+									echo "<option value='".$professores[$k]['pro_cod']."' >".html_entity_decode($professores[$k]['pro_nome'])."</option>";
 							};	
 						echo "</select>";						
 					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	 
