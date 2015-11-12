@@ -249,7 +249,7 @@
 				$array['enq_cod'] = $enqs[$i]['enq_cod'];
 				$array['pro_cod'] = $_POST['pro_'.$i];
 				$array['dis_cod'] = $_POST['disc_'.$i];
-				if($i==0 && isset($_POST['enqimp_enq_cod']))
+				if($i==0 && isset($existe[0]['edi_cod']))
 					$data->update($array);
 				else
 					$data->add($array);

@@ -20,7 +20,7 @@
 			if (isset($_POST["text_".$result[$i]['per_cod'].""])){
 				$value = $_POST["text_".$result[$i]['per_cod'].""];
 				if ($value != ""){	
-					$sql = "INSERT INTO respostas (res_desc, per_cod) VALUES ('".$value."','".$result[$i]['per_cod']."')";
+					$sql = "INSERT INTO respostas (res_desc) VALUES ('".$value."')";
 
 					$r = $data->executaSQL($sql);
 
@@ -30,7 +30,6 @@
 					
 					$data->tabela = "enq_per_res";
 					$array['enq_cod'] = $enq_cod;
-					$array['per_cod'] = $result[$i]['per_cod'];
 					$array['res_cod'] = $res_cod[0]['res_cod'];
 					$data->add($array);
 					$count++;
@@ -49,7 +48,7 @@
 				if (isset($_POST["op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""])){
 					$value = $_POST["op_".$result[$i]['per_cod']."_".$res[$j]['op_cod'].""];
 
-					$sql = "INSERT INTO respostas (res_desc, per_cod) VALUES ('".$value."','".$result[$i]['per_cod']."')";
+					$sql = "INSERT INTO respostas (res_desc) VALUES ('".$value."')";
 
 					$r = $data->executaSQL($sql);
 
