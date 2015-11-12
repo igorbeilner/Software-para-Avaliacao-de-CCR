@@ -64,7 +64,7 @@
 			$data->tabela = 'perguntas';
 			$qtd_nova = 0;
 			$qtd_car = 0;
-			$cod_car = Array();
+			$cod_car = array();
 			$sql = "SELECT * 
 					FROM enquete_perguntas
 					WHERE enq_cod='".$enqs[0]['enq_cod']."';";
@@ -150,13 +150,18 @@
 				echo "	WHERE 	epe_cod = '$Deletar[$i]'<br />";
 			};*/
 			//echo count($Deletar)." a.! ".count($perguntas);
-			if(isset($Deletar))
+			if(isset($Deletar)){
+				$sql="DELETE FROM perguntas
+					  WHERE per_cod in (SELECT per_cod FROM enquete_perguntas
+					  					WHERE epe_cod in '$Deletar') ;";
 				for( $j = 0; $j < count($Deletar) ; $j++ ){
 					$sql="	DELETE FROM enquete_perguntas 
 							WHERE epe_cod = '$Deletar[$j]' ;";
 					//echo $sql."<br />";
 					$data->delete($sql);
 				};
+			}
+
 			echo "</div>";
 
 			unset($indice_perguntas);

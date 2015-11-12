@@ -60,12 +60,13 @@
 		if(count($result) > 0){
 			$_SESSION['userPermissao'] = $result[0]['pro_permissao'];
 			$_SESSION['logado'] = 1;
+			//parte inicial para professor poder responder enquete!
 			if (isset($_GET['enq_cod'])){
 				$aux = explode("-", $_GET['enq_cod']);
 				$enq_cod = $aux[1];
 				$_SESSION['enquete'] = 0;
 				echo "<meta http-equiv='refresh' content='0;URL=enquete-".$enq_cod."'>";
-			}
+			}//parte final para professor poder responder enquete!
 			else if($_SESSION['userPermissao'] == 1){ // ADM
 
 				header("location: ?module=cadastros&acao=nova_enquete");

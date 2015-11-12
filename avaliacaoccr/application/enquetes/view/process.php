@@ -71,9 +71,9 @@
 	}
 
 	$data->tabela = "enquete";
-	$sql = "select enq_num_resp from enquete where enq_cod=".$enq_cod;
+	$sql = "select enq_num_perg from enquete where enq_cod=".$enq_cod;
 	$result = $data->find('dynamic', $sql);
-	if($count==count($result)){
+	if($count==$result[0][0]){
 		$num_resp = $result[0]['enq_num_resp'] + 1;
 
 		$resss['enq_cod']      = $enq_cod;

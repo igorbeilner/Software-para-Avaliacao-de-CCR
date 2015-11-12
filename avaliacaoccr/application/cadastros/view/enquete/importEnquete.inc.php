@@ -132,7 +132,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 				where ep.enq_cod=".$_GET['enq']."";
 		$res = $data->find("dynamic", $sql);
 		
-		$perguntas = Array();
+		$perguntas = array();
 		$indice = 0;
 		for ($i = 0; $i < count($res); $i++){
 			$sql = "select *
@@ -164,7 +164,6 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 					echo "<input type='hidden' name='escala_ativa_".$i."' value='".$res[$i]['epe_cod']."'/>";
 					echo "<input name='enqimp_per_desc_".$i."_escala' id='enqimp_desc_escala_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".html_entity_decode($perguntas[$i][1])."'/>";
 					echo "<input type='hidden' name='enqimp_escala_tipo_".$i."' value='1' />";
-					echo "<input type='hidden' name='escala_per_cod_".$i."' value='".$perguntas[$i][2]."'/>";
 					echo "<a onclick='delete_pergunta(".$i.", 1, 1, 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 //							 function delete_pergunta final deste arquivo! \/ nos scripts
 					echo "<a onclick='clone(".$i.", 1, 1, 1, ".$alter_enqimp[$i].")'; style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
@@ -238,7 +237,6 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 					echo "<div class='coluna' style='margin-right: 23px; margin-left:0px;'>";
 						echo "<input name='enqimp_per_desc_".$i."_texto' id='enqimp_desc_".$i."' type='text' size='61' class='cad_enq' style='width: 500px;' value='".html_entity_decode($perguntas[$i][1])."' />";
 						echo "<input type='hidden' name='enqimp_text_tipo_".$j."' value='0' />";
-						echo "<input type='hidden' name='texto_per_cod_".$i."' value='".$perguntas[$i][2]."'/>";
 						echo "<a onclick='delete_pergunta(".$i.", 0, 1, 1);' style=' margin-left: 5px;'><img src='application/images/delete.png' style='cursor:pointer;'></a>";
 						echo "<a onclick='clone(".$i.", 3, 1, 1, 0);' style=' margin-left: 5px;'><img src='application/images/copy.png' style='cursor:pointer;'></a>";
 					echo "</div>";

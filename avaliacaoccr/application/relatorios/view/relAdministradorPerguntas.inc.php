@@ -14,9 +14,9 @@
 	<?php
 		
 		//pega as perguntas da enquete selecionada		
-		$sql = "select p.per_desc, t.per_cod, p.per_tipo from
-				(select ep.per_cod, e.enq_cod from enquete as e join enquete_perguntas as ep
-					where ep.enq_cod =".$enq." and e.enq_cod=".$enq.") as t join perguntas as p
+		$sql = "SELECT p.per_desc, t.per_cod, p.per_tipo FROM
+				(SELECT ep.per_cod, e.enq_cod FROM enquete AS e JOIN enquete_perguntas as ep
+					WHERE ep.enq_cod ='$enq' AND e.enq_cod='$enq') as t join perguntas as p
 					where p.per_cod = t.per_cod";
 						
 		$res = $data->find('dynamic', $sql);
@@ -134,7 +134,8 @@
 							
 							echo phpHtmlChart($grafico, 'H', '', '', '8pt', 400, 'px', 15, 'px');
 
-							echo "<div class='coluna' id='vermais".$i."' style='margin-left: 650px; margin-top: 2px; width: 150px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Mais informações</div>";							echo "<div id='mais".$i."' style='display:none;'>";
+							echo "<div class='coluna' id='vermais".$i."' style='margin-left: 650px; margin-top: 2px; width: 150px; cursor:pointer; font-weight: bold;' onclick='abrirmais(".$i.");'>Mais informações</div>";							
+							echo "<div id='mais".$i."' style='display:none;'>";
 								echo "</br></br>";
 								echo "<div class='coluna' style='float:left; width:10px; font-weight:bold; color:#000; margin-left:10px;'>Id</div>";
 								echo "<div class='coluna' style='float:left; width:150px; font-weight:bold; color:#000; margin-left: 15px;'>Horário</div>";
