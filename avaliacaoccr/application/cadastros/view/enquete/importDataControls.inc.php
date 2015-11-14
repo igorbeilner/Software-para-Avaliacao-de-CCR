@@ -33,6 +33,7 @@
 					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
 					$array['enq_semestre']     = $semestre;
 					$array['enq_data']         = $_POST['enqimp_data'];												
+					$array['enq_data_fim']     = $_POST['enqimp_data_fim'];												
 					$array['enq_status']       = $_POST['enqimp_status'];	
 					$array['enq_num_resp']     = 0;																
 					$data->update($array);
@@ -44,6 +45,7 @@
 					$array['enq_num_resp_esp'] = $_POST['enqimp_resp_esp'];
 					$array['enq_semestre']     = $semestre;
 					$array['enq_data']         = $_POST['enqimp_data'];												
+					$array['enq_data_fim']     = $_POST['enqimp_data_fim'];												
 					$array['enq_status']       = $_POST['enqimp_status'];	
 					$array['enq_num_resp']     = 0;																
 					$data->add($array);

@@ -35,7 +35,7 @@
 				// Tabela ENQUETE
 				$data->tabela = 'enquete';
 				
-				if(!isset($_POST['enqimp_enq_nome'])||$_POST['enqimp_enq_nome']=='')
+				if(!isset($_POST['enqimp_enq_nome']))
 					$array['enq_nome']     = "Sem titulo".$m;
 				else
 					$array['enq_nome']     = html_entity_decode(addslashes($_POST['enqimp_enq_nome'])); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
@@ -43,6 +43,7 @@
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;
 				$array['enq_data']         = $_POST['enq_data'];
+				$array['enq_data_fim']     = $_POST['enq_data_fim'];
 				$array['enq_status']       = $_POST['enq_status'];
 				$array['enq_num_resp'] 	   = 0;
 				$data->add($array);

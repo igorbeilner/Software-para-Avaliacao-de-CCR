@@ -90,8 +90,10 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
             <div style="clear: both;"></div>
                     
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
-            	<?php $date = explode("-", $res[0]['enq_data']); ?>
+            	<?php $date 	= explode("-", $res[0]['enq_data']);
+            		  $date_fim = explode("-", $res[0]['enq_data_fim']); ?>
                 <input name="enqimp_data" maxlength="10" id="enqimp_data" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;"  value='<?php echo $date[2]."/".$date[1]."/".$date[0]; ?>' />
+           		<input name="enqimp_data_fim" maxlength="10" id="enqimp_data_fim" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" value='<?php echo $date_fim[2]."/".$date_fim[1]."/".$date_fim[0]; ?>' />
             </div>
             <div style="clear: both;"></div>           
         </div>       
