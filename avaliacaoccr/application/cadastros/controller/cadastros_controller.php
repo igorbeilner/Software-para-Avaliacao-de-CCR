@@ -54,5 +54,8 @@
 		case 'editar_enquete':
 			require_once 'application/cadastros/view/enquete/editEnquete.inc.php';
 			break;
+
+		case 'excluir_enquete':
+			require_once 'application/cadastros/view/enquete/excluirEnquete.inc.php';
 	}
 ?>
