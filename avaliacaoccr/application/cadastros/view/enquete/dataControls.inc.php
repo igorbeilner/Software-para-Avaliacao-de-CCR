@@ -35,10 +35,10 @@
 				// Tabela ENQUETE
 				$data->tabela = 'enquete';
 				
-				if(!isset($_POST['enqimp_enq_nome']))
+				if(!isset($_POST['enq_nome']))
 					$array['enq_nome']     = "Sem titulo".$m;
 				else
-					$array['enq_nome']     = html_entity_decode(addslashes($_POST['enqimp_enq_nome'])); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
+					$array['enq_nome']     = html_entity_decode(addslashes($_POST['enq_nome'])); // Retirando caracteres especiais (') p/ nao dar erro ao gravar no banco
 				$array['enq_num_perg']     = $_POST['qtd_perg'];
 				$array['enq_num_resp_esp'] = $_POST['enq_num_resp_esp'];
 				$array['enq_semestre']     = $semestre;

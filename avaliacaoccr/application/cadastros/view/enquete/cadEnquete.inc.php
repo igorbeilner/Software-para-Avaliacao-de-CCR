@@ -80,7 +80,7 @@ AQUI É A NOVA ENQUETE /////////////////////////////////////////////////////////
 
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
             	<input name="enq_data" maxlength="10" id="enq_data" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" />
-							<input name="enq_data_fim" maxlength="10" id="enq_data_fim" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" />
+				<input name="enq_data_fim" maxlength="10" id="enq_data_fim" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" />
             </div>
             <div style="clear: both;"></div>
 		</div>
