@@ -72,7 +72,11 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
             <div class="coluna" style="margin-right: 23px; margin-left:0px;">
                 <input name="enqimp_enq_nome" id="enqimp_enq_nome" type="text" size="61" placeholder="Avaliação de componente curricular" class="cad_enq" style="width: 500px; text-transform: uppercase;" value='<?php echo html_entity_decode($res[0]['enq_nome']); ?>' />
         	</div>
-            <div style="float:right;"><a href="?module=excluir_enquete&enq=<?php echo $enq_cod;?>"><img src="application/images/excluir.png"></a></div>
+            <div class="coluna" style="margin-right: 0px; margin-left:5px;">
+            	<a href="?module=excluir_enquete&enq=<?php echo $enq_cod;?>">
+            		<img src="application/images/excluir.png">
+            	</a>
+            </div>
             <div style="clear: both;"></div>           
         </div>        
         

@@ -152,9 +152,10 @@
 			};*/
 			//echo count($Deletar)." a.! ".count($perguntas);
 			if(isset($Deletar)){
-				$sql="DELETE FROM perguntas
-					  WHERE per_cod in (SELECT per_cod FROM enquete_perguntas
-					  					WHERE epe_cod in '$Deletar') ;";
+/*	delete retirado		$sql="DELETE FROM perguntas
+	pois está na ordem	  WHERE per_cod in (SELECT per_cod FROM enquete_perguntas
+	errada de remoção.			WHERE epe_cod in '$Deletar') ;";
+				$data->delete($sql);*/
 				for( $j = 0; $j < count($Deletar) ; $j++ ){
 					$sql="	DELETE FROM enquete_perguntas 
 							WHERE epe_cod = '$Deletar[$j]' ;";

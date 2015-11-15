@@ -31,7 +31,7 @@
 		$perg2 .= "\"".trim($pergunta2[$i]['per_cod'])." - ".html_entity_decode(trim($pergunta2[$i]['per_desc']))."\",";
 	}
 
-	$sql = "select * from professor";
+	$sql = "SELECT * from professor";
 	$professores = $data->find('dynamic', $sql);
 
 	$sql = "SELECT * FROM disciplina ORDER BY dis_nome ASC";
