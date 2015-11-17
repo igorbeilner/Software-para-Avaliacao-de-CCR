@@ -73,7 +73,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
                 <input name="enqimp_enq_nome" id="enqimp_enq_nome" type="text" size="61" placeholder="Avaliação de componente curricular" class="cad_enq" style="width: 500px; text-transform: uppercase;" value='<?php echo html_entity_decode($res[0]['enq_nome']); ?>' />
         	</div>
             <div class="coluna" style="margin-right: 0px; margin-left:5px;">
-            	<a href="?module=excluir_enquete&enq=<?php echo $enq_cod;?>">
+            	<a href="?module=cadastros&acao=excluir_enquete&enq=<?php echo $enq_cod;?>">
             		<img src="application/images/excluir.png">
             	</a>
             </div>
@@ -98,7 +98,7 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
             	<?php $date 	= explode("-", $res[0]['enq_data']);
             		  $date_fim = explode("-", $res[0]['enq_data_fim']); ?>
                 <input name="enqimp_data" maxlength="10" id="enqimp_data" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;"  value='<?php echo $date[2]."/".$date[1]."/".$date[0]; ?>' />
-           		<input name="enqimp_data_fim" maxlength="10" id="enqimp_data_fim" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" value='<?php echo $date_fim[2]."/".$date_fim[1]."/".$date_fim[0]; ?>' />
+           		<input name="enqimp_data_fim" maxlength="10" id="enqimp_data_fim" onKeyPress="MascaraData(this);" type="text" size="7" placeholder="<?php echo date("d/m/Y"); ?>" class="cad_enq" style="width: 100px;" style="text-transform: lowercase;" value='<?php if(isset($date_fim)&&$date_fim[2]!="") echo $date_fim[2]."/".$date_fim[1]."/".$date_fim[0]; ?>' />
             </div>
             <div style="clear: both;"></div>           
         </div>       
@@ -890,6 +890,18 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
 	<!-- Calendário da Data -->
 	$(document).ready( function() {
 		$("#enqimp_data").datepicker({
+			dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+				dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+				dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+				monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior', 
+				changeMonth: true,
+				changeYear: true	
+		});
+		$("#enqimp_data_fim").datepicker({
 			dateFormat: 'dd/mm/yy',
 				dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
 				dayNamesMin: ['D','S','T','Q','Q','S','S','D'],

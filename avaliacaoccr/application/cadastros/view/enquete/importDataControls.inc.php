@@ -20,6 +20,7 @@
 			$total_pergs = $qtd_pergs_imp + $qtd_pergs_nova;
 
 			$_POST['enqimp_data']         = $utils->formatDate('/', $_POST['enqimp_data']); // Transformando data p/ gravar no banco		
+			$_POST['enqimp_data_fim']     = $utils->formatDate('/', $_POST['enqimp_data_fim']); // Transformando data p/ gravar no banco		
 
 			// Tabela ENQUETE
 			$data->tabela = 'enquete';		
