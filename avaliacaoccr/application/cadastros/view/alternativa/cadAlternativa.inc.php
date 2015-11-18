@@ -11,6 +11,16 @@
 				</div>
 			<div style="clear: both;"></div>  
 		</div>
+		<div class="linha">
+			<div style="width: 190px " class="coluna">Peso da alternativa:(0-100)</div>
+				<div style="clear: both;"></div>
+				<div class="coluna" style="margin-right: 23px; margin-left:0px;">
+					<input name="op_peso" id="pro_peso" type="number" size="3" placeholder="100" class="cad_enq" onchange="Valida_num(this);" />
+				</div>
+			<div style="clear: both;"></div>
+			<div style="width: 500px " class="coluna">Obs: Valores Diferentes se tornarão, o número limite mais proximo!</div>  
+		</div>
+
 		 
 		<br/><br/>
 		 <!-- Botão Salvar -->
@@ -26,7 +36,6 @@
 	
 </div>
 <script>
-
 function valida_form(){
 		var mensagem, id;
 		if (document.getElementById('pro_nome').value == ''){ 

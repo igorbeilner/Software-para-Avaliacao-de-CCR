@@ -20,7 +20,8 @@
 			};
 			if(!$existe)
 				$ok = $data->add($array);
-			
+			else
+				$ok = $data->update($array);
 			//echo "<meta http-equiv='Refresh' CONTENT='0;URL=?module=cadastros&acao=lista_cargo'>";	
 		break;
 		
