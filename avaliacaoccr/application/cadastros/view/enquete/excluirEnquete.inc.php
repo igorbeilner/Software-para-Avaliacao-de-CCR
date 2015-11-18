@@ -45,6 +45,7 @@
 			if(count($result)>0){
 				//echo 'confirm'
 			}
+			break;
 		}else
 			header('location: ?module=cadastros&acao=nova_enquete');
 		break;

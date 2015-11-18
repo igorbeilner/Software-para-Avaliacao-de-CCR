@@ -5,11 +5,7 @@
 	echo '<meta charset="UTF-8">'; 
 	$aux = explode("-", $enq_cod);
 	$enq_cod = $aux[1];
-	$sql = "SELECT enq_num_resp_esp, enq_num_resp, enq_status 
-			FROM enquete
-			WHERE enq_cod='$enq_cod'";
-	$result = $data->find('dynamic',$sql);
-	if($result[0]['enq_num_resp_esp']<$result[0]['enq_num_resp']&&$result[0]['enq_status']==1){
+
 		$sql = "select p.per_desc, p.per_tipo, p.per_cod, j.enq_nome from
 				(select e.enq_cod, ep.per_cod, e.enq_nome 
 				from enquete as e join enquete_perguntas as ep
@@ -86,7 +82,4 @@
 		$array_alu['enq_cod'] = $enq_cod;
 		$data->add($array_alu);
 ?>
-		<h2 style="margin-left:37%;"> Resposta enviada com sucesso! </h2><?php 
-	}else{ ?>
-		<h2 style="margin-left:37%;"> Não é possivel responder mais esta enquete! </h2><?php 
-	}; ?>
+		<h2 style="margin-left:37%;"> Resposta enviada com sucesso! </h2>

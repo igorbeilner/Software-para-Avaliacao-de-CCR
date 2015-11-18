@@ -9,7 +9,11 @@
 
 	$aux = explode("-", $enq_cod);
 	$enq_cod = $aux[1];
-
+	$sql = "SELECT enq_num_resp_esp, enq_num_resp, enq_status
+			FROM enquete
+			WHERE enq_cod='$enq_cod'";
+	$result = $data->find('dynamic',$sql);
+	if($result[0]['enq_num_resp_esp']<$result[0]['enq_num_resp']&&$result[0]['enq_status']==1){
 	$_SESSION['cod_enq'] = $cod_enq;
 
  	if (isset($_SESSION['enquete'])){
@@ -121,4 +125,7 @@
 			$_SESSION['logado'] = 0;
 			echo "<script> alert('Você já respondeu essa enquete!') </script>";
 			echo "<meta http-equiv='refresh' content='0;URL=logout'>";
-		};};?>
+		};};
+	}else{ ?>
+		<h2 style="margin-left:37%;"> Não é possivel responder mais esta enquete! </h2><?php 
+	}; ?>

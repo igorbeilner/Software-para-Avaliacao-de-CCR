@@ -112,8 +112,8 @@ AQUI APARECE A ENQUETE IMPORTADA ///////////////////////////////////////////////
                     <input type='radio' name='enqimp_status' value='1' checked style='position:relative; top:3px;' >Ativa
                     <input type='radio' name='enqimp_status' value='0' style='position:relative; top:3px;'>Inativa
                 <?php }else{?>
-                    <input type='radio' name='enqimp_status' value='0' checked style='position:relative; top:3px;' >Ativa
-                    <input type='radio' name='enqimp_status' value='1' style='position:relative; top:3px;'>Inativa
+                    <input type='radio' name='enqimp_status' value='0' checked style='position:relative; top:3px;' >Inativa
+                    <input type='radio' name='enqimp_status' value='1' style='position:relative; top:3px;'>Ativa
                 <?php }?>
             </div>
            	<div style="clear: both;"></div>           
