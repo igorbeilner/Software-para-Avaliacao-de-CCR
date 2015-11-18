@@ -42,10 +42,47 @@
 			$data->delete($sql);
 			$sql="SELECT * FROM enquete WHERE enq_cod='$enq_cod' ";
 			$result=$data->find('dynamic',$sql);
+			$msg[0]='<h2>A enquete';
+			$msg[1]=" Não"; 
+			$msg[2]=' foi removida com sucesso</h2>';
 			if(count($result)>0){
-				//echo 'confirm'
+				if(!isset($_GET['force'])){
+					echo $msg[0].$msg[1].$msg[2];
+					echo '<a href="?module=cadastros&acao=excluir_enquete&enq='.$enq_cod.'&force=1"><h2>Clique Para Forçar a Remoção!'
+					.'</h2><img src="application/images/excluir.png"><h2></h2></a>';
+				}else if($_GET['force']==1){
+					echo '<h2>Force MODE</h2>';
+					$sql="DELETE FROM enq_disc_prof WHERE enq_cod='$enq_cod';";
+					$data->delete($sql);
+					$sql="DELETE FROM enq_per_res WHERE enq_cod='$enq_cod';";
+					$data->delete($sql);
+					$sql="DELETE FROM enquete_perguntas WHERE enq_cod='$enq_cod';";
+					$data->delete($sql);
+					$sql="SELECT * FROM respostas NATURAL JOIN enq_per_res";
+					$resp_per=$data->find('dynamic',$sql);
+					$sql="SELECT * FROM perguntas NATURAL JOIN enquete_perguntas";
+					$per_enq=$data->find('dynamic',$sql);
+					$sql="SELECT * FROM enquete NATURAL JOIN enq_disc_prof";
+					$prof_disc=$data->find('dynamic',$sql);
+					$sql="DELETE FROM respostas WHERE res_cod NOT EXIST IN '$resp_per';";
+					$data->delete($sql);
+					$sql="DELETE FROM perguntas WHERE per_cod NOT EXIST IN '$per_enq';";
+					$data->delete($sql);
+					$sql="DELETE FROM enq_disc_prof WHERE epd_cod NOT EXIST IN '$prof_disc';";
+					$data->delete($sql);
+					$sql="DELETE FROM enquete WHERE enq_cod='$enq_cod';";
+					$data->delete($sql);
+					$sql="SELECT * FROM enquete WHERE enq_cod='$enq_cod' ";
+					$result=$data->find('dynamic',$sql);
+					if(count($result)>0){
+						echo $msg[0].$msg[1].$msg[2];
+					}
+					else
+						echo $msg[0].$msg[2];
+				}
+			}else{
+				echo $msg[0].$msg[2]; 
 			}
-			break;
 		}else
 			header('location: ?module=cadastros&acao=nova_enquete');
 		break;
