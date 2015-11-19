@@ -90,7 +90,7 @@
 									(SELECT op.op_cod FROM
 		           					perguntas AS p JOIN perguntas_opcoes AS op
 		           					WHERE p.per_cod = ".$result[$i]['per_cod']." AND op.per_cod = ".$result[$i]['per_cod'].") as t
-									join opcoes as o where t.op_cod = o.op_cod";
+									join opcoes as o where t.op_cod = o.op_cod ORDER BY op_peso DESC";
 
 							$res = $data->find('dynamic', $sql);
 
