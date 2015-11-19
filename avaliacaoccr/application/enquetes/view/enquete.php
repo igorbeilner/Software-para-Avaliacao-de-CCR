@@ -13,7 +13,9 @@
 			FROM enquete
 			WHERE enq_cod='$enq_cod'";
 	$result = $data->find('dynamic',$sql);
-	if($result[0]['enq_num_resp_esp']>$result[0]['enq_num_resp']&&$result[0]['enq_status']==1){
+	$agora=date('Y-m-d');
+	//echo '<h2>'.$agora.'</h2>';
+	if($result[0]['enq_num_resp_esp']>$result[0]['enq_num_resp']&&$result[0]['enq_status']==1&&$result[0]['enq_data_fim']>$agora){
 	$_SESSION['cod_enq'] = $cod_enq;
 
  	if (isset($_SESSION['enquete'])){
