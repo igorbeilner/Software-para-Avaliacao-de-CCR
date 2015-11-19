@@ -9,11 +9,11 @@
 
 	$aux = explode("-", $enq_cod);
 	$enq_cod = $aux[1];
-	$sql = "SELECT enq_num_resp_esp, enq_num_resp, enq_status
+	$sql = "SELECT enq_num_resp_esp, enq_num_resp, enq_status, enq_data_fim
 			FROM enquete
 			WHERE enq_cod='$enq_cod'";
 	$result = $data->find('dynamic',$sql);
-	if($result[0]['enq_num_resp_esp']<$result[0]['enq_num_resp']&&$result[0]['enq_status']==1){
+	if($result[0]['enq_num_resp_esp']>$result[0]['enq_num_resp']&&$result[0]['enq_status']==1){
 	$_SESSION['cod_enq'] = $cod_enq;
 
  	if (isset($_SESSION['enquete'])){
@@ -84,10 +84,10 @@
 					<div class="linha" style="margin-top: 20px;">
 		           		<div style="width: 100%; margin-top: 8px; margin-left:0px; margin-bottom:5px;" class="coluna"><?php echo $n." - ".$result[$i]['per_desc'] ?></div><br/>
 		           		<?php
-		           			$sql = "select o.op_desc from
-									(select op.op_cod from
-		           					perguntas as p join perguntas_opcoes as op
-		           					where p.per_cod = ".$result[$i]['per_cod']." and op.per_cod = ".$result[$i]['per_cod'].") as t
+		           			$sql = "SELECT o.op_desc FROM
+									(SELECT op.op_cod FROM
+		           					perguntas AS p JOIN perguntas_opcoes AS op
+		           					WHERE p.per_cod = ".$result[$i]['per_cod']." AND op.per_cod = ".$result[$i]['per_cod'].") as t
 									join opcoes as o where t.op_cod = o.op_cod";
 
 							$res = $data->find('dynamic', $sql);
